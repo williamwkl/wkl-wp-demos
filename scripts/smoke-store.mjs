@@ -48,7 +48,7 @@ await p.click('[data-place-order]'); await p.waitForURL(/demo-order/);
 out.confirmTitle = (await p.textContent('[data-confirm-title]')).trim();
 out.confirmUrlHasNoData = !/dana|orchard|example\.com/i.test(p.url());
 out.badgeAfterOrder = await badge();
-await p.screenshot({ path: process.env.SHOT || 'store-confirm.png', fullPage: true });
+await p.screenshot({ path: process.env.SHOT || (process.env.TMPDIR || '/tmp') + '/store-confirm.png', fullPage: true });
 out.errors = errors; out.offHost = [...new Set(offHost)]; out.posts = posts;
 console.log(JSON.stringify(out, null, 1));
 await b.close();

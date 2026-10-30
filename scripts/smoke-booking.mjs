@@ -43,7 +43,7 @@ out.doneTitle = (await p.textContent('[data-done-title]')).trim();
 out.urlHasNoPersonalData = !/priya|example\.com|555/i.test(decodeURIComponent(p.url()));
 if (mode === 'live') { await p.goto(base + '/book/', { waitUntil: 'networkidle' }); out.after = await left(); out.seatsTaken = out.before - out.after; }
 out.errors = errors; out.posts = posts; out.offHost = [...new Set(offHost)];
-await p.screenshot({ path: process.env.SHOT || 'booking-done.png', fullPage: true });
+await p.screenshot({ path: process.env.SHOT || (process.env.TMPDIR || '/tmp') + '/booking-done.png', fullPage: true });
 console.log(JSON.stringify(out, null, 1));
 await b.close();
 const ok = out.preselected && out.soldOutSlotDisabled !== false && out.blockedWithoutDetails && /Priya/.test(out.doneTitle) && out.urlHasNoPersonalData && !errors.length && !offHost.length
