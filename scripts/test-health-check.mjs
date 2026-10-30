@@ -25,6 +25,9 @@ t('group renders one sentence when all values agree', () => { const s = text('<p
 t('group fails when values differ', throws('<p>{{group now scores.performance,scores.seo}}</p>', /values differ/));
 t('group fails on a single field that varies across pages', throws('<p>{{group now scores.performance}}</p>', /values differ/));
 t('group fails on an unknown field', throws('<p>{{group now scores.speed}}</p>', /unknown field|no label/));
+t('group rejects non-score field render_blocking', throws('<p>{{group after render_blocking}}</p>', /only scores/));
+t('group rejects non-score field requests', throws('<p>{{group after requests}}</p>', /only scores/));
+t('group rejects non-score field cls', throws('<p>{{group after cls}}</p>', /only scores/));
 t('group fails on an unknown set', throws('<p>{{group later scores.seo}}</p>', /now or after/));
 // pair: before/after from the same field and page
 t('pair renders page, label, before and after', () => { const s = text('<p>{{pair family-law.lcp_s}}</p>'); const a = ctx.now['family-law'].lcp_s.toFixed(1), b = ctx.after['family-law'].lcp_s.toFixed(1); if (s !== `Family law LCP: ${a} s before, ${b} s after`) throw new Error(s); });

@@ -112,6 +112,7 @@ function renderMetric(ctx, expr) {
 // every page". Fails unless every listed field has the same value on every page of that set.
 function renderGroup(ctx, set, fields) {
   if (!['now', 'after'].includes(set)) throw new Error(`{{group ${set} ...}}: set must be now or after`);
+  for (const f of fields) if (!/^scores\./.test(f)) throw new Error(`{{group ${set} ${fields}}}: only scores.* fields can be grouped ("${f}" is not a score)`);
   const vals = fields.map(f => { labelFor(f, `{{group ${set} ${fields}}}`); return [evaluate(ctx, `${set}.*.${f}|min`).v, evaluate(ctx, `${set}.*.${f}|max`).v]; }).flat().map(Number);
   if (Math.min(...vals) !== Math.max(...vals)) throw new Error(`{{group ${set} ${fields}}}: values differ (${[...new Set(vals)].join(', ')}); write them separately`);
   const names = fields.map(f => METRIC_LABELS[f].name);

@@ -1,6 +1,6 @@
 {
  "source": "reports/*.report.json (Lighthouse 12, mobile preset, static exports served locally with gzip)",
- "generated": "2026-10-30T15:50:22.580Z",
+ "generated": "2026-10-30T16:35:42.203Z",
  "pages": {
   "naive": {
    "contact": {
@@ -524,7 +524,7 @@
    },
    "book": {
     "url": "http://127.0.0.1:5055/saltline/book/",
-    "fetchTime": "2026-10-30T15:16:27.532Z",
+    "fetchTime": "2026-10-30T16:16:37.533Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 100,
@@ -536,11 +536,11 @@
     "fcp_s": 1.2,
     "cls": 0.028,
     "tbt_ms": 0,
-    "weight_kb": 135,
+    "weight_kb": 136,
     "requests": 10,
     "bytes_by_type_kb": {
      "Document": 22,
-     "Script": 22,
+     "Script": 23,
      "Image": 21,
      "Font": 66,
      "Other": 0
@@ -622,7 +622,7 @@
    },
    "home": {
     "url": "http://127.0.0.1:5055/saltline/",
-    "fetchTime": "2026-10-30T15:16:16.655Z",
+    "fetchTime": "2026-10-30T16:14:30.599Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 98,
