@@ -1,6 +1,20 @@
 # WordPress portfolio demos
 
-Four WordPress demo sites for fictional businesses, each rebuilt from a WordPress Playground blueprint (WordPress 7.1.4 and every plugin/theme pinned to a tested version from versioned wordpress.org zips; the boot still needs network access to download them) and exported to a static copy for free hosting (GitHub Pages project site `https://williamwkl.github.io/wkl-wp-demos/<demo>/`; not published yet).
+**Live:** [**williamwkl.github.io/wkl-wp-demos**](https://williamwkl.github.io/wkl-wp-demos/)
+
+| [Saltline Kayak Tours](https://williamwkl.github.io/wkl-wp-demos/saltline/) | [Harbor & Pine Law](https://williamwkl.github.io/wkl-wp-demos/harbor-pine/) |
+|---|---|
+| [![Saltline Kayak Tours home page](docs/images/saltline.webp)](https://williamwkl.github.io/wkl-wp-demos/saltline/) | [![Harbor & Pine Law home page](docs/images/harbor-pine.webp)](https://williamwkl.github.io/wkl-wp-demos/harbor-pine/) |
+| Block theme tour company with online booking | Elementor law firm with a documented speed fix |
+| [**Lantern Hill Roasters**](https://williamwkl.github.io/wkl-wp-demos/store/) | [**Fernwood Makers**](https://williamwkl.github.io/wkl-wp-demos/makers/) |
+| [![Lantern Hill Roasters store home page](docs/images/store.webp)](https://williamwkl.github.io/wkl-wp-demos/store/) | [![Fernwood Makers directory home page](docs/images/makers.webp)](https://williamwkl.github.io/wkl-wp-demos/makers/) |
+| WooCommerce store with a bundle builder | Searchable directory with Google Sheets import |
+| [**WordPress health check (sample report)**](https://williamwkl.github.io/wkl-wp-demos/health-check/) | |
+| [![Sample WordPress health check report](docs/images/health-check.webp)](https://williamwkl.github.io/wkl-wp-demos/health-check/) | |
+| Speed, security, SEO and accessibility audit with a fixed-price plan | |
+
+
+Four WordPress demo sites for fictional businesses, each rebuilt from a WordPress Playground blueprint (WordPress 7.1.4 and every plugin/theme pinned to a tested version from versioned wordpress.org zips; the boot still needs network access to download them) and exported to a static copy for free hosting (GitHub Pages project site `https://williamwkl.github.io/wkl-wp-demos/<demo>/`).
 
 | Demo | What it shows | Stack |
 |---|---|---|
