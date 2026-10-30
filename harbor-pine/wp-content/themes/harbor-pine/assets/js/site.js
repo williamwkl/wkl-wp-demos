@@ -17,7 +17,11 @@
     var visible = new Set();
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { en.isIntersecting ? visible.add(en.target) : visible.delete(en.target); });
-      bar.classList.toggle('is-hidden', visible.size > 0);
+      var hide = visible.size > 0;
+      bar.classList.toggle('is-hidden', hide);
+      // Off-screen links must not take focus or be announced.
+      if (hide) { bar.setAttribute('inert', ''); bar.setAttribute('aria-hidden', 'true'); }
+      else { bar.removeAttribute('inert'); bar.removeAttribute('aria-hidden'); }
     });
     forms.forEach(function (f) { io.observe(f); });
   }

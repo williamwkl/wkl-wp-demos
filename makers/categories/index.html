@@ -16,7 +16,7 @@
 	<meta property="og:url" content="https://williamwkl.github.io/wkl-wp-demos/makers/categories/" />
 	<meta property="og:site_name" content="Fernwood Makers" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/","name":"Categories | Fernwood Makers","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website"},"datePublished":"2026-10-30T08:38:57+00:00","description":"Browse Fernwood makers by craft: ceramics, woodwork, textiles, jewelry, food and drink, print and paper.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/"},{"@type":"ListItem","position":2,"name":"Categories"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/","name":"Fernwood Makers","description":"Local makers directory for Fernwood County (demo site)","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/","name":"Categories | Fernwood Makers","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website"},"datePublished":"2026-10-30T09:33:20+00:00","description":"Browse Fernwood makers by craft: ceramics, woodwork, textiles, jewelry, food and drink, print and paper.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/categories\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/"},{"@type":"ListItem","position":2,"name":"Categories"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/","name":"Fernwood Makers","description":"Local makers directory for Fernwood County (demo site)","inLanguage":"en-US"}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -361,6 +361,34 @@ button.chip{border:0;font:inherit;font-size:var(--fs-small);font-weight:500;curs
 .eyebrow{color:var(--c-ochre-deep)}
 .dark .eyebrow{color:var(--c-ochre)}
 @media (max-width:600px){.search .btn span{display:inline!important;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}}
+/* Round 2 fixes */
+.nojs-browse{background:var(--c-bone-2);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-5)}
+.nojs-browse a{display:inline-flex;align-items:center;min-height:44px}
+.js-on .nojs-browse{display:none}
+html:not(.js-on) .directory .filters,html:not(.js-on) .directory .dir-search,html:not(.js-on) .directory .res-head .sort,html:not(.js-on) .directory .mob-filters{display:none!important}
+html:not(.js-on) .browse{grid-template-columns:1fr}
+.filters label{min-height:44px}
+.filters .locked{color:var(--c-ink)}
+.filters .change{display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem}
+.nav-links a{padding-inline:6px}
+.footer ul a{min-width:44px}
+.res-head .count .mute{color:var(--c-mute)}
+.cat-tiles{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5)}
+@media (max-width:767px){.cat-tiles{grid-template-columns:1fr 1fr;gap:var(--sp-4)}}
+.cat-tile{display:grid;gap:4px;text-decoration:none;background:var(--c-white);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;padding-bottom:var(--sp-4);transition:border-color .2s ease-out}
+.cat-tile:hover{border-color:rgba(22,21,18,.3);color:var(--c-ink)}
+.cat-img{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--c-clay);margin-bottom:var(--sp-3)}
+.cat-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cat-name{font-family:var(--f-display);font-weight:700;font-size:clamp(1.0625rem,1rem + .5vw,1.375rem);padding-inline:var(--sp-4)}
+.cat-n{color:var(--c-mute);font-size:.9375rem;padding-inline:var(--sp-4)}
+.gallery,.gallery .main,.gallery .thumbs{min-width:0;max-width:100%}
+.single-grid>*{min-width:0}
+.foot-bottom a{color:var(--c-bone);text-decoration:underline;display:inline-flex;align-items:center;min-height:44px}
+@media (max-width:600px){.footer{font-size:1rem}.footer .foot-bottom{font-size:.9375rem}}
+.details{grid-template-columns:auto minmax(0,1fr)}.details dd{min-width:0;overflow-wrap:anywhere}
+.gallery .thumbs{grid-template-columns:1fr 1fr}.gallery .thumb img{aspect-ratio:4/3}
+.sheet-open body{overflow:hidden}
+@media (max-width:600px){.res-head{flex-direction:column;align-items:flex-start;gap:var(--sp-2)}}
 
 /*# sourceURL=../wp-content/themes/makers/style.css */
 </style>
@@ -369,10 +397,9 @@ button.chip{border:0;font:inherit;font-size:var(--fs-small);font-weight:500;curs
 </style>
 </head>
 
-<body class="wp-singular page-template-default page page-id-51 wp-embed-responsive wp-theme-twentytwentyfive wp-child-theme-makers">
+<body class="wp-singular page-template-default page page-id-80 wp-embed-responsive wp-theme-twentytwentyfive wp-child-theme-makers">
 
-<a class="skip-link screen-reader-text" id="wp-skip-link" href="#main">Skip to content</a><div class="wp-site-blocks"><a class="skip-link screen-reader-text" href="#main">Skip to content</a>
-<header class="header wp-block-template-part">
+<a class="skip-link screen-reader-text" id="wp-skip-link" href="#main">Skip to content</a><div class="wp-site-blocks"><header class="header wp-block-template-part">
 <div class="wrap nav">
   <a class="brand" href="../"><svg viewBox="0 0 26 26" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M13 24V5"/><path d="M13 8c-2-1-4-1-6 0M13 8c2-1 4-1 6 0M13 12c-2.5-1-5-1-7.5.5M13 12c2.5-1 5-1 7.5.5M13 16c-3-1-6-.5-8 1M13 16c3-1 6-.5 8 1M13 5c-1-1-1-2 0-3 1 1 1 2 0 3z"/></svg><span>Fernwood Makers</span></a>
   <nav class="nav-links" aria-label="Primary"><ul><li><a href="../makers/">Browse</a></li><li><a href="../categories/">Categories</a></li><li><a href="../towns/">Towns</a></li><li><a href="../events/">Events</a></li><li><a href="../for-makers/">For makers</a></li></ul></nav>
@@ -386,7 +413,7 @@ button.chip{border:0;font:inherit;font-size:var(--fs-small);font-weight:500;curs
 
 </header>
 
-<main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" id="main"><div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow"><section class="wp-block-group page-hero is-layout-flow wp-block-group-is-layout-flow"><div class="wp-block-group wrap is-layout-flow wp-block-group-is-layout-flow"><p class="eyebrow wp-block-paragraph">Categories</p><h1 class="wp-block-heading">Every craft in the county.</h1><p class="lead wp-block-paragraph">Pick a category to see every maker who works in it, then narrow by town or price.</p></div></section><section class="wp-block-group section no-top is-layout-flow wp-block-group-is-layout-flow"><div class="wp-block-group wrap is-layout-flow wp-block-group-is-layout-flow"><ul class="towns term-index"><li><a href="../craft/ceramics/">Ceramics<span class="n">6</span></a></li><li><a href="../craft/food-and-drink/">Food and drink<span class="n">7</span></a></li><li><a href="../craft/jewelry/">Jewelry<span class="n">6</span></a></li><li><a href="../craft/print-and-paper/">Print and paper<span class="n">5</span></a></li><li><a href="../craft/textiles/">Textiles<span class="n">6</span></a></li><li><a href="../craft/woodwork/">Woodwork<span class="n">6</span></a></li></ul>
+<main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" id="main"><div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow"><section class="wp-block-group page-hero is-layout-flow wp-block-group-is-layout-flow"><div class="wp-block-group wrap is-layout-flow wp-block-group-is-layout-flow"><p class="eyebrow wp-block-paragraph">Categories</p><h1 class="wp-block-heading">Every craft in the county.</h1><p class="lead wp-block-paragraph">Pick a category to see every maker who works in it, then narrow by town or price.</p></div></section><section class="wp-block-group section no-top is-layout-flow wp-block-group-is-layout-flow"><div class="wp-block-group wrap is-layout-flow wp-block-group-is-layout-flow"><ul class="cat-tiles"><li><a class="cat-tile" href="../craft/ceramics/"><span class="cat-img"><img decoding="async" width="768" height="576" src="../wp-content/uploads/2026/10/ceramics-04-800-768x576.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="eager" fetchpriority="high" sizes="(max-width: 599px) 50vw, 380px" srcset="../wp-content/uploads/2026/10/ceramics-04-800-768x576.webp 768w, ../wp-content/uploads/2026/10/ceramics-04-800-300x225.webp 300w, ../wp-content/uploads/2026/10/ceramics-04-800.webp 800w" /></span><span class="cat-name">Ceramics</span><span class="cat-n">6 makers</span></a></li><li><a class="cat-tile" href="../craft/food-and-drink/"><span class="cat-img"><img decoding="async" width="768" height="576" src="../wp-content/uploads/2026/10/honey-800-768x576.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="eager" fetchpriority="auto" sizes="(max-width: 599px) 50vw, 380px" srcset="../wp-content/uploads/2026/10/honey-800-768x576.webp 768w, ../wp-content/uploads/2026/10/honey-800-300x225.webp 300w, ../wp-content/uploads/2026/10/honey-800.webp 800w" /></span><span class="cat-name">Food and drink</span><span class="cat-n">7 makers</span></a></li><li><a class="cat-tile" href="../craft/jewelry/"><span class="cat-img"><img decoding="async" width="768" height="576" src="../wp-content/uploads/2026/10/jewelry-03-800-768x576.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="eager" fetchpriority="auto" sizes="(max-width: 599px) 50vw, 380px" srcset="../wp-content/uploads/2026/10/jewelry-03-800-768x576.webp 768w, ../wp-content/uploads/2026/10/jewelry-03-800-300x225.webp 300w, ../wp-content/uploads/2026/10/jewelry-03-800.webp 800w" /></span><span class="cat-name">Jewelry</span><span class="cat-n">6 makers</span></a></li><li><a class="cat-tile" href="../craft/print-and-paper/"><span class="cat-img"><img decoding="async" width="768" height="576" src="../wp-content/uploads/2026/10/print-09-800-768x576.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="lazy" fetchpriority="auto" sizes="auto, (max-width: 599px) 50vw, 380px" srcset="../wp-content/uploads/2026/10/print-09-800-768x576.webp 768w, ../wp-content/uploads/2026/10/print-09-800-300x225.webp 300w, ../wp-content/uploads/2026/10/print-09-800.webp 800w" /></span><span class="cat-name">Print and paper</span><span class="cat-n">5 makers</span></a></li><li><a class="cat-tile" href="../craft/textiles/"><span class="cat-img"><img decoding="async" width="768" height="576" src="../wp-content/uploads/2026/10/textiles-16-800-768x576.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="lazy" fetchpriority="auto" sizes="auto, (max-width: 599px) 50vw, 380px" srcset="../wp-content/uploads/2026/10/textiles-16-800-768x576.webp 768w, ../wp-content/uploads/2026/10/textiles-16-800-300x225.webp 300w, ../wp-content/uploads/2026/10/textiles-16-800.webp 800w" /></span><span class="cat-name">Textiles</span><span class="cat-n">6 makers</span></a></li><li><a class="cat-tile" href="../craft/woodwork/"><span class="cat-img"><img decoding="async" width="768" height="576" src="../wp-content/uploads/2026/10/woodwork-01-800-768x576.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="lazy" fetchpriority="auto" sizes="auto, (max-width: 599px) 50vw, 380px" srcset="../wp-content/uploads/2026/10/woodwork-01-800-768x576.webp 768w, ../wp-content/uploads/2026/10/woodwork-01-800-300x225.webp 300w, ../wp-content/uploads/2026/10/woodwork-01-800.webp 800w" /></span><span class="cat-name">Woodwork</span><span class="cat-n">6 makers</span></a></li></ul>
 </div></section></div></main>
 
 <footer class="footer wp-block-template-part">
@@ -398,7 +425,7 @@ button.chip{border:0;font:inherit;font-size:var(--fs-small);font-weight:500;curs
     <nav aria-label="For makers"><p class="foot-h">For makers</p><ul><li><a href="../for-makers/">List your work</a></li><li><a href="../for-makers/#guidelines">Listing guidelines</a></li><li><a href="../events/">Events</a></li></ul></nav>
     <nav aria-label="About"><p class="foot-h">About</p><ul><li><a href="../about/">About the directory</a></li><li><a href="../about/#import">How listings are updated</a></li><li><a href="../about/#accessibility">Accessibility</a></li></ul></nav>
   </div>
-  <div class="foot-bottom"><span>Fernwood Makers. All makers and towns are fictional.</span><span>Sample site built for portfolio purposes.</span></div>
+  <div class="foot-bottom"><span>Fernwood Makers. All makers and towns are fictional.</span><span>Sample site built for portfolio purposes. <a href="../credits/">Photo credits</a></span></div>
 </div>
 
 </footer>
