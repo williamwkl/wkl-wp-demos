@@ -34,6 +34,6 @@ for (const [demo, file, out] of variants) {
   const firstPlugin = steps.findIndex(s => s.step === 'installPlugin' || s.step === 'installTheme');
   steps.splice(firstPlugin < 0 ? 1 : firstPlugin, 0, ...dedup);
   steps.push({ step: 'login', username: 'admin', password: 'password' });
-  writeFileSync(`playground/${out}.json`, JSON.stringify({ ...bp, landingPage: '/wp-admin/', steps }, null, 2) + '\n');
+  writeFileSync(`playground/${out}.json`, JSON.stringify({ ...bp, landingPage: '/', steps }, null, 2) + '\n');
   console.log(out, dedup.filter(s => s.step === 'writeFile').length, 'files');
 }

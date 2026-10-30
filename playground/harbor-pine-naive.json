@@ -1,6 +1,6 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-  "landingPage": "/wp-admin/",
+  "landingPage": "/",
   "preferredVersions": {
     "php": "8.3",
     "wp": "7.1.4"
@@ -31,7 +31,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/favicon.svg",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/favicon.svg"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/favicon.svg"
       }
     },
     {
@@ -43,7 +43,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/fonts/OFL.txt",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/fonts/OFL.txt"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/fonts/OFL.txt"
       }
     },
     {
@@ -51,7 +51,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/fonts/newsreader-italic.woff2",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/fonts/newsreader-italic.woff2"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/fonts/newsreader-italic.woff2"
       }
     },
     {
@@ -59,7 +59,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/fonts/newsreader-var.woff2",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/fonts/newsreader-var.woff2"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/fonts/newsreader-var.woff2"
       }
     },
     {
@@ -71,7 +71,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/img/pines-1200.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/img/pines-1200.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/img/pines-1200.webp"
       }
     },
     {
@@ -79,7 +79,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/img/ridge-1200.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/img/ridge-1200.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/img/ridge-1200.webp"
       }
     },
     {
@@ -91,7 +91,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/img-naive/pines.jpg",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/img-naive/pines.jpg"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/img-naive/pines.jpg"
       }
     },
     {
@@ -99,7 +99,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/img-naive/ridge.jpg",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/img-naive/ridge.jpg"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/img-naive/ridge.jpg"
       }
     },
     {
@@ -111,7 +111,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/js/site.js",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/assets/js/site.js"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/assets/js/site.js"
       }
     },
     {
@@ -119,7 +119,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/footer.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/footer.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/footer.php"
       }
     },
     {
@@ -127,7 +127,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/functions.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/functions.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/functions.php"
       }
     },
     {
@@ -135,7 +135,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/header.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/header.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/header.php"
       }
     },
     {
@@ -143,7 +143,7 @@
       "path": "/wordpress/wp-content/themes/harbor-pine/style.css",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/theme/style.css"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/theme/style.css"
       }
     },
     {
@@ -155,7 +155,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-clean.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/mu-plugins/demo-clean.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/mu-plugins/demo-clean.php"
       }
     },
     {
@@ -163,7 +163,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-schema.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/mu-plugins/demo-schema.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/mu-plugins/demo-schema.php"
       }
     },
     {
@@ -171,7 +171,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-seed.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/mu-plugins/demo-seed.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/mu-plugins/demo-seed.php"
       }
     },
     {
@@ -179,7 +179,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-static.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/harbor-pine/mu-plugins/demo-static.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.1/demos/harbor-pine/mu-plugins/demo-static.php"
       }
     },
     {
