@@ -6,6 +6,7 @@ const cases = [
   ['saltline/contact/', '.wpcf7-form'],
   ['harbor-pine/', '#intake form'], ['harbor-pine/contact/', '#intake form'], ['harbor-pine/family-law/', 'aside form'],
   ['makers/for-makers/', '.demo-form'], ['makers/makers/coldwater-clay/', '.demo-form'],
+  ['store/demo-checkout/', '[data-checkout-form]'],
 ];
 const b = await chromium.launch(); const ctx = await b.newContext({ javaScriptEnabled: false }); const p = await ctx.newPage();
 let fail = 0;
@@ -14,7 +15,7 @@ for (const [u, sel] of cases) {
   const form = p.locator(sel).first();
   await form.locator('[type=submit]').click(); await p.waitForTimeout(300);
   const blocked = p.url().endsWith('/' + u);
-  for (const el of await form.locator('input:not([type=checkbox]):not([type=file]):not([type=submit]), textarea').all()) {
+  for (const el of await form.locator('input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=submit]), textarea').all()) {
     const t = await el.getAttribute('type');
     await el.fill(t === 'email' ? 'a@example.com' : t === 'date' ? '2027-06-01' : t === 'number' ? '2' : t === 'url' ? 'https://example.com' : 'Test');
   }

@@ -18,6 +18,7 @@ const PAGES = {
   saltline: ['/contact/'],
   'harbor-pine': ['/', '/contact/', '/family-law/'],
   makers: ['/', '/makers/', '/for-makers/', '/makers/coldwater-clay/'],
+  store: ['/shop/', '/product/morning-fog/', '/bundle/', '/demo-cart/', '/demo-checkout/'],
 }[demo];
 const WIDTHS = [360, 390, 1440];
 const SEL = 'input:not([type=hidden]):not([type=submit]), select, textarea';

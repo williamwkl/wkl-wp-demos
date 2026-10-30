@@ -6,6 +6,7 @@ Three WordPress demo sites for fictional businesses, each rebuilt from a WordPre
 |---|---|---|
 | **Saltline Kayak Tours** (`demos/saltline`) | Local service business: hero, tours, testimonials, FAQ accordion, booking request form, LocalBusiness + TouristTrip schema | Twenty Twenty-Five child block theme, `theme.json` tokens, Yoast SEO, Contact Form 7 |
 | **Harbor & Pine Law** (`demos/harbor-pine`) | Law firm with the intake form as the hero, mobile sticky call bar, documented naive vs optimized performance pass | Hello Elementor child, Elementor (free) containers/widgets, Fluent Forms (free), Yoast SEO |
+| **Lantern Hill Roasters** (`demos/store`) | WooCommerce store: variable products (size, grind), category filters, a build-your-own 3-item bundle with a 12 percent discount, real cart and checkout in Playground with an offline "Test order" gateway (no keys), and a static copy with a simulated cart and demo checkout that never sends data | Twenty Twenty-Five child, WooCommerce 11.2.1, Yoast SEO, custom mu-plugin storefront |
 | **Fernwood Makers** (`demos/makers`) | Searchable directory: `maker` CPT, craft/town taxonomies, listing meta, search + filters + sort + pagination that work on a static host, Google Sheets CSV import | Twenty Twenty-Five child block theme, custom mu-plugin (no fields/filter plugin), Yoast SEO |
 
 Designs: `design/<demo>/DESIGN.md` and `design/home-mockups/` (design specs, implemented as written; deviations listed below).

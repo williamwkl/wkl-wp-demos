@@ -12,7 +12,7 @@ const CONFIG = JSON.parse(readFileSync('site.config.json', 'utf8'));
 const RAW = (process.argv[2] || CONFIG.rawBase).replace(/\/$/, '');
 const walk = d => readdirSync(d).flatMap(f => { const p = path.join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
 mkdirSync('playground', { recursive: true });
-const variants = [['saltline', 'blueprint.json', 'saltline'], ['harbor-pine', 'blueprint.json', 'harbor-pine'], ['harbor-pine', 'blueprint-naive.json', 'harbor-pine-naive'], ['makers', 'blueprint.json', 'makers']];
+const variants = [['saltline', 'blueprint.json', 'saltline'], ['harbor-pine', 'blueprint.json', 'harbor-pine'], ['harbor-pine', 'blueprint-naive.json', 'harbor-pine-naive'], ['makers', 'blueprint.json', 'makers'], ['store', 'blueprint.json', 'store']];
 for (const [demo, file, out] of variants) {
   const bp = JSON.parse(readFileSync(`demos/${demo}/${file}`, 'utf8'));
   const writes = [];

@@ -2,10 +2,36 @@
   "publicBase": "https://demos.wkllabs.com",
   "rawBase": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0",
   "demos": {
-    "saltline": { "port": 9401 },
-    "harbor-pine": { "port": 9402 },
-    "harbor-pine-naive": { "port": 9402, "blueprint": "demos/harbor-pine/blueprint-naive.json", "source": "harbor-pine" },
-    "makers": { "port": 9403 },
-    "store": { "port": 9404 }
+    "saltline": {
+      "port": 9401
+    },
+    "harbor-pine": {
+      "port": 9402
+    },
+    "harbor-pine-naive": {
+      "port": 9402,
+      "blueprint": "demos/harbor-pine/blueprint-naive.json",
+      "source": "harbor-pine"
+    },
+    "makers": {
+      "port": 9403
+    },
+    "store": {
+      "port": 9404,
+      "exclude": [
+        "/cart/",
+        "/checkout/",
+        "/my-account/"
+      ],
+      "rewrite": {
+        "/cart/": "/demo-cart/",
+        "/checkout/": "/demo-checkout/"
+      },
+      "include": [
+        "/demo-cart/",
+        "/demo-checkout/",
+        "/demo-order/"
+      ]
+    }
   }
 }
