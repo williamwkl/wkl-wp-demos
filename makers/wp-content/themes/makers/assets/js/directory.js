@@ -163,6 +163,8 @@
     if (sortSel && params.get('sort')) sortSel.value = params.get('sort');
     page = parseInt(params.get('page'), 10) || 1;
 
+    // Locked context filter (category/town page): announced as disabled, cannot be unticked.
+    form.addEventListener('click', function (e) { if (e.target.matches('input[aria-disabled="true"]')) e.preventDefault(); });
     form.addEventListener('change', function () { page = 1; apply(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); page = 1; apply(true); closeSheet(); });
     if (search) {

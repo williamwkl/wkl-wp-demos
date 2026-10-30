@@ -252,3 +252,4 @@ figure.wp-block-image.hero-photo{margin:0 0 -48px}
 @media (max-width:600px){.footer{font-size:1rem}.footer .foot-bottom{font-size:.9375rem}}
 .foot-addr a{display:inline-flex;align-items:center;min-height:44px}
 .wpcf7-form .wpcf7-acceptance label{min-height:44px;align-items:center}
+@media (min-width:600px) and (max-width:860px){.tours{grid-template-columns:1fr 1fr;gap:var(--sp-6)}}
