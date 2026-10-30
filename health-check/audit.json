@@ -20,14 +20,14 @@
   {
    "check": "Software version exposure",
    "status": "fail",
-   "evidence": "Page source advertises \"WordPress 7.1.4\" and \"Elementor 4.3.5\" and appends version numbers to asset URLs.",
+   "evidence": "Page source advertises \"WordPress {{audit.facts.wp_version}}\" and \"Elementor {{audit.facts.elementor_version}}\" and appends version numbers to asset URLs.",
    "fix": "Remove the generator tags and version query strings (a few lines in the child theme)."
   },
   {
    "check": "Backups",
    "status": "fail",
    "evidence": "No backup plugin or host backup is configured. A bad update or a compromise means a rebuild.",
-   "fix": "Daily automatic backup to off-site storage, 30-day retention, one restore tested and documented.",
+   "fix": "Daily automatic backup to off-site storage, {{audit.facts.backup_retention_days}}-day retention, one restore tested and documented.",
    "top_fix": 4
   },
   {
@@ -59,12 +59,12 @@
   {
    "check": "WordPress core current",
    "status": "pass",
-   "evidence": "7.1.4, the current release at review time."
+   "evidence": "{{audit.facts.wp_version}}, the current release at review time."
   },
   {
    "check": "Theme and plugins current",
    "status": "pass",
-   "evidence": "Hello Elementor child theme, Elementor 4.3.5, Fluent Forms 6.2.16, Yoast SEO 28.8."
+   "evidence": "Hello Elementor child theme, Elementor {{audit.facts.elementor_version}}, Fluent Forms {{audit.facts.fluentforms_version}}, Yoast SEO {{audit.facts.yoast_version}}."
   },
   {
    "check": "Update routine with a staging copy",
@@ -148,14 +148,10 @@
     240,
     460
    ],
-   "range": [
-    240,
-    460
-   ],
+   "unit": "kb",
    "source": "naive build photo sizes",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
-   "match": "240 to 460 KB",
-   "unit": "kb"
+   "match": "240 to 460 KB"
   },
   "pines_kb": {
    "value": 457,
@@ -188,29 +184,20 @@
   "google_font_weights": {
    "value": [
     100,
-    200,
     900
    ],
-   "range": [
-    100,
-    900
-   ],
-   "source": "Newsreader request in the naive build: every weight 100 to 900 plus italics (18 files)",
-   "unit": "weight"
+   "unit": "weight",
+   "source": "Newsreader request in the naive build: every weight 100 to 900 plus italics"
   },
   "self_host_axis": {
    "value": [
     400,
     500
    ],
-   "range": [
-    400,
-    500
-   ],
+   "unit": "weight",
    "source": "optimized build variable font axis",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
-   "match": "(400 to 500)",
-   "unit": "weight"
+   "match": "(400 to 500)"
   },
   "font_weight_files": {
    "value": 18,
@@ -271,14 +258,44 @@
    "source": "engagement estimate: manual accessibility pass",
    "unit": "h"
   },
-  "lh_score_max": {
+  "lh_network": {
+   "value": "slow 4G",
+   "unit": "setting",
+   "source": "Lighthouse mobile preset throttling"
+  },
+  "lh_cpu": {
+   "value": "4x",
+   "unit": "setting",
+   "source": "Lighthouse mobile preset CPU slowdown"
+  },
+  "google_css_requests": {
+   "value": 1,
+   "unit": "requests",
+   "source": "naive build: one Google Fonts stylesheet request"
+  },
+  "google_font_query": {
+   "value": "Newsreader:100,100italic,200,...,900,900italic",
+   "unit": "text",
+   "source": "naive build Google Fonts request (abridged)",
+   "file": "demos/harbor-pine/OPTIMIZATION.md",
+   "match": "every weight and italic"
+  },
+  "icon_stylesheets": {
+   "value": 3,
+   "unit": "stylesheets",
+   "source": "Font Awesome CSS in the naive build",
+   "file": "demos/harbor-pine/OPTIMIZATION.md",
+   "match": "(3 stylesheets)"
+  },
+  "lighthouse_max": {
    "value": 100,
-   "ratio": [
-    100,
-    100
-   ],
-   "source": "Lighthouse category score out of 100",
-   "unit": "score"
+   "unit": "score",
+   "source": "Lighthouse category scores are out of 100"
+  },
+  "care_included_days": {
+   "value": 30,
+   "unit": "d",
+   "source": "offer: first month of care included with Tier 3"
   }
  }
 }

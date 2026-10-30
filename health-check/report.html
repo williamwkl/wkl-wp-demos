@@ -128,7 +128,7 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
   <div>
     <p class="eyebrow">In one page</p>
     <h2>The site is sound where it counts, and slow where it shows.</h2>
-    <p style="margin-top:8px">Content, accessibility and on-page SEO are in good shape: every page scores 100 on those checks. The problem is delivery. The two pages with photos take 3.6 to 4.8 seconds to show their main content on a phone, well past the 2.5 second line Google uses for ranking signals. The cause is a standard first-pass setup: 18 font weights loaded from Google, icon fonts, 240 to 460 KB photos, and 30 to 38 requests per page where 5 would do. Security basics also need attention: a guessable admin login with a weak password, software versions advertised in the page source, and no backups.</p>
+    <p style="margin-top:8px">Content, accessibility and on-page SEO are in good shape: every page scores accessibility 100, best practices 100 and SEO 100. The problem is delivery. The two pages with photos take 3.6 to 4.8 seconds to show their main content on a phone, well past the 2.5 second line Google uses for ranking signals. The cause is a standard first-pass setup: 18 font weights loaded from Google, icon fonts, 240 to 460 KB photos, and 30 to 38 requests per page where 4 to 6 would do. Security basics also need attention: a guessable admin login with a weak password, software versions advertised in the page source, and no backups.</p>
   </div>
   <div class="grid g6" role="list" aria-label="Score dashboard">
     <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="137.4 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">81</text></svg><b>Speed</b><small>Lighthouse, worst page (81 to 97)</small></div>
@@ -206,7 +206,7 @@ Render-blocking resources per page: 16 to 28  (Lighthouse "render-blocking-resou
       <dl>
         <dt>Found</dt><dd>jQuery, jQuery Migrate, the builder's frontend runtime and widget chunks, the form plugin's submission script, the emoji script and the block-library stylesheet load on all seven pages. None of the pages use sliders, tabs or popups, so most of it does nothing.</dd>
         <dt>Why it matters</dt><dd>30 to 38 requests per page on a site that needs 4 to 6. Each one is a round trip on a phone connection, and the home page shifts layout (CLS 0.031) while late stylesheets arrive. It also means every plugin update is a chance for something unneeded to break the page.</dd>
-        <dt>Evidence</dt><dd><div class="ev">Home: 38 requests, 325 KB, 28 render-blocking, CLS 0.031   Contact: 33 requests, 241 KB, CLS 0.037
+        <dt>Evidence</dt><dd><div class="ev">Home: requests 38, weight 325 KB, render-blocking 28, CLS 0.031   Contact: requests 33, weight 241 KB, CLS 0.037
 Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min.js, frontend-modules.min.js, frontend.min.js, form-submission.js, wp-emoji-release.min.js</div></dd>
         <dt>Fix</dt><dd>Remove the parent theme CSS, block-library CSS, icon font, default form styles, jQuery, builder frontend JS and the emoji script on pages that do not need them; set the builder's CSS print method to internal and inline the remaining small stylesheets; add page caching with long cache headers on uploads. Scoped so that adding an interactive widget later re-enables the builder script on that page only.</dd>
       </dl>
@@ -316,7 +316,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
         <line x1="60" y1="20" x2="60" y2="190" stroke="#E4E4EA"/>
         <line x1="60" y1="190" x2="660" y2="190" stroke="#141417"/>
         <g stroke="#E4E4EA"><line x1="60" y1="156" x2="660" y2="156"/><line x1="60" y1="122" x2="660" y2="122"/><line x1="60" y1="88" x2="660" y2="88"/><line x1="60" y1="54" x2="660" y2="54"/><line x1="60" y1="20" x2="660" y2="20"/></g>
-        <text x="52" y="194" text-anchor="end">0</text><text x="52" y="160" text-anchor="end">1</text><text x="52" y="126" text-anchor="end">2</text><text x="52" y="92" text-anchor="end">3</text><text x="52" y="58" text-anchor="end">4</text><text x="52" y="24" text-anchor="end">5 s</text>
+        <text x="52" y="194" text-anchor="end" data-axis>0</text><text x="52" y="160" text-anchor="end" data-axis>1</text><text x="52" y="126" text-anchor="end" data-axis>2</text><text x="52" y="92" text-anchor="end" data-axis>3</text><text x="52" y="58" text-anchor="end" data-axis>4</text><text x="52" y="24" text-anchor="end" data-axis>5 s</text>
         <line x1="60" y1="105" x2="660" y2="105" stroke="#B23A3A" stroke-dasharray="4 4"/><text x="656" y="101" text-anchor="end" fill="#B23A3A" font-weight="600">2.5 s good threshold</text>
       </g>
       <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11">
@@ -343,7 +343,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
       <tr><td>Render-blocking resources</td><td class="num">28</td><td class="num"><b>0</b></td><td class="num">16</td><td class="num"><b>0</b></td></tr>
     </tbody>
   </table></div>
-  <p class="small mute">Across all seven pages: Performance 81 to 97 now, 99 to 100 after. Accessibility, Best Practices and SEO stay at 100. Figures are from the attached Lighthouse reports; numbers on the live host will vary slightly with the server and the visitor's connection.</p>
+  <p class="small mute">Across all seven pages: Performance 81 to 97 now, 99 to 100 after. Accessibility stays at 100, Best Practices at 100 and SEO at 100. Figures are from the attached Lighthouse reports; numbers on the live host will vary slightly with the server and the visitor's connection.</p>
   <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 7 of 9</span></div>
 </section>
 
