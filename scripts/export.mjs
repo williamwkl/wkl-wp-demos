@@ -79,7 +79,7 @@ while (queue.length) {
           .replace(/(<(?:input|select|textarea|button)\b[^>]*?)\sname=(["'])[^"']*\2/gi, '$1')
           .replace(/(<(?:input|select|textarea)\b[^>]*aria-required=["']true["'])(?![^>]*\srequired)/gi, '$1 required')
           // Fluent Forms marks required fields on the group label only; carry that to the control.
-          .split(/(?=<div class=["']ff-el-group)/).map(g => /ff-el-is-required|ff-el-tc|data-name=["']?consent/.test(g)
+          .split(/(?=<div class=["']ff-el-group)/).map(g => /^<div class=["']ff-el-group/.test(g) && /ff-el-is-required|ff-el-tc/.test(g)
             ? g.replace(/<(input|select|textarea)\b(?![^>]*\srequired)([^>]*?)(\/?)>/i, (m, t, rest, sl) => /type=["']?(hidden|submit)/i.test(rest) ? m : `<${t}${rest} required${sl}>`) : g).join('') + close);
       if (/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(body)) noindex.add(p);
     } else if (/xml/.test(type)) {

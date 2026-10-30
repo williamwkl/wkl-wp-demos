@@ -342,3 +342,4 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 @media (max-width:600px){.credits-table td,.credits-table th{padding:8px 6px;overflow-wrap:anywhere}}
 .gallery .main img{height:auto}.credits-table th:last-child,.credits-table td:last-child{white-space:nowrap;width:1%}
 .gallery .thumb img{height:auto}
+.details dd.site{overflow-wrap:normal;word-break:normal}

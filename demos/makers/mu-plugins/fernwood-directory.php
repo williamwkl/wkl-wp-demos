@@ -392,7 +392,7 @@ add_shortcode( 'fernwood_single', function () {
 				<dt>Materials</dt><dd><?php echo esc_html( get_post_meta( $p->ID, 'materials', true ) ); ?></dd>
 				<dt>Lead time</dt><dd><?php echo esc_html( get_post_meta( $p->ID, 'lead_time', true ) ); ?></dd>
 				<dt>Where to buy</dt><dd><?php echo esc_html( get_post_meta( $p->ID, 'where_to_buy', true ) ); ?></dd>
-				<dt>Website</dt><dd><?php echo esc_html( preg_replace( '#^https?://#', '', get_post_meta( $p->ID, 'website', true ) ) ); ?></dd>
+				<dt>Website</dt><dd class="site"><?php echo str_replace( '.', '<wbr>.', esc_html( preg_replace( '#^https?://#', '', get_post_meta( $p->ID, 'website', true ) ) ) ); // break only before dots ?></dd>
 			</dl>
 			<form class="contact-form demo-form" action="/demo-form/" method="get" aria-labelledby="contact-h">
 				<h2 id="contact-h">Message <?php echo esc_html( $l['maker'] ? strtok( $l['maker'], ' ' ) : 'the maker' ); ?></h2>

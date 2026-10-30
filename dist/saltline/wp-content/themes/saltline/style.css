@@ -253,3 +253,9 @@ figure.wp-block-image.hero-photo{margin:0 0 -48px}
 .foot-addr a{display:inline-flex;align-items:center;min-height:44px}
 .wpcf7-form .wpcf7-acceptance label{min-height:44px;align-items:center}
 @media (min-width:600px) and (max-width:860px){.tours{grid-template-columns:1fr 1fr;gap:var(--sp-6)}}
+/* 2-up tours: third card spans both columns as a horizontal card (no empty cell) */
+@media (min-width:600px) and (max-width:860px){
+  .tours .tour:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;column-gap:var(--sp-5);align-content:start}
+  .tours .tour:nth-child(3)>figure{grid-row:1/span 6;margin:0}
+  .tours .tour:nth-child(3)>:not(figure){grid-column:2}
+}
