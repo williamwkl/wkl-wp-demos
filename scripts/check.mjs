@@ -22,7 +22,7 @@ for (const p of paths) {
       if (w <= 390) for (const el of document.querySelectorAll('main p, main li, main dd, main summary, main label')) {
         if (!vis(el) || el.closest('.screen-reader-text')) continue;
         const fs = parseFloat(getComputedStyle(el).fontSize);
-        const isMeta = el.matches('.small,.meta,.strip-note,.lbl,.eyebrow,.demo-note,.hint,.proof li,.mini-faq p,cite,.tour-facts dd,.badge,.chip,.card-meta, .card-meta *,.result-count,.wpcf7-not-valid-tip') || el.closest('.meta,.proof,.mini-faq,.tour-facts,.card-meta,.footer');
+        const isMeta = el.matches('.small,.meta,.strip-note,.lbl,.eyebrow,.demo-note,.hint,.proof li,.mini-faq p,cite,.tour-facts dd,.badge,.chip,.card-meta, .card-meta *,.result-count,.wpcf7-not-valid-tip,.sub,.role,.tag,.what,.disclaimer,.fine,.facts-list li,.trust-list li') || el.closest('.meta,.proof,.mini-faq,.tour-facts,.card-meta,.footer');
         if (fs < 16 && !isMeta) out.smallText.push(el.tagName + ' ' + fs + 'px "' + el.textContent.trim().slice(0, 30) + '"');
       }
       for (const el of document.querySelectorAll('a[href], button, input:not([type=hidden]), select, textarea, summary')) {

@@ -1,0 +1,22 @@
+// Interaction smoke test on the static export: mobile menu, sticky bar hides over the form, demo form success.
+import { chromium } from 'playwright';
+const base = process.argv[2];
+const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 390, height: 844 } });
+const errors = []; p.on('pageerror', e => errors.push(e.message));
+await p.goto(base + '/');
+await p.click('.menu-toggle');
+const menuOpen = await p.isVisible('#mobile-menu a:has-text("Results")');
+await p.keyboard.press('Escape');
+const menuClosed = await p.isHidden('#mobile-menu');
+const barVisibleTop = await p.isVisible('.sticky-bar');
+await p.locator('#intake form').scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
+const barHiddenAtForm = await p.evaluate(() => document.querySelector('.sticky-bar').classList.contains('is-hidden'));
+await p.click('#intake button[type=submit]');
+const blocked = await p.isVisible('#intake form');
+await p.fill('#intake input[name=full_name]', 'Test Person'); await p.fill('#intake input[name=phone]', '5550100100');
+await p.fill('#intake input[name=email]', 'test@example.com'); await p.selectOption('#intake select[name=matter]', { index: 1 });
+await p.check('#intake input[type=checkbox]'); await p.click('#intake button[type=submit]');
+const success = (await p.textContent('.form-success').catch(() => '')).slice(0, 60);
+await p.screenshot({ path: 'screens/harbor-pine/home-success-390.png' });
+console.log({ menuOpen, menuClosed, barVisibleTop, barHiddenAtForm, emptySubmitBlocked: blocked, success, jsErrors: errors });
+await b.close();

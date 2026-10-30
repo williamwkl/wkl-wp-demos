@@ -46,13 +46,20 @@ while (queue.length) {
       if (v) enqueue(new URL(v.replace(/&amp;/g, '&'), O + p).href);
       if (m[3]) m[3].split(',').forEach(s => enqueue(new URL(s.trim().split(/\s+/)[0], O + p).href));
     }
+    // URLs inside inline JSON (escaped slashes), e.g. WordPress emoji settings.
+    for (const m of body.matchAll(new RegExp(esc.replace(/[.\\/]/g, c => '\\' + c) + '(\\\\\/[^"\\s]+?\\.(?:js|css|svg|png|webp|woff2))', 'g'))) enqueue(O + m[1].replace(/\\\//g, '/'));
+    // Elementor lazy-loads widget handler chunks by name at runtime; fetch them so the static copy has them.
+    if (/javascript/.test(type)) for (const m of body.matchAll(/__elementorLoadChunk\(`([\w-]+)`\)/g)) enqueue(O + '/wp-content/plugins/elementor/assets/js/chunks/' + m[1] + '.min.js');
     if (/css/.test(type)) {
       // css url() relative to the css file: keep relative
     } else if (/html/.test(type)) {
       const pre = relPrefix(p);
       const PUB = (process.env.PUBLIC_BASE || '').replace(/\/$/, '');
-      if (PUB) body = body.replace(new RegExp('(rel="canonical" href="|property="og:url" content="|"@id":"|"url":")' + O.replace(/[.\/]/g, m => '\\' + m), 'g'), '$1' + PUB)
-        .split(esc).join(PUB.replace(/\//g, '\\/'));
+      // Canonical, og:url and JSON-LD keep absolute public URLs; everything else becomes relative.
+      if (PUB) body = body.replace(new RegExp('(rel="canonical" href="|property="og:url" content=")' + O.replace(/[.\/]/g, m => '\\' + m), 'g'), '$1' + PUB)
+        .replace(/(<script[^>]*application\/ld\+json[^>]*>)([\s\S]*?)(<\/script>)/g, (m, a, j, c) => a + j.split(O).join(PUB).split(esc).join(PUB.replace(/\//g, '\\/')) + c);
+      body = body.split(encodeURIComponent(O)).join(encodeURIComponent(PUB || O))
+        .replace(new RegExp(`<link rel=.dns-prefetch. href=.//${new URL(O).hostname.replace(/\./g, '\\.')}.[^>]*>\\n?`, 'g'), '');
       body = body.split(O + '/').join(pre).split(esc + '\\/').join(pre.replace(/\//g, '\\/')).split(O + '"').join(pre + '"')
         .replace(/(href|src|action)=(["'])\/(?!\/)/g, `$1=$2${pre}`)
         .replace(/(srcset=["'])([^"']+)/g, (m, a, v) => a + v.replace(/(^|,\s*)\/(?!\/)/g, `$1${pre}`))
