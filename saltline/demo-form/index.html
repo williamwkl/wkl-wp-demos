@@ -14,7 +14,7 @@
 	<meta property="og:url" content="https://williamwkl.github.io/wkl-wp-demos/saltline/demo-form/" />
 	<meta property="og:site_name" content="Saltline Kayak Tours" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/","name":"Demo form | Saltline Kayak Tours","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/#website"},"datePublished":"2026-10-30T10:22:49+00:00","description":"Demo form notice.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/"},{"@type":"ListItem","position":2,"name":"Demo form"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/","name":"Saltline Kayak Tours","description":"Guided sea kayak tours (demo site)","inLanguage":"en-US"}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/","name":"Demo form | Saltline Kayak Tours","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/#website"},"datePublished":"2026-10-30T10:48:23+00:00","description":"Demo form notice.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/demo-form\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/"},{"@type":"ListItem","position":2,"name":"Demo form"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/saltline\/","name":"Saltline Kayak Tours","description":"Guided sea kayak tours (demo site)","inLanguage":"en-US"}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -333,6 +333,12 @@ figure.wp-block-image.hero-photo{margin:0 0 -48px}
 .foot-addr a{display:inline-flex;align-items:center;min-height:44px}
 .wpcf7-form .wpcf7-acceptance label{min-height:44px;align-items:center}
 @media (min-width:600px) and (max-width:860px){.tours{grid-template-columns:1fr 1fr;gap:var(--sp-6)}}
+/* 2-up tours: third card spans both columns as a horizontal card (no empty cell) */
+@media (min-width:600px) and (max-width:860px){
+  .tours .tour:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;column-gap:var(--sp-5);align-content:start}
+  .tours .tour:nth-child(3)>figure{grid-row:1/span 6;margin:0}
+  .tours .tour:nth-child(3)>:not(figure){grid-column:2}
+}
 
 /*# sourceURL=../wp-content/themes/saltline/style.css */
 </style>
