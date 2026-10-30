@@ -73,7 +73,7 @@ function demo_seed() {
 	$wheel_url = wp_get_attachment_url( $wheel );
 
 	$underline = '<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 50 2, 150 2, 198 7" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/></svg>';
-	$search = '<form class="search" role="search" action="/makers/" method="get"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="screen-reader-text" for="hero-q">Search makers</label><input id="hero-q" type="search" name="q" placeholder="Try: stoneware mugs, Coldwater, under $50" autocomplete="off"><button class="btn btn-dark" type="submit"><span>Search</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>';
+	$search = '<form class="search" role="search" action="/makers/" method="get"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="screen-reader-text" for="hero-q">Search makers</label><input id="hero-q" type="search" name="q" placeholder="Mugs, Coldwater, under $50" autocomplete="off"><button class="btn btn-dark" type="submit"><span>Search</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>';
 
 	/* ---------- Home ---------- */
 	$home =

@@ -294,7 +294,7 @@ add_shortcode( 'fernwood_directory', function ( $atts ) {
 		<form class="search dir-search" role="search" action="<?php echo esc_url( $archive ); ?>" method="get">
 			<?php echo fw_icon( 'search' ); // phpcs:ignore ?>
 			<label class="screen-reader-text" for="<?php echo esc_attr( $uid ); ?>-q">Search makers</label>
-			<input id="<?php echo esc_attr( $uid ); ?>-q" type="search" name="q" value="<?php echo esc_attr( $f['q'] ); ?>" placeholder="Try: stoneware mugs, Coldwater, under $50" autocomplete="off">
+			<input id="<?php echo esc_attr( $uid ); ?>-q" type="search" name="q" value="<?php echo esc_attr( $f['q'] ); ?>" placeholder="Mugs, Coldwater, under $50" autocomplete="off">
 			<button class="btn btn-dark" type="submit" aria-label="Search"><span aria-hidden="true">Search</span><?php echo fw_icon( 'arrow' ); // phpcs:ignore ?></button>
 		</form>
 		<?php endif; ?>
