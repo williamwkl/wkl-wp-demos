@@ -1,7 +1,10 @@
 {
-  "_note": "Offer values for the Health Check PDF. Placeholders until William confirms (2026-10-30). Edit here only; scripts/health-check.mjs fills them in.",
-  "tier1_price": "$350", "tier1_days": "3",
-  "tier2_price": "$650", "tier2_days": "5",
-  "tier3_price": "$950", "tier3_days": "8",
-  "care_price": "$75"
+ "_note": "Offer values for the Health Check PDF. Confirmed by William 2026-10-31 (intro pricing until 3-5 WordPress reviews). Edit here only; scripts/health-check.mjs fills them in.",
+ "tier1_price": "$150",
+ "tier1_days": "3",
+ "tier2_price": "$350",
+ "tier2_days": "5",
+ "tier3_price": "$650",
+ "tier3_days": "8",
+ "care_price": "$75"
 }
