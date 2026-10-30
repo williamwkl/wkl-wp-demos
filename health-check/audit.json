@@ -20,14 +20,14 @@
   {
    "check": "Software version exposure",
    "status": "fail",
-   "evidence": "Page source advertises \"WordPress {{audit.facts.wp_version}}\" and \"Elementor {{audit.facts.elementor_version}}\" and appends version numbers to asset URLs.",
+   "evidence": "Page source advertises \"{{metric audit.facts.wp_version}}\" and \"{{metric audit.facts.elementor_version}}\" and appends version numbers to asset URLs.",
    "fix": "Remove the generator tags and version query strings (a few lines in the child theme)."
   },
   {
    "check": "Backups",
    "status": "fail",
    "evidence": "No backup plugin or host backup is configured. A bad update or a compromise means a rebuild.",
-   "fix": "Daily automatic backup to off-site storage, {{audit.facts.backup_retention_days}}-day retention, one restore tested and documented.",
+   "fix": "Daily automatic backup to off-site storage, {{metric audit.facts.backup_retention_days}}, one restore tested and documented.",
    "top_fix": 4
   },
   {
@@ -59,12 +59,12 @@
   {
    "check": "WordPress core current",
    "status": "pass",
-   "evidence": "{{audit.facts.wp_version}}, the current release at review time."
+   "evidence": "{{metric audit.facts.wp_version}}, the current release at review time."
   },
   {
    "check": "Theme and plugins current",
    "status": "pass",
-   "evidence": "Hello Elementor child theme, Elementor {{audit.facts.elementor_version}}, Fluent Forms {{audit.facts.fluentforms_version}}, Yoast SEO {{audit.facts.yoast_version}}."
+   "evidence": "Hello Elementor child theme, {{metric audit.facts.elementor_version}}, {{metric audit.facts.fluentforms_version}}, {{metric audit.facts.yoast_version}}."
   },
   {
    "check": "Update routine with a staging copy",
@@ -91,57 +91,66 @@
   "lcp_good_s": {
    "value": 2.5,
    "source": "Google Core Web Vitals 'good' threshold (web.dev/vitals)",
-   "unit": "s"
+   "unit": "s",
+   "render": "{v} s LCP threshold"
   },
   "cls_good": {
    "value": 0.1,
    "source": "Google Core Web Vitals 'good' threshold (web.dev/vitals)",
-   "unit": "cls"
+   "unit": "cls",
+   "render": "CLS threshold {v}"
   },
   "tbt_good_ms": {
    "value": 200,
    "source": "Lighthouse Total Blocking Time 'good' threshold",
-   "unit": "ms"
+   "unit": "ms",
+   "render": "TBT threshold {v} ms"
   },
   "lighthouse_floor": {
    "value": 90,
    "source": "Lighthouse green band (90 to 100); care-plan trigger",
-   "unit": "score"
+   "unit": "score",
+   "render": "a Lighthouse score of {v}"
   },
   "wp_version": {
    "value": "7.1.4",
    "source": "WordPress version pinned in the reviewed build",
    "file": "demos/harbor-pine/blueprint-naive.json",
    "match": "\"wp\": \"7.1.4\"",
-   "unit": "version"
+   "unit": "version",
+   "render": "WordPress {v}"
   },
   "elementor_version": {
    "value": "4.3.5",
    "source": "plugin pin",
    "file": "demos/harbor-pine/blueprint-naive.json",
    "match": "elementor.4.3.5.zip",
-   "unit": "version"
+   "unit": "version",
+   "render": "Elementor {v}"
   },
   "fluentforms_version": {
    "value": "6.2.16",
    "source": "plugin pin",
    "file": "demos/harbor-pine/blueprint-naive.json",
    "match": "fluentform.6.2.16.zip",
-   "unit": "version"
+   "unit": "version",
+   "render": "Fluent Forms {v}"
   },
   "yoast_version": {
    "value": 28.8,
    "source": "plugin pin",
    "file": "demos/harbor-pine/blueprint-naive.json",
    "match": "wordpress-seo.28.8.zip",
-   "unit": "version"
+   "unit": "version",
+   "render": "Yoast SEO {v}"
   },
   "photo_upload_px": {
    "value": 1920,
    "source": "naive build photo uploads",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
    "match": "1920px",
-   "unit": "px"
+   "unit": "px",
+   "render": "{v} px wide"
   },
   "photo_upload_kb": {
    "value": [
@@ -151,35 +160,40 @@
    "unit": "kb",
    "source": "naive build photo sizes",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
-   "match": "240 to 460 KB"
+   "match": "240 to 460 KB",
+   "render": "{v} KB"
   },
   "pines_kb": {
    "value": 457,
    "source": "pines.jpg before",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
    "match": "457 KB",
-   "unit": "kb"
+   "unit": "kb",
+   "render": "{v} KB"
   },
   "pines_webp_kb": {
    "value": 82,
    "source": "pines photo after re-encode",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
    "match": "82 KB",
-   "unit": "kb"
+   "unit": "kb",
+   "render": "{v} KB"
   },
   "webp_px": {
    "value": 1200,
    "source": "re-encode width",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
    "match": "1200px",
-   "unit": "px"
+   "unit": "px",
+   "render": "{v} px wide"
   },
   "webp_quality": {
    "value": 60,
    "source": "re-encode quality",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
    "match": "quality 60",
-   "unit": "quality"
+   "unit": "quality",
+   "render": "quality {v}"
   },
   "google_font_weights": {
    "value": [
@@ -187,7 +201,8 @@
     900
    ],
    "unit": "weight",
-   "source": "Newsreader request in the naive build: every weight 100 to 900 plus italics"
+   "source": "Newsreader request in the naive build: every weight 100 to 900 plus italics",
+   "render": "weights {v}"
   },
   "self_host_axis": {
    "value": [
@@ -197,105 +212,124 @@
    "unit": "weight",
    "source": "optimized build variable font axis",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
-   "match": "(400 to 500)"
+   "match": "(400 to 500)",
+   "render": "weights {v}"
   },
   "font_weight_files": {
    "value": 18,
    "source": "9 weights x roman + italic in the Google Fonts request",
-   "unit": "weights"
+   "unit": "weights",
+   "render": "{v} font weights"
   },
   "field_height_px": {
    "value": 48,
    "source": "form field min-height in the reviewed theme",
    "file": "demos/harbor-pine/theme/style.css",
    "match": "min-height:48px",
-   "unit": "px"
+   "unit": "px",
+   "render": "{v} px tall"
   },
   "target_px": {
    "value": 44,
    "source": "WCAG 2.5.5 target size; smallest control (icon button) in the reviewed theme",
    "file": "demos/harbor-pine/theme/style.css",
    "match": "width:44px;height:44px",
-   "unit": "px"
+   "unit": "px",
+   "render": "{v} px target size"
   },
   "restore_minutes": {
    "value": 20,
    "source": "engagement estimate: restore from an off-site backup",
-   "unit": "min"
+   "unit": "min",
+   "render": "{v}-minute restore"
   },
   "walkthrough_minutes": {
    "value": 15,
    "source": "engagement estimate: handover walkthrough",
-   "unit": "min"
+   "unit": "min",
+   "render": "{v} minutes"
   },
   "two_factor_users": {
    "value": 3,
    "source": "dashboard review: two partners and the assistant",
-   "unit": "users"
+   "unit": "users",
+   "render": "{v} users"
   },
   "backup_retention_days": {
    "value": 30,
    "source": "engagement standard: off-site backup retention",
-   "unit": "d"
+   "unit": "d",
+   "render": "{v}-day retention"
   },
   "uptime_interval_min": {
    "value": 5,
    "source": "care plan: uptime check interval",
-   "unit": "min"
+   "unit": "min",
+   "render": "every {v} minutes"
   },
   "staging_day": {
    "value": 2,
    "source": "engagement plan: staging link day",
-   "unit": "d"
+   "unit": "d",
+   "render": "day {v}"
   },
   "security_fix_hours": {
    "value": 2,
    "source": "engagement estimate: each failing security check closes in under two hours",
-   "unit": "h"
+   "unit": "h",
+   "render": "under {v} hours"
   },
   "manual_pass_hours": {
    "value": 1,
    "source": "engagement estimate: manual accessibility pass",
-   "unit": "h"
+   "unit": "h",
+   "render": "{v} hour"
   },
   "lh_network": {
    "value": "slow 4G",
    "unit": "setting",
-   "source": "Lighthouse mobile preset throttling"
+   "source": "Lighthouse mobile preset throttling",
+   "render": "simulated {v}"
   },
   "lh_cpu": {
    "value": "4x",
    "unit": "setting",
-   "source": "Lighthouse mobile preset CPU slowdown"
+   "source": "Lighthouse mobile preset CPU slowdown",
+   "render": "{v} CPU slowdown"
   },
   "google_css_requests": {
    "value": 1,
    "unit": "requests",
-   "source": "naive build: one Google Fonts stylesheet request"
+   "source": "naive build: one Google Fonts stylesheet request",
+   "render": "{v} external CSS request"
   },
   "google_font_query": {
    "value": "Newsreader:100,100italic,200,...,900,900italic",
    "unit": "text",
    "source": "naive build Google Fonts request (abridged)",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
-   "match": "every weight and italic"
+   "match": "every weight and italic",
+   "render": "family={v}"
   },
   "icon_stylesheets": {
    "value": 3,
    "unit": "stylesheets",
    "source": "Font Awesome CSS in the naive build",
    "file": "demos/harbor-pine/OPTIMIZATION.md",
-   "match": "(3 stylesheets)"
+   "match": "(3 stylesheets)",
+   "render": "{v} stylesheets"
   },
   "lighthouse_max": {
    "value": 100,
    "unit": "score",
-   "source": "Lighthouse category scores are out of 100"
+   "source": "Lighthouse category scores are out of 100",
+   "render": "out of {v}"
   },
   "care_included_days": {
    "value": 30,
    "unit": "d",
-   "source": "offer: first month of care included with Tier 3"
+   "source": "offer: first month of care included with Tier 3",
+   "render": "first {v} days"
   }
  }
 }
