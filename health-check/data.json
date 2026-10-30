@@ -1,6 +1,6 @@
 {
  "source": "reports/*.report.json (Lighthouse 12, mobile preset, static exports served locally with gzip)",
- "generated": "2026-10-30T14:41:18.381Z",
+ "generated": "2026-10-30T15:50:22.580Z",
  "pages": {
   "naive": {
    "contact": {
@@ -524,7 +524,7 @@
    },
    "book": {
     "url": "http://127.0.0.1:5055/saltline/book/",
-    "fetchTime": "2026-10-30T14:40:35.536Z",
+    "fetchTime": "2026-10-30T15:16:27.532Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 100,
@@ -534,7 +534,7 @@
     },
     "lcp_s": 1.7,
     "fcp_s": 1.2,
-    "cls": 0.027,
+    "cls": 0.028,
     "tbt_ms": 0,
     "weight_kb": 135,
     "requests": 10,
@@ -557,7 +557,7 @@
    },
    "contact": {
     "url": "http://127.0.0.1:5055/saltline/contact/",
-    "fetchTime": "2026-10-30T14:40:25.084Z",
+    "fetchTime": "2026-10-30T15:16:38.071Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 100,
@@ -622,7 +622,7 @@
    },
    "home": {
     "url": "http://127.0.0.1:5055/saltline/",
-    "fetchTime": "2026-10-30T14:39:43.180Z",
+    "fetchTime": "2026-10-30T15:16:16.655Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 98,
@@ -989,7 +989,7 @@
    },
    "makers": {
     "url": "http://127.0.0.1:5055/makers/makers/",
-    "fetchTime": "2026-10-30T11:16:50.723Z",
+    "fetchTime": "2026-10-30T15:17:09.407Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 99,
@@ -998,17 +998,17 @@
      "seo": 100
     },
     "lcp_s": 2.1,
-    "fcp_s": 1.2,
+    "fcp_s": 1.1,
     "cls": 0,
     "tbt_ms": 0,
     "weight_kb": 236,
-    "requests": 12,
+    "requests": 13,
     "bytes_by_type_kb": {
-     "Document": 17,
+     "Document": 18,
      "Image": 172,
      "Script": 5,
-     "Fetch": 4,
      "Font": 32,
+     "Fetch": 4,
      "Other": 0
     },
     "render_blocking": 0,

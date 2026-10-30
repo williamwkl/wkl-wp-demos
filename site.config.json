@@ -1,7 +1,5 @@
 {
-  "domainLive": false,
-  "publicBase": "https://demos.wkllabs.com",
-  "currentBase": "https://williamwkl.github.io/wkl-wp-demos",
+  "base": "https://williamwkl.github.io/wkl-wp-demos",
   "rawBase": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0",
   "demos": {
     "saltline": {
@@ -35,6 +33,5 @@
         "/demo-order/"
       ]
     }
-  },
-  "_note": "Exports use currentBase until domainLive is true; then canonicals, sitemaps, robots and CNAME all switch to publicBase in one build."
+  }
 }

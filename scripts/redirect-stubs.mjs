@@ -1,5 +1,5 @@
 // Writes static redirect stubs for renamed listing slugs (meta refresh + canonical + noindex), e.g. into dist/makers.
-// usage: node scripts/redirect-stubs.mjs <distDir> <redirects.csv> [publicBase]   (default: site.config.json publicBase + /<demo>)
+// usage: node scripts/redirect-stubs.mjs <distDir> <redirects.csv> [base]   (default: site.config.json base + /<demo>)
 //   redirects.csv rows: old_path,new_path   (site-relative, trailing slash)
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';

@@ -20,13 +20,12 @@ const svg = ([, l1, l2, sub, c, tint]) => `<svg xmlns="http://www.w3.org/2000/sv
 <path d="M240 170 L560 170 L566 214 L234 214 Z" fill="#B38F62"/>
 <path d="M234 214 L566 214" stroke="#9C7A50" stroke-width="3"/>
 <g stroke="#9C7A50" stroke-width="2" opacity=".5"><path d="M300 230 L285 680"/><path d="M500 230 L515 680"/></g>
-<rect x="268" y="300" width="264" height="300" rx="10" fill="${c}"/>
-<rect x="280" y="312" width="240" height="276" rx="6" fill="none" stroke="#F7F1E6" stroke-opacity=".55" stroke-width="2"/>
+<rect x="256" y="290" width="288" height="314" rx="10" fill="${c}"/>
+<rect x="268" y="302" width="264" height="290" rx="6" fill="none" stroke="#F7F1E6" stroke-opacity=".55" stroke-width="2"/>
 <g transform="translate(385 334)"><path d="M15 3c-1 4-5 6-5 11a5 5 0 0 0 10 0c0-5-4-7-5-11Z" fill="none" stroke="#F7F1E6" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 25h12M11 28h8" stroke="#F2C9A0" stroke-width="1.8" stroke-linecap="round"/></g>
-<text x="400" y="${l2 ? 430 : 460}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#F7F1E6">${l1}</text>
-${l2 ? `<text x="400" y="482" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="46" fill="#F7F1E6">${l2}</text>` : ''}
-<text x="400" y="536" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" letter-spacing="2" fill="#F7F1E6" opacity=".9">${sub.toUpperCase()}</text>
-<text x="400" y="570" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="1.5" fill="#F7F1E6" opacity=".75">LANTERN HILL ROASTERS</text>
+<text x="400" y="${l2 ? 440 : 478}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66" fill="#F7F1E6">${l1}</text>
+${l2 ? `<text x="400" y="512" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="66" fill="#F7F1E6">${l2}</text>` : ''}
+<text x="400" y="568" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="2" fill="#F7F1E6" opacity=".9">${sub.toUpperCase()}</text>
 <rect x="300" y="626" width="200" height="34" rx="4" fill="#F7F1E6" opacity=".85"/>
 <text x="400" y="649" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#3A2A20">ROASTED THU, OCT 29</text>
 </svg>`;

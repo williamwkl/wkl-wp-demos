@@ -347,3 +347,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 .small-qty output{min-width:36px}
 .line .controls{gap:8px}
 [data-cart-summary][hidden],[data-cart-more][hidden]{display:none}
+.pdp .big-price{margin-top:12px!important}
+.pdp-form.opts{margin:12px 0 24px;gap:14px}
+@media (max-width:767px){.pdp .pdp-title{font-size:2.25rem}.pdp-form.opts{margin-top:8px}}
+.pdp-form.opts>br,.pdp-form.opts>p:empty{display:none}

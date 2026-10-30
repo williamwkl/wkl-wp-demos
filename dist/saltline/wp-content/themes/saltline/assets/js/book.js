@@ -40,7 +40,8 @@
     b.addEventListener('click', function () {
       st.tour = b.dataset.tour; st.date = null; st.dep = null;
       $$('.tour').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); });
-      renderCal(); show('date');
+      renderCal(); show('date', !b.dataset.auto); // no focus move on the automatic pre-selection at page load
+      delete b.dataset.auto;
     });
   });
 
@@ -185,6 +186,6 @@
   if (root.dataset.done) { done(JSON.parse(root.dataset.done), false); return; }
   var pre = new URLSearchParams(location.search).get('tour') || root.dataset.pre;
   var preKey = A.tours.filter(function (t) { return t.slug === pre || t.key === pre; })[0];
-  if (preKey) { var b = $('.tour[data-tour="' + preKey.key + '"]'); if (b) { b.click(); return; } }
+  if (preKey) { var b = $('.tour[data-tour="' + preKey.key + '"]'); if (b) { b.dataset.auto = '1'; b.click(); return; } }
   show('tour', false);
 })();

@@ -1,6 +1,6 @@
 # WordPress portfolio demos
 
-Three WordPress demo sites for fictional businesses, each rebuilt from a WordPress Playground blueprint (WordPress 7.1.4 and every plugin/theme pinned to a tested version from versioned wordpress.org zips; the boot still needs network access to download them) and exported to a static copy for free hosting (custom domain `https://demos.wkllabs.com/<demo>/`, served from GitHub Pages; not published yet).
+Three WordPress demo sites for fictional businesses, each rebuilt from a WordPress Playground blueprint (WordPress 7.1.4 and every plugin/theme pinned to a tested version from versioned wordpress.org zips; the boot still needs network access to download them) and exported to a static copy for free hosting (GitHub Pages project site `https://williamwkl.github.io/wkl-wp-demos/<demo>/`; not published yet).
 
 | Demo | What it shows | Stack |
 |---|---|---|
@@ -58,7 +58,7 @@ scripts/serve.sh makers 9403
 
 ## Public URL (one config value)
 
-`site.config.json` holds `domainLive` (false until DNS for demos.wkllabs.com is confirmed), `publicBase` (`https://demos.wkllabs.com`), `currentBase` (the github.io project site) and `rawBase` (raw GitHub files for the Playground links, pinned to a release ref). `scripts/site-base.mjs` picks the active base: `currentBase` while `domainLive` is false, `publicBase` once it is true. The exporter, redirect stubs, Health Check and `scripts/root-files.mjs` all use it, so canonicals, og URLs, JSON-LD, sitemaps, the root robots.txt and sitemap index switch together in one build; `dist/CNAME` is written only when `domainLive` is true (and removed otherwise), so a publish before DNS resolves cannot redirect github.io to a dead domain. All internal links and assets are relative, so the same export works at the domain root (`/saltline/`, `/harbor-pine/`, `/makers/`, `/store/`, `/health-check/`) and under any sub-folder.
+`site.config.json` holds `base` (the github.io project site, the permanent public URL; there is no custom domain and no CNAME) and `rawBase` (raw GitHub files for the Playground links, pinned to a release ref). `scripts/site-base.mjs` reads it; the exporter, redirect stubs, Health Check and `scripts/root-files.mjs` all use it for canonicals, og URLs, JSON-LD and sitemaps. `root-files.mjs` also writes a root `robots.txt` and sitemap index; crawlers only read robots.txt at a host root, so under the `/wkl-wp-demos/` subpath it is ignored (harmless), and the sitemap index is still useful to submit by hand. `scripts/check-base.mjs` fails the build if any page or sitemap strays from `base` or leaks a local origin. All internal links and assets are relative, so the same export works at the domain root (`/saltline/`, `/harbor-pine/`, `/makers/`, `/store/`, `/health-check/`) and under any sub-folder.
 
 ## Health Check report
 
@@ -67,7 +67,7 @@ scripts/serve.sh makers 9403
 ## Rebuild a static export
 
 ```bash
-scripts/build.sh saltline                           # export + font license + redirect stubs + root files (CNAME, robots, sitemap index)
+scripts/build.sh saltline                           # export + font license + redirect stubs + root files (robots, sitemap index) + base check
 # or by hand: node scripts/export.mjs http://127.0.0.1:9401 dist/saltline   (PUBLIC_BASE env overrides the config)
 node scripts/static-server.mjs dist 5055            # GitHub Pages-like server with gzip
 node scripts/lh.mjs http://127.0.0.1:5055/saltline reports/saltline / /tours/
