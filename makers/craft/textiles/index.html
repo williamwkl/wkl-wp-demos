@@ -395,6 +395,23 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 html body .search input[type=search]:focus,html body .search input[type=search]:focus-visible{outline:none}
 .search:focus-within{border-color:var(--c-ochre-deep);box-shadow:0 0 0 3px rgba(143,86,7,.35)}
 
+/* ===== Form fields: one consistent style per demo (audit 2026-10-30, WebKit + Chromium) ===== */
+body :is(input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],input[type=date],input:not([type]),select,textarea){-webkit-appearance:none;appearance:none;border-radius:var(--r-sm);font-size:max(16px,1rem);box-shadow:none;background-clip:padding-box}
+body :is(input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],input[type=date],input:not([type]),select){height:48px;min-height:48px;line-height:1.25}
+body select{background-color:var(--c-white);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23161512' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 14px center!important;background-size:18px!important;padding-right:44px;text-overflow:ellipsis;cursor:pointer}
+body input[type=date]{display:block;text-align:left}
+body input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
+body input[type=date]::-webkit-calendar-picker-indicator{opacity:.7;cursor:pointer}
+body input[type=number]{-moz-appearance:textfield}
+body :is(input,select,textarea):not([type=checkbox]):not([type=radio]):not([type=search]):focus{outline:3px solid var(--c-ochre-deep);outline-offset:0;border-color:var(--c-ochre-deep)}
+body :is(input[type=checkbox],input[type=radio]):focus{outline:3px solid var(--c-ochre-deep);outline-offset:2px}
+body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
+/* Search pill keeps its own focus style (on the pill) and stays one line at 360 */
+@media (max-width:400px){.search{padding-left:12px;gap:6px}.search svg{width:20px;height:20px}.search input[type=search]{font-size:16px}.search .btn{padding-inline:12px}}
+.res-head select{height:44px;min-height:44px}
+body input[type=number]::-webkit-inner-spin-button,body input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+body select{padding-right:44px!important}
+
 /*# sourceURL=../../wp-content/themes/makers/style.css */
 </style>
 <style class="wp-fonts-local">
@@ -422,11 +439,11 @@ html body .search input[type=search]:focus,html body .search input[type=search]:
 <h1>Textiles</h1>
 <p class="lead">6 textiles makers across Fernwood County.</p>
 
-<div class="directory" id="dir-236" data-index="../../wp-content/uploads/fernwood/makers.json" data-per-page="12" data-total="36" data-sync-url="1" data-lock-category="textiles" data-lock-town="">
+<div class="directory" id="dir-741" data-index="../../wp-content/uploads/fernwood/makers.json" data-per-page="12" data-total="36" data-sync-url="1" data-lock-category="textiles" data-lock-town="">
 <div class="browse">
-<form class="filters" id="dir-236-filters" action="../../makers/" method="get" aria-label="Filter makers">
+<form class="filters" id="dir-741-filters" action="../../makers/" method="get" aria-label="Filter makers">
 <div class="sheet-head">
-<h2 class="sheet-title" id="dir-236-sheet-title">Filters</h2>
+<h2 class="sheet-title" id="dir-741-sheet-title">Filters</h2>
 <p><button type="button" class="iconbtn sheet-close" aria-label="Close filters"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <fieldset class="grp">
 <legend>Category</legend>
@@ -455,13 +472,13 @@ html body .search input[type=search]:focus,html body .search input[type=search]:
 					or by town: <a href="../../town/alder-creek/">Alder Creek</a>, <a href="../../town/bramblewood/">Bramblewood</a>, <a href="../../town/coldwater/">Coldwater</a>, <a href="../../town/dunmore/">Dunmore</a>, <a href="../../town/elk-ridge/">Elk Ridge</a>, <a href="../../town/fallowfield/">Fallowfield</a>, <a href="../../town/greystone/">Greystone</a>, <a href="../../town/harlow/">Harlow</a>, <a href="../../town/ivywick/">Ivywick</a>.</p>
 </div>
 <div class="mob-filters" aria-label="Quick filters">
-					<button type="button" class="chip filters-open" aria-expanded="false" aria-controls="dir-236-filters"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filters</button>
+					<button type="button" class="chip filters-open" aria-expanded="false" aria-controls="dir-741-filters"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filters</button>
 				</div>
 <div class="active-chips" aria-label="Active filters"></div>
 <h2 class="screen-reader-text">Results</h2>
 <div class="res-head">
 <p class="count" role="status" aria-live="polite"><strong>6</strong> makers</p>
-<p>					<label class="sort"><span>Sort</span> <select name="sort" form="dir-236-filters"><option value="recommended">Recommended</option><option value="newest">Newest</option><option value="az">A to Z</option></select></label>
+<p>					<label class="sort"><span>Sort</span> <select name="sort" form="dir-741-filters"><option value="recommended">Recommended</option><option value="newest">Newest</option><option value="az">A to Z</option></select></label>
 				</div>
 <div class="grid">
 <article class="card" hidden data-id="4" data-craft="woodwork" data-town="alder-creek" data-price="3" data-open="1">
