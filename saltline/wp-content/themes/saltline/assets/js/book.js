@@ -176,9 +176,10 @@
       '<div class="foot">Saltline Kayak Tours, the boathouse at Marrow Cove public launch. (555) 010-0100. Free changes up to 24 hours before departure.</div>';
     st.tour = d.tour; st.date = d.date; st.dep = A.departures.filter(function (x) { return x.tour === d.tour && x.date === d.date && x.time === d.time; })[0] || st.dep; st.adults = d.adults; st.kids = d.kids;
     show('done');
+    root.classList.add('is-done');
     $$('.stepper li').forEach(function (li) { li.classList.add('done'); li.classList.remove('on'); li.removeAttribute('aria-current'); });
   }
-  $('[data-again]').addEventListener('click', function () { st = { step: 'tour', tour: null, date: null, dep: null, adults: 2, kids: 0 }; $$('.tour').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); }); show('tour'); });
+  $('[data-again]').addEventListener('click', function () { root.classList.remove('is-done'); st = { step: 'tour', tour: null, date: null, dep: null, adults: 2, kids: 0 }; $$('.tour').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); }); show('tour'); });
 
   // ---- start: confirmation (live redirect), pre-selected tour (?tour=slug), or step 1
   if (root.dataset.done) { done(JSON.parse(root.dataset.done), false); return; }

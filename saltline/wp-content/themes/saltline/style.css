@@ -422,3 +422,5 @@ html[data-static-export] .booking .static-only{display:block}
 .booking .tours{grid-template-columns:1fr}
 .booking .sum li{font-size:1rem}.booking .sum li b{font-size:1.0625rem}
 .booking .policy{font-size:1rem}
+@media (max-width:599px){.booking .stepper li{font-size:0;overflow:visible}.booking .stepper li.on{font-size:var(--fs-small);text-overflow:clip;overflow:visible;flex:2}}
+@media (max-width:1023px){.booking.is-done .aside{display:none}}
