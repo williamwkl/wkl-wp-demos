@@ -1,0 +1,1027 @@
+{
+ "source": "reports/*.report.json (Lighthouse 12, mobile preset, static exports served locally with gzip)",
+ "generated": "2026-10-30T13:38:05.925Z",
+ "pages": {
+  "naive": {
+   "contact": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/contact/",
+    "fetchTime": "2026-10-30T10:02:45.152Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 97,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.3,
+    "fcp_s": 2,
+    "cls": 0.037,
+    "tbt_ms": 0,
+    "weight_kb": 241,
+    "requests": 33,
+    "bytes_by_type_kb": {
+     "Document": 13,
+     "Stylesheet": 38,
+     "Script": 128,
+     "Font": 57,
+     "Other": 0
+    },
+    "render_blocking": 24,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "family-law": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/family-law/",
+    "fetchTime": "2026-10-30T10:02:11.871Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 81,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 4.8,
+    "fcp_s": 2,
+    "cls": 0.001,
+    "tbt_ms": 0,
+    "weight_kb": 700,
+    "requests": 35,
+    "bytes_by_type_kb": {
+     "Document": 13,
+     "Stylesheet": 38,
+     "Script": 128,
+     "Image": 447,
+     "Font": 57,
+     "Other": 0
+    },
+    "render_blocking": 16,
+    "savings_kb": {
+     "uses-responsive-images": 405,
+     "modern-image-formats": 188,
+     "image-delivery-insight": 442,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "home": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/",
+    "fetchTime": "2026-10-30T10:01:49.163Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 96,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.3,
+    "fcp_s": 2.3,
+    "cls": 0.031,
+    "tbt_ms": 0,
+    "weight_kb": 325,
+    "requests": 38,
+    "bytes_by_type_kb": {
+     "Document": 16,
+     "Stylesheet": 53,
+     "Script": 128,
+     "Font": 120,
+     "Other": 0
+    },
+    "render_blocking": 28,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 13,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "legal": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/legal/",
+    "fetchTime": "2026-10-30T10:02:56.153Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 97,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.1,
+    "fcp_s": 2,
+    "cls": 0.001,
+    "tbt_ms": 0,
+    "weight_kb": 209,
+    "requests": 30,
+    "bytes_by_type_kb": {
+     "Document": 9,
+     "Stylesheet": 29,
+     "Script": 108,
+     "Font": 57,
+     "Other": 0
+    },
+    "render_blocking": 21,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "our-attorneys": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/our-attorneys/",
+    "fetchTime": "2026-10-30T10:02:23.159Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 97,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.1,
+    "fcp_s": 2,
+    "cls": 0.002,
+    "tbt_ms": 0,
+    "weight_kb": 210,
+    "requests": 30,
+    "bytes_by_type_kb": {
+     "Document": 10,
+     "Stylesheet": 29,
+     "Script": 108,
+     "Font": 57,
+     "Other": 0
+    },
+    "render_blocking": 21,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "personal-injury": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/personal-injury/",
+    "fetchTime": "2026-10-30T10:02:00.667Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 88,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 3.6,
+    "fcp_s": 2,
+    "cls": 0.001,
+    "tbt_ms": 0,
+    "weight_kb": 479,
+    "requests": 35,
+    "bytes_by_type_kb": {
+     "Document": 13,
+     "Stylesheet": 38,
+     "Script": 128,
+     "Image": 231,
+     "Font": 57,
+     "Other": 0
+    },
+    "render_blocking": 16,
+    "savings_kb": {
+     "uses-responsive-images": 212,
+     "modern-image-formats": 121,
+     "image-delivery-insight": 227,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "results": {
+    "url": "http://127.0.0.1:5055/harbor-pine-naive/results/",
+    "fetchTime": "2026-10-30T10:02:34.152Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 97,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.2,
+    "fcp_s": 2,
+    "cls": 0.001,
+    "tbt_ms": 0,
+    "weight_kb": 209,
+    "requests": 30,
+    "bytes_by_type_kb": {
+     "Document": 10,
+     "Stylesheet": 29,
+     "Script": 108,
+     "Font": 57,
+     "Other": 0
+    },
+    "render_blocking": 21,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   }
+  },
+  "optimized": {
+   "contact": {
+    "url": "http://127.0.0.1:5055/harbor-pine/contact/",
+    "fetchTime": "2026-10-30T12:52:15.437Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.7,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 155,
+    "requests": 5,
+    "bytes_by_type_kb": {
+     "Document": 21,
+     "Font": 129,
+     "Script": 1,
+     "Image": 0,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "family-law": {
+    "url": "http://127.0.0.1:5055/harbor-pine/family-law/",
+    "fetchTime": "2026-10-30T10:35:32.161Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.1,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 185,
+    "requests": 5,
+    "bytes_by_type_kb": {
+     "Document": 21,
+     "Font": 129,
+     "Image": 29,
+     "Script": 1,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 22,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "home": {
+    "url": "http://127.0.0.1:5055/harbor-pine/",
+    "fetchTime": "2026-10-30T12:52:04.936Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.2,
+    "fcp_s": 1.4,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 223,
+    "requests": 6,
+    "bytes_by_type_kb": {
+     "Document": 25,
+     "Font": 191,
+     "Script": 1,
+     "Image": 0,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "legal": {
+    "url": "http://127.0.0.1:5055/harbor-pine/legal/",
+    "fetchTime": "2026-10-30T10:36:14.257Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.8,
+    "fcp_s": 0.8,
+    "cls": 0,
+    "tbt_ms": 6,
+    "weight_kb": 153,
+    "requests": 4,
+    "bytes_by_type_kb": {
+     "Document": 18,
+     "Font": 129,
+     "Script": 1,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "our-attorneys": {
+    "url": "http://127.0.0.1:5055/harbor-pine/our-attorneys/",
+    "fetchTime": "2026-10-30T10:35:42.745Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.8,
+    "fcp_s": 0.8,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 154,
+    "requests": 4,
+    "bytes_by_type_kb": {
+     "Document": 19,
+     "Font": 129,
+     "Script": 1,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "personal-injury": {
+    "url": "http://127.0.0.1:5055/harbor-pine/personal-injury/",
+    "fetchTime": "2026-10-30T10:35:21.578Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2,
+    "fcp_s": 0.8,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 161,
+    "requests": 5,
+    "bytes_by_type_kb": {
+     "Document": 21,
+     "Font": 129,
+     "Image": 5,
+     "Script": 1,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "results": {
+    "url": "http://127.0.0.1:5055/harbor-pine/results/",
+    "fetchTime": "2026-10-30T10:35:53.275Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.8,
+    "fcp_s": 0.8,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 153,
+    "requests": 4,
+    "bytes_by_type_kb": {
+     "Document": 19,
+     "Font": 129,
+     "Script": 1,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 10,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   }
+  },
+  "saltline": {
+   "about": {
+    "url": "http://127.0.0.1:5055/saltline/about/",
+    "fetchTime": "2026-10-30T10:34:39.175Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2,
+    "fcp_s": 1.2,
+    "cls": 0.001,
+    "tbt_ms": 0,
+    "weight_kb": 155,
+    "requests": 7,
+    "bytes_by_type_kb": {
+     "Document": 18,
+     "Script": 17,
+     "Image": 50,
+     "Font": 66,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 27,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "contact": {
+    "url": "http://127.0.0.1:5055/saltline/contact/",
+    "fetchTime": "2026-10-30T12:51:54.477Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.7,
+    "fcp_s": 1.2,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 103,
+    "requests": 8,
+    "bytes_by_type_kb": {
+     "Document": 16,
+     "Script": 18,
+     "Font": 66,
+     "Image": 0,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "faq": {
+    "url": "http://127.0.0.1:5055/saltline/faq/",
+    "fetchTime": "2026-10-30T10:34:49.671Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.5,
+    "fcp_s": 1.2,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 102,
+    "requests": 5,
+    "bytes_by_type_kb": {
+     "Document": 16,
+     "Script": 17,
+     "Font": 66,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "home": {
+    "url": "http://127.0.0.1:5055/saltline/",
+    "fetchTime": "2026-10-30T12:51:43.903Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 98,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.3,
+    "fcp_s": 1.4,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 295,
+    "requests": 11,
+    "bytes_by_type_kb": {
+     "Document": 15,
+     "Stylesheet": 5,
+     "Script": 17,
+     "Image": 184,
+     "Font": 66,
+     "Other": 0
+    },
+    "render_blocking": 1,
+    "savings_kb": {
+     "uses-responsive-images": 13,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 121,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "tours": {
+    "url": "http://127.0.0.1:5055/saltline/tours/",
+    "fetchTime": "2026-10-30T10:34:28.605Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2,
+    "fcp_s": 1.2,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 192,
+    "requests": 8,
+    "bytes_by_type_kb": {
+     "Document": 18,
+     "Script": 17,
+     "Font": 66,
+     "Image": 85,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 13,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 57,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   }
+  },
+  "makers": {
+   "alder-creek-cheese-cellar": {
+    "url": "http://127.0.0.1:5055/makers/makers/alder-creek-cheese-cellar/",
+    "fetchTime": "2026-10-30T11:17:01.721Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2,
+    "fcp_s": 1.1,
+    "cls": 0.001,
+    "tbt_ms": 0,
+    "weight_kb": 219,
+    "requests": 10,
+    "bytes_by_type_kb": {
+     "Document": 14,
+     "Image": 162,
+     "Script": 5,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 40,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 134,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "bramblewood-preserves": {
+    "url": "http://127.0.0.1:5055/makers/makers/bramblewood-preserves/",
+    "fetchTime": "2026-10-30T10:36:58.068Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 213,
+    "requests": 10,
+    "bytes_by_type_kb": {
+     "Document": 14,
+     "Image": 157,
+     "Script": 5,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 44,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 126,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "categories": {
+    "url": "http://127.0.0.1:5055/makers/categories/",
+    "fetchTime": "2026-10-30T10:37:30.646Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.7,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 209,
+    "requests": 10,
+    "bytes_by_type_kb": {
+     "Document": 13,
+     "Image": 154,
+     "Script": 5,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 119,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 148,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "ceramics": {
+    "url": "http://127.0.0.1:5055/makers/craft/ceramics/",
+    "fetchTime": "2026-10-30T10:37:08.579Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.9,
+    "fcp_s": 1.2,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 194,
+    "requests": 11,
+    "bytes_by_type_kb": {
+     "Document": 17,
+     "Image": 132,
+     "Script": 5,
+     "Fetch": 4,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 90,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "coldwater-clay": {
+    "url": "http://127.0.0.1:5055/makers/makers/coldwater-clay/",
+    "fetchTime": "2026-10-30T10:36:47.460Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.7,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 187,
+    "requests": 10,
+    "bytes_by_type_kb": {
+     "Document": 14,
+     "Image": 132,
+     "Script": 5,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 31,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 97,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "coldwater": {
+    "url": "http://127.0.0.1:5055/makers/town/coldwater/",
+    "fetchTime": "2026-10-30T10:37:19.641Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.8,
+    "fcp_s": 1.1,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 205,
+    "requests": 12,
+    "bytes_by_type_kb": {
+     "Document": 17,
+     "Image": 143,
+     "Script": 5,
+     "Font": 32,
+     "Fetch": 4,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 96,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "credits": {
+    "url": "http://127.0.0.1:5055/makers/credits/",
+    "fetchTime": "2026-10-30T10:37:51.948Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 60
+    },
+    "lcp_s": 1.2,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 52,
+    "requests": 4,
+    "bytes_by_type_kb": {
+     "Document": 13,
+     "Script": 5,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "for-makers": {
+    "url": "http://127.0.0.1:5055/makers/for-makers/",
+    "fetchTime": "2026-10-30T12:52:36.808Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.4,
+    "fcp_s": 1.2,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 53,
+    "requests": 5,
+    "bytes_by_type_kb": {
+     "Document": 14,
+     "Script": 5,
+     "Image": 0,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 0,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "home": {
+    "url": "http://127.0.0.1:5055/makers/",
+    "fetchTime": "2026-10-30T12:52:25.890Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.7,
+    "fcp_s": 1.1,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 221,
+    "requests": 12,
+    "bytes_by_type_kb": {
+     "Document": 20,
+     "Script": 5,
+     "Font": 32,
+     "Image": 154,
+     "Fetch": 4,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 109,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "makers": {
+    "url": "http://127.0.0.1:5055/makers/makers/",
+    "fetchTime": "2026-10-30T11:16:50.723Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.1,
+    "fcp_s": 1.2,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 236,
+    "requests": 12,
+    "bytes_by_type_kb": {
+     "Document": 17,
+     "Image": 172,
+     "Script": 5,
+     "Fetch": 4,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 0,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 122,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
+   "towns": {
+    "url": "http://127.0.0.1:5055/makers/towns/",
+    "fetchTime": "2026-10-30T10:37:41.276Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 99,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 2.1,
+    "fcp_s": 0.9,
+    "cls": 0,
+    "tbt_ms": 0,
+    "weight_kb": 281,
+    "requests": 13,
+    "bytes_by_type_kb": {
+     "Document": 13,
+     "Image": 224,
+     "Script": 5,
+     "Font": 32,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 178,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 215,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   }
+  }
+ }
+}

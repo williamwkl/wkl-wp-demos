@@ -3,6 +3,10 @@
 import { mkdir, writeFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 const [origin, outDir, ...extra] = process.argv.slice(2);
+// Public base URL comes from site.config.json (single source of truth); PUBLIC_BASE env still overrides.
+import { readFileSync as _rf } from 'node:fs';
+const CONFIG = JSON.parse(_rf(new URL('../site.config.json', import.meta.url), 'utf8'));
+if (!process.env.PUBLIC_BASE) process.env.PUBLIC_BASE = CONFIG.publicBase.replace(/\/$/, '') + '/' + path.basename(outDir) + '/';
 const O = origin.replace(/\/$/, '');
 const host = new URL(O).host;
 const queue = ['/', '/demo-form/', ...extra]; // /demo-form/ is only reachable through form actions

@@ -1,9 +1,11 @@
 // Writes static redirect stubs for renamed listing slugs (meta refresh + canonical + noindex), e.g. into dist/makers.
-// usage: node scripts/redirect-stubs.mjs <distDir> <redirects.csv> <publicBase>
+// usage: node scripts/redirect-stubs.mjs <distDir> <redirects.csv> [publicBase]   (default: site.config.json publicBase + /<demo>)
 //   redirects.csv rows: old_path,new_path   (site-relative, trailing slash)
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-const [dist, csv, pub] = process.argv.slice(2);
+const [dist, csv, pubArg] = process.argv.slice(2);
+const CONFIG = JSON.parse(readFileSync(new URL('../site.config.json', import.meta.url), 'utf8'));
+const pub = pubArg || CONFIG.publicBase.replace(/\/$/, '') + '/' + path.basename(dist);
 const rows = readFileSync(csv, 'utf8').trim().split('\n').slice(1).map(l => l.split(','));
 for (const [from, to] of rows) {
   const depth = from.split('/').filter(Boolean).length;

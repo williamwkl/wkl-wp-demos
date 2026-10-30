@@ -8,7 +8,8 @@
 //   or https://playground.wordpress.net/?blueprint-url=<raw URL of playground/<demo>.json>
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-const RAW = (process.argv[2] || 'https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0').replace(/\/$/, '');
+const CONFIG = JSON.parse(readFileSync('site.config.json', 'utf8'));
+const RAW = (process.argv[2] || CONFIG.rawBase).replace(/\/$/, '');
 const walk = d => readdirSync(d).flatMap(f => { const p = path.join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
 mkdirSync('playground', { recursive: true });
 const variants = [['saltline', 'blueprint.json', 'saltline'], ['harbor-pine', 'blueprint.json', 'harbor-pine'], ['harbor-pine', 'blueprint-naive.json', 'harbor-pine-naive'], ['makers', 'blueprint.json', 'makers']];

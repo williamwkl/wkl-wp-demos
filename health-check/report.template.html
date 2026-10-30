@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%23141417'/%3E%3C/svg%3E">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordPress Health Check: Harbor &amp; Pine Law</title>
+<meta name="description" content="Sample WordPress Health Check report (client deliverable) rendered from HTML to a letter-size PDF.">
+<style>@font-face{font-family:"Source Serif 4";src:url(assets/source-serif-4.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}</style>
+<style>
+:root{
+  --ink:#141417;--ink-2:#26262C;--slate:#5B5F6B;--line:#E4E4EA;--line-2:#F0F0F4;--paper:#FFFFFF;--paper-2:#F6F6F8;
+  --blue:#1F4E8C;--blue-soft:#E6EEF8;--red:#B23A3A;--red-soft:#F8E8E8;--amber:#8A5E0E;--amber-soft:#F8EFD9;--green:#2E6B46;--green-soft:#E3F1E8;
+  --f-head:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --pw:8.5in;--ph:11in;--pad:0.7in;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);color:var(--ink);background:#D9D9DF;font-size:10.5pt;line-height:1.5}
+img,svg{display:block}
+h1,h2,h3,h4{font-family:var(--f-head);font-weight:600;letter-spacing:-.01em;line-height:1.15;text-wrap:balance}
+h1{font-size:30pt}h2{font-size:19pt}h3{font-size:12.5pt}h4,h3.h4{font-size:10.5pt;font-family:var(--f-body);font-weight:600}
+p{max-width:70ch}
+a{color:var(--blue)}
+.page{background:var(--paper);width:var(--pw);max-width:100%;min-height:var(--ph);margin:24px auto;padding:var(--pad);position:relative;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 0 rgba(0,0,0,.08),0 12px 32px rgba(20,20,23,.12)}
+.page>*{flex:none}
+.runhead{display:flex;justify-content:space-between;gap:16px;font-size:8.5pt;color:var(--slate);border-bottom:1px solid var(--line);padding-bottom:8px;text-transform:uppercase;letter-spacing:.08em}
+.runfoot{margin-top:auto;display:flex;justify-content:space-between;gap:16px;font-size:8.5pt;color:var(--slate);border-top:1px solid var(--line);padding-top:8px}
+.eyebrow{font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.mute{color:var(--slate)}.small{font-size:9pt}.mono{font-family:var(--f-mono);font-size:9pt}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g6{grid-template-columns:repeat(6,1fr)}
+@media (max-width:640px){.g2,.g3{grid-template-columns:1fr}.g6{grid-template-columns:repeat(2,1fr)}.page{padding:20px 16px;min-height:0}h1{font-size:24pt}}
+.card{border:1px solid var(--line);border-radius:6px;padding:12px 14px;background:var(--paper)}
+.card.tint{background:var(--paper-2);border-color:transparent}
+.tag{display:inline-block;font-size:8pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;line-height:1.5}
+.tag.fail{background:var(--red-soft);color:var(--red)}.tag.warn{background:var(--amber-soft);color:var(--amber)}.tag.pass{background:var(--green-soft);color:var(--green)}.tag.na{background:var(--line-2);color:var(--slate)}.tag.blue{background:var(--blue-soft);color:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);font-weight:600;border-bottom:1px solid var(--ink)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+table.dense{font-size:8.6pt}table.dense td,table.dense th{padding:5px 6px}
+/* cover */
+.cover{justify-content:space-between;background:var(--ink);color:#F5F5F7}
+.cover .mark{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em}
+.cover h1{font-size:40pt;color:#fff;max-width:11ch}
+.cover .meta{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;border-top:1px solid rgba(255,255,255,.18);padding-top:18px;font-size:9.5pt}
+.cover .meta b{display:block;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;color:#9A9AA4;font-weight:600;margin-bottom:3px}
+.cover .band{height:6px;width:96px;background:#fff;border-radius:3px}
+/* score dashboard */
+.score{border:1px solid var(--line);border-radius:6px;padding:10px 10px 8px;text-align:center}
+.score .ring{width:64px;height:64px;margin:0 auto 6px}
+.score b{display:block;font-size:9pt}
+.score .v{font-size:16pt;font-family:var(--f-head);font-weight:600;line-height:1}
+.score small{display:block;color:var(--slate);font-size:8pt;margin-top:2px}
+/* findings */
+.finding{display:grid;grid-template-columns:40px 1fr;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.finding .n{font-family:var(--f-head);font-size:17pt;font-weight:600;color:var(--slate);line-height:1}
+.finding h3{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.finding .meta{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.finding dl{display:grid;grid-template-columns:84px 1fr;gap:4px 10px;font-size:9.5pt}
+.finding dt{font-weight:600;color:var(--slate);font-size:8.5pt;letter-spacing:.04em;text-transform:uppercase;padding-top:2px}
+.finding dd{max-width:none}
+.ev{background:var(--paper-2);border-left:3px solid var(--line);padding:6px 10px;font-family:var(--f-mono);font-size:8.5pt;line-height:1.5;white-space:pre-wrap;word-break:break-word;color:var(--ink-2)}
+/* fix plan */
+.tier{border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.tier.hi{border-color:var(--ink);border-width:2px}
+.tier .price{font-family:var(--f-head);font-size:22pt;font-weight:600;line-height:1}
+.tier ul{padding-left:16px;font-size:9pt}
+.tier li{margin:2px 0}
+.tier .price{font-size:20pt}
+.bar{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--blue)}
+ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
+.legend{display:flex;gap:14px;font-size:8.5pt;color:var(--slate);align-items:center;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:5px;vertical-align:-2px}
+@media screen{.ev{font-size:12px}}
+@page{size:letter;margin:0}
+@media print{
+  body{background:#fff;font-size:10.5pt}
+  .page{margin:0;box-shadow:none;width:8.5in;height:11in;min-height:0;max-width:none;overflow:hidden;page-break-after:always;break-after:page}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<section class="page cover" aria-label="Cover">
+  <div class="mark">
+    <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M7 19 L11 9 L14 16 L17 9 L21 19" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span>WKL Labs</span>
+  </div>
+  <div>
+    <div class="band" style="margin-bottom:28px"></div>
+    <p class="eyebrow" style="color:#9A9AA4;margin-bottom:12px">WordPress Health Check</p>
+    <h1>Harbor &amp; Pine Law</h1>
+    <p style="color:#C9C9D1;margin-top:14px;max-width:48ch;font-size:11.5pt">Speed, Core Web Vitals, security, SEO, accessibility and maintenance: what we found on the current site, what it costs the firm, and a fixed-price plan to fix it.</p>
+  </div>
+  <div class="meta">
+    <div><b>Site reviewed</b>harborpinelaw.example.com<br><span style="color:#9A9AA4">7 public pages, WordPress 7.1.4, Elementor 4.3.5</span></div>
+    <div><b>Report date</b>October 30, 2026</div>
+    <div><b>Prepared by</b>William L., WKL Labs</div>
+    <div><b>Prepared for</b>Elena Marsh and Daniel Okafor, partners<br><span style="color:#9A9AA4">Confidential, for the firm's use</span></div>
+  </div>
+</section>
+
+<!-- PAGE 2: EXECUTIVE SUMMARY -->
+<section class="page" aria-label="Executive summary">
+  <div class="runhead"><span>Harbor &amp; Pine Law</span><span>Executive summary</span></div>
+  <div>
+    <p class="eyebrow">In one page</p>
+    <h2>The site is sound where it counts, and slow where it shows.</h2>
+    <p style="margin-top:8px">Content, accessibility and on-page SEO are in good shape: every page scores 100 on those checks. The problem is delivery. The two pages with photos take 3.6 to 4.8 seconds to show their main content on a phone, well past the 2.5 second line Google uses for ranking signals. The cause is a standard first-pass setup: 18 font weights loaded from Google, icon fonts, 240 to 460 KB photos, and 30 to 38 requests per page where 5 would do. Security basics also need attention: a guessable admin login with a weak password, software versions advertised in the page source, and no backups.</p>
+  </div>
+  <div class="grid g6" role="list" aria-label="Score dashboard">
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#B23A3A" stroke-width="7" stroke-dasharray="137.4 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">81</text></svg><b>Speed</b><small>Lighthouse, worst page (81 to 97)</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#B23A3A" stroke-width="7" stroke-dasharray="88 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="13" font-weight="600" font-family="Georgia,serif" fill="#141417">4.8s</text></svg><b>Core Web Vitals</b><small>LCP fails on 2 of 7 pages</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="21 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="14" font-weight="600" font-family="Georgia,serif" fill="#141417">1/8</text></svg><b>Security</b><small>passed; 4 fail, 1 partial, 2 not checked</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#2E6B46" stroke-width="7" stroke-dasharray="169.6 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">100</text></svg><b>SEO</b><small>Lighthouse, all 7 pages</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#2E6B46" stroke-width="7" stroke-dasharray="169.6 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">100</text></svg><b>Accessibility</b><small>Lighthouse, all 7 pages</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="56 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="14" font-weight="600" font-family="Georgia,serif" fill="#141417">2/6</text></svg><b>Maintenance</b><small>checks passed</small></div>
+  </div>
+  <div>
+    <h3 style="margin-bottom:8px">Top five fixes, ranked by impact against effort</h3>
+    <div class="tablewrap"><table class="dense">
+      <thead><tr><th style="width:24px">#</th><th>Fix</th><th>Business impact</th><th>Effort</th><th class="num">Expected result</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Resize and convert the two full-width photos (WebP, responsive sizes, lazy below the fold)</td><td>Brings the two slowest pages under the 2.5 s line; these are the practice-area pages that ads and search send people to</td><td><span class="tag pass">S</span></td><td class="num">LCP 4.8 s to about 2.1 s</td></tr>
+        <tr><td>2</td><td>Self-host one font file instead of 18 weights from Google Fonts; render icons as inline SVG</td><td>Removes the third-party request every visitor waits on before text appears</td><td><span class="tag pass">S</span></td><td class="num">FCP 2.0 s to under 1 s</td></tr>
+        <tr><td>3</td><td>Rename the admin account, set a strong password, add login rate limiting and two-factor sign-in</td><td>Closes the most common way small-firm sites get taken over</td><td><span class="tag pass">S</span></td><td class="num">Login brute force blocked</td></tr>
+        <tr><td>4</td><td>Set up automatic off-site backups with a tested restore</td><td>A hacked or broken site becomes a 20-minute restore instead of a rebuild</td><td><span class="tag pass">S</span></td><td class="num">Daily backups, 30-day retention</td></tr>
+        <tr><td>5</td><td>Remove unused theme, block, form and builder assets; inline the small stylesheets; enable page caching</td><td>Cuts 30 to 38 requests per page down to 4 to 6 and keeps the site fast as content grows</td><td><span class="tag warn">M</span></td><td class="num">Perf 81 to 97 up to 99 to 100</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 2 of 9</span></div>
+</section>
+
+<!-- PAGE 3: SPEED FINDINGS -->
+<section class="page" aria-label="Findings: speed">
+  <div class="runhead"><span>Findings</span><span>Speed and Core Web Vitals</span></div>
+  <div>
+    <p class="eyebrow">How we measured</p>
+    <p class="small">Lighthouse 12.8, mobile preset (simulated slow 4G, 4x CPU slowdown), run on October 30, 2026 against all seven public pages. Core Web Vitals thresholds: Largest Contentful Paint (LCP) 2.5 s, Cumulative Layout Shift (CLS) 0.1, Total Blocking Time (TBT) 200 ms. Full Lighthouse reports are attached as an appendix.</p>
+  </div>
+
+  <div class="finding">
+    <div class="n">01</div>
+    <div>
+      <h3>Full-size photos on the practice-area pages <span class="tag fail">Fail</span></h3>
+      <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">LCP</span><span class="tag pass">Effort S</span></div>
+      <dl>
+        <dt>Found</dt><dd>Two photos were uploaded as 1920 px JPEGs and served at full size: pines.jpg at 457 KB, plus ridge.jpg on the Personal injury page. No responsive sizes, no modern format, no lazy loading.</dd>
+        <dt>Why it matters</dt><dd>These are the Family law and Personal injury pages, the ones a search ad or a referral link lands on. On a phone the page's main image appears at 4.8 s and 3.6 s. Google's "good" line is 2.5 s, and visitors on mobile data start leaving well before 4 s.</dd>
+        <dt>Evidence</dt><dd><div class="ev">Family law     LCP 4.8 s   page weight 700 KB   Lighthouse: responsive-images savings 405 KB, modern-formats savings 188 KB
+Personal injury LCP 3.6 s   page weight 479 KB   Lighthouse: responsive-images savings 212 KB, modern-formats savings 121 KB</div></dd>
+        <dt>Fix</dt><dd>Re-encode as WebP at 1200 px with generated sizes (srcset) and quality 60, set width and height, lazy-load below the fold. The 457 KB photo becomes about 82 KB with no visible loss.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="n">02</div>
+    <div>
+      <h3>Eighteen font weights from Google, plus three icon-font stylesheets <span class="tag fail">Fail</span></h3>
+      <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">FCP</span><span class="tag pass">Effort S</span></div>
+      <dl>
+        <dt>Found</dt><dd>The page builder requests the Newsreader family in every weight and italic (100 to 900) from fonts.googleapis.com, and loads Font Awesome's three stylesheets for the handful of icons in the trust strip.</dd>
+        <dt>Why it matters</dt><dd>Every visitor's browser connects to a third-party server and waits for its stylesheet before drawing any text. First text appears at 2.0 to 2.3 s on every page. The firm's headline and phone number should be visible in under a second.</dd>
+        <dt>Evidence</dt><dd><div class="ev">fonts.googleapis.com/css?family=Newsreader:100,100italic,200,...,900,900italic   (1 external CSS request + font files)
+Render-blocking resources per page: 16 to 28  (Lighthouse "render-blocking-resources")</div></dd>
+        <dt>Fix</dt><dd>Turn off the builder's Google Fonts option, self-host Newsreader as one variable woff2 (400 to 500) plus one italic file with font-display: swap and a preload. Switch the builder to inline SVG icons so the icon-font CSS never loads.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 3 of 9</span></div>
+</section>
+
+<!-- PAGE 4: SPEED FINDINGS, CONTINUED -->
+<section class="page" aria-label="Findings: speed, continued">
+  <div class="runhead"><span>Findings</span><span>Speed and Core Web Vitals, continued</span></div>
+  <div class="finding">
+    <div class="n">03</div>
+    <div>
+      <h3>Scripts and stylesheets loading on pages that do not use them <span class="tag warn">Needs work</span></h3>
+      <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">Requests</span><span class="tag warn">Effort M</span></div>
+      <dl>
+        <dt>Found</dt><dd>jQuery, jQuery Migrate, the builder's frontend runtime and widget chunks, the form plugin's submission script, the emoji script and the block-library stylesheet load on all seven pages. None of the pages use sliders, tabs or popups, so most of it does nothing.</dd>
+        <dt>Why it matters</dt><dd>30 to 38 requests per page on a site that needs 4 to 6. Each one is a round trip on a phone connection, and the home page shifts layout (CLS 0.031) while late stylesheets arrive. It also means every plugin update is a chance for something unneeded to break the page.</dd>
+        <dt>Evidence</dt><dd><div class="ev">Home: 38 requests, 325 KB, 28 render-blocking, CLS 0.031   Contact: 33 requests, 241 KB, CLS 0.037
+Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min.js, frontend-modules.min.js, frontend.min.js, form-submission.js, wp-emoji-release.min.js</div></dd>
+        <dt>Fix</dt><dd>Remove the parent theme CSS, block-library CSS, icon font, default form styles, jQuery, builder frontend JS and the emoji script on pages that do not need them; set the builder's CSS print method to internal and inline the remaining small stylesheets; add page caching with long cache headers on uploads. Scoped so that adding an interactive widget later re-enables the builder script on that page only.</dd>
+      </dl>
+    </div>
+  </div>
+  <div>
+    <h3 class="h4" style="margin-bottom:6px">Core Web Vitals by page, current site (mobile)</h3>
+    <div class="tablewrap"><table>{{CWV_TABLE}}</table></div>
+    <p class="small mute" style="margin-top:6px">Total Blocking Time is 0 ms on every page: the site is not slow because of heavy scripts running, it is slow because of what it downloads before it can draw. That is the easier problem to have.</p>
+  </div>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 4 of 9</span></div>
+</section>
+
+<!-- PAGE 5: SECURITY -->
+<section class="page" aria-label="Findings: security">
+  <div class="runhead"><span>Findings</span><span>Security</span></div>
+  <div>
+    <p class="eyebrow">Eight checks</p>
+    <h2>Security: one check passed, four failed, and all four are cheap to fix.</h2>
+    <p class="small" style="margin-top:6px">Checked from the outside and the WordPress dashboard; anything needing server access is marked "not checked" rather than guessed.</p>
+  </div>
+  <div class="tablewrap"><table class="dense">
+    <thead><tr><th>Check</th><th>Result</th><th>What we saw</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td>Administrator account name and password</td><td><span class="tag fail">Fail</span></td><td>The only administrator is "admin" with a weak password; "admin" is the first name every automated attack tries.</td><td>Create a new administrator with a non-obvious name and a long passphrase, demote and remove "admin".</td></tr>
+      <tr><td>Login protection (rate limiting, two-factor)</td><td><span class="tag fail">Fail</span></td><td>No limit on failed sign-in attempts and no second factor.</td><td>One lightweight login-protection plugin; two-factor for both partners and the assistant.</td></tr>
+      <tr><td>Software version exposure</td><td><span class="tag fail">Fail</span></td><td>Page source advertises "WordPress 7.1.4" and "Elementor 4.3.5" and appends version numbers to asset URLs.</td><td>Remove the generator tags and version query strings (a few lines in the child theme).</td></tr>
+      <tr><td>Backups</td><td><span class="tag fail">Fail</span></td><td>No backup plugin or host backup is configured. A bad update or a compromise means a rebuild.</td><td>Daily automatic backup to off-site storage, 30-day retention, one restore tested and documented.</td></tr>
+      <tr><td>Plugins installed and current</td><td><span class="tag pass">Pass</span></td><td>Three plugins (Elementor, Fluent Forms, Yoast SEO), all current, none abandoned or duplicated.</td><td>Keep as is; add a monthly update routine (see Maintenance).</td></tr>
+      <tr><td>Contact form protection</td><td><span class="tag warn">Needs work</span></td><td>Submit requests carry a one-time token (confirmed). The plugin's honeypot and submission limit are available but off, so bots can flood the intake form.</td><td>Turn on the honeypot and a per-address submission limit (dashboard settings, no code).</td></tr>
+      <tr><td>XML-RPC and REST user enumeration</td><td><span class="tag na">Not checked</span></td><td>Both are on by default in WordPress; the live server's setting could not be confirmed from the copy reviewed.</td><td>Disable XML-RPC unless the firm uses the mobile app; block the users endpoint for anonymous requests.</td></tr>
+      <tr><td>HTTPS, security headers, file editing in dashboard</td><td><span class="tag na">Not checked</span></td><td>Needs the live host; checked in the first hour of any fix engagement.</td><td>Force HTTPS, add standard headers, set DISALLOW_FILE_EDIT.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card tint">
+    <h3 class="h4">Why this matters to a law firm specifically</h3>
+    <p class="small" style="margin-top:4px">The intake form carries names, phone numbers and a short description of a legal matter. A compromised site can collect those submissions quietly or redirect visitors to a lookalike, with no visible defacement. The four failing checks are the usual path to that outcome; each takes under two hours to close.</p>
+  </div>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 5 of 9</span></div>
+</section>
+
+<!-- PAGE 5: SEO, ACCESSIBILITY, MAINTENANCE -->
+<section class="page" aria-label="Findings: SEO, accessibility, maintenance">
+  <div class="runhead"><span>Findings</span><span>SEO, accessibility, maintenance</span></div>
+  <div class="grid g2">
+    <div>
+      <p class="eyebrow">SEO</p>
+      <h3 style="margin:4px 0 8px">Technical SEO is in order <span class="tag pass">100 / 100</span></h3>
+      <ul class="plain small">
+        <li>Every page has a unique title and meta description, one H1, a canonical URL and Open Graph tags (Yoast SEO).</li>
+        <li>LegalService and Attorney structured data validate; FAQ markup present on both practice-area pages.</li>
+        <li>sitemap.xml and robots.txt are present and consistent.</li>
+        <li>The one open item is speed itself: page experience signals feed ranking, and two pages currently fail LCP.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Accessibility</p>
+      <h3 style="margin:4px 0 8px">Automated checks pass <span class="tag pass">100 / 100</span></h3>
+      <ul class="plain small">
+        <li>Colour contrast, labels, landmarks, heading order and focus states pass on all seven pages.</li>
+        <li>Form fields are 48 px tall with visible labels and a single focus ring; all controls meet the 44 px target size.</li>
+        <li>Not covered by automation: keyboard walk-through of the mobile menu and the FAQ accordions, and screen-reader reading order. Recommended as a one-hour manual pass after the speed fixes.</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <p class="eyebrow">Maintenance</p>
+    <h3 style="margin:4px 0 8px">Six checks, two passed</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Check</th><th>Result</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>WordPress core current</td><td><span class="tag pass">Pass</span></td><td>7.1.4, the current release at review time.</td></tr>
+        <tr><td>Theme and plugins current</td><td><span class="tag pass">Pass</span></td><td>Hello Elementor child theme, Elementor 4.3.5, Fluent Forms 6.2.16, Yoast SEO 28.8.</td></tr>
+        <tr><td>Update routine with a staging copy</td><td><span class="tag fail">Fail</span></td><td>Updates are applied (or not) by hand on the live site. No staging copy exists to test an update before visitors see it.</td></tr>
+        <tr><td>Backups and tested restore</td><td><span class="tag fail">Fail</span></td><td>See Security. Counted here as well because it is the maintenance safety net.</td></tr>
+        <tr><td>Uptime and error monitoring</td><td><span class="tag fail">Fail</span></td><td>Nothing alerts the firm if the site goes down or the intake form stops sending.</td></tr>
+        <tr><td>Documented owner access</td><td><span class="tag fail">Fail</span></td><td>Hosting, domain and admin logins are known to one person. A short access sheet in the firm's password manager removes that single point of failure.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 6 of 9</span></div>
+</section>
+
+<!-- PAGE 6: BEFORE / AFTER -->
+<section class="page" aria-label="Before and after results">
+  <div class="runhead"><span>Results</span><span>Before and after</span></div>
+  <div>
+    <p class="eyebrow">What the fixes deliver</p>
+    <h2>Measured on an optimized copy of the same site.</h2>
+    <p class="small" style="margin-top:6px">To avoid promising numbers we cannot back, we applied fixes 1, 2 and 5 to an exact copy of the current site (same pages, same copy, same form, same builder) and re-ran Lighthouse under identical settings. These are the measured results, not projections.</p>
+  </div>
+  <div>
+    <h3 class="h4" style="margin-bottom:6px">Largest Contentful Paint by page, mobile (seconds, lower is better)</h3>
+    {{LCP_CHART}}
+    <div class="legend" style="margin-top:4px"><span><i style="background:#C9C9D1"></i>Current site</span><span><i style="background:#1F4E8C"></i>After fixes 1, 2 and 5</span></div>
+  </div>
+  {{BEFORE_AFTER}}
+  <p class="small mute">Across all seven pages: Performance 81 to 97 now, 99 to 100 after. Accessibility, Best Practices and SEO stay at 100. Figures are from the attached Lighthouse reports; numbers on the live host will vary slightly with the server and the visitor's connection.</p>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 7 of 9</span></div>
+</section>
+
+<!-- PAGE 7: FIX PLAN AND PRICING -->
+<section class="page" aria-label="Fix plan and pricing">
+  <div class="runhead"><span>Plan</span><span>Prioritized fixes and fixed prices</span></div>
+  <div>
+    <p class="eyebrow">Fixed price, no hourly surprises</p>
+    <h2>Three ways to take this on.</h2>
+    <p class="small" style="margin-top:6px">Every tier is done on a staging copy first, measured with the same Lighthouse settings as this report, and handed over with before and after numbers.</p>
+  </div>
+  <div class="grid g3">
+    <div class="tier">
+      <span class="tag blue">Tier 1</span>
+      <h3>Speed fix</h3>
+      <div class="price">$350</div>
+      <p class="small mute">Fixes 1, 2 and 5. About 3 working days.</p>
+      <ul>
+        <li>Photos re-encoded, responsive, lazy</li>
+        <li>One self-hosted font, inline SVG icons</li>
+        <li>Unused assets removed per page</li>
+        <li>Inlined CSS, page caching, cache headers</li>
+        <li>Re-measured: all pages Performance 99+, LCP under 2.5 s</li>
+      </ul>
+    </div>
+    <div class="tier hi">
+      <span class="tag blue">Tier 2, recommended</span>
+      <h3>Speed and security</h3>
+      <div class="price">$650</div>
+      <p class="small mute">Tier 1 plus fixes 3 and 4 and the four "not checked" items. About 5 working days.</p>
+      <ul>
+        <li>Everything in Tier 1</li>
+        <li>New admin account, "admin" removed, two-factor for 3 users</li>
+        <li>Login rate limiting</li>
+        <li>Version exposure removed; XML-RPC and user endpoint closed</li>
+        <li>HTTPS forced, security headers, file editing disabled</li>
+        <li>Daily off-site backups with one tested restore</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <span class="tag blue">Tier 3</span>
+      <h3>Full tune-up</h3>
+      <div class="price">$950</div>
+      <p class="small mute">Tier 2 plus the maintenance gaps and a manual accessibility pass. About 8 working days.</p>
+      <ul>
+        <li>Everything in Tier 2</li>
+        <li>Staging copy and a written update routine</li>
+        <li>Uptime and form-delivery monitoring</li>
+        <li>Access sheet for the firm's password manager</li>
+        <li>One-hour keyboard and screen-reader pass with fixes</li>
+        <li>First 30 days of the care plan included</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h3 class="h4" style="margin-bottom:6px">Order of work (Tier 2 shown)</h3>
+    <div class="tablewrap"><table class="dense">
+      <thead><tr><th>Day</th><th>Work</th><th>You see</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Staging copy, backups configured, server-side checks completed, baseline measured</td><td>Access sheet draft, baseline numbers</td></tr>
+        <tr><td>2</td><td>Images, fonts, icons</td><td>Staging link, LCP under 2.5 s on every page</td></tr>
+        <tr><td>3</td><td>Asset removal, CSS inlining, caching</td><td>Staging link, requests down to 4 to 6</td></tr>
+        <tr><td>4</td><td>Admin account, two-factor, login limits, version exposure, headers</td><td>Short walkthrough for both partners (15 minutes)</td></tr>
+        <tr><td>5</td><td>Go live, re-measure on the real host, tested restore</td><td>This report's page 7 re-done with live numbers</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 8 of 9</span></div>
+</section>
+
+<!-- PAGE 8: MAINTENANCE PLAN AND NEXT STEPS -->
+<section class="page" aria-label="Maintenance plan">
+  <div class="runhead"><span>Offer</span><span>Care plan and next steps</span></div>
+  <div>
+    <p class="eyebrow">Keep it fixed</p>
+    <h2>A care plan so this report does not need to be written twice.</h2>
+    <p class="small" style="margin-top:6px">Most of the findings here are not mistakes, they are what happens to any site nobody is responsible for. The plan below makes one person responsible, with a monthly note so the firm knows what was done.</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <span class="tag blue">Care plan</span>
+      <h3 style="margin:6px 0 2px">WordPress Care</h3>
+      <div class="price" style="font-family:var(--f-head);font-size:22pt;font-weight:600">$75 <span class="small mute" style="font-family:var(--f-body);font-weight:400">per month, cancel any time</span></div>
+      <ul class="plain small" style="margin-top:8px">
+        <li>Core, theme and plugin updates applied on staging first, then live, every month</li>
+        <li>Daily off-site backups kept 30 days; quarterly restore test</li>
+        <li>Uptime check every 5 minutes; intake-form delivery test weekly</li>
+        <li>Monthly Lighthouse run on all pages; anything under 90 gets fixed inside the plan</li>
+        <li>Security scan and log review monthly</li>
+        <li>Up to one hour of small content edits per month</li>
+        <li>A one-page monthly note: what was updated, what was measured, what to watch</li>
+      </ul>
+    </div>
+    <div class="card tint">
+      <h3 class="h4">What is not included</h3>
+      <ul class="plain small" style="margin-top:6px">
+        <li>New pages, redesigns and new features (quoted separately at a fixed price)</li>
+        <li>Hosting and domain fees (paid by the firm directly, so the firm always owns them)</li>
+        <li>Recovery from a compromise that happened before the plan started</li>
+      </ul>
+      <h3 class="h4" style="margin-top:14px">How to say yes</h3>
+      <ol class="small" style="padding-left:18px;margin-top:6px">
+        <li style="margin:3px 0">Reply with the tier you want (Tier 2 is the recommendation).</li>
+        <li style="margin:3px 0">Share hosting and WordPress admin access through your password manager, not by email.</li>
+        <li style="margin:3px 0">Work starts within two business days; you get a staging link on day 2.</li>
+      </ol>
+      <p class="small" style="margin-top:14px"><b>William L.</b><br>WKL Labs</p>
+    </div>
+  </div>
+  <div>
+    <h3 class="h4" style="margin-bottom:6px">Method and scope</h3>
+    <p class="small mute">Reviewed on October 30, 2026: the seven public pages of harborpinelaw.example.com, their page source and loaded assets, and the WordPress dashboard (users, plugins, theme, settings). Speed figures come from Lighthouse 12.8 in its mobile preset; the "after" figures come from an optimized copy of the same site measured under the same settings. Security and maintenance checks were performed from the outside and the dashboard; items needing server access are marked "not checked". No changes were made to the live site during this review. Appendix: 14 Lighthouse HTML reports (7 current, 7 optimized copy).</p>
+  </div>
+  <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 9 of 9</span></div>
+</section>
+
+</body>
+</html>

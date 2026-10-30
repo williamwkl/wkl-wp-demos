@@ -1,6 +1,6 @@
 # WordPress portfolio demos
 
-Three WordPress demo sites for fictional businesses, each rebuilt from a WordPress Playground blueprint (WordPress 7.1.4 and every plugin/theme pinned to a tested version from versioned wordpress.org zips; the boot still needs network access to download them) and exported to a static copy for free hosting (GitHub Pages project site: `https://williamwkl.github.io/wkl-wp-demos/<demo>/`, not published yet).
+Three WordPress demo sites for fictional businesses, each rebuilt from a WordPress Playground blueprint (WordPress 7.1.4 and every plugin/theme pinned to a tested version from versioned wordpress.org zips; the boot still needs network access to download them) and exported to a static copy for free hosting (custom domain `https://demos.wkllabs.com/<demo>/`, served from GitHub Pages; not published yet).
 
 | Demo | What it shows | Stack |
 |---|---|---|
@@ -55,16 +55,25 @@ scripts/serve.sh makers 9403
 
 `serve.sh` boots WordPress Playground CLI with the demo's `blueprint.json` and mounts `theme/`, `mu-plugins/` and `data/` from the repo, so edits to those files show on reload. Each boot is a fresh site (the blueprint seeds it in about 90 seconds).
 
+## Public URL (one config value)
+
+`site.config.json` holds `publicBase` (`https://demos.wkllabs.com`) and `rawBase` (raw GitHub files for the Playground links, pinned to a release ref). The exporter uses `publicBase/<demo>/` for canonical, og:url, og:image, JSON-LD and each demo's sitemap; `scripts/root-files.mjs` writes `dist/CNAME`, the root `robots.txt` and a root sitemap index. All internal links and assets are relative, so the same export works at the domain root (`/saltline/`, `/harbor-pine/`, `/makers/`, `/store/`, `/health-check/`) and under any sub-folder. The demo exports still carry the previous github.io canonical URLs until they are re-exported once DNS for demos.wkllabs.com is live.
+
+## Health Check report
+
+`node scripts/health-data.mjs && node scripts/health-check.mjs` builds `deliverables/WordPress-Health-Check-Sample.pdf` (9 letter pages) and the web copy at `dist/health-check/`. The Core Web Vitals table, LCP chart and before/after table are generated from `reports/harbor-pine/*/*.report.json`; every other figure in the text is checked against those reports and OPTIMIZATION.md, and the build fails on any figure it cannot trace. The report carries no contact details (name only).
+
 ## Rebuild a static export
 
 ```bash
-PUBLIC_BASE=https://williamwkl.github.io/wkl-wp-demos/saltline node scripts/export.mjs http://127.0.0.1:9401 dist/saltline
+scripts/build.sh saltline                           # export + font license + redirect stubs + root files (CNAME, robots, sitemap index)
+# or by hand: node scripts/export.mjs http://127.0.0.1:9401 dist/saltline   (PUBLIC_BASE env overrides the config)
 node scripts/static-server.mjs dist 5055            # GitHub Pages-like server with gzip
 node scripts/lh.mjs http://127.0.0.1:5055/saltline reports/saltline / /tours/
 node scripts/check.mjs http://127.0.0.1:5055/saltline saltline / /tours/
 node scripts/copy-lint.mjs dist/saltline            # no em dashes, no "AI", no localhost leaks
 node scripts/linkcheck.mjs dist/saltline            # every internal href/src/url() exists
-node scripts/redirect-stubs.mjs dist/makers demos/makers/data/redirects.csv https://williamwkl.github.io/wkl-wp-demos/makers   # makers only: stubs for renamed listing slugs
+node scripts/redirect-stubs.mjs dist/makers demos/makers/data/redirects.csv   # makers only: stubs for renamed listing slugs
 ```
 
 `export.mjs` crawls the running site, rewrites every internal URL to a relative path (so it works under any sub-folder), keeps canonical, og:url, og:image and JSON-LD absolute to `PUBLIC_BASE`, fetches Elementor's runtime chunks and assets referenced from inline JSON, drops server-only head links (feeds, REST, oEmbed), turns POST forms into GET forms aimed at `/demo-form/`, skips paginated `/page/N/` duplicates, and writes `sitemap.xml` + `robots.txt` (robots.txt only takes effect at a domain root, not in a project sub-folder).
