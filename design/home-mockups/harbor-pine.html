@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbor &amp; Pine Law</title>
+<!-- Mockup only: Google Fonts link for preview. The WP build self-hosts Newsreader (two woff2 files). -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-ink:#1B2733;--c-navy:#24364A;--c-pine:#2E4A3E;--c-brass:#8A5A24;--c-paper:#F8F5EF;--c-paper-2:#EEE8DE;--c-line:#D9D2C5;--c-mute:#5A6673;--c-white:#FFFDF9;
+  --f-display:"Newsreader","Iowan Old Style","Times New Roman",serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --fs-display:clamp(2.375rem,1.3rem + 4.2vw,4rem);--fs-h2:clamp(1.875rem,1.3rem + 2vw,2.625rem);--fs-h3:clamp(1.3125rem,1.2rem + .4vw,1.5rem);
+  --fs-lead:clamp(1.125rem,1.05rem + .3vw,1.1875rem);--fs-body:clamp(1rem,.95rem + .15vw,1.0625rem);--fs-small:.875rem;--fs-eyebrow:.8125rem;
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;--sp-9:96px;
+  --r-sm:4px;--r-md:8px;--max:1140px;--gutter:clamp(20px,4vw,48px);--section:clamp(64px,8vw,96px);
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--f-body);font-size:var(--fs-body);line-height:1.65;color:var(--c-ink);background:var(--c-paper)}
+svg{display:block}
+a{color:var(--c-ink);text-decoration-color:var(--c-brass);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--c-brass)}
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid var(--c-brass);outline-offset:2px}
+.dark :where(a,button):focus-visible{outline-color:var(--c-paper)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:-.015em;line-height:1.1;text-wrap:balance}
+h1{font-size:var(--fs-display);line-height:1.05}
+h2{font-size:var(--fs-h2)}
+h3{font-size:var(--fs-h3);line-height:1.25}
+p{max-width:64ch}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:var(--section)}
+.eyebrow{font-size:var(--fs-eyebrow);letter-spacing:.1em;text-transform:uppercase;color:var(--c-pine);font-weight:600}
+.lead{font-size:var(--fs-lead);line-height:1.55;color:var(--c-mute)}
+.small{font-size:var(--fs-small)}
+.mute{color:var(--c-mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:var(--r-md);font-weight:600;font-size:1rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .15s ease-out,transform .15s ease-out}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--c-brass);color:var(--c-white)}
+.btn-primary:hover{background:#7A4F1F;color:var(--c-white)}
+.btn-secondary{border-color:rgba(27,39,51,.55);color:var(--c-ink);background:transparent}
+.btn-secondary:hover{background:rgba(27,39,51,.05);color:var(--c-ink)}
+.dark .btn-secondary{border-color:rgba(255,253,249,.6);color:var(--c-white)}
+
+/* top bar */
+.topbar{background:var(--c-navy);color:var(--c-paper-2);font-size:var(--fs-small)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:36px;gap:var(--sp-4)}
+.topbar a{color:var(--c-white);text-decoration:none}
+@media (max-width:720px){.topbar{display:none}}
+
+/* header */
+.header{background:var(--c-paper);border-bottom:1px solid var(--c-line)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:var(--sp-5)}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:1.5rem;font-weight:500;letter-spacing:-.01em;color:var(--c-ink);text-decoration:none;white-space:nowrap}
+.brand svg{width:30px;height:30px;color:var(--c-pine)}
+.nav ul{display:flex;gap:var(--sp-5);list-style:none;padding:0;white-space:nowrap}
+.nav ul a{text-decoration:none;font-weight:500;font-size:.9375rem}
+.nav .btn{white-space:nowrap}
+@media (max-width:1200px){.nav-cta .btn-secondary{display:none}}
+.nav-cta{display:flex;align-items:center;gap:var(--sp-3)}
+.iconbtn{display:none;width:44px;height:44px;border:0;background:transparent;border-radius:var(--r-sm);color:var(--c-ink);align-items:center;justify-content:center}
+@media (max-width:960px){.nav ul{display:none}.nav-cta .btn-secondary{display:none}.iconbtn{display:inline-flex}}
+@media (max-width:720px){.nav-cta .btn-primary{display:none}}
+
+/* hero */
+.hero{padding-block:clamp(48px,6vw,88px) var(--section)}
+.hero-grid{display:grid;grid-template-columns:6fr 5fr;gap:clamp(32px,6vw,96px);align-items:start}
+.hero h1{margin:var(--sp-4) 0 var(--sp-5);max-width:16ch}
+.hero .lead{margin-bottom:var(--sp-6)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.facts{list-style:none;padding:0;margin-top:var(--sp-7);display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-6);font-size:var(--fs-small);color:var(--c-mute)}
+.facts li{display:flex;gap:8px;align-items:center}
+.facts svg{width:16px;height:16px;color:var(--c-pine);opacity:.85}
+.card{background:var(--c-white);border:1px solid var(--c-line);border-radius:var(--r-md);padding:clamp(24px,3vw,36px)}
+.card h2{font-size:1.75rem}
+.card .sub{font-size:var(--fs-small);color:var(--c-mute);margin:var(--sp-2) 0 var(--sp-5)}
+.field{display:grid;gap:6px;margin-bottom:var(--sp-4)}
+.field label{font-size:var(--fs-small);font-weight:600}
+.field :where(input,select,textarea){font:inherit;font-size:1rem;min-height:48px;padding:10px 14px;border:1px solid rgba(27,39,51,.4);border-radius:var(--r-sm);background:var(--c-white);color:var(--c-ink);width:100%}
+.field textarea{min-height:88px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:var(--fs-small);color:var(--c-mute);margin:var(--sp-2) 0 var(--sp-5)}
+.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--c-brass)}
+.card .btn{width:100%}
+.card .fine{font-size:.8125rem;color:var(--c-mute);margin-top:var(--sp-3);text-align:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.facts{order:3}}
+
+/* trust strip */
+.trust{background:var(--c-paper-2);padding-block:var(--sp-6)}
+.trust ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-5)}
+.trust li{display:flex;gap:12px;align-items:flex-start;font-size:var(--fs-small);line-height:1.45}
+.trust svg{flex:0 0 20px;width:20px;height:20px;color:var(--c-pine);opacity:.85;margin-top:1px}
+@media (max-width:860px){.trust ul{grid-template-columns:1fr 1fr}}
+
+/* practice areas */
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-8);margin-top:var(--sp-7);position:relative}
+.areas>div:first-child{border-right:1px solid var(--c-line);padding-right:var(--sp-8)}
+.areas h3{margin-bottom:var(--sp-4)}
+.areas ul{list-style:none;padding:0;display:grid;gap:10px;margin-bottom:var(--sp-5)}
+.areas li{padding:10px 0;border-bottom:1px solid var(--c-line)}
+@media (max-width:720px){.areas{grid-template-columns:1fr;gap:var(--sp-7)}.areas>div:first-child{border-right:0;padding-right:0}}
+
+/* expect */
+.expect{display:grid;grid-template-columns:7fr 5fr;gap:var(--sp-8);align-items:start}
+.expect p+p{margin-top:var(--sp-4)}
+.expect strong{font-weight:600}
+.pull{font-family:var(--f-display);font-style:italic;font-size:clamp(1.5rem,1.2rem + 1vw,2rem);line-height:1.3;color:var(--c-navy);border-left:2px solid var(--c-brass);padding-left:var(--sp-5)}
+.pull footer{font-family:var(--f-body);font-style:normal;font-size:var(--fs-small);color:var(--c-mute);margin-top:var(--sp-4)}
+@media (max-width:860px){.expect{grid-template-columns:1fr;gap:var(--sp-6)}}
+
+/* attorneys */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-7);margin-top:var(--sp-7)}
+.person{display:grid;grid-template-columns:160px 1fr;gap:var(--sp-5);align-items:start}
+.portrait{aspect-ratio:4/5;border-radius:var(--r-md);background:linear-gradient(170deg,#DCE3D9,#B9C6BC);display:flex;align-items:flex-end;justify-content:center;color:var(--c-pine);font-family:var(--f-display);font-size:2.5rem;padding-bottom:12px;position:relative;overflow:hidden}
+.portrait::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 85%,rgba(46,74,62,.25),transparent 70%)}
+.person .role{font-size:var(--fs-small);color:var(--c-mute);margin:2px 0 var(--sp-3)}
+.person p{font-size:var(--fs-small);line-height:1.55}
+@media (max-width:1000px){.person{grid-template-columns:120px 1fr}}
+@media (max-width:720px){.people{grid-template-columns:1fr}}
+
+/* results */
+.results{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-8);margin-top:var(--sp-7)}
+.quote{font-family:var(--f-display);font-size:1.375rem;line-height:1.35;color:var(--c-ink)}
+.quote+.quote{margin-top:var(--sp-6)}
+.quote footer{font-family:var(--f-body);font-size:var(--fs-small);color:var(--c-mute);margin-top:var(--sp-3)}
+.tiles{display:grid;gap:var(--sp-4)}
+.tile{border-top:1px solid var(--c-line);padding-top:var(--sp-4)}
+.tile .amt{font-family:var(--f-display);font-size:2rem;line-height:1.1;color:var(--c-navy)}
+.tile .what{font-size:var(--fs-small);color:var(--c-mute);margin-top:4px}
+.disclaimer{font-size:.8125rem;color:var(--c-mute);margin-top:var(--sp-6)}
+@media (max-width:860px){.results{grid-template-columns:1fr;gap:var(--sp-6)}}
+
+/* cta */
+.dark{background:var(--c-navy);color:var(--c-white)}
+.dark h2{color:var(--c-white);max-width:22ch}
+.dark p{color:var(--c-paper-2)}
+.dark .cta-inner{display:grid;grid-template-columns:1fr auto;gap:var(--sp-7);align-items:center}
+@media (max-width:860px){.dark .cta-inner{grid-template-columns:1fr}}
+
+/* footer */
+.footer{background:var(--c-navy);color:var(--c-paper-2);font-size:var(--fs-small);border-top:1px solid rgba(255,253,249,.15);padding-block:var(--sp-7) var(--sp-6)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--sp-6)}
+.footer ul{list-style:none;padding:0;display:grid;gap:8px}
+.footer a{color:var(--c-white);text-decoration:none}
+.footer .brand{color:var(--c-white)}.footer .brand svg{color:var(--c-paper-2)}
+.foot-bottom{margin-top:var(--sp-6);padding-top:var(--sp-4);border-top:1px solid rgba(255,253,249,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-3);font-size:.8125rem}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+
+/* sticky mobile bar */
+.sticky{display:none}
+@media (max-width:720px){
+  body{padding-bottom:76px}
+  .sticky{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--c-paper);border-top:1px solid var(--c-line);z-index:20}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>Free case evaluations. No fee unless we win on injury cases.</span><span><a href="tel:5550100100">(555) 010-0100</a> · Evening and weekend calls</span></div></div>
+<header class="header">
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="Harbor and Pine Law home">
+      <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3l6 9h-3.5l4.5 6H8l4.5-6H9z"/><path d="M15 18v5"/><path d="M3 26c2.5-2 5-2 7.5 0s5 2 7.5 0 5-2 7.5 0"/></svg>
+      Harbor &amp; Pine
+    </a>
+    <nav aria-label="Primary"><ul><li><a href="#">Personal injury</a></li><li><a href="#">Family law</a></li><li><a href="#">Our attorneys</a></li><li><a href="#">Results</a></li><li><a href="#">Contact</a></li></ul></nav>
+    <div class="nav-cta">
+      <a class="btn btn-secondary" href="tel:5550100100">(555) 010-0100</a>
+      <a class="btn btn-primary" href="#intake">Free case evaluation</a>
+      <a class="iconbtn" href="tel:5550100100" aria-label="Call us"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a>
+      <button class="iconbtn" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Personal injury and family law in Harborview</p>
+      <h1>Steady counsel when life changes course.</h1>
+      <p class="lead">When you are hurt, or your family is coming apart, you need someone who will tell you plainly where you stand. We have done that for Harborview families for 14 years.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#intake">Start your free case evaluation</a>
+        <a class="btn btn-secondary" href="tel:5550100100">Call (555) 010-0100</a>
+      </div>
+      <ul class="facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>No fee unless we win (injury)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Same-week appointments</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Replies within one business day</li>
+      </ul>
+    </div>
+    <form class="card" id="intake" aria-labelledby="intake-h">
+      <h2 id="intake-h">Free case evaluation</h2>
+      <p class="sub">Takes about two minutes. Confidential.</p>
+      <div class="two">
+        <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name"></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><label for="f-type">What do you need help with?</label>
+        <select id="f-type" name="type"><option>Car or truck accident</option><option>Slip and fall</option><option>Workplace injury</option><option>Divorce or separation</option><option>Child custody and support</option><option>Something else</option></select></div>
+      <div class="field"><label for="f-msg">Tell us briefly what happened <span class="mute" style="font-weight:400">(optional)</span></label><textarea id="f-msg" name="message"></textarea></div>
+      <label class="consent"><input type="checkbox" name="consent"><span>I understand that submitting this form does not create an attorney-client relationship.</span></label>
+      <button class="btn btn-primary" type="submit">Request my free evaluation</button>
+      <p class="fine">We reply within one business day. Nothing is shared outside the firm.</p>
+    </form>
+  </div>
+</section>
+
+<section class="trust" aria-label="Why people call us">
+  <div class="wrap"><ul>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Free, confidential first conversation</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Same-week appointments, in person or by phone</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><span>Fees explained in writing before you sign anything</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>You talk to a lawyer, not a call centre</span></li>
+  </ul></div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Practice areas</p>
+    <h2 style="margin-top:var(--sp-3)">Two kinds of hard weeks. We handle both.</h2>
+    <div class="areas">
+      <div>
+        <h3>Personal injury</h3>
+        <ul><li>Car and truck accidents</li><li>Slip and fall</li><li>Workplace injuries</li><li>Wrongful death</li></ul>
+        <a href="#">How we handle injury cases</a>
+      </div>
+      <div>
+        <h3>Family law</h3>
+        <ul><li>Divorce and separation</li><li>Child custody and parenting time</li><li>Child and spousal support</li><li>Modifications and enforcement</li></ul>
+        <a href="#">How we handle family cases</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap expect">
+    <div>
+      <h2>What the first 30 days look like.</h2>
+      <p style="margin-top:var(--sp-5)"><strong>The first call.</strong> You tell us what happened. We tell you, honestly, whether you have a case worth pursuing and what it would involve. If we are not the right firm, we will say so and point you somewhere better.</p>
+      <p><strong>The plan in writing.</strong> Within a week you get a one-page summary: what we will do, what we need from you, and a realistic range of outcomes.</p>
+      <p><strong>No surprises on fees.</strong> Injury cases are contingency, so you pay nothing unless we recover money for you. Family matters are quoted up front, with a cap where we can offer one.</p>
+    </div>
+    <blockquote class="pull">“Most people call us on the worst week of their year. Our job is to make the next one calmer.”<footer>Elena Marsh, partner</footer></blockquote>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Our attorneys</p>
+    <h2 style="margin-top:var(--sp-3)">The people you will actually talk to.</h2>
+    <div class="people">
+      <article class="person">
+        <div class="portrait" role="img" aria-label="Portrait placeholder for Elena Marsh">EM</div>
+        <div><h3>Elena Marsh</h3><p class="role">Partner, personal injury. Admitted 2009</p><p>Fourteen years of injury work, most of it against insurers who hoped the client would give up. Elena takes the calls herself.</p><p style="margin-top:var(--sp-3)"><a href="#">More about Elena</a></p></div>
+      </article>
+      <article class="person">
+        <div class="portrait" role="img" aria-label="Portrait placeholder for Daniel Okafor">DO</div>
+        <div><h3>Daniel Okafor</h3><p class="role">Partner, family law. Admitted 2011</p><p>Divorce, custody and support, with a preference for settling well over fighting long. Trained mediator.</p><p style="margin-top:var(--sp-3)"><a href="#">More about Daniel</a></p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--c-paper-2)">
+  <div class="wrap">
+    <p class="eyebrow">Results and reviews</p>
+    <h2 style="margin-top:var(--sp-3)">Outcomes, in their words.</h2>
+    <div class="results">
+      <div>
+        <blockquote class="quote">“Elena explained every letter the insurer sent before I had a chance to panic about it.”<footer>Former client, rear-end collision (sample review)</footer></blockquote>
+        <blockquote class="quote">“Daniel kept the focus on our kids when neither of us could. We settled in four months.”<footer>Former client, custody matter (sample review)</footer></blockquote>
+      </div>
+      <div class="tiles">
+        <div class="tile"><div class="amt">$410,000</div><div class="what">Settlement, rear-end collision with disputed liability (sample result)</div></div>
+        <div class="tile"><div class="amt">Full custody retained</div><div class="what">Contested relocation case (sample result)</div></div>
+        <div class="tile"><div class="amt">$125,000</div><div class="what">Settlement, retail slip and fall (sample result)</div></div>
+      </div>
+    </div>
+    <p class="disclaimer">Prior results do not guarantee a similar outcome. Every case depends on its own facts.</p>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Tell us what happened. We will tell you where you stand.</h2>
+      <p style="margin-top:var(--sp-4)">A free, confidential conversation with a lawyer. No obligation, no pressure, and a straight answer about whether you have a case.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="#intake">Start your free case evaluation</a>
+      <a class="btn btn-secondary" href="tel:5550100100">(555) 010-0100</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3l6 9h-3.5l4.5 6H8l4.5-6H9z"/><path d="M15 18v5"/><path d="M3 26c2.5-2 5-2 7.5 0s5 2 7.5 0 5-2 7.5 0"/></svg>Harbor &amp; Pine</a>
+        <p style="margin-top:var(--sp-4)">Harborview, by appointment<br>Monday to Friday, 8 am to 6 pm<br>intake@harborpinelaw.example.com<br>(555) 010-0100</p>
+      </div>
+      <ul><li><strong>Practice</strong></li><li><a href="#">Personal injury</a></li><li><a href="#">Family law</a></li><li><a href="#">Results</a></li></ul>
+      <ul><li><strong>Firm</strong></li><li><a href="#">Our attorneys</a></li><li><a href="#">How fees work</a></li><li><a href="#">Contact</a></li></ul>
+      <ul><li><strong>Legal</strong></li><li><a href="#">Privacy</a></li><li><a href="#">Disclaimer</a></li><li><a href="#">Accessibility</a></li></ul>
+    </div>
+    <div class="foot-bottom"><span>Attorney advertising. Prior results do not guarantee a similar outcome.</span><span>Sample site built for portfolio purposes.</span></div>
+  </div>
+</footer>
+
+<div class="sticky" aria-label="Quick actions">
+  <a class="btn btn-secondary" href="tel:5550100100">Call</a>
+  <a class="btn btn-primary" href="#intake">Free evaluation</a>
+</div>
+</body>
+</html>

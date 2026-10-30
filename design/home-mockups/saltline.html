@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saltline Kayak Tours</title>
+<!-- Mockup only: Google Fonts link for preview. The WP build self-hosts Fraunces (one variable woff2). -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-ink:#15262C;--c-sea:#0E4D5C;--c-sea-deep:#083440;--c-coral:#B8461F;--c-sand:#F4EEE3;--c-sand-2:#E9E0D0;--c-mist:#D7E4E6;--c-mute:#4E6368;--c-white:#FBF9F4;
+  --f-display:"Fraunces","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --fs-display:clamp(2.625rem,1.2rem + 5.2vw,4.75rem);--fs-h2:clamp(2rem,1.2rem + 2.6vw,3rem);--fs-h3:clamp(1.375rem,1.2rem + .5vw,1.625rem);
+  --fs-lead:clamp(1.125rem,1rem + .4vw,1.25rem);--fs-body:clamp(1rem,.95rem + .15vw,1.0625rem);--fs-small:.875rem;--fs-eyebrow:.8125rem;
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;--sp-9:96px;--sp-10:128px;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--max:1180px;--gutter:clamp(20px,4vw,48px);--section:clamp(64px,8vw,96px);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);font-size:var(--fs-body);line-height:1.6;color:var(--c-ink);background:var(--c-sand)}
+img,svg{display:block}
+a{color:var(--c-sea);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--c-ink)}
+:where(a,button,input,summary):focus-visible{outline:3px solid var(--c-coral);outline-offset:3px;border-radius:var(--r-sm)}
+.dark :where(a,button):focus-visible{outline-color:var(--c-mist)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1{font-size:var(--fs-display);line-height:1.02}
+h2{font-size:var(--fs-h2)}
+h3{font-size:var(--fs-h3);line-height:1.2}
+p{max-width:62ch}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:var(--section)}
+.eyebrow{font-size:var(--fs-eyebrow);letter-spacing:.08em;text-transform:uppercase;color:var(--c-sea);font-weight:600}
+.lead{font-size:var(--fs-lead);line-height:1.5;color:var(--c-mute)}
+.mute{color:var(--c-mute)}
+.small{font-size:var(--fs-small)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:var(--r-md);font-weight:600;font-size:1rem;text-decoration:none;border:1.5px solid transparent;transition:background-color .16s ease-out,transform .16s ease-out;cursor:pointer}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--c-coral);color:var(--c-white)}
+.btn-primary:hover{background:#A63E1B;color:var(--c-white)}
+.btn-secondary{border-color:rgba(21,38,44,.6);color:var(--c-ink);background:transparent}
+.btn-secondary:hover{background:rgba(21,38,44,.06);color:var(--c-ink)}
+.dark .btn-secondary{border-color:var(--c-mist);color:var(--c-white)}
+.dark .btn-secondary:hover{background:rgba(255,255,255,.08);color:var(--c-white)}
+/* photo placeholders: replace with real WebP in the build */
+.ph{position:relative;overflow:hidden;background:
+  radial-gradient(120% 80% at 70% 20%,rgba(215,228,230,.55),transparent 60%),
+  linear-gradient(165deg,#2b6f7d 0%,#0e4d5c 45%,#0a3b48 100%);color:var(--c-mist)}
+.ph::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(176deg,transparent 0 22px,rgba(255,255,255,.06) 22px 23px);mix-blend-mode:soft-light}
+.ph span{position:absolute;left:12px;bottom:10px;font-size:12px;letter-spacing:.04em;opacity:.8;z-index:1}
+.ph.warm{background:radial-gradient(90% 70% at 30% 80%,rgba(255,200,160,.35),transparent 60%),linear-gradient(160deg,#4a6d72,#1f4a52 60%,#133c45)}
+.ph.night{background:radial-gradient(60% 50% at 50% 70%,rgba(80,200,210,.5),transparent 60%),linear-gradient(180deg,#0a2a33,#06202a)}
+.ph.cave{background:radial-gradient(70% 60% at 60% 40%,rgba(215,228,230,.5),transparent 55%),linear-gradient(200deg,#224e57,#0b2f38 70%)}
+
+/* header */
+.header{position:sticky;top:0;z-index:10;background:rgba(244,238,227,.92);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid rgba(21,38,44,.12)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-5);min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:1.375rem;color:var(--c-ink);text-decoration:none;letter-spacing:-.01em}
+.brand svg{width:28px;height:28px;color:var(--c-sea)}
+.nav ul{display:flex;gap:var(--sp-6);list-style:none;padding:0}
+.nav ul a{color:var(--c-ink);text-decoration:none;font-weight:500}
+.nav ul a:hover{color:var(--c-sea)}
+.nav-cta{display:flex;align-items:center;gap:var(--sp-3)}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;border-radius:var(--r-sm);color:var(--c-ink);align-items:center;justify-content:center}
+@media (max-width:860px){.nav ul{display:none}.burger{display:inline-flex}.nav-cta .btn{padding:10px 16px;min-height:44px}}
+
+/* hero */
+.hero{padding-block:clamp(48px,6vw,88px) 0}
+.hero-grid{display:grid;grid-template-columns:7fr 5fr;gap:var(--sp-7);align-items:start}
+.hero-copy{padding-top:clamp(0px,2vw,32px)}
+.hero-copy h1{margin:var(--sp-4) 0 var(--sp-5);max-width:14ch}
+.hero-copy .lead{margin-bottom:var(--sp-6)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.hero-photo{aspect-ratio:4/5;border-radius:var(--r-lg);margin-bottom:calc(-1 * var(--sp-8));position:relative;z-index:2}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:var(--sp-6)}.hero-photo{margin-bottom:calc(-1 * var(--sp-6));aspect-ratio:4/5}}
+
+/* conditions strip */
+.strip{background:var(--c-sand-2);padding-block:calc(var(--sp-8) + var(--sp-5)) var(--sp-6)}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-5)}
+.strip .lbl{font-size:var(--fs-small);color:var(--c-mute);text-transform:uppercase;letter-spacing:.06em}
+.strip .val{font-family:var(--f-display);font-size:1.75rem;line-height:1.1;color:var(--c-ink)}
+.strip-note{margin-top:var(--sp-4);font-size:var(--fs-small);color:var(--c-mute)}
+@media (max-width:860px){.strip{padding-top:calc(var(--sp-6) + var(--sp-6))}.strip-grid{grid-template-columns:repeat(2,1fr);gap:var(--sp-4)}.strip .val{font-size:1.375rem}}
+
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-5);padding-block:var(--sp-7)}
+.proof li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:var(--fs-small);line-height:1.45;color:var(--c-ink)}
+.proof svg{flex:0 0 20px;width:20px;height:20px;opacity:.75;color:var(--c-sea);margin-top:1px}
+@media (max-width:860px){.proof{grid-template-columns:1fr 1fr;gap:var(--sp-4)}}
+
+/* tours */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--sp-5);margin-bottom:var(--sp-7)}
+.sec-head p{margin-top:var(--sp-3)}
+.tours{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
+.tour{display:flex;flex-direction:column;gap:var(--sp-3)}
+.tour .ph{aspect-ratio:4/3;border-radius:var(--r-md);margin-bottom:var(--sp-2)}
+.tour .meta{display:flex;gap:var(--sp-3);font-size:var(--fs-small);color:var(--c-mute)}
+.tour .price{font-weight:600;color:var(--c-ink)}
+.tour p{color:var(--c-mute)}
+@media (max-width:860px){.sec-head{flex-direction:column;align-items:flex-start}.tours{grid-template-columns:1fr;gap:var(--sp-7)}}
+
+/* split */
+.split{display:grid;grid-template-columns:5fr 7fr;gap:var(--sp-8);align-items:center}
+.split .ph{aspect-ratio:4/3;border-radius:var(--r-md)}
+.facts{list-style:none;padding:0;margin-top:var(--sp-5);display:grid;gap:var(--sp-3)}
+.facts li{padding-left:var(--sp-5);position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.65em;width:12px;height:2px;background:var(--c-coral)}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:var(--sp-6)}}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-7)}
+blockquote{font-family:var(--f-display);font-size:clamp(1.25rem,1.1rem + .7vw,1.625rem);line-height:1.35;letter-spacing:-.01em}
+blockquote footer{font-family:var(--f-body);font-size:var(--fs-small);color:var(--c-mute);margin-top:var(--sp-4);letter-spacing:0}
+@media (max-width:860px){.quotes{grid-template-columns:1fr;gap:var(--sp-6)}}
+
+/* dark band */
+.dark{background:linear-gradient(180deg,var(--c-sea),var(--c-sea-deep));color:var(--c-white)}
+.dark h2{color:var(--c-white);max-width:18ch}
+.dark .eyebrow{color:var(--c-mist)}
+.dark p{color:var(--c-mist)}
+.mini-faq{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6);margin:var(--sp-7) 0}
+.mini-faq h3{font-family:var(--f-body);font-size:1rem;font-weight:600;color:var(--c-white);letter-spacing:0;margin-bottom:var(--sp-2)}
+.mini-faq p{font-size:var(--fs-small);line-height:1.55}
+@media (max-width:860px){.mini-faq{grid-template-columns:1fr;gap:var(--sp-5)}}
+
+/* footer */
+.footer{background:var(--c-sea-deep);color:var(--c-mist);padding-block:var(--sp-8) var(--sp-6);font-size:var(--fs-small)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--sp-6)}
+.footer ul{list-style:none;padding:0;display:grid;gap:8px}
+.footer a{color:var(--c-white);text-decoration:none}
+.footer a:hover{text-decoration:underline;color:var(--c-white)}
+.footer .brand{color:var(--c-white)}.footer .brand svg{color:var(--c-mist)}
+.foot-bottom{margin-top:var(--sp-7);padding-top:var(--sp-5);border-top:1px solid rgba(215,228,230,.18);display:flex;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="Saltline Kayak Tours home">
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 9c3-3 6-3 9 0s6 3 9 0 5-3 6 0"/><path d="M2 15c3-3 6-3 9 0s6 3 9 0 5-3 6 0"/><path d="M2 21c3-3 6-3 9 0s6 3 9 0 5-3 6 0"/></svg>
+      Saltline
+    </a>
+    <nav aria-label="Primary"><ul><li><a href="#">Tours</a></li><li><a href="#">About</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul></nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#">Book a tour</a>
+      <button class="burger" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Guided sea kayak tours, Marrow Cove</p>
+      <h1>Paddle the coast at its own pace.</h1>
+      <p class="lead">Small-group tours along the North Shore, led by guides who grew up on this water. No experience needed, every bit of gear included.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">Book a tour</a>
+        <a class="btn btn-secondary" href="#">See the three tours</a>
+      </div>
+    </div>
+    <div class="ph hero-photo" role="img" aria-label="A kayaker seen from behind on glassy teal water below sea cliffs"><span>PHOTO 4:5 · sea kayak cliffs morning</span></div>
+  </div>
+</section>
+
+<section class="strip" aria-label="Conditions today">
+  <div class="wrap">
+    <div class="strip-grid">
+      <div><div class="lbl">Tide</div><div class="val">High 7:42 am</div></div>
+      <div><div class="lbl">Water</div><div class="val">58 F</div></div>
+      <div><div class="lbl">Wind</div><div class="val">6 kt NW</div></div>
+      <div><div class="lbl">Sunrise</div><div class="val">6:51 am</div></div>
+    </div>
+    <p class="strip-note">Today at the boathouse. Sample data for the demo.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <ul class="proof">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><span><strong>4.9 average</strong> from 312 reviews (sample)</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="3"/><path d="M16 14.2c3.2.3 5.5 2.5 5.5 5.8"/></svg><span><strong>Small groups,</strong> 8 paddlers max</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/></svg><span><strong>Certified</strong> sea kayak guides</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg><span><strong>Dry bags, spray skirts</strong> and wetsuits included</span></li>
+  </ul>
+</div>
+
+<section class="section" style="padding-top:var(--sp-6)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">Tours</p><h2 style="margin-top:var(--sp-3)">Three tours, one coast.</h2></div>
+      <a href="#">Compare all three</a>
+    </div>
+    <div class="tours">
+      <article class="tour">
+        <div class="ph warm" role="img" aria-label="Harbor seals on a breakwater at sunrise"><span>PHOTO 4:3 · harbor seal rocks</span></div>
+        <h3>Sunrise Harbor Paddle</h3>
+        <div class="meta"><span>2 hours</span><span>Easy</span><span class="price">$65 per person</span></div>
+        <p>Glassy water, seals on the breakwater, coffee on the beach after.</p>
+        <a href="#">Check dates</a>
+      </article>
+      <article class="tour">
+        <div class="ph cave" role="img" aria-label="Kayak entering a sea cave"><span>PHOTO 4:3 · sea cave kayak</span></div>
+        <h3>Sea Cave Explorer</h3>
+        <div class="meta"><span>3.5 hours</span><span>Moderate</span><span class="price">$110 per person</span></div>
+        <p>Paddle into the Hollow Cliffs caves at low tide with a guide who knows every swell.</p>
+        <a href="#">Check dates</a>
+      </article>
+      <article class="tour">
+        <div class="ph night" role="img" aria-label="Bioluminescent water glowing at night"><span>PHOTO 4:3 · bioluminescence beach</span></div>
+        <h3>Night Glow Paddle</h3>
+        <div class="meta"><span>2 hours</span><span>Easy</span><span class="price">$95 per person</span></div>
+        <p>Summer nights when the bay lights up with bioluminescence. Blankets and cocoa provided.</p>
+        <a href="#">Check dates</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap split">
+    <div class="ph warm" role="img" aria-label="Paddles and life vests lined up on the beach before a lesson"><span>PHOTO 4:3 · kayak paddles beach gear</span></div>
+    <div>
+      <h2>Never kayaked? Good, most of our guests haven't.</h2>
+      <p style="margin-top:var(--sp-5)">Every tour starts with a 20-minute lesson on the beach. You will paddle a wide touring kayak that is hard to tip, with a guide close enough to talk to the whole way. Most people stop thinking about balance within ten minutes and start looking at the cliffs.</p>
+      <ul class="facts">
+        <li>1 guide for every 4 paddlers</li>
+        <li>Wetsuits for every size, kids 8 and up</li>
+        <li>Free reschedule if the forecast turns</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--c-sand-2)">
+  <div class="wrap quotes">
+    <blockquote>“My 9-year-old asked to go again before we even got the boats out of the water.”<footer>Priya R., Sunrise Harbor Paddle (sample review)</footer></blockquote>
+    <blockquote>“Jonah read the swell like a weather report and got us into the far cave. Unreal.”<footer>Marcus T., Sea Cave Explorer (sample review)</footer></blockquote>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <p class="eyebrow">Plan your trip</p>
+    <h2 style="margin-top:var(--sp-3)">Plan your morning on the water.</h2>
+    <div class="mini-faq">
+      <div><h3>What to wear</h3><p>Swimwear or quick-dry layers under the wetsuit we give you. Bring a towel and sunglasses with a strap.</p></div>
+      <div><h3>Cancellations</h3><p>Free changes up to 24 hours before. If we call it off for weather, you get a full refund or a new date.</p></div>
+      <div><h3>Where to meet</h3><p>The boathouse at the Marrow Cove public launch, 15 minutes before your tour. Free parking.</p></div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#">Check availability</a>
+      <a class="btn btn-secondary" href="#">Read all FAQs</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 9c3-3 6-3 9 0s6 3 9 0 5-3 6 0"/><path d="M2 15c3-3 6-3 9 0s6 3 9 0 5-3 6 0"/><path d="M2 21c3-3 6-3 9 0s6 3 9 0 5-3 6 0"/></svg>Saltline</a>
+        <p style="margin-top:var(--sp-4)">The boathouse at Marrow Cove public launch<br>hello@saltlinekayak.example.com<br>(555) 010-0100</p>
+      </div>
+      <ul><li><strong>Tours</strong></li><li><a href="#">Sunrise Harbor Paddle</a></li><li><a href="#">Sea Cave Explorer</a></li><li><a href="#">Night Glow Paddle</a></li></ul>
+      <ul><li><strong>Company</strong></li><li><a href="#">About</a></li><li><a href="#">Safety</a></li><li><a href="#">Gift cards</a></li></ul>
+      <ul><li><strong>Help</strong></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li><li><a href="#">Cancellation policy</a></li></ul>
+    </div>
+    <div class="foot-bottom"><span>Saltline Kayak Tours. Sample site built for portfolio purposes.</span><span>Privacy · Terms</span></div>
+  </div>
+</footer>
+</body>
+</html>
