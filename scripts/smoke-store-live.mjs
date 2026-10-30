@@ -25,5 +25,5 @@ await p.click('button.wc-block-components-checkout-place-order-button, #place_or
 await p.waitForURL(/order-received/, { timeout: 30000 }).catch(() => {});
 const ok = /order-received/.test(p.url());
 console.log(JSON.stringify({ bundleFee, orderReceived: ok, url: p.url().replace(base, ''), text: ok ? (await p.textContent('main')).replace(/\s+/g, ' ').slice(0, 140) : '', errors }, null, 1));
-await p.screenshot({ path: process.env.SHOT || 'store-checkout.png', fullPage: true }).catch(() => {});
+await p.screenshot({ path: process.env.SHOT || (process.env.TMPDIR || '/tmp') + '/store-checkout.png', fullPage: true }).catch(() => {});
 await b.close(); process.exitCode = ok ? 0 : 1;
