@@ -29,7 +29,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/favicon.svg",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/favicon.svg"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/favicon.svg"
       }
     },
     {
@@ -41,7 +41,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/fonts/OFL.txt",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/fonts/OFL.txt"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/fonts/OFL.txt"
       }
     },
     {
@@ -49,7 +49,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/fonts/instrument-serif-italic.woff2",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/fonts/instrument-serif-italic.woff2"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/fonts/instrument-serif-italic.woff2"
       }
     },
     {
@@ -57,7 +57,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/fonts/instrument-serif.woff2",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/fonts/instrument-serif.woff2"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/fonts/instrument-serif.woff2"
       }
     },
     {
@@ -69,7 +69,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/camp-mug-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/camp-mug-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/camp-mug-800.webp"
       }
     },
     {
@@ -77,7 +77,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/cup-set-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/cup-set-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/cup-set-800.webp"
       }
     },
     {
@@ -85,7 +85,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/dripper-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/dripper-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/dripper-800.webp"
       }
     },
     {
@@ -93,7 +93,15 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/ember-decaf-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/ember-decaf-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/ember-decaf-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/store/assets/img/ember-decaf-bag-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/ember-decaf-bag-800.webp"
       }
     },
     {
@@ -101,7 +109,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/filters-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/filters-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/filters-800.webp"
       }
     },
     {
@@ -109,7 +117,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/grinder-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/grinder-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/grinder-800.webp"
       }
     },
     {
@@ -117,7 +125,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/hero-640.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/hero-640.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/hero-640.webp"
       }
     },
     {
@@ -125,7 +133,15 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/hollow-oak-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/hollow-oak-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/hollow-oak-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/store/assets/img/hollow-oak-bag-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/hollow-oak-bag-800.webp"
       }
     },
     {
@@ -133,7 +149,15 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/house-blend-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/house-blend-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/house-blend-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/store/assets/img/house-blend-bag-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/house-blend-bag-800.webp"
       }
     },
     {
@@ -141,7 +165,15 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/morning-fog-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/morning-fog-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/morning-fog-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/store/assets/img/morning-fog-bag-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/morning-fog-bag-800.webp"
       }
     },
     {
@@ -149,7 +181,15 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/night-market-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/night-market-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/night-market-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/store/assets/img/night-market-bag-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/night-market-bag-800.webp"
       }
     },
     {
@@ -157,7 +197,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/roastery-900.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/roastery-900.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/roastery-900.webp"
       }
     },
     {
@@ -165,7 +205,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/subscription-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/subscription-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/subscription-800.webp"
       }
     },
     {
@@ -173,7 +213,15 @@
       "path": "/wordpress/wp-content/themes/store/assets/img/summit-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/img/summit-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/summit-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/store/assets/img/summit-bag-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/img/summit-bag-800.webp"
       }
     },
     {
@@ -185,7 +233,7 @@
       "path": "/wordpress/wp-content/themes/store/assets/js/store.js",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/assets/js/store.js"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/assets/js/store.js"
       }
     },
     {
@@ -193,7 +241,7 @@
       "path": "/wordpress/wp-content/themes/store/functions.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/functions.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/functions.php"
       }
     },
     {
@@ -205,7 +253,7 @@
       "path": "/wordpress/wp-content/themes/store/parts/footer.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/parts/footer.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/parts/footer.html"
       }
     },
     {
@@ -213,7 +261,7 @@
       "path": "/wordpress/wp-content/themes/store/parts/header.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/parts/header.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/parts/header.html"
       }
     },
     {
@@ -221,7 +269,7 @@
       "path": "/wordpress/wp-content/themes/store/style.css",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/style.css"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/style.css"
       }
     },
     {
@@ -233,7 +281,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/404.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/404.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/404.html"
       }
     },
     {
@@ -241,7 +289,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/archive-product.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/archive-product.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/archive-product.html"
       }
     },
     {
@@ -249,7 +297,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/front-page.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/front-page.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/front-page.html"
       }
     },
     {
@@ -257,7 +305,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/index.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/index.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/index.html"
       }
     },
     {
@@ -265,7 +313,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/order-confirmation.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/order-confirmation.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/order-confirmation.html"
       }
     },
     {
@@ -273,7 +321,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/page-cart.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/page-cart.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/page-cart.html"
       }
     },
     {
@@ -281,7 +329,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/page-checkout.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/page-checkout.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/page-checkout.html"
       }
     },
     {
@@ -289,7 +337,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/page.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/page.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/page.html"
       }
     },
     {
@@ -297,7 +345,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/product-search-results.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/product-search-results.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/product-search-results.html"
       }
     },
     {
@@ -305,7 +353,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/single-product.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/single-product.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/single-product.html"
       }
     },
     {
@@ -313,7 +361,7 @@
       "path": "/wordpress/wp-content/themes/store/templates/taxonomy-product_cat.html",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/templates/taxonomy-product_cat.html"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/templates/taxonomy-product_cat.html"
       }
     },
     {
@@ -321,7 +369,7 @@
       "path": "/wordpress/wp-content/themes/store/theme.json",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/theme/theme.json"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/theme/theme.json"
       }
     },
     {
@@ -333,7 +381,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-clean.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/mu-plugins/demo-clean.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/mu-plugins/demo-clean.php"
       }
     },
     {
@@ -341,7 +389,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-seed.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/mu-plugins/demo-seed.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/mu-plugins/demo-seed.php"
       }
     },
     {
@@ -349,7 +397,7 @@
       "path": "/wordpress/wp-content/mu-plugins/demo-static.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/mu-plugins/demo-static.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/mu-plugins/demo-static.php"
       }
     },
     {
@@ -357,7 +405,7 @@
       "path": "/wordpress/wp-content/mu-plugins/lantern-store.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/mu-plugins/lantern-store.php"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/mu-plugins/lantern-store.php"
       }
     },
     {
@@ -369,7 +417,7 @@
       "path": "/wordpress/wp-content/demo-data/image-credits.csv",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/data/image-credits.csv"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/data/image-credits.csv"
       }
     },
     {
@@ -377,7 +425,7 @@
       "path": "/wordpress/wp-content/demo-data/products.json",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0/demos/store/data/products.json"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.1.0/demos/store/data/products.json"
       }
     },
     {
