@@ -61,3 +61,6 @@ add_filter( 'wpseo_metadesc', function ( $d ) {
 	if ( is_page() ) return get_the_title() . ' at Lantern Hill Roasters (demo store).';
 	return $d;
 } );
+// The front page's canonical is the site root, not /home/.
+add_filter( 'wpseo_canonical', fn( $c ) => is_front_page() ? home_url( '/' ) : $c );
+add_filter( 'wpseo_opengraph_url', fn( $u ) => is_front_page() ? home_url( '/' ) : $u );
