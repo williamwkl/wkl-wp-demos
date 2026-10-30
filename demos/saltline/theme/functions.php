@@ -25,7 +25,7 @@ add_filter( 'wpcf7_load_css', '__return_false' );
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 // Inline small stylesheets (theme CSS + per-block core CSS) instead of render-blocking requests.
-add_filter( 'styles_inline_size_limit', fn() => 60000 );
+add_filter( 'styles_inline_size_limit', fn() => 120000 );
 
 add_action( 'wp_head', function () {
 	if ( ! has_site_icon() ) {

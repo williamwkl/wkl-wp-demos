@@ -38,6 +38,16 @@
       }
     },
     {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/events-manager.7.4.12.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
       "step": "activateTheme",
       "themeFolderName": "saltline"
     },

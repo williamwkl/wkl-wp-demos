@@ -11,7 +11,7 @@ await p.goto(base + '/contact/');
 await p.click('input[type=submit]');
 const blocked = await p.isVisible('.wpcf7-form');
 await p.fill('#bk-name', 'Test Paddler'); await p.fill('#bk-email', 'test@example.com');
-await p.selectOption('#bk-tour', { index: 1 }); await p.fill('#bk-date', '2027-06-01');
+await p.selectOption('#bk-tour', { index: 1 }); await p.fill('#bk-msg', 'Do you run private tours in August?');
 await p.check('.wpcf7-acceptance input'); await p.click('input[type=submit]');
 const ok = await p.textContent('.form-success').catch(() => null);
 console.log({ menuOpens: open, escCloses: closed, emptySubmitBlocked: blocked, success: ok && ok.slice(0, 40) });

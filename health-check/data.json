@@ -1,6 +1,6 @@
 {
  "source": "reports/*.report.json (Lighthouse 12, mobile preset, static exports served locally with gzip)",
- "generated": "2026-10-30T13:38:05.925Z",
+ "generated": "2026-10-30T14:41:18.381Z",
  "pages": {
   "naive": {
    "contact": {
@@ -491,7 +491,7 @@
   "saltline": {
    "about": {
     "url": "http://127.0.0.1:5055/saltline/about/",
-    "fetchTime": "2026-10-30T10:34:39.175Z",
+    "fetchTime": "2026-10-30T14:40:04.241Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 99,
@@ -503,10 +503,10 @@
     "fcp_s": 1.2,
     "cls": 0.001,
     "tbt_ms": 0,
-    "weight_kb": 155,
+    "weight_kb": 158,
     "requests": 7,
     "bytes_by_type_kb": {
-     "Document": 18,
+     "Document": 21,
      "Script": 17,
      "Image": 50,
      "Font": 66,
@@ -522,9 +522,42 @@
     },
     "third_party_hosts": []
    },
+   "book": {
+    "url": "http://127.0.0.1:5055/saltline/book/",
+    "fetchTime": "2026-10-30T14:40:35.536Z",
+    "lighthouse": "12.8.2",
+    "scores": {
+     "performance": 100,
+     "accessibility": 100,
+     "best-practices": 100,
+     "seo": 100
+    },
+    "lcp_s": 1.7,
+    "fcp_s": 1.2,
+    "cls": 0.027,
+    "tbt_ms": 0,
+    "weight_kb": 135,
+    "requests": 10,
+    "bytes_by_type_kb": {
+     "Document": 22,
+     "Script": 22,
+     "Image": 21,
+     "Font": 66,
+     "Other": 0
+    },
+    "render_blocking": 0,
+    "savings_kb": {
+     "uses-responsive-images": 13,
+     "modern-image-formats": 0,
+     "image-delivery-insight": 16,
+     "unused-css-rules": 0,
+     "unused-javascript": 0
+    },
+    "third_party_hosts": []
+   },
    "contact": {
     "url": "http://127.0.0.1:5055/saltline/contact/",
-    "fetchTime": "2026-10-30T12:51:54.477Z",
+    "fetchTime": "2026-10-30T14:40:25.084Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 100,
@@ -536,10 +569,10 @@
     "fcp_s": 1.2,
     "cls": 0,
     "tbt_ms": 0,
-    "weight_kb": 103,
-    "requests": 8,
+    "weight_kb": 105,
+    "requests": 7,
     "bytes_by_type_kb": {
-     "Document": 16,
+     "Document": 18,
      "Script": 18,
      "Font": 66,
      "Image": 0,
@@ -557,7 +590,7 @@
    },
    "faq": {
     "url": "http://127.0.0.1:5055/saltline/faq/",
-    "fetchTime": "2026-10-30T10:34:49.671Z",
+    "fetchTime": "2026-10-30T14:40:14.697Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 100,
@@ -565,14 +598,14 @@
      "best-practices": 100,
      "seo": 100
     },
-    "lcp_s": 1.5,
+    "lcp_s": 1.7,
     "fcp_s": 1.2,
     "cls": 0,
     "tbt_ms": 0,
-    "weight_kb": 102,
+    "weight_kb": 105,
     "requests": 5,
     "bytes_by_type_kb": {
-     "Document": 16,
+     "Document": 18,
      "Script": 17,
      "Font": 66,
      "Other": 0
@@ -589,7 +622,7 @@
    },
    "home": {
     "url": "http://127.0.0.1:5055/saltline/",
-    "fetchTime": "2026-10-30T12:51:43.903Z",
+    "fetchTime": "2026-10-30T14:39:43.180Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 98,
@@ -598,20 +631,19 @@
      "seo": 100
     },
     "lcp_s": 2.3,
-    "fcp_s": 1.4,
+    "fcp_s": 1.2,
     "cls": 0,
     "tbt_ms": 0,
-    "weight_kb": 295,
-    "requests": 11,
+    "weight_kb": 297,
+    "requests": 10,
     "bytes_by_type_kb": {
-     "Document": 15,
-     "Stylesheet": 5,
+     "Document": 22,
      "Script": 17,
      "Image": 184,
      "Font": 66,
      "Other": 0
     },
-    "render_blocking": 1,
+    "render_blocking": 0,
     "savings_kb": {
      "uses-responsive-images": 13,
      "modern-image-formats": 0,
@@ -623,7 +655,7 @@
    },
    "tours": {
     "url": "http://127.0.0.1:5055/saltline/tours/",
-    "fetchTime": "2026-10-30T10:34:28.605Z",
+    "fetchTime": "2026-10-30T14:39:53.758Z",
     "lighthouse": "12.8.2",
     "scores": {
      "performance": 99,
@@ -635,10 +667,10 @@
     "fcp_s": 1.2,
     "cls": 0,
     "tbt_ms": 0,
-    "weight_kb": 192,
+    "weight_kb": 195,
     "requests": 8,
     "bytes_by_type_kb": {
-     "Document": 18,
+     "Document": 21,
      "Script": 17,
      "Font": 66,
      "Image": 85,

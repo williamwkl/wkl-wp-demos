@@ -307,8 +307,8 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
     <div class="tier">
       <span class="tag blue">Tier 1</span>
       <h3>Speed fix</h3>
-      <div class="price">$350</div>
-      <p class="small mute">Fixes 1, 2 and 5. About 3 working days.</p>
+      <div class="price">{{tier1_price}}</div>
+      <p class="small mute">Fixes 1, 2 and 5. About {{tier1_days}} working days.</p>
       <ul>
         <li>Photos re-encoded, responsive, lazy</li>
         <li>One self-hosted font, inline SVG icons</li>
@@ -320,8 +320,8 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
     <div class="tier hi">
       <span class="tag blue">Tier 2, recommended</span>
       <h3>Speed and security</h3>
-      <div class="price">$650</div>
-      <p class="small mute">Tier 1 plus fixes 3 and 4 and the four "not checked" items. About 5 working days.</p>
+      <div class="price">{{tier2_price}}</div>
+      <p class="small mute">Tier 1 plus fixes 3 and 4 and the four "not checked" items. About {{tier2_days}} working days.</p>
       <ul>
         <li>Everything in Tier 1</li>
         <li>New admin account, "admin" removed, two-factor for 3 users</li>
@@ -334,8 +334,8 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
     <div class="tier">
       <span class="tag blue">Tier 3</span>
       <h3>Full tune-up</h3>
-      <div class="price">$950</div>
-      <p class="small mute">Tier 2 plus the maintenance gaps and a manual accessibility pass. About 8 working days.</p>
+      <div class="price">{{tier3_price}}</div>
+      <p class="small mute">Tier 2 plus the maintenance gaps and a manual accessibility pass. About {{tier3_days}} working days.</p>
       <ul>
         <li>Everything in Tier 2</li>
         <li>Staging copy and a written update routine</li>
@@ -374,7 +374,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
     <div class="card">
       <span class="tag blue">Care plan</span>
       <h3 style="margin:6px 0 2px">WordPress Care</h3>
-      <div class="price" style="font-family:var(--f-head);font-size:22pt;font-weight:600">$75 <span class="small mute" style="font-family:var(--f-body);font-weight:400">per month, cancel any time</span></div>
+      <div class="price" style="font-family:var(--f-head);font-size:22pt;font-weight:600">{{care_price}} <span class="small mute" style="font-family:var(--f-body);font-weight:400">per month, cancel any time</span></div>
       <ul class="plain small" style="margin-top:8px">
         <li>Core, theme and plugin updates applied on staging first, then live, every month</li>
         <li>Daily off-site backups kept 30 days; quarterly restore test</li>

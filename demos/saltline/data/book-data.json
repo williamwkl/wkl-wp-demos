@@ -1,0 +1,872 @@
+{
+ "month": "2027-07",
+ "sampleToday": "2027-07-05",
+ "capacity": 8,
+ "location": "Boathouse, Marrow Cove public launch",
+ "tours": [
+  {
+   "key": "sunrise",
+   "slug": "sunrise-harbor-paddle",
+   "name": "Sunrise Harbor Paddle",
+   "dur": "2 hours",
+   "level": "Easy",
+   "season": "Daily, May to October",
+   "price": 65,
+   "img": "sunrise"
+  },
+  {
+   "key": "cave",
+   "slug": "sea-cave-explorer",
+   "name": "Sea Cave Explorer",
+   "dur": "3.5 hours",
+   "level": "Moderate",
+   "season": "June to September, tide dependent",
+   "price": 110,
+   "img": "cave"
+  },
+  {
+   "key": "night",
+   "slug": "night-glow-paddle",
+   "name": "Night Glow Paddle",
+   "dur": "2 hours",
+   "level": "Easy",
+   "season": "July to September, moon dependent",
+   "price": 95,
+   "img": "night"
+  }
+ ],
+ "departures": [
+  {
+   "tour": "sunrise",
+   "date": "2027-07-05",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 2
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-05",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 7
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-05",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 1
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-05",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-06",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-06",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-06",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 2
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-06",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 1
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-06",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 4
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-07",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-07",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 2
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-07",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 5
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-07",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-08",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-08",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-08",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 7
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-08",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 7
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-08",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 1
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-09",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-09",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-09",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 3
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-09",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-10",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-10",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-10",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 8
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-10",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-11",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-11",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 4
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-11",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-12",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 0
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-12",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 7
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-12",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-13",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 0
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-13",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-13",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 5
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-13",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-14",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-14",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-14",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 1
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-15",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-15",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 4
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-15",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 6
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-15",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-16",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-16",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 7
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-16",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-17",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-17",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-17",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 8
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-17",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-18",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-18",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-18",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-19",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-19",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 2
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-19",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 3
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-19",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 2
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-20",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-20",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-20",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 5
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-20",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 5
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-20",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-21",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-21",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-21",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 0
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-21",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 0
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-22",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 1
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-22",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-22",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 6
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-22",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 1
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-22",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 4
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-23",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-23",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 0
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-23",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 5
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-23",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-24",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-24",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 7
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-24",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 4
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-24",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 5
+  },
+  {
+   "tour": "night",
+   "date": "2027-07-24",
+   "time": "21:15",
+   "end": "23:15",
+   "note": "After full dark",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-25",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 1
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-25",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-25",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-26",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 4
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-26",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 2
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-26",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-27",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 0
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-27",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-27",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 0
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-27",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 5
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-28",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-28",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 7
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-28",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 0
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-29",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-29",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 6
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-29",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 6
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-29",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 3
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-30",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-30",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-30",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-31",
+   "time": "06:30",
+   "end": "08:30",
+   "note": "First light, glassiest water",
+   "booked": 1
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-31",
+   "time": "07:30",
+   "end": "09:30",
+   "note": "Seals usually out by now",
+   "booked": 8
+  },
+  {
+   "tour": "sunrise",
+   "date": "2027-07-31",
+   "time": "09:00",
+   "end": "11:00",
+   "note": "Family departure",
+   "booked": 4
+  },
+  {
+   "tour": "cave",
+   "date": "2027-07-31",
+   "time": "10:00",
+   "end": "13:30",
+   "note": "Low tide, caves open",
+   "booked": 7
+  }
+ ]
+}

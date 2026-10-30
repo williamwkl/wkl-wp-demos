@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a tour: Saltline Kayak Tours</title>
+<meta name="description" content="Mockup: online booking flow for Saltline Kayak Tours. Steps switched by URL hash (#tour #date #time #party #details #confirm #done).">
+<!-- Mockup only: Google Fonts for preview. The WP build self-hosts Fraunces (one variable woff2), same as the live Saltline theme. -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-ink:#15262C;--c-sea:#0E4D5C;--c-sea-deep:#083440;--c-coral:#B8461F;--c-sand:#F4EEE3;--c-sand-2:#E9E0D0;--c-mist:#D7E4E6;--c-mute:#4E6368;--c-white:#FBF9F4;
+  --f-display:"Fraunces","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --fs-h2:clamp(2rem,1.2rem + 2.6vw,3rem);--fs-h3:clamp(1.375rem,1.2rem + .5vw,1.625rem);--fs-lead:clamp(1.125rem,1rem + .4vw,1.25rem);--fs-body:clamp(1rem,.95rem + .15vw,1.0625rem);--fs-small:.875rem;--fs-eyebrow:.8125rem;
+  --sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--max:1180px;--gutter:clamp(20px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);font-size:var(--fs-body);line-height:1.6;color:var(--c-ink);background:var(--c-sand)}
+img,svg{display:block;max-width:100%}
+a{color:var(--c-sea);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--c-ink)}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--c-coral);outline-offset:3px;border-radius:var(--r-sm)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1{font-size:var(--fs-h2)}h2{font-size:var(--fs-h3);line-height:1.2}h3{font-size:1.125rem;line-height:1.3}
+p{max-width:62ch}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-size:var(--fs-eyebrow);letter-spacing:.08em;text-transform:uppercase;color:var(--c-sea);font-weight:600}
+.lead{font-size:var(--fs-lead);line-height:1.5;color:var(--c-mute)}
+.mute{color:var(--c-mute)}.small{font-size:var(--fs-small)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:var(--r-md);font-weight:600;font-size:1rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:var(--f-body);transition:background-color .16s ease-out,transform .16s ease-out}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--c-coral);color:var(--c-white)}
+.btn-primary:hover{background:#A63E1B;color:var(--c-white)}
+.btn-secondary{border-color:rgba(21,38,44,.6);color:var(--c-ink);background:transparent}
+.btn-secondary:hover{background:rgba(21,38,44,.06);color:var(--c-ink)}
+.btn[aria-disabled=true]{opacity:.5;pointer-events:none}
+/* header (matches the live Saltline header) */
+.header{background:rgba(244,238,227,.92);border-bottom:1px solid rgba(21,38,44,.12)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-5);min-height:72px}
+.brand{display:inline-flex;align-items:center;min-height:44px;gap:10px;font-family:var(--f-display);font-weight:600;font-size:1.375rem;color:var(--c-ink);text-decoration:none}
+.nav-links{display:none;gap:4px;list-style:none;padding:0}
+.nav-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--c-ink);text-decoration:none;font-weight:500}
+.nav-links a[aria-current=page]{text-decoration:underline;text-decoration-color:var(--c-coral);text-decoration-thickness:2px;text-underline-offset:6px}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r-md);border:0;background:transparent;color:var(--c-ink);cursor:pointer}
+@media (min-width:1024px){.nav-links{display:flex}.iconbtn.burger{display:none}}
+/* page */
+.page-head{padding-block:var(--sp-6) var(--sp-5)}
+.layout{display:grid;gap:var(--sp-6);padding-bottom:var(--sp-8);align-items:start}
+@media (min-width:1024px){.layout{grid-template-columns:7fr 5fr;gap:var(--sp-7)}.aside{position:sticky;top:24px}}
+/* stepper */
+.stepper{display:flex;gap:4px;list-style:none;padding:0;margin:0 0 var(--sp-5);counter-reset:s}
+.stepper li{flex:1;min-width:0;position:relative;padding-top:14px;font-size:var(--fs-small);color:var(--c-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stepper li::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;border-radius:2px;background:var(--c-sand-2)}
+.stepper li.done::before,.stepper li.on::before{background:var(--c-sea)}
+.stepper li.on{color:var(--c-ink);font-weight:600}
+.stepper li.done{color:var(--c-sea)}
+@media (max-width:599px){.stepper li{font-size:0}.stepper li.on{font-size:var(--fs-small)}}
+/* panel */
+.panel{background:var(--c-white);border-radius:var(--r-lg);padding:clamp(20px,3vw,32px)}
+.step{display:none}.step:target{display:block}
+#tour:not(:target){display:block}
+body:has(.step:target) #tour:not(:target){display:none}
+.step-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:1px solid rgba(21,38,44,.1)}
+/* tour pick */
+.tours{display:grid;gap:12px;margin-top:var(--sp-4)}
+.tour{display:grid;grid-template-columns:88px 1fr;gap:14px;align-items:center;padding:12px;border:1.5px solid rgba(21,38,44,.15);border-radius:var(--r-md);background:var(--c-sand);text-decoration:none;color:var(--c-ink);min-height:72px}
+.tour:hover{border-color:var(--c-sea)}
+.tour.on{border-color:var(--c-sea);box-shadow:inset 0 0 0 1px var(--c-sea)}
+.tour .ph{width:88px;aspect-ratio:4/3;border-radius:var(--r-sm);background:linear-gradient(165deg,#2b6f7d 0%,#0e4d5c 45%,#0a3b48 100%)}
+.tour .ph.night{background:radial-gradient(60% 50% at 50% 70%,rgba(80,200,210,.5),transparent 60%),linear-gradient(180deg,#0a2a33,#06202a)}
+.tour .ph.cave{background:radial-gradient(70% 60% at 60% 40%,rgba(215,228,230,.5),transparent 55%),linear-gradient(200deg,#224e57,#0b2f38 70%)}
+.tour b{font-family:var(--f-display);font-weight:500;font-size:1.25rem;display:block;line-height:1.2}
+.tour .meta{font-size:var(--fs-small);color:var(--c-mute);display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:4px}
+.tour .meta strong{color:var(--c-ink)}
+/* calendar */
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:var(--sp-4) 0 8px}
+.cal-head h3{font-family:var(--f-display);font-size:1.375rem;font-weight:500}
+.cal{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
+@media (max-width:599px){.cal{border-spacing:2px;margin-inline:-8px;width:calc(100% + 16px)}.panel{padding:20px 16px}}
+.cal th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--c-mute);font-weight:600;padding:6px 0}
+.cal td{padding:0;text-align:center}
+.day{width:100%;aspect-ratio:1;min-height:44px;border:1.5px solid transparent;border-radius:var(--r-sm);background:var(--c-sand);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font:inherit;font-weight:600;cursor:pointer;color:var(--c-ink);text-decoration:none;position:relative}
+.day small{font-size:.6875rem;font-weight:500;color:var(--c-mute);line-height:1}
+.day .dot{width:6px;height:6px;border-radius:50%;background:var(--c-sea)}
+.day.few small{color:#8F5607}
+.day.few .dot{background:#B4700F}
+.day.full{background:transparent;color:var(--c-mute);cursor:not-allowed;text-decoration:line-through}
+.day.full small{text-decoration:none}
+.day.past{background:transparent;color:rgba(78,99,104,.55);cursor:default}
+.day.off{background:transparent;color:rgba(78,99,104,.55);cursor:default}
+.day.on{border-color:var(--c-coral);background:var(--c-white);box-shadow:inset 0 0 0 1px var(--c-coral)}
+.day:hover:not(.full):not(.past):not(.off){border-color:var(--c-sea)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:var(--fs-small);color:var(--c-mute);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0}
+/* slots */
+.slots{display:grid;gap:10px;margin-top:var(--sp-4)}
+@media (min-width:600px){.slots{grid-template-columns:1fr 1fr}}
+.slot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;min-height:64px;border:1.5px solid rgba(21,38,44,.15);border-radius:var(--r-md);background:var(--c-sand);text-decoration:none;color:var(--c-ink)}
+.slot:hover{border-color:var(--c-sea)}
+.slot.on{border-color:var(--c-sea);box-shadow:inset 0 0 0 1px var(--c-sea)}
+.slot b{font-size:1.125rem;display:block}
+.slot .cap{font-size:var(--fs-small);color:var(--c-mute)}
+.slot.full{opacity:.6;pointer-events:none}
+.pill{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--c-mist);color:var(--c-sea)}
+.pill.warn{background:#F6E7CC;color:#8F5607}
+/* party */
+.party{display:grid;gap:16px;margin-top:var(--sp-4)}
+.counter{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border:1.5px solid rgba(21,38,44,.15);border-radius:var(--r-md);background:var(--c-sand)}
+.counter b{display:block}
+.counter .s{font-size:var(--fs-small);color:var(--c-mute)}
+.qty{display:inline-flex;border:1.5px solid var(--c-ink);border-radius:var(--r-md);overflow:hidden;background:var(--c-white)}
+.qty button{width:44px;min-width:44px;flex:none;min-height:44px;border:0;background:transparent;font-size:1.25rem;cursor:pointer;color:var(--c-ink)}
+.qty button:disabled{color:rgba(21,38,44,.3);cursor:not-allowed}
+.qty output{min-width:44px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;border-inline:1.5px solid var(--c-ink)}
+.capbar{height:8px;background:var(--c-sand-2);border-radius:4px;overflow:hidden}
+.capbar i{display:block;height:100%;background:var(--c-sea);width:0;transition:width .2s}
+.note{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:var(--r-sm);background:var(--c-mist);color:var(--c-ink);font-size:var(--fs-small)}
+.note svg{flex:none;margin-top:2px}
+.note[hidden]{display:none}
+.sum li.todo.ok{color:inherit}.sum li.todo.ok .circ{display:none}.sum li.todo .tick{display:none}.sum li.todo.ok .tick{display:block}
+/* details form */
+label{display:block;font-weight:600;font-size:var(--fs-small);margin-bottom:6px}
+input[type=text],input[type=email],input[type=tel],select,textarea{font:inherit;font-size:1rem;min-height:48px;padding:12px 14px;border:1.5px solid rgba(21,38,44,.45);border-radius:var(--r-sm);background:var(--c-white);color:var(--c-ink);width:100%;-webkit-appearance:none;appearance:none}
+textarea{min-height:96px;resize:vertical}
+select{padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2315262C' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.field{margin-bottom:16px}
+.fields-2{display:grid;gap:0 16px}
+@media (min-width:600px){.fields-2{grid-template-columns:1fr 1fr}}
+.check{display:flex;gap:12px;align-items:flex-start;min-height:44px;font-weight:400;font-size:var(--fs-body)}
+.check input{width:22px;height:22px;margin:2px 0 0;flex:none;accent-color:var(--c-sea)}
+/* summary aside */
+.aside{background:var(--c-sand-2);border-radius:var(--r-lg);padding:clamp(20px,3vw,28px)}
+.aside h2{font-size:1.375rem}
+.sum{list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}
+.sum li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;font-size:var(--fs-small)}
+.sum li b{display:block;font-size:1rem;font-weight:600}
+.sum svg{margin-top:3px;color:var(--c-sea)}
+.sum .todo{color:var(--c-mute)}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(21,38,44,.15);padding-top:12px;margin-top:4px}
+.total b{font-family:var(--f-display);font-size:1.75rem;font-weight:500}
+.policy{font-size:var(--fs-small);color:var(--c-mute);margin-top:12px}
+/* confirm + done */
+.review{display:grid;gap:10px;margin-top:var(--sp-4)}
+.review div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(21,38,44,.1);font-size:var(--fs-small)}
+.review div span:first-child{color:var(--c-mute)}
+.review div span:last-child{text-align:right;font-weight:600}
+.pay{display:grid;gap:10px;margin-top:var(--sp-4)}
+.pay label{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid rgba(21,38,44,.15);border-radius:var(--r-md);background:var(--c-sand);font-weight:400;cursor:pointer}
+.pay input{width:22px;height:22px;margin-top:2px;accent-color:var(--c-sea);flex:none}
+.pay b{display:block;font-weight:600}
+.stamp{width:72px;height:72px;border-radius:50%;background:var(--c-sea);color:var(--c-white);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.email{margin-top:var(--sp-5);border:1px solid rgba(21,38,44,.15);border-radius:var(--r-md);overflow:hidden;background:#fff}
+.email .meta{padding:12px 16px;background:var(--c-sand);font-size:var(--fs-small);color:var(--c-mute);display:grid;gap:2px;border-bottom:1px solid rgba(21,38,44,.1)}
+.email .meta b{color:var(--c-ink)}
+.email .body{padding:20px 16px;font-size:.9375rem}
+.email .body h3{font-family:var(--f-display);font-weight:500;font-size:1.5rem;margin:8px 0 10px}
+.email .card{background:var(--c-sand);border-radius:var(--r-sm);padding:12px 14px;margin:14px 0;display:grid;gap:4px;font-size:.9375rem}
+.email .card div{display:flex;justify-content:space-between;gap:12px}
+.email .foot{padding:12px 16px;font-size:.8125rem;color:var(--c-mute);border-top:1px solid rgba(21,38,44,.1)}
+.email .brandrow{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:600;color:var(--c-ink)}
+.email .cta{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:var(--r-md);background:var(--c-coral);color:var(--c-white);font-weight:600;text-decoration:none;margin-top:6px}
+/* footer */
+.footer{background:var(--c-sea-deep);color:var(--c-white);padding-block:var(--sp-6);font-size:var(--fs-small)}
+.footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between}
+.footer a{color:var(--c-mist);display:inline-flex;align-items:center;min-height:44px}
+.switcher{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:30;background:var(--c-ink);color:var(--c-white);border-radius:999px;padding:6px;display:flex;gap:2px;max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
+.switcher a{color:var(--c-white);text-decoration:none;font-size:.8125rem;padding:0 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:999px;white-space:nowrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="sr" href="#main">Skip to content</a>
+<header class="header">
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="Saltline Kayak Tours, home">
+      <svg width="30" height="22" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 6c4-4 8-4 12 0s8 4 12 0M1 12c4-4 8-4 12 0s8 4 12 0M1 18c4-4 8-4 12 0s8 4 12 0" fill="none" stroke="#0E4D5C" stroke-width="2.2" stroke-linecap="round"/></svg>
+      Saltline
+    </a>
+    <ul class="nav-links"><li><a href="#">Tours</a></li><li><a href="#">About</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-primary" href="#tour" aria-current="page" style="min-height:44px;padding:10px 18px">Book a tour</a>
+      <button class="iconbtn burger" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Online booking</p>
+    <h1>Book your morning on the water.</h1>
+    <p class="lead" style="margin-top:8px">Pick a tour and a date, see real seats left on each departure, and hold your spots in about two minutes. Pay at the boathouse or by card when you arrive.</p>
+  </div>
+
+  <div class="layout">
+    <div>
+      <ol class="stepper" id="stepper" aria-label="Booking steps">
+        <li data-step="tour">1. Tour</li><li data-step="date">2. Date</li><li data-step="time">3. Time</li><li data-step="party">4. Party</li><li data-step="details">5. Details</li><li data-step="confirm">6. Confirm</li>
+      </ol>
+
+      <div class="panel">
+
+        <!-- STEP 1: TOUR -->
+        <section class="step" id="tour" aria-labelledby="h-tour">
+          <p class="eyebrow">Step 1 of 6</p>
+          <h2 id="h-tour">Which tour?</h2>
+          <div class="tours" role="list">
+            <a class="tour" href="#date" data-tour="sunrise" role="listitem"><div class="ph" aria-hidden="true"></div><div><b>Sunrise Harbor Paddle</b><div class="meta"><span>2 hours</span><span>Easy</span><span>Daily, May to October</span><span><strong>$65</strong> per person</span></div></div></a>
+            <a class="tour" href="#date" data-tour="cave" role="listitem"><div class="ph cave" aria-hidden="true"></div><div><b>Sea Cave Explorer</b><div class="meta"><span>3.5 hours</span><span>Moderate</span><span>June to September, tide dependent</span><span><strong>$110</strong> per person</span></div></div></a>
+            <a class="tour" href="#date" data-tour="night" role="listitem"><div class="ph night" aria-hidden="true"></div><div><b>Night Glow Paddle</b><div class="meta"><span>2 hours</span><span>Easy</span><span>July to September, moon dependent</span><span><strong>$95</strong> per person</span></div></div></a>
+          </div>
+          <p class="small mute" style="margin-top:16px">Groups of 9 or more, or a private tour: <a href="#">write to us</a> and we will set up a departure just for you.</p>
+        </section>
+
+        <!-- STEP 2: DATE -->
+        <section class="step" id="date" aria-labelledby="h-date">
+          <p class="eyebrow">Step 2 of 6</p>
+          <h2 id="h-date">Pick a date for the <span id="d-tour">Sunrise Harbor Paddle</span></h2>
+          <div class="cal-head">
+            <button class="iconbtn" type="button" aria-label="Previous month, June 2027"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
+            <h3 aria-live="polite">July 2027</h3>
+            <button class="iconbtn" type="button" aria-label="Next month, August 2027"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+          <table class="cal" role="grid" aria-label="July 2027, sample availability">
+            <thead><tr><th scope="col"><abbr title="Monday">Mon</abbr></th><th scope="col"><abbr title="Tuesday">Tue</abbr></th><th scope="col"><abbr title="Wednesday">Wed</abbr></th><th scope="col"><abbr title="Thursday">Thu</abbr></th><th scope="col"><abbr title="Friday">Fri</abbr></th><th scope="col"><abbr title="Saturday">Sat</abbr></th><th scope="col"><abbr title="Sunday">Sun</abbr></th></tr></thead>
+            <tbody id="cal-body"></tbody>
+          </table>
+          <div class="legend"><span><i style="background:var(--c-sea)"></i>Seats available</span><span><i style="background:#B4700F"></i>3 or fewer left</span><span><i style="background:transparent;border:1.5px solid var(--c-mute)"></i>Sold out or no departure</span></div>
+          <div class="step-foot"><a class="btn btn-secondary" href="#tour">Back</a><a class="btn btn-primary" href="#time" id="date-next" aria-disabled="true">Pick a date to continue</a></div>
+        </section>
+
+        <!-- STEP 3: TIME -->
+        <section class="step" id="time" aria-labelledby="h-time">
+          <p class="eyebrow">Step 3 of 6</p>
+          <h2 id="h-time">Departures on <span id="t-date">Saturday, July 17</span></h2>
+          <p class="small mute" style="margin-top:6px">Meet at the boathouse 15 minutes before. Each departure takes up to 8 paddlers.</p>
+          <div class="slots" id="slots">
+            <a class="slot on" href="#party" data-time="6:30 am" data-left="5"><div><b>6:30 am</b><span class="cap">First light, glassiest water</span></div><span class="pill">5 seats left</span></a>
+            <a class="slot" href="#party" data-time="7:30 am" data-left="2"><div><b>7:30 am</b><span class="cap">Seals usually out by now</span></div><span class="pill warn">2 seats left</span></a>
+            <a class="slot full" href="#party" data-time="9:00 am" data-left="0" aria-disabled="true"><div><b>9:00 am</b><span class="cap">Family departure</span></div><span class="pill" style="background:var(--c-sand-2);color:var(--c-mute)">Sold out</span></a>
+          </div>
+          <div class="note" style="margin-top:16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>Times shift with the tide through the season. The time you book is the time on your confirmation; we email if a forecast forces a change.</span></div>
+          <div class="step-foot"><a class="btn btn-secondary" href="#date">Back</a><a class="btn btn-primary" href="#party">Continue with 6:30 am</a></div>
+        </section>
+
+        <!-- STEP 4: PARTY -->
+        <section class="step" id="party" aria-labelledby="h-party">
+          <p class="eyebrow">Step 4 of 6</p>
+          <h2 id="h-party">How many paddlers?</h2>
+          <div class="party">
+            <div class="counter">
+              <div><b>Adults</b><span class="s">13 and up, $65 each</span></div>
+              <div class="qty" role="group" aria-label="Adults"><button type="button" id="ad-minus" aria-label="Fewer adults">&minus;</button><output id="ad" aria-live="polite">2</output><button type="button" id="ad-plus" aria-label="More adults">+</button></div>
+            </div>
+            <div class="counter">
+              <div><b>Kids</b><span class="s">8 to 12, $65 each, paired with an adult in a double kayak</span></div>
+              <div class="qty" role="group" aria-label="Kids"><button type="button" id="kd-minus" aria-label="Fewer kids">&minus;</button><output id="kd" aria-live="polite">1</output><button type="button" id="kd-plus" aria-label="More kids">+</button></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--fs-small);margin-bottom:6px"><span id="cap-text">3 of 5 remaining seats on this departure</span><span class="mute">8 per departure</span></div>
+              <div class="capbar" aria-hidden="true"><i id="cap-bar"></i></div>
+            </div>
+            <div class="note" id="cap-note" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>That is every remaining seat on this departure. For a bigger group, <a href="#">write to us</a> and we will add a boat and a guide.</span></div>
+          </div>
+          <div class="step-foot"><a class="btn btn-secondary" href="#time">Back</a><a class="btn btn-primary" href="#details" id="party-next">Continue, 3 paddlers</a></div>
+        </section>
+
+        <!-- STEP 5: DETAILS -->
+        <section class="step" id="details" aria-labelledby="h-details">
+          <p class="eyebrow">Step 5 of 6</p>
+          <h2 id="h-details">Who is coming?</h2>
+          <form style="margin-top:16px" onsubmit="return false" novalidate>
+            <div class="fields-2">
+              <div class="field"><label for="f-name">Full name</label><input type="text" id="f-name" autocomplete="name" required value="Priya Raman"></div>
+              <div class="field"><label for="f-phone">Mobile phone</label><input type="tel" id="f-phone" autocomplete="tel" required value="(555) 010-0142"></div>
+            </div>
+            <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" autocomplete="email" required value="priya@example.com"><p class="small mute" style="margin-top:6px">Your confirmation and any weather updates go here.</p></div>
+            <div class="field"><label for="f-exp">Kayaking experience</label><select id="f-exp"><option>First time for some of us</option><option>We have all paddled before</option><option>Experienced, we paddle regularly</option></select></div>
+            <div class="field"><label for="f-notes">Anything we should know? <span class="mute" style="font-weight:400">(optional)</span></label><textarea id="f-notes" placeholder="Allergies, mobility, a birthday on board, wetsuit sizes if you know them"></textarea></div>
+            <div class="field"><label class="check"><input type="checkbox" required checked><span>Everyone in my group can swim and is 8 or older. I have read the <a href="#">safety and cancellation policy</a>.</span></label></div>
+            <div class="field"><label class="check"><input type="checkbox"><span>Email me when Night Glow dates open for the season (optional).</span></label></div>
+          </form>
+          <div class="step-foot"><a class="btn btn-secondary" href="#party">Back</a><a class="btn btn-primary" href="#confirm">Review booking</a></div>
+        </section>
+
+        <!-- STEP 6: CONFIRM -->
+        <section class="step" id="confirm" aria-labelledby="h-confirm">
+          <p class="eyebrow">Step 6 of 6</p>
+          <h2 id="h-confirm">Check the details and hold your seats.</h2>
+          <div class="review">
+            <div><span>Tour</span><span>Sunrise Harbor Paddle</span></div>
+            <div><span>Departure</span><span>Saturday, July 17, 2027, 6:30 am</span></div>
+            <div><span>Meet</span><span>Boathouse, Marrow Cove public launch, 6:15 am</span></div>
+            <div><span>Paddlers</span><span>2 adults, 1 kid (8 to 12)</span></div>
+            <div><span>Lead paddler</span><span>Priya Raman, priya@example.com</span></div>
+            <div><span>Total due</span><span>$195.00</span></div>
+          </div>
+          <fieldset class="pay" style="border:0;padding:0;margin:0">
+            <legend class="small" style="font-weight:600;margin-top:16px">How would you like to pay?</legend>
+            <label><input type="radio" name="pay" checked><span><b>Pay at the boathouse</b><span class="small mute">Card or cash when you check in. Your seats are held now.</span></span></label>
+            <label><input type="radio" name="pay"><span><b>Pay by card now</b><span class="small mute">Available in the live version if a payment gateway is connected; not part of this demo.</span></span></label>
+          </fieldset>
+          <p class="small mute" style="margin-top:16px">Free changes up to 24 hours before. If we cancel for weather you get a full refund or a new date.</p>
+          <div class="step-foot"><a class="btn btn-secondary" href="#details">Back</a><a class="btn btn-primary" href="#done">Hold my seats</a></div>
+        </section>
+
+        <!-- DONE -->
+        <section class="step" id="done" aria-labelledby="h-done">
+          <div class="stamp" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+          <p class="eyebrow">Booked</p>
+          <h2 id="h-done">See you at first light, Priya.</h2>
+          <p style="margin-top:8px">Booking <b>SL-2027-0318</b>. Three seats are held on the 6:30 am Sunrise Harbor Paddle, Saturday, July 17. We have emailed the details below to priya@example.com (demo: no email is actually sent).</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px"><a class="btn btn-secondary" href="#">Add to calendar</a><a class="btn btn-secondary" href="#tour">Book another tour</a></div>
+
+          <div class="email" aria-label="Confirmation email preview">
+            <div class="meta"><span><b>From:</b> Saltline Kayak Tours &lt;hello@saltlinekayak.example.com&gt;</span><span><b>To:</b> priya@example.com</span><span><b>Subject:</b> You are booked: Sunrise Harbor Paddle, Sat July 17, 6:30 am</span></div>
+            <div class="body">
+              <div class="brandrow"><svg width="26" height="18" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 6c4-4 8-4 12 0s8 4 12 0M1 12c4-4 8-4 12 0s8 4 12 0M1 18c4-4 8-4 12 0s8 4 12 0" fill="none" stroke="#0E4D5C" stroke-width="2.2" stroke-linecap="round"/></svg>Saltline</div>
+              <h3>Three seats held for Saturday morning.</h3>
+              <p>Hi Priya, thanks for booking with us. Here is everything you need; keep this email, there is nothing to print.</p>
+              <div class="card">
+                <div><span>Tour</span><b>Sunrise Harbor Paddle</b></div>
+                <div><span>When</span><b>Sat, July 17, 2027, 6:30 am</b></div>
+                <div><span>Arrive by</span><b>6:15 am</b></div>
+                <div><span>Where</span><b>Boathouse, Marrow Cove public launch</b></div>
+                <div><span>Paddlers</span><b>2 adults, 1 kid</b></div>
+                <div><span>Due at check-in</span><b>$195.00</b></div>
+                <div><span>Booking</span><b>SL-2027-0318</b></div>
+              </div>
+              <p><b>What to bring:</b> swimwear or quick-dry layers to wear under the wetsuit, a towel, sunglasses with a strap, water. We supply the kayak, paddle, spray skirt, wetsuit, dry bag and the guide.</p>
+              <p style="margin-top:10px"><b>Weather:</b> if the forecast turns we email and text you by 8 pm the night before with a new time or a full refund.</p>
+              <a class="cta" href="#">Change or cancel this booking</a>
+            </div>
+            <div class="foot">Saltline Kayak Tours, the boathouse at Marrow Cove public launch. (555) 010-0100. Free changes up to 24 hours before departure.</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <aside class="aside" aria-label="Your booking so far">
+      <h2>Your booking</h2>
+      <ul class="sum">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span><b>Sunrise Harbor Paddle</b>2 hours, easy, $65 per person</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span><b>Saturday, July 17, 2027</b>6:30 am departure, meet 6:15 am</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span><b id="s-party">3 paddlers</b><span id="s-party-sub">2 adults, 1 kid</span></span></li>
+        <li class="todo" id="s-details"><svg class="circ" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg><svg class="tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span><b>Details</b><span id="s-details-sub">Name, phone, email</span></span></li>
+      </ul>
+      <div class="total"><span>Total, pay at check-in</span><b id="s-total">$195</b></div>
+      <p class="policy">No deposit. Free changes up to 24 hours before. Full refund if we cancel for weather. Kids 8 and up, everyone must be able to swim.</p>
+      <p class="policy">Questions? <a href="#">hello@saltlinekayak.example.com</a> or (555) 010-0100.</p>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer"><div class="wrap"><span>Saltline Kayak Tours. Sample site built for portfolio purposes; availability shown is sample data.</span><a href="#">Cancellation policy</a></div></footer>
+
+<nav class="switcher" aria-label="Mockup steps"><a href="#tour">1 Tour</a><a href="#date">2 Date</a><a href="#time">3 Time</a><a href="#party">4 Party</a><a href="#details">5 Details</a><a href="#confirm">6 Confirm</a><a href="#done">Done</a></nav>
+
+<script>
+// Mockup behaviour. Live WordPress: Events Manager renders the calendar and booking form; the static copy ships this ~3 KB script over fixed sample availability.
+(function(){
+  // calendar: July 2027 starts on Thursday. Sample availability: 0 = no departure / sold out, 1..8 seats left.
+  const avail={1:8,2:6,3:3,4:8,5:8,6:7,7:8,8:5,9:2,10:0,11:4,12:8,13:8,14:6,15:8,16:1,17:5,18:0,19:8,20:8,21:7,22:8,23:3,24:2,25:8,26:8,27:8,28:6,29:8,30:0,31:8};
+  const today=5; // sample "today": Monday July 5, 2027
+  const body=document.getElementById('cal-body');let html='<tr>';let col=0;
+  for(let i=0;i<3;i++){html+='<td></td>';col++;}
+  for(let d=1;d<=31;d++){
+    const left=avail[d];let cls='day',label='',sub='';
+    if(d<today){cls+=' past';label=d+', past';}
+    else if(left===0){cls+=' full';label=d+', sold out';sub='<small>Full</small>';}
+    else{sub='<small>'+left+' left</small>';if(left<=3){cls+=' few';}label=d+', '+left+' seats left';}
+    if(d===17)cls+=' on';
+    const tag=(cls.includes('past')||cls.includes('full'))?'span':'a';
+    html+='<td>'+'<'+tag+' class="'+cls+'" '+(tag==='a'?'href="#time" data-day="'+d+'"':'')+' aria-label="July '+label+'" '+(d===17?'aria-current="date"':'')+'>'+d+(d>=today?'<span class="dot" aria-hidden="true" style="'+(left===0?'display:none':'')+'"></span>':'')+sub+'</'+tag+'>'+'</td>';
+    col++;if(col===7){html+='</tr><tr>';col=0;}
+  }
+  while(col>0&&col<7){html+='<td></td>';col++;}
+  body.innerHTML=html+'</tr>';
+  const next=document.getElementById('date-next');
+  function pickDay(a){document.querySelectorAll('.day.on').forEach(x=>{x.classList.remove('on');x.removeAttribute('aria-current');});a.classList.add('on');a.setAttribute('aria-current','date');next.setAttribute('aria-disabled','false');next.textContent='Continue with July '+a.dataset.day;}
+  body.addEventListener('click',e=>{const a=e.target.closest('a.day');if(a){pickDay(a);}});
+  next.setAttribute('aria-disabled','false');next.textContent='Continue with July 17';
+  // tour name
+  document.querySelectorAll('.tour').forEach(t=>t.addEventListener('click',()=>{document.getElementById('d-tour').textContent=t.querySelector('b').textContent;document.querySelectorAll('.tour').forEach(x=>x.classList.toggle('on',x===t));}));
+  // slots
+  document.querySelectorAll('.slot').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('.slot').forEach(x=>x.classList.toggle('on',x===s));}));
+  // party counter with capacity
+  const LEFT=5,PRICE=65;let ad=2,kd=1;
+  const $=id=>document.getElementById(id);
+  function render(){const n=ad+kd;$('ad').textContent=ad;$('kd').textContent=kd;
+    $('ad-minus').disabled=ad<=1;$('kd-minus').disabled=kd<=0;$('ad-plus').disabled=n>=LEFT;$('kd-plus').disabled=n>=LEFT||kd>=ad;
+    $('cap-text').textContent=n+' of '+LEFT+' remaining seats on this departure';$('cap-bar').style.width=(n/LEFT*100)+'%';$('cap-note').hidden=n<LEFT;
+    $('party-next').textContent='Continue, '+n+' paddler'+(n===1?'':'s');
+    $('s-party').textContent=n+' paddler'+(n===1?'':'s');$('s-party-sub').textContent=ad+' adult'+(ad===1?'':'s')+(kd?', '+kd+' kid'+(kd===1?'':'s'):'');$('s-total').textContent='$'+(n*PRICE);}
+  $('ad-plus').onclick=()=>{ad++;render()};$('ad-minus').onclick=()=>{ad--;if(kd>ad)kd=ad;render()};$('kd-plus').onclick=()=>{kd++;render()};$('kd-minus').onclick=()=>{kd--;render()};
+  render();
+  // stepper state
+  const order=['tour','date','time','party','details','confirm','done'];
+  function stepper(){const cur=location.hash.replace('#','')||'tour';const i=order.indexOf(cur);document.querySelectorAll('#stepper li').forEach(li=>{const j=order.indexOf(li.dataset.step);li.classList.toggle('done',j<i);li.classList.toggle('on',j===i);li.removeAttribute('aria-current');if(j===i)li.setAttribute('aria-current','step');});const d=document.getElementById('s-details');d.classList.toggle('ok',i>=5);document.getElementById('s-details-sub').textContent=i>=5?'Priya Raman, priya@example.com':'Name, phone, email';window.scrollTo(0,0);}
+  window.addEventListener('hashchange',stepper);stepper();
+})();
+</script>
+</body>
+</html>

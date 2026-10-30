@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const D = JSON.parse(readFileSync('health-check/data.json', 'utf8'));
+const OFFER = JSON.parse(readFileSync('health-check/offer.json', 'utf8')); // prices and durations: one place, set by William
 const now = D.pages.naive, after = D.pages.optimized;
 const ORDER = [['home', 'Home', 'Home'], ['personal-injury', 'Personal injury', 'Pers. injury'], ['family-law', 'Family law', 'Family law'], ['our-attorneys', 'Our attorneys', 'Attorneys'], ['results', 'Results', 'Results'], ['contact', 'Contact', 'Contact'], ['legal', 'Legal', 'Legal']];
 const s1 = n => n.toFixed(1);
@@ -47,6 +48,7 @@ ${[row('Lighthouse Performance', p => p.scores.performance), row('Largest Conten
   </table></div>`;
 
 let html = readFileSync('health-check/report.template.html', 'utf8')
+  .replace(/\{\{(tier\d_(?:price|days)|care_price)\}\}/g, (m, k) => OFFER[k])
   .replace('{{CWV_TABLE}}', cwv).replace('{{LCP_CHART}}', chart).replace('{{BEFORE_AFTER}}', beforeAfter);
 
 // ---- Traceability check: every measured figure in the text must exist in data.json ----

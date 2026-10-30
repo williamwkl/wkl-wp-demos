@@ -15,7 +15,7 @@ import path from 'node:path';
 const [origin, demo, ...rest] = process.argv.slice(2);
 const shotOut = rest.includes('--shots') ? rest[rest.indexOf('--shots') + 1] : null;
 const PAGES = {
-  saltline: ['/contact/'],
+  saltline: ['/contact/', '/book/'],
   'harbor-pine': ['/', '/contact/', '/family-law/'],
   makers: ['/', '/makers/', '/for-makers/', '/makers/coldwater-clay/'],
   store: ['/shop/', '/product/morning-fog/', '/bundle/', '/demo-cart/', '/demo-checkout/'],

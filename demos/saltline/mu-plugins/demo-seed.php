@@ -111,7 +111,7 @@ function demo_seed() {
 			sl_h( $t['name'], 3 ) .
 			sl_p( "<span>{$t['dur']}</span><span>{$t['level']}</span><span class=\"price\">\${$t['price']} per person</span>", 'meta' ) .
 			sl_p( $t['short'] ) .
-			sl_p( "<a href=\"/tours/#{$t['slug']}\">Check dates<span class=\"screen-reader-text\"> for {$t['name']}</span></a>" ),
+			sl_p( "<a href=\"/book/?tour={$t['slug']}\">Check dates<span class=\"screen-reader-text\"> for {$t['name']}</span></a>" ),
 			'tour', 'article'
 		);
 	}
@@ -128,7 +128,7 @@ function demo_seed() {
 				sl_p( 'Guided sea kayak tours, Marrow Cove', 'eyebrow' ) .
 				sl_h( 'Paddle the coast at its own pace.', 1 ) .
 				sl_p( 'Small-group tours along the North Shore, led by guides who grew up on this water. No experience needed, every bit of gear included.', 'lead' ) .
-				sl_buttons( [ [ 'Book a tour', '/contact/' ], [ 'See the three tours', '#tours', true ] ], 'hero-actions' ),
+				sl_buttons( [ [ 'Book a tour', '/book/' ], [ 'See the three tours', '#tours', true ] ], 'hero-actions' ),
 				'hero-copy'
 			) . sl_img( $m['hero'], 'hero-photo', true ),
 			'wrap hero-grid'
@@ -173,7 +173,7 @@ function demo_seed() {
 				sl_h( $t['name'] ) .
 				sl_p( $t['long'] ) .
 				sl_html( "<dl class=\"tour-facts\"><dt>Duration</dt><dd>{$t['dur']}</dd><dt>Level</dt><dd>{$t['level']}</dd><dt>Group size</dt><dd>Up to 8 paddlers</dd><dt>Price</dt><dd>\${$t['price']} per person</dd><dt>Included</dt><dd>Kayak, paddle, spray skirt, wetsuit, dry bag, guide</dd><dt>Season</dt><dd>{$t['season']}</dd></dl>" ) .
-				sl_buttons( [ [ 'Book this tour<span class="screen-reader-text">: ' . $t['name'] . '</span>', '/contact/?tour=' . $t['slug'] ] ] )
+				sl_buttons( [ [ 'Book this tour<span class="screen-reader-text">: ' . $t['name'] . '</span>', '/book/?tour=' . $t['slug'] ] ] )
 			),
 			'tour-row' . ( $i % 2 ? ' flip' : '' ), 'article', $t['slug']
 		);
@@ -240,7 +240,7 @@ function demo_seed() {
 	/* ---------- Contact ---------- */
 	$form_id = sl_form();
 	$contact =
-		sl_group( sl_group( sl_p( 'Contact and booking', 'eyebrow' ) . sl_h( 'Request a tour.', 1 ) . sl_p( 'Tell us the tour and date you have in mind. We confirm availability by email, usually the same day.', 'lead' ), 'wrap' ), 'page-hero', 'section' ) .
+		sl_group( sl_group( sl_p( 'Contact', 'eyebrow' ) . sl_h( 'Questions and private groups.', 1 ) . sl_p( 'Ready to paddle? <a href="/book/">Book online</a> and see seats left on every departure. For anything else, or a private group of 9 or more, write to us here.', 'lead' ), 'wrap' ), 'page-hero', 'section' ) .
 		sl_group( sl_group(
 			sl_group( sl_p( '<strong>Demo form.</strong> This is a portfolio sample: submissions are checked in your browser and nothing is sent.', 'demo-note' ) . "<!-- wp:shortcode -->[contact-form-7 id=\"$form_id\" title=\"Booking request\"]<!-- /wp:shortcode -->", 'form-col' ) .
 			sl_group(
@@ -262,6 +262,7 @@ function demo_seed() {
 		'faq'     => [ 'FAQ', $faq_page, 'Answers about experience, age limits, what to wear, weather cancellations, parking, photos, group bookings and gift cards.' ],
 		'credits' => [ 'Photo credits', sl_group( sl_group( sl_p( 'Credits', 'eyebrow' ) . sl_h( 'Photo credits', 1 ) . sl_p( 'All photos on this sample site are public domain or CC0 images from Wikimedia Commons, cropped and color graded. The Fraunces typeface is licensed under the SIL Open Font License.' ) . sl_list( [ 'Kayaking in Brofjorden at Govik (CC0)', 'Kayaks beached on Yellowstone Lake (public domain, NPS)', 'Harbor seal on the rocks (public domain, NPS)', 'Sea caves on Lake Superior (CC0)', 'Mareel, bioluminescence in Norra Grundsund harbor (CC0)', 'Kayak sunset bay, Oregon (public domain)' ], 'cert-list' ), 'wrap prose' ), 'page-hero', 'section' ), 'Photo credits for the Saltline Kayak Tours sample site.' ],
 		'demo-form' => [ 'Demo form', sl_group( sl_group( sl_h( 'This is a demo form.', 1 ) . sl_p( 'This sample site has no server behind its forms, so nothing was sent. On a live site the booking request would be emailed to the team.' ) . sl_p( '<a href="/contact/">Back to the contact page</a>' ), 'wrap prose' ), 'page-hero', 'section' ), 'Demo form notice.' ],
+		'book' => [ 'Book a tour', '<!-- wp:shortcode -->[sl_booking]<!-- /wp:shortcode -->', 'Book a Saltline kayak tour online: pick a tour, date and departure, see seats left, and hold your spots. Pay at the boathouse.' ],
 		'contact' => [ 'Contact', $contact, 'Request a guided kayak tour at Marrow Cove. Pick a tour and date and we will confirm availability by email.' ],
 	];
 	$ids = [];
@@ -280,6 +281,7 @@ function demo_seed() {
 	update_option( 'page_on_front', $ids['home'] );
 	update_option( 'wpseo_titles', array_merge( (array) get_option( 'wpseo_titles' ), [ 'company_or_person' => 'company', 'company_name' => 'Saltline Kayak Tours', 'website_name' => 'Saltline Kayak Tours', 'separator' => 'sc-pipe' ] ) );
 	update_option( 'blog_public', 1 );
+	if ( function_exists( 'sl_booking_seed' ) ) sl_booking_seed();
 	update_option( 'demo_seeded', 1 );
 	flush_rewrite_rules();
 }
@@ -289,7 +291,7 @@ function sl_cta_band() {
 		sl_p( 'Plan your trip', 'eyebrow' ) .
 		sl_h( 'Plan your morning on the water.' ) .
 		sl_html( '<div class="mini-faq"><div><h3>What to wear</h3><p>Swimwear or quick-dry layers under the wetsuit we give you. Bring a towel and sunglasses with a strap.</p></div><div><h3>Cancellations</h3><p>Free changes up to 24 hours before. If we call it off for weather, you get a full refund or a new date.</p></div><div><h3>Where to meet</h3><p>The boathouse at the Marrow Cove public launch, 15 minutes before your tour. Free parking.</p></div></div>' ) .
-		sl_buttons( [ [ 'Check availability', '/contact/' ], [ 'Read all FAQs', '/faq/', true ] ], 'hero-actions' ),
+		sl_buttons( [ [ 'Check availability', '/book/' ], [ 'Read all FAQs', '/faq/', true ] ], 'hero-actions' ),
 		'wrap'
 	), 'section dark', 'section' );
 }
@@ -299,16 +301,14 @@ function sl_form() {
 	$body = <<<'FORM'
 <p><label for="bk-name">Full name</label>[text* your-name id:bk-name autocomplete:name]</p>
 <p><label for="bk-email">Email</label>[email* your-email id:bk-email autocomplete:email]</p>
-<p><label for="bk-tour">Tour</label>[select* tour id:bk-tour first_as_label "Choose a tour" "Sunrise Harbor Paddle" "Sea Cave Explorer" "Night Glow Paddle" "Private group tour"]</p>
-<div class="row2"><p><label for="bk-date">Preferred date</label>[date* tour-date id:bk-date]</p>
-<p><label for="bk-size">Group size</label>[number* group-size id:bk-size min:1 max:16 "2"]</p></div>
-<p><label for="bk-msg">Message <span class="hint">(optional)</span></label>[textarea your-message id:bk-msg x4]</p>
+<p><label for="bk-tour">Tour</label>[select* tour id:bk-tour first_as_label "Choose a topic" "Sunrise Harbor Paddle" "Sea Cave Explorer" "Night Glow Paddle" "Private group tour (9 or more)" "Gift cards" "Something else"]</p>
+<p><label for="bk-msg">Your question</label>[textarea* your-message id:bk-msg x4]</p>
 <p>[acceptance consent] I agree to be contacted by email about this request. [/acceptance]</p>
-<p>[submit "Send booking request"]</p>
+<p>[submit "Send question"]</p>
 FORM;
-	$id = wp_insert_post( [ 'post_type' => 'wpcf7_contact_form', 'post_status' => 'publish', 'post_title' => 'Booking request' ] );
+	$id = wp_insert_post( [ 'post_type' => 'wpcf7_contact_form', 'post_status' => 'publish', 'post_title' => 'Questions and private groups' ] );
 	update_post_meta( $id, '_form', $body );
-	update_post_meta( $id, '_mail', [ 'active' => true, 'subject' => 'Booking request: [tour]', 'sender' => 'Saltline <wordpress@saltlinekayak.example.com>', 'recipient' => 'hello@saltlinekayak.example.com', 'body' => "From: [your-name] <[your-email]>\nTour: [tour]\nDate: [tour-date]\nGroup: [group-size]\n\n[your-message]", 'additional_headers' => 'Reply-To: [your-email]', 'attachments' => '', 'use_html' => false, 'exclude_blank' => false ] );
+	update_post_meta( $id, '_mail', [ 'active' => true, 'subject' => 'Question about [tour]', 'sender' => 'Saltline <wordpress@saltlinekayak.example.com>', 'recipient' => 'hello@saltlinekayak.example.com', 'body' => "From: [your-name] <[your-email]>\nTour: [tour]\n\n[your-message]", 'additional_headers' => 'Reply-To: [your-email]', 'attachments' => '', 'use_html' => false, 'exclude_blank' => false ] );
 	update_post_meta( $id, '_messages', [] );
 	update_post_meta( $id, '_additional_settings', '' );
 	update_post_meta( $id, '_locale', 'en_US' );
