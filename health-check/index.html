@@ -170,7 +170,7 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
       <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">LCP</span><span class="tag pass">Effort S</span></div>
       <dl>
         <dt>Found</dt><dd>Two photos were uploaded as 1920 px JPEGs and served at full size: pines.jpg at 457 KB, plus ridge.jpg on the Personal injury page. No responsive sizes, no modern format, no lazy loading.</dd>
-        <dt>Why it matters</dt><dd>These are the Family law and Personal injury pages, the ones a search ad or a referral link lands on. On a phone the page's main image appears at 4.8 s and 3.6 s. Google's "good" line is 2.5 s, and visitors on mobile data start leaving well before 4 s.</dd>
+        <dt>Why it matters</dt><dd>These are the Family law and Personal injury pages, the ones a search ad or a referral link lands on. On a phone the page's main image appears at 4.8 s and 3.6 s. Google's "good" line is 2.5 s, and visitors on mobile data start leaving well before that.</dd>
         <dt>Evidence</dt><dd><div class="ev">Family law     LCP 4.8 s   page weight 700 KB   Lighthouse: responsive-images savings 405 KB, modern-formats savings 188 KB
 Personal injury LCP 3.6 s   page weight 479 KB   Lighthouse: responsive-images savings 212 KB, modern-formats savings 121 KB</div></dd>
         <dt>Fix</dt><dd>Re-encode as WebP at 1200 px with generated sizes (srcset) and quality 60, set width and height, lazy-load below the fold. The 457 KB photo becomes about 82 KB with no visible loss.</dd>
@@ -295,7 +295,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
         <tr><td>Backups and tested restore</td><td><span class="tag fail">Fail</span></td><td>See Security. Counted here as well because it is the maintenance safety net.</td></tr>
         <tr><td>Uptime and error monitoring</td><td><span class="tag fail">Fail</span></td><td>Nothing alerts the firm if the site goes down or the intake form stops sending.</td></tr>
         <tr><td>Documented owner access</td><td><span class="tag fail">Fail</span></td><td>Hosting, domain and admin logins are known to one person. A short access sheet in the firm's password manager removes that single point of failure.</td></tr>
-      </tbody>
+    </tbody>
     </table></div>
   </div>
   <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>Page 6 of 9</span></div>
@@ -374,7 +374,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
       <span class="tag blue">Tier 2, recommended</span>
       <h3>Speed and security</h3>
       <div class="price">$650</div>
-      <p class="small mute">Tier 1 plus fixes 3 and 4 and the four "not checked" items. About 5 working days.</p>
+      <p class="small mute">Tier 1 plus fixes 3 and 4 and the other four security items. About 5 working days.</p>
       <ul>
         <li>Everything in Tier 1</li>
         <li>New admin account, "admin" removed, two-factor for 3 users</li>
