@@ -100,8 +100,10 @@ add_action( 'template_redirect', function () {
 		$b = sl_em_book( $event, (int) $dep['ticket'], $adults + $kids, sanitize_text_field( $in['sl_name'] ), sanitize_email( $in['sl_email'] ), sanitize_text_field( $in['sl_phone'] ?? '' ), true, $notes );
 		if ( $b instanceof EM_Booking ) {
 			update_metadata( 'em_booking', $b->booking_id, 'sl_party', [ 'adults' => $adults, 'kids' => $kids ] );
-			set_transient( 'sl_done_' . $b->booking_id, [ 'adults' => $adults, 'kids' => $kids, 'name' => sanitize_text_field( $in['sl_name'] ), 'email' => sanitize_email( $in['sl_email'] ) ], DAY_IN_SECONDS );
-			wp_safe_redirect( add_query_arg( [ 'booked' => $b->booking_id, 'k' => wp_hash( 'sl' . $b->booking_id ) ], home_url( '/book/' ) ) . '#done' ); exit;
+			// Confirmation details (incl. name/email) live only in a random single-use token, 15 minutes, consumed on first display.
+			$token = wp_generate_password( 32, false, false );
+			set_transient( 'sl_done_' . $token, [ 'booking' => (int) $b->booking_id, 'adults' => $adults, 'kids' => $kids, 'name' => sanitize_text_field( $in['sl_name'] ), 'email' => sanitize_email( $in['sl_email'] ) ], 15 * MINUTE_IN_SECONDS );
+			wp_safe_redirect( add_query_arg( [ 'done' => $token ], home_url( '/book/' ) ) . '#done' ); exit;
 		}
 		$err = wp_strip_all_tags( implode( ' ', (array) $b ) );
 	}
@@ -119,12 +121,17 @@ add_shortcode( 'sl_booking', function () {
 	$tours = array_column( $a['tours'], null, 'key' );
 	$pre = isset( $_GET['tour'] ) ? sanitize_title( wp_unslash( $_GET['tour'] ) ) : ''; // phpcs:ignore
 	$done = null;
-	if ( ! empty( $_GET['booked'] ) && ! empty( $_GET['k'] ) && hash_equals( wp_hash( 'sl' . absint( $_GET['booked'] ) ), (string) $_GET['k'] ) ) { // phpcs:ignore
-		$bk = em_get_booking( absint( $_GET['booked'] ) ); // phpcs:ignore
+	if ( ! empty( $_GET['done'] ) ) { // phpcs:ignore
+		$key = 'sl_done_' . preg_replace( '/[^A-Za-z0-9]/', '', (string) wp_unslash( $_GET['done'] ) ); // phpcs:ignore
+		$party = get_transient( $key );
+		delete_transient( $key ); // single use: a reload or a shared link never shows it again
+		$bk = is_array( $party ) ? em_get_booking( (int) $party['booking'] ) : null;
 		if ( $bk && $bk->booking_id ) {
-			$ev = $bk->get_event(); $party = get_transient( 'sl_done_' . $bk->booking_id ) ?: [ 'adults' => $bk->get_spaces(), 'kids' => 0 ];
+			$ev = $bk->get_event();
 			$dep = current( array_filter( (array) get_option( 'sl_departures', [] ), fn( $m ) => (int) $m['event'] === (int) $ev->event_id ) );
-			$done = [ 'n' => 'SL-' . substr( $dep['date'], 0, 4 ) . '-' . str_pad( $bk->booking_id, 4, '0', STR_PAD_LEFT ), 'name' => $party['name'] ?? $bk->get_person()->get_name(), 'email' => $party['email'] ?? $bk->get_person()->user_email, 'tour' => $dep['tour'], 'date' => $dep['date'], 'time' => $dep['time'], 'adults' => (int) $party['adults'], 'kids' => (int) $party['kids'] ];
+			$done = [ 'n' => 'SL-' . substr( $dep['date'], 0, 4 ) . '-' . str_pad( $bk->booking_id, 4, '0', STR_PAD_LEFT ), 'name' => $party['name'], 'email' => $party['email'], 'tour' => $dep['tour'], 'date' => $dep['date'], 'time' => $dep['time'], 'adults' => (int) $party['adults'], 'kids' => (int) $party['kids'] ];
+		} else {
+			$done = [ 'generic' => true ]; // consumed or expired: no booking or personal details
 		}
 	}
 	$steps = [ 'tour' => 'Tour', 'date' => 'Date', 'time' => 'Time', 'party' => 'Party', 'details' => 'Details', 'confirm' => 'Confirm' ];
@@ -150,9 +157,9 @@ add_shortcode( 'sl_booking', function () {
 					<?php if ( ! empty( $GLOBALS['sl_book_error'] ) ) echo '<p class="note err" role="alert">' . esc_html( $GLOBALS['sl_book_error'] ) . '</p>'; ?>
 					<section class="step" data-s="tour" aria-labelledby="h-tour">
 						<p class="eyebrow">Step 1 of 6</p><h2 id="h-tour" tabindex="-1">Which tour?</h2>
-						<div class="tours" role="list">
+						<div class="tours" role="group" aria-label="Tours">
 							<?php foreach ( $a['tours'] as $t ) : ?>
-								<button type="button" class="tour" role="listitem" data-tour="<?php echo esc_attr( $t['key'] ); ?>"><?php if ( $t['thumb'] ) echo '<img src="' . esc_url( $t['thumb'] ) . '" alt="" width="88" height="66" loading="lazy">'; ?><span><b><?php echo esc_html( $t['name'] ); ?></b><span class="meta"><span><?php echo esc_html( $t['dur'] ); ?></span><span><?php echo esc_html( $t['level'] ); ?></span><span><?php echo esc_html( $t['season'] ); ?></span><span><strong>$<?php echo (int) $t['price']; ?></strong> per person</span></span></span></button>
+								<button type="button" class="tour" data-tour="<?php echo esc_attr( $t['key'] ); ?>"><?php if ( $t['thumb'] ) echo '<img src="' . esc_url( $t['thumb'] ) . '" alt="" width="88" height="66" loading="lazy">'; ?><span><b><?php echo esc_html( $t['name'] ); ?></b><span class="meta"><span><?php echo esc_html( $t['dur'] ); ?></span><span><?php echo esc_html( $t['level'] ); ?></span><span><?php echo esc_html( $t['season'] ); ?></span><span><strong>$<?php echo (int) $t['price']; ?></strong> per person</span></span></span></button>
 							<?php endforeach; ?>
 						</div>
 						<p class="small mute" style="margin-top:16px">Groups of 9 or more, or a private tour: <a href="/contact/">write to us</a> and we will set up a departure just for you.</p>

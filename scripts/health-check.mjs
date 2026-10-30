@@ -1,14 +1,17 @@
 // Builds the sample WordPress Health Check report from saved Lighthouse JSON only.
 //   1. node scripts/health-data.mjs            -> health-check/data.json (numbers from reports/)
 //   2. node scripts/health-check.mjs           -> health-check/report.html, dist/health-check/, deliverables/*.pdf
-// The per-page Core Web Vitals table, the LCP chart and the before/after table are generated from data.json.
-// Every other number in the report is then checked against data.json: the build fails if a figure cannot be traced.
+// Generated from data.json (Lighthouse): the per-page Core Web Vitals table, the LCP chart, the before/after table, the FCP range.
+// Generated from audit.json (review findings): the security and maintenance tables, their ratios, counts and headlines.
+// Then every number left in the rendered text must equal a field of data.json, audit.json or offer.json (see TRACE below):
+// the build fails on any untraced number, range or ratio.
 import { readFileSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
 import { chromium } from 'playwright';
 import { BASE } from './site-base.mjs';
 
 const D = JSON.parse(readFileSync('health-check/data.json', 'utf8'));
 const OFFER = JSON.parse(readFileSync('health-check/offer.json', 'utf8')); // prices and durations: one place, set by William
+const AUDIT = JSON.parse(readFileSync('health-check/audit.json', 'utf8')); // security + maintenance checks and every other non-Lighthouse figure
 const now = D.pages.naive, after = D.pages.optimized;
 const ORDER = [['home', 'Home', 'Home'], ['personal-injury', 'Personal injury', 'Pers. injury'], ['family-law', 'Family law', 'Family law'], ['our-attorneys', 'Our attorneys', 'Attorneys'], ['results', 'Results', 'Results'], ['contact', 'Contact', 'Contact'], ['legal', 'Legal', 'Legal']];
 const s1 = n => n.toFixed(1);
@@ -56,7 +59,30 @@ const ringPct = (label) => {
 };
 const ringColor = pct => pct < 50 ? '#B23A3A' : pct < 90 ? '#8A5E0E' : '#2E6B46';
 const fcpRange = (set) => { const v = Object.values(set).map(p => p.fcp_s); return s1(Math.min(...v)) + (Math.min(...v) === Math.max(...v) ? '' : ' to ' + s1(Math.max(...v))) + ' s'; };
+
+// ---- Security and maintenance: rows, ratios, counts and headlines all come from audit.json ----
+const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
+const cap = w => w[0].toUpperCase() + w.slice(1);
+const TAG = { pass: ['pass', 'Pass'], fail: ['fail', 'Fail'], partial: ['warn', 'Needs work'], not_checked: ['na', 'Not checked'] };
+const count = (list, st) => list.filter(c => c.status === st).length;
+const sec = AUDIT.security, mai = AUDIT.maintenance;
+const SC = { total: sec.length, pass: count(sec, 'pass'), fail: count(sec, 'fail'), partial: count(sec, 'partial'), na: count(sec, 'not_checked') };
+const MC = { total: mai.length, pass: count(mai, 'pass') };
+const tagOf = st => `<span class="tag ${TAG[st][0]}">${TAG[st][1]}</span>`;
+const GEN = {
+  SECURITY_ROWS: sec.map(c => `      <tr><td>${c.check}</td><td>${tagOf(c.status)}</td><td>${c.evidence}</td><td>${c.fix}</td></tr>`).join('\n'),
+  MAINT_ROWS: mai.map(c => `        <tr><td>${c.check}</td><td>${tagOf(c.status)}</td><td>${c.evidence}</td></tr>`).join('\n'),
+  SEC_TOTAL_WORD: cap(WORDS[SC.total]),
+  SEC_HEADLINE: `Security: ${WORDS[SC.pass]} check${SC.pass === 1 ? '' : 's'} passed, ${WORDS[SC.fail]} failed, and all ${WORDS[SC.fail]} are cheap to fix.`,
+  SEC_FAIL_WORD_LC: WORDS[SC.fail],
+  SEC_RATIO: `${SC.pass}/${SC.total}`,
+  SEC_SUMMARY: `${SC.fail} fail, ${SC.partial} partial, ${SC.na} not checked`,
+  MAINT_HEADLINE: `${cap(WORDS[MC.total])} checks, ${WORDS[MC.pass]} passed`,
+  MAINT_RATIO: `${MC.pass}/${MC.total}`,
+  TIER2_SEC_WORD_LC: WORDS[sec.filter(c => c.status !== 'pass' && !c.top_fix).length],
+};
 let html = readFileSync('health-check/report.template.html', 'utf8')
+  .replace(/\{\{([A-Z0-9_]+)\}\}/g, (m, k) => k in GEN ? GEN[k] : m)
   .replace('{{FCP_RANGE}}', 'FCP ' + fcpRange(now) + ' down to ' + fcpRange(after))
   .replace(/<circle cx="32" cy="32" r="27" fill="none" stroke="#[0-9A-F]{6}" stroke-width="7" stroke-dasharray="[\d.]+ 169\.6"([^>]*)\/><text([^>]*)>([^<]+)<\/text>/g, (m, rest, tattr, label) => {
     const pct = Math.max(0, Math.min(100, ringPct(label)));
@@ -65,24 +91,85 @@ let html = readFileSync('health-check/report.template.html', 'utf8')
   .replace(/\{\{(tier\d_(?:price|days)|care_price)\}\}/g, (m, k) => OFFER[k])
   .replace('{{CWV_TABLE}}', cwv).replace('{{LCP_CHART}}', chart).replace('{{BEFORE_AFTER}}', beforeAfter);
 
-// ---- Traceability check: every measured figure in the text must exist in data.json ----
-const known = { s: new Set(), kb: new Set(), n: new Set(), cls: new Set() };
-for (const set of [now, after]) for (const p of Object.values(set)) {
-  known.s.add(s1(p.lcp_s)); known.s.add(s1(p.fcp_s)); known.kb.add(String(p.weight_kb)); known.cls.add(String(p.cls));
-  for (const v of [...Object.values(p.scores), p.requests, p.render_blocking, ...Object.values(p.savings_kb)]) known.n.add(String(v));
-  for (const v of Object.values(p.savings_kb)) known.kb.add(String(v));
+// ---- TRACE: every number in the rendered text must come from data.json, audit.json or offer.json ----
+// Values are typed by UNIT: a number followed by a unit (s, ms, KB, px, minutes, hours, days, requests, ...) must equal a
+// value of that unit: data.json fields by suffix (_s, _ms, _kb, requests, render_blocking), audit.json facts by their "unit".
+// A bare number must equal some known value. Ranges "a to b" must be a min/max pair of one data.json field in one set, a
+// before/after pair of one field on one page, or a declared fact range. Ratios "a/b" and "a of b" must be a declared pair.
+// audit.json facts carrying "file" + "match" are checked against that file. Structural numbers are removed first: page
+// footers, finding and fix numerals, tier names, step numbers, the review date, "fixes 1, 2 and 5".
+const known = new Map(), ranges = new Set(), ratios = new Set();
+const num = v => String(+(+v).toFixed(3));
+const UNIT = { s: 's', second: 's', seconds: 's', ms: 'ms', kb: 'kb', px: 'px', minute: 'min', minutes: 'min', hour: 'h', hours: 'h', day: 'd', days: 'd', requests: 'requests', request: 'requests', 'render-blocking': 'render_blocking', users: 'users', pages: 'pages', page: 'pages', checks: 'checks', weights: 'weights' };
+const add = (unit, v) => { for (const u of [unit, '*']) { if (!known.has(u)) known.set(u, new Set()); known.get(u).add(num(v)); } };
+const unitOfField = k => /_s$/.test(k) ? 's' : /_ms$/.test(k) ? 'ms' : /_kb(\.|$)/.test(k) ? 'kb' : k === 'requests' ? 'requests' : k === 'render_blocking' ? 'render_blocking' : 'score';
+const leaves = (o, out = {}, pre = '') => { for (const [k, v] of Object.entries(o)) { if (v && typeof v === 'object' && !Array.isArray(v)) leaves(v, out, pre + k + '.'); else if (typeof v === 'number') (out[pre + k] ??= []).push(v); } return out; };
+const fmt = (k, v) => /_s$/.test(k) ? [v, s1(v)] : [v];
+for (const set of [now, after]) {
+  const pages = Object.values(set), byField = {};
+  for (const p of pages) for (const [k, vs] of Object.entries(leaves(p))) (byField[k] ??= []).push(...vs);
+  for (const [k, vs] of Object.entries(byField)) {
+    for (const v of vs) for (const f of fmt(k, v)) add(unitOfField(k), f);
+    const lo = Math.min(...vs), hi = Math.max(...vs);
+    ranges.add(num(lo) + '-' + num(hi)); if (/_s$/.test(k)) ranges.add(num(s1(lo)) + '-' + num(s1(hi)));
+  }
+  const failing = pages.filter(p => p.lcp_s > 2.5), fails = failing.length;
+  if (fails) ranges.add(num(s1(Math.min(...failing.map(p => p.lcp_s)))) + '-' + num(s1(Math.max(...failing.map(p => p.lcp_s))))); // "the failing pages take a to b s"
+  add('pages', pages.length); add('pages', fails); ratios.add(fails + '/' + pages.length);
 }
-// OPTIMIZATION.md is the other permitted source (photo sizes before/after).
-const opt = readFileSync('demos/harbor-pine/OPTIMIZATION.md', 'utf8');
-for (const m of opt.matchAll(/(\d+(?:\.\d+)?) ?KB/g)) known.kb.add(m[1]);
-for (const m of opt.matchAll(/(\d+(?:\.\d+)?) s\b/g)) known.s.add((+m[1]).toFixed(1));
-const text = html.replace(/<style[\s\S]*?<\/style>/g, '').replace(/<svg[\s\S]*?<\/svg>/g, m => m.replace(/<(?!text|title)[^>]+>/g, ' ')).replace(/<[^>]+>/g, ' ');
+for (const k of Object.keys(now)) for (const [f, vs] of Object.entries(leaves(now[k]))) { // before -> after on one page and one field
+  const b = leaves(after[k] || {})[f]; if (!b) continue;
+  for (const a of fmt(f, vs[0])) for (const c of fmt(f, b[0])) ranges.add(num(a) + '-' + num(c));
+}
+add('reports', Object.keys(now).length + Object.keys(after).length); // appendix: one Lighthouse report per measured page
+for (const p of [...Object.values(now), ...Object.values(after)]) add('version', p.lighthouse.split('.').slice(0, 2).join('.'));
+for (const v of Object.values(SC)) add('checks', v); for (const v of Object.values(MC)) add('checks', v);
+ratios.add(SC.pass + '/' + SC.total); ratios.add(MC.pass + '/' + MC.total);
+const versions = new Set();
+for (const [k, f] of Object.entries(AUDIT.facts)) {
+  if (!f.source || !f.unit) throw new Error('audit.json fact needs "source" and "unit": ' + k);
+  if (f.file && !readFileSync(f.file, 'utf8').includes(f.match)) throw new Error(`audit.json fact ${k}: "${f.match}" not found in ${f.file}`);
+  for (const v of [].concat(f.value)) { if (f.unit === 'version') versions.add(String(v)); add(f.unit, v); }
+  if (f.range) ranges.add(f.range.map(num).join('-'));
+  if (f.ratio) ratios.add(f.ratio.join('/'));
+}
+for (const v of Object.values(OFFER)) if (/^\$?\d+$/.test(v)) add('*', String(v).replace('$', ''));
+for (const [k, v] of Object.entries(OFFER)) if (/_days$/.test(k)) add('d', v);
+const WORDNUM = Object.fromEntries(WORDS.map((w, i) => [w, i]).filter(([w]) => w !== 'one' && w !== 'zero')); // "one" is mostly the article
+const text = html.replace(/<style[\s\S]*?<\/style>/g, '').replace(/<head>[\s\S]*?<\/head>/, '')
+  .replace(/<svg[\s\S]*?<\/svg>/g, m => ' ¦ ' + [...m.matchAll(/<(text|title)([^>]*)>([^<]*)</g)].filter(x => !/x="52"/.test(x[2])).map(x => x[3]).join(' ¦ ') + ' ¦ ') // chart axis ticks (x=52) are scale, not findings
+  .replace(/<div class="n">\d+<\/div>|<td data-label="#">\d+<\/td>|<tr><td>\d+<\/td>/g, ' ') // finding numbers, fix ranks, order-of-work steps
+  .replace(/<\/?(?:td|th|tr|li|p|div|dd|dt|h[1-6]|small)\b[^>]*>/g, ' ¦ ') // cell/block boundary: a unit never binds across it
+  .replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/g, ' ')
+  .replace(/Page \d+ of \d+|\bTier \d\b|\bfixes? [\d, and]+\d|October 30, 2026|\bH1\b|\bwoff2\b/g, ' ')
+  .replace(/\b(\d+)x\b/g, '$1') // "4x CPU"
+  .replace(new RegExp('\\b(' + Object.keys(WORDNUM).join('|') + ')\\b', 'gi'), w => String(WORDNUM[w.toLowerCase()]))
+  .replace(/\s+/g, ' ');
 const problems = [];
-const ALLOW = { s: ['2.5', '0.9'], kb: [] }; // 2.5 s is Google's threshold; others must be measured
-for (const m of text.matchAll(/(\d+(?:\.\d+)?)\s*s\b(?!\w)/g)) { const v = (+m[1]).toFixed(1); if (!known.s.has(v) && !ALLOW.s.includes(v) && !/^\d+$/.test(m[1])) problems.push(`time ${m[0]}`); }
-for (const m of text.matchAll(/(\d+)\s*KB\b/g)) if (!known.kb.has(m[1])) problems.push(`size ${m[0]}`);
-for (const m of text.matchAll(/CLS (\d\.\d+)/g)) if (!known.cls.has(String(+m[1]))) problems.push(`cls ${m[0]}`);
-if (problems.length) { console.error('Untraceable figures:\n  ' + [...new Set(problems)].join('\n  ')); process.exitCode = 1; }
+const where = (str, i) => '"' + str.slice(Math.max(0, i - 40), i + 25).trim() + '"';
+let rest = text;
+rest = rest.replace(/(\d+(?:\.\d+)?)\s*(?:s|KB|ms)?\s+(?:to|down to|up to)\s+(?:about\s+)?(\d+(?:\.\d+)?)/g, (m, a, b, i) => {
+  if (!ranges.has(num(a) + '-' + num(b))) problems.push('range ' + m + ' in ' + where(text, i)); return ' ';
+});
+rest = rest.replace(/\b(\d+) ?(?:\/|of) ?(\d+)\b/g, (m, a, b) => { if (!ratios.has(a + '/' + b)) problems.push('ratio "' + m + '"'); return ' '; });
+rest = rest.replace(/\b\d+\.\d+\.\d+\b/g, (v, i) => { if (!versions.has(v)) problems.push('version ' + v + ' in ' + where(rest, i)); return ' '; });
+// Page-bound evidence ("Home: 38 requests, 325 KB ..." / "Family law LCP 4.8 s ..."): each unit value must be THAT page's.
+const names = ORDER.map(([, n]) => n).join('|');
+for (const m of text.matchAll(new RegExp('\\b(' + names + ')(?::| (?=LCP))([^¦]*?)(?=\\b(?:' + names + ')(?::| LCP)|¦|$)', 'g'))) {
+  const key = ORDER.find(([, n]) => n === m[1])[0], pv = {};
+  for (const [f, vs] of Object.entries(leaves(now[key]))) for (const v of vs) for (const x of fmt(f, v)) (pv[unitOfField(f)] ??= new Set()).add(num(x));
+  pv.cls = new Set([num(now[key].cls)]);
+  for (const u of m[2].matchAll(/(?:CLS (\d+(?:\.\d+)?))|(\d+(?:\.\d+)?) ?(s|KB|requests|render-blocking)\b/g)) {
+    const [unit, v] = u[1] ? ['cls', u[1]] : [UNIT[u[3].toLowerCase()], u[2]];
+    if (!pv[unit]?.has(num(v))) problems.push(`page-bound ${m[1]}: ${u[0]} is not this page's value`);
+  }
+}
+for (const m of rest.matchAll(/(\d+(?:\.\d+)?)(?:[ -]([A-Za-z-]+))?/g)) {
+  const [, v, word] = m, unit = word && UNIT[word.toLowerCase()];
+  const pool = known.get(unit || '*');
+  if (!pool || !pool.has(num(v))) problems.push('number ' + v + (unit ? ' ' + word : '') + ' in ' + where(rest, m.index));
+}
+if (problems.length) { console.error('Untraced figures (add them to health-check/audit.json facts with a source, or fix the text):\n  ' + [...new Set(problems)].join('\n  ')); process.exit(1); }
 
 writeFileSync('health-check/report.html', html);
 mkdirSync('dist/health-check/assets', { recursive: true });

@@ -8,6 +8,7 @@ const b = await chromium.launch(); const p = await b.newPage({ viewport: { width
 const errors = [], posts = [], offHost = [];
 p.on('pageerror', e => errors.push(e.message));
 p.on('request', r => { if (r.method() !== 'GET') posts.push(r.method() + ' ' + new URL(r.url()).pathname); if (new URL(r.url()).host !== host) offHost.push(r.url()); });
+p.on('framenavigated', f => { if (f === p.mainFrame() && /[?&]done=/.test(f.url())) out.firstUrl = f.url(); });
 let target = null; // first sunrise departure with at least 4 seats left (live bookings from earlier runs reduce availability)
 const left = async () => {
   const d = JSON.parse(await p.getAttribute('[data-booking]', 'data-avail'));
@@ -41,11 +42,20 @@ await p.click('[data-hold]');
 await p.waitForSelector('[data-s="done"]:not([hidden])', { timeout: 30000 });
 out.doneTitle = (await p.textContent('[data-done-title]')).trim();
 out.urlHasNoPersonalData = !/priya|example\.com|555/i.test(decodeURIComponent(p.url()));
+if (mode === 'live') {
+  out.queryDropped = !/[?&]done=/.test(p.url());
+
+  // a second visit (reload / shared link) must not show name or email
+
+  await p.goto(out.firstUrl, { waitUntil: 'networkidle' });
+  const again = await p.textContent('[data-s="done"]').catch(() => '');
+  out.secondVisitNoPII = !!again && !/priya|example\.com/i.test(again) && /confirmed/i.test(again);
+}
 if (mode === 'live') { await p.goto(base + '/book/', { waitUntil: 'networkidle' }); out.after = await left(); out.seatsTaken = out.before - out.after; }
 out.errors = errors; out.posts = posts; out.offHost = [...new Set(offHost)];
 await p.screenshot({ path: process.env.SHOT || (process.env.TMPDIR || '/tmp') + '/booking-done.png', fullPage: true });
 console.log(JSON.stringify(out, null, 1));
 await b.close();
 const ok = out.preselected && out.soldOutSlotDisabled !== false && out.blockedWithoutDetails && /Priya/.test(out.doneTitle) && out.urlHasNoPersonalData && !errors.length && !offHost.length
-  && (mode === 'live' ? out.seatsTaken === 3 : posts.length === 0);
+  && (mode === 'live' ? out.seatsTaken === 3 && out.queryDropped && out.secondVisitNoPII : posts.length === 0);
 process.exitCode = ok ? 0 : 1;

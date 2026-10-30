@@ -91,20 +91,32 @@ add_action( 'template_redirect', function () {
 	$eligible = wp_list_pluck( lh_items( [ 'tag' => [ 'bundle' ] ] ), 'id' );
 	if ( 3 !== count( $ids ) || array_diff( $ids, $eligible ) ) { wc_add_notice( 'Pick exactly three items from the bundle list.', 'error' ); return; }
 	$bundle = wp_generate_uuid4();
-	foreach ( $ids as $id ) {
+	// One line per distinct product; lh_per records how many of it one set holds (a repeated pick becomes qty 2 or 3).
+	foreach ( array_count_values( $ids ) as $id => $per ) {
 		$it = lh_item( $id );
 		$v = $it['vars'][0] ?? null;
-		WC()->cart->add_to_cart( $id, 1, $v ? $v['id'] : 0, $v ? [ 'attribute_size' => $v['size'] ] : [], [ 'lh_bundle' => $bundle ] );
+		WC()->cart->add_to_cart( $id, $per, $v ? $v['id'] : 0, $v ? [ 'attribute_size' => $v['size'] ] : [], [ 'lh_bundle' => $bundle, 'lh_per' => $per ] );
 	}
 	wp_safe_redirect( wc_get_cart_url() ); exit;
 } );
-// 12 percent off every complete set of three bundle items, as a negative fee.
-add_action( 'woocommerce_cart_calculate_fees', function ( $cart ) {
+// 12 percent off every COMPLETE set of the three picks, priced per unit. Extra quantity on one line (or a removed line)
+// earns nothing: sets = min over the bundle's lines of floor(qty / per-set count), and all three picks must still be in the cart.
+function lh_bundle_discount( $items ) {
 	$groups = [];
-	foreach ( $cart->get_cart() as $item ) if ( ! empty( $item['lh_bundle'] ) ) $groups[ $item['lh_bundle'] ][] = (float) $item['line_subtotal'];
+	foreach ( $items as $item ) if ( ! empty( $item['lh_bundle'] ) && (int) $item['quantity'] > 0 ) $groups[ $item['lh_bundle'] ][] = $item;
 	$discount = 0;
-	foreach ( $groups as $g ) if ( count( $g ) >= 3 ) $discount += array_sum( $g ) * LH_BUNDLE_RATE;
-	if ( $discount > 0 ) $cart->add_fee( 'Bundle discount (12 percent)', -round( $discount, 2 ) );
+	foreach ( $groups as $lines ) {
+		$per = array_map( fn( $l ) => max( 1, (int) ( $l['lh_per'] ?? 1 ) ), $lines );
+		if ( 3 !== array_sum( $per ) ) continue;
+		$sets = min( array_map( fn( $l, $p ) => intdiv( (int) $l['quantity'], $p ), $lines, $per ) );
+		$set_price = array_sum( array_map( fn( $l, $p ) => $p * (float) $l['line_subtotal'] / (int) $l['quantity'], $lines, $per ) );
+		$discount += $sets * $set_price * LH_BUNDLE_RATE;
+	}
+	return round( $discount, 2 );
+}
+add_action( 'woocommerce_cart_calculate_fees', function ( $cart ) {
+	$discount = lh_bundle_discount( $cart->get_cart() );
+	if ( $discount > 0 ) $cart->add_fee( 'Bundle discount (12 percent)', -$discount );
 } );
 
 /* ------------------------------------------------------------------ shortcodes */

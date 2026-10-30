@@ -165,7 +165,15 @@
     done({ n: 'SL-' + A.month.slice(0, 4) + '-' + String(1000 + Math.floor(Math.random() * 9000)), name: $('#f-name').value.trim(), email: $('#f-email').value.trim(), tour: st.tour, date: st.date, time: st.dep.time, adults: st.adults, kids: st.kids }, true);
   });
 
-  function done(d, demo) {
+  function done(d, demo, onLoad) { // onLoad: rendered from the server redirect, so focus stays put (no ring on a fresh page)
+    if (d.generic) {
+      $('[data-done-title]').textContent = 'Booking confirmed.';
+      $('[data-done-lead]').textContent = 'Your booking is confirmed and the details are in your confirmation email. For your privacy they are shown only once.';
+      $('[data-email]').innerHTML = '';
+      show('done', !onLoad); root.classList.add('is-done');
+      $$('.stepper li').forEach(function (li) { li.classList.add('done'); li.classList.remove('on'); li.removeAttribute('aria-current'); });
+      return;
+    }
     var t = TOURS[d.tour], n = d.adults + d.kids, first = d.name.split(' ')[0], when = fmtDate(d.date, { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' }) + ', ' + fmtTime(d.time);
     var words = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'][n] || n;
     $('[data-done-title]').textContent = 'See you on the water, ' + first + '.';
@@ -176,14 +184,14 @@
       '<p><b>What to bring:</b> swimwear or quick-dry layers to wear under the wetsuit, a towel, sunglasses with a strap, water. We supply the kayak, paddle, spray skirt, wetsuit, dry bag and the guide.</p><p style="margin-top:10px"><b>Weather:</b> if the forecast turns we email you by 8 pm the night before with a new time or a full refund.</p></div>' +
       '<div class="foot">Saltline Kayak Tours, the boathouse at Marrow Cove public launch. (555) 010-0100. Free changes up to 24 hours before departure.</div>';
     st.tour = d.tour; st.date = d.date; st.dep = A.departures.filter(function (x) { return x.tour === d.tour && x.date === d.date && x.time === d.time; })[0] || st.dep; st.adults = d.adults; st.kids = d.kids;
-    show('done');
+    show('done', !onLoad);
     root.classList.add('is-done');
     $$('.stepper li').forEach(function (li) { li.classList.add('done'); li.classList.remove('on'); li.removeAttribute('aria-current'); });
   }
   $('[data-again]').addEventListener('click', function () { root.classList.remove('is-done'); st = { step: 'tour', tour: null, date: null, dep: null, adults: 2, kids: 0 }; $$('.tour').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); }); show('tour'); });
 
   // ---- start: confirmation (live redirect), pre-selected tour (?tour=slug), or step 1
-  if (root.dataset.done) { done(JSON.parse(root.dataset.done), false); return; }
+  if (root.dataset.done) { if (history.replaceState) history.replaceState(null, '', location.pathname + '#done'); done(JSON.parse(root.dataset.done), false, true); return; }
   var pre = new URLSearchParams(location.search).get('tour') || root.dataset.pre;
   var preKey = A.tours.filter(function (t) { return t.slug === pre || t.key === pre; })[0];
   if (preKey) { var b = $('.tour[data-tour="' + preKey.key + '"]'); if (b) { b.dataset.auto = '1'; b.click(); return; } }
