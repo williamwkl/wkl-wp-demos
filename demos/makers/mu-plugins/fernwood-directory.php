@@ -232,7 +232,7 @@ add_shortcode( 'fernwood_directory', function ( $atts ) {
 		$h = '<fieldset class="grp"><legend>' . esc_html( $legend ) . '</legend>';
 		if ( in_array( $name, $locked, true ) ) {
 			foreach ( $selected as $val ) {
-				$h .= sprintf( '<label class="locked"><input type="checkbox" checked disabled> <span>%1$s</span><span class="n">%2$d</span></label>', esc_html( $items[ $val ] ?? $val ), (int) ( $counts[ $val ] ?? 0 ) );
+				$h .= sprintf( '<label class="locked"><input type="checkbox" name="%3$s" value="%4$s" checked aria-disabled="true" aria-describedby="lock-%4$s"> <span>%1$s</span><span class="n">%2$d</span></label><p class="lock-note" id="lock-%4$s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Set by this page</p>', esc_html( $items[ $val ] ?? $val ), (int) ( $counts[ $val ] ?? 0 ), $name, esc_attr( $val ) );
 			}
 			$base = wp_make_link_relative( get_post_type_archive_link( 'maker' ) );
 			return $h . '<a class="change" href="' . esc_url( $base ) . '">All ' . ( 'town' === $name ? 'towns' : 'categories' ) . '</a></fieldset>';
@@ -327,17 +327,24 @@ add_shortcode( 'fernwood_towns', function () {
 } );
 add_shortcode( 'fernwood_terms', function ( $atts ) {
 	$tax = in_array( $atts['tax'] ?? '', [ 'craft', 'town' ], true ) ? $atts['tax'] : 'craft';
-	if ( 'craft' === $tax ) {
-		$h = '<ul class="cat-tiles">';
-		$i = 0;
-		foreach ( fw_terms( 'craft' ) as $t ) {
-			$first = get_posts( [ 'post_type' => 'maker', 'numberposts' => 1, 'orderby' => 'menu_order', 'order' => 'ASC', 'tax_query' => [ [ 'taxonomy' => 'craft', 'terms' => $t->term_id ] ] ] );
-			$img = $first ? get_the_post_thumbnail( $first[0], 'medium_large', [ 'alt' => '', 'loading' => $i < 3 ? 'eager' : 'lazy', 'fetchpriority' => 0 === $i ? 'high' : 'auto', 'sizes' => '(max-width: 599px) 50vw, 380px' ] ) : '';
-			$h .= '<li><a class="cat-tile" href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '"><span class="cat-img">' . $img . '</span><span class="cat-name">' . esc_html( $t->name ) . '</span><span class="cat-n">' . (int) $t->count . ' makers</span></a></li>';
-			$i++;
+	// Photo tiles (Categories and Towns pages): each tile shows a listing photo from that term, never repeating one on the page.
+	$h = '<ul class="cat-tiles">';
+	$used = [];
+	$i = 0;
+	foreach ( fw_terms( $tax ) as $t ) {
+		$img = '';
+		foreach ( get_posts( [ 'post_type' => 'maker', 'numberposts' => -1, 'orderby' => 'menu_order', 'order' => 'ASC', 'tax_query' => [ [ 'taxonomy' => $tax, 'terms' => $t->term_id ] ] ] ) as $mp ) {
+			$tid = get_post_thumbnail_id( $mp );
+			if ( $tid && ! in_array( $tid, $used, true ) ) {
+				$used[] = $tid;
+				$img = wp_get_attachment_image( $tid, 'medium_large', false, [ 'alt' => '', 'loading' => $i < 3 ? 'eager' : 'lazy', 'fetchpriority' => 0 === $i ? 'high' : 'auto', 'sizes' => '(max-width: 599px) 50vw, 380px' ] );
+				break;
+			}
 		}
-		return $h . '</ul>';
+		$h .= '<li><a class="cat-tile" href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '"><span class="cat-img">' . $img . '</span><span class="cat-name">' . esc_html( $t->name ) . '</span><span class="cat-n">' . (int) $t->count . ' ' . ( 1 === (int) $t->count ? 'maker' : 'makers' ) . '</span></a></li>';
+		$i++;
 	}
+	return $h . '</ul>';
 	$h = '<ul class="towns term-index">';
 	foreach ( fw_terms( $tax ) as $t ) $h .= '<li><a href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '">' . esc_html( $t->name ) . '<span class="n">' . (int) $t->count . '</span></a></li>';
 	return $h . '</ul>';
@@ -364,6 +371,8 @@ add_shortcode( 'fernwood_single', function () {
 	// Gallery: the listing photo plus two different photos, never one already shown in the "More in" row.
 	$pool = array_map( fn( $x ) => get_post_thumbnail_id( $x['id'] ), array_slice( $others, 3 ) );
 	$pool = array_merge( $pool, (array) ( get_option( 'fw_gallery_extras' )[ $l['craft'] ] ?? [] ) );
+	$override = (array) ( get_option( 'fw_gallery_override' )[ $p->post_name ] ?? [] );
+	if ( $override ) $pool = $override; // hand-picked shots for listings where category photos would not fit
 	$pool = array_values( array_unique( array_filter( $pool, fn( $id ) => $id && $id !== $thumb ) ) );
 	$thumbs = '';
 	foreach ( array_slice( $pool, 0, 2 ) as $i => $tid ) {
@@ -411,3 +420,18 @@ add_action( 'pre_get_posts', function ( $q ) {
 
 // Flag JS support before first paint so the directory can render its paginated state without a layout shift.
 add_action( 'wp_head', fn() => print( "<script>document.documentElement.classList.add('js-on')</script>\n" ), 0 );
+
+// Photo credits page: the full list comes from the same CSV that documents every image.
+add_filter( 'the_content', function ( $c ) {
+	if ( ! is_page( 'credits' ) ) return $c;
+	$c = str_replace( 'The full list with source file names is in the project repository.', 'The full list is below.', $c );
+	$file = WP_CONTENT_DIR . '/demo-data/image-credits.csv';
+	if ( ! is_readable( $file ) ) return $c;
+	$fh = fopen( $file, 'r' ); fgetcsv( $fh, 0, ',', '"', '' );
+	$rows = '';
+	while ( ( $r = fgetcsv( $fh, 0, ',', '"', '' ) ) !== false ) {
+		$rows .= '<tr><td>' . esc_html( preg_replace( '/\.(jpe?g|png|webp)/i', '', $r[1] ) ) . '</td><td>' . esc_html( $r[2] ) . '</td></tr>';
+	}
+	fclose( $fh );
+	return $c . '<section class="section no-top"><div class="wrap"><table class="credits-table"><caption class="screen-reader-text">Photo sources</caption><thead><tr><th scope="col">Photo (Wikimedia Commons file)</th><th scope="col">License</th></tr></thead><tbody>' . $rows . '</tbody></table></div></section>';
+}, 20 );

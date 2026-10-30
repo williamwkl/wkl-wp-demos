@@ -68,6 +68,7 @@ function demo_seed() {
 	fw_write_index();
 	$wheel = fw_seed_media( 'feature-portrait' );
 	// Extra gallery photos for small categories, so a listing gallery never repeats a photo shown on the same page.
+	update_option( 'fw_gallery_override', [ 'bramblewood-preserves' => [ fw_seed_media( 'food-50' ), fw_seed_media( 'food-52' ) ] ] );
 	update_option( 'fw_gallery_extras', [ 'print-and-paper' => [ fw_seed_media( 'print-08' ), fw_seed_media( 'print-15' ) ] ] );
 	$wheel_url = wp_get_attachment_url( $wheel );
 

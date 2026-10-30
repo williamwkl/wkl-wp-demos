@@ -13,8 +13,8 @@ await p.locator('#intake form').scrollIntoViewIfNeeded(); await p.waitForTimeout
 const barHiddenAtForm = await p.evaluate(() => { const b = document.querySelector('.sticky-bar'); return b.classList.contains('is-hidden') && b.hasAttribute('inert') && b.getAttribute('aria-hidden') === 'true'; });
 await p.click('#intake button[type=submit]');
 const blocked = await p.isVisible('#intake form');
-await p.fill('#intake input[name=full_name]', 'Test Person'); await p.fill('#intake input[name=phone]', '5550100100');
-await p.fill('#intake input[name=email]', 'test@example.com'); await p.selectOption('#intake select[name=matter]', { index: 1 });
+const f = p.locator('#intake form input:not([type=checkbox]):not([type=hidden])'); await f.nth(0).fill('Test Person'); await f.nth(1).fill('5550100100');
+await f.nth(2).fill('test@example.com'); await p.selectOption('#intake select', { index: 1 });
 await p.check('#intake input[type=checkbox]'); await p.click('#intake button[type=submit]');
 const success = (await p.textContent('.form-success').catch(() => '')).slice(0, 60);
 await p.screenshot({ path: 'screens/harbor-pine/home-success-390.png' });

@@ -331,3 +331,14 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 .gallery .thumbs{grid-template-columns:1fr 1fr}.gallery .thumb img{aspect-ratio:4/3}
 .sheet-open body{overflow:hidden}
 @media (max-width:600px){.res-head{flex-direction:column;align-items:flex-start;gap:var(--sp-2)}}
+/* Round 3 */
+.filters .locked{color:var(--c-mute)}
+.filters .locked input{opacity:.6;cursor:not-allowed}
+.lock-note{display:flex;align-items:center;gap:6px;font-size:var(--fs-small);color:var(--c-mute);margin:0 0 4px}
+.card-img img,.cat-img img,.gallery img,.feat-photo img{filter:saturate(.88) contrast(.96) brightness(1.03)}
+.credits-table{width:100%;border-collapse:collapse;font-size:1rem}
+.credits-table th,.credits-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.credits-table th{font-family:var(--f-display);font-weight:700}
+@media (max-width:600px){.credits-table td,.credits-table th{padding:8px 6px;overflow-wrap:anywhere}}
+.gallery .main img{height:auto}.credits-table th:last-child,.credits-table td:last-child{white-space:nowrap;width:1%}
+.gallery .thumb img{height:auto}

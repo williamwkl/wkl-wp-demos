@@ -39,10 +39,12 @@ Every listing has its own photo. All photos from Wikimedia Commons (CC0 or publi
 | jewelry-05 | Necklace with Pendant Crosses MET dp30694.jpg | CC0 |
 | jewelry-03 | Necklace with Pendant Cross MET sf17-190-1650d3.jpg | CC0 |
 | jewelry-13 | Dura-Europos archival photograph, YUAG negative number dam-43~01 -object-id-4276.jpg | CC0 |
-| feature-portrait | Black and white pottery (Unsplash).jpg (4:5 crop) | CC0 |
 | honey | Honey and Clementines (Unsplash).jpg | CC0 |
 | bread | Artisan Loaves of Bread (Unsplash).jpg | CC0 |
 | jewel | Jeff White Custom Jewelry (Unsplash).jpg, cropped to the bench | CC0 |
 | yarn | Ball of orange yarn (Unsplash).jpg | CC0 |
+| feature-portrait | Making pottery (Unsplash).jpg (4:5 crop, same photo as the Coldwater Clay listing) | CC0 |
+| food-50 | Freshly Picked Apples (Unsplash).jpg | CC0 |
+| food-52 | Row of Apples (Unsplash).jpg | CC0 |
 
-Font: Bricolage Grotesque, SIL Open Font License 1.1, self-hosted.
+Font: Bricolage Grotesque, SIL Open Font License 1.1, self-hosted and subset to Latin.

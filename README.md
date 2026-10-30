@@ -24,7 +24,9 @@ Lighthouse 12, default mobile throttling, re-measured after QA round 1. Full HTM
 | Harbor & Pine (naive, before) | Home / Family law (worst) | 96 / 81 | 100 | 100 | 100 | 2.3 / 4.8 s | 0.031 / 0.001 |
 | Fernwood Makers | Home | 100 | 100 | 100 | 100 | 1.6 s | 0 |
 | Fernwood Makers | Directory /makers/ | 99 | 100 | 100 | 100 | 2.1 s | 0 |
-| Fernwood Makers | Listing, category, town, categories, for-makers, about | 99 to 100 | 100 | 100 | 100 | 1.2 to 1.9 s | 0 |
+| Fernwood Makers | Listing, category, town, categories, towns, for-makers, about | 99 to 100 | 100 | 100 | 100 | 1.2 to 2.1 s | 0 |
+
+Utility pages `/demo-form/` and `/credits/` are deliberately `noindex, follow` and left out of `sitemap.xml`, so Lighthouse SEO reports 60 on them by design.
 
 Targets (Perf >= 90, A11y/BP/SEO >= 95, LCP <= 2.5 s, CLS <= 0.1) are met on every page of the three shipped builds. The naive Harbor & Pine build is the "before" and misses Performance/LCP on its photo pages.
 
@@ -34,7 +36,7 @@ Other checks: `scripts/linkcheck.mjs dist/<demo>` (0 broken internal references 
 
 ### Without JavaScript
 
-- Forms: on the static copies every form submits with GET to a `/demo-form/` page that says nothing was sent (a static host answers POST with 405). Required fields use native browser validation.
+- Forms: required fields use native browser validation. On the static copies the exporter strips every field `name` and hidden input (nonce, referer) from demo forms, so a submit only opens the `/demo-form/` notice page with no query string: nothing a visitor types reaches the URL, history or server logs (`scripts/smoke-nojs-forms.mjs` checks all 6 forms). A static host answers POST with 405, which is why the forms use GET.
 - Makers directory: every listing is shown and the counter states the true number; the search box and filter rail are hidden, and a note links to the real static category and town pages (which are pre-filtered server-side). Query-string filters such as `?category=ceramics` only work with JavaScript on the static copy; on live WordPress the same query string is also applied server-side.
 
 ## Run locally
@@ -60,6 +62,7 @@ node scripts/lh.mjs http://127.0.0.1:5055/saltline reports/saltline / /tours/
 node scripts/check.mjs http://127.0.0.1:5055/saltline saltline / /tours/
 node scripts/copy-lint.mjs dist/saltline            # no em dashes, no "AI", no localhost leaks
 node scripts/linkcheck.mjs dist/saltline            # every internal href/src/url() exists
+node scripts/redirect-stubs.mjs dist/makers demos/makers/data/redirects.csv https://williamwkl.github.io/wkl-wp-demos/makers   # makers only: stubs for renamed listing slugs
 ```
 
 `export.mjs` crawls the running site, rewrites every internal URL to a relative path (so it works under any sub-folder), keeps canonical, og:url, og:image and JSON-LD absolute to `PUBLIC_BASE`, fetches Elementor's runtime chunks and assets referenced from inline JSON, drops server-only head links (feeds, REST, oEmbed), turns POST forms into GET forms aimed at `/demo-form/`, skips paginated `/page/N/` duplicates, and writes `sitemap.xml` + `robots.txt` (robots.txt only takes effect at a domain root, not in a project sub-folder).

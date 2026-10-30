@@ -7,6 +7,7 @@ const O = origin.replace(/\/$/, '');
 const host = new URL(O).host;
 const queue = ['/', '/demo-form/', ...extra]; // /demo-form/ is only reachable through form actions
 const seen = new Set();
+const noindex = new Set();
 const SKIP = /\/page\/\d+\/?$|^\/(wp-admin|wp-login\.php|xmlrpc\.php|wp-json|feed|comments\/feed)|\/feed\/?$|\/embed\/?$|\?/;
 function toFile(p) {
   if (p.endsWith('/')) return p + 'index.html';
@@ -70,7 +71,17 @@ while (queue.length) {
         .replace(/<link\b[^>]*rel=["'](?:alternate|EditURI|https:\/\/api\.w\.org\/|shortlink)["'][^>]*(?:rss\+xml|oembed|application\/json|xmlrpc|wp-json|\?p=)[^>]*>\s*/gi, '')
         // A static host answers POST with 405: send any POST form to the site's /demo-form/ notice page with GET instead.
         .replace(/<form\b[^>]*>/gi, tag => (tag = tag.replace(/\snovalidate(=["'][^"']*["'])?/i, ''), !/method=["']?post/i.test(tag)) ? tag
-          : tag.replace(/\smethod=["']?post["']?/i, ' method="get"').replace(/\saction=["'][^"']*["']/i, '').replace(/^<form/i, `<form action="${pre}demo-form/"`));
+          : tag.replace(/\smethod=["']?post["']?/i, ' method="get"').replace(/\saction=["'][^"']*["']/i, '').replace(/^<form/i, `<form action="${pre}demo-form/"`))
+        // Demo forms must never serialize what a visitor typed: drop field names and hidden inputs (nonce, referer, ids),
+        // so a no-JS submit just opens /demo-form/ with no query string. Native required replaces aria-only required.
+        .replace(/(<form\b[^>]*action="[^"]*demo-form\/"[^>]*>)([\s\S]*?)(<\/form>)/gi, (m, open, inner, close) => open + inner
+          .replace(/<input\b[^>]*type=["']hidden["'][^>]*>/gi, '')
+          .replace(/(<(?:input|select|textarea|button)\b[^>]*?)\sname=(["'])[^"']*\2/gi, '$1')
+          .replace(/(<(?:input|select|textarea)\b[^>]*aria-required=["']true["'])(?![^>]*\srequired)/gi, '$1 required')
+          // Fluent Forms marks required fields on the group label only; carry that to the control.
+          .split(/(?=<div class=["']ff-el-group)/).map(g => /ff-el-is-required|ff-el-tc|data-name=["']?consent/.test(g)
+            ? g.replace(/<(input|select|textarea)\b(?![^>]*\srequired)([^>]*?)(\/?)>/i, (m, t, rest, sl) => /type=["']?(hidden|submit)/i.test(rest) ? m : `<${t}${rest} required${sl}>`) : g).join('') + close);
+      if (/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(body)) noindex.add(p);
     } else if (/xml/.test(type)) {
       body = body.split(O).join(process.env.PUBLIC_BASE?.replace(/\/$/, '') || O);
     }
@@ -81,7 +92,7 @@ while (queue.length) {
 }
 // sitemap.xml + robots.txt for the static copy (WordPress serves its sitemap dynamically)
 const PUBB = (process.env.PUBLIC_BASE || O).replace(/\/$/, '');
-const pages = [...seen].filter(p => /\/$/.test(p) && !/\/wp-content\//.test(p)).sort();
+const pages = [...seen].filter(p => /\/$/.test(p) && !/\/wp-content\//.test(p) && !noindex.has(p)).sort();
 await writeFile(path.join(outDir, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + pages.map(p => `  <url><loc>${PUBB}${p}</loc></url>`).join('\n') + '\n</urlset>\n');
 await writeFile(path.join(outDir, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${PUBB}/sitemap.xml\n`);
 console.log('exported', seen.size, 'paths to', outDir);

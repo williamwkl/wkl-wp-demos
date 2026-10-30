@@ -28,7 +28,7 @@ out.sharedUrl = await count();
 await p.goto(base + '/craft/ceramics/', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
 out.taxonomyLocked = await count();
 await p.goto(base + '/town/coldwater/', { waitUntil: 'networkidle' });
-out.townPreChecked = await p.evaluate(() => [...document.querySelectorAll('.filters .locked input')].map(i => i.checked && i.disabled).join(',') + ' ' + document.querySelector('.filters .locked span').textContent);
+out.townPreChecked = await p.evaluate(() => [...document.querySelectorAll('.filters .locked input')].map(i => i.checked && i.getAttribute('aria-disabled') === 'true' && i.name === 'town' && i.value === 'coldwater').join(',') + ' ' + document.querySelector('.filters .locked span').textContent);
 // mobile sheet
 const m = await b.newPage({ viewport: { width: 390, height: 844 } });
 await m.goto(base + '/makers/', { waitUntil: 'networkidle' });
@@ -51,7 +51,7 @@ await m.click('.demo-form button[type=submit]');
 out.formBlocked = await m.isVisible('.demo-form');
 await m.fill('#m-biz', 'Test Studio'); await m.fill('#m-name', 'Test Maker'); await m.fill('#m-email', 'test@example.com');
 await m.selectOption('#m-craft', { index: 1 }); await m.selectOption('#m-town', { index: 1 }); await m.selectOption('#m-price', { index: 1 });
-await m.fill('#m-desc', 'Small batch test pieces.'); await m.check('input[name=consent]'); await m.click('.demo-form button[type=submit]');
+await m.fill('#m-desc', 'Small batch test pieces.'); await m.check('.demo-form input[type=checkbox]'); await m.click('.demo-form button[type=submit]');
 out.formSuccess = (await m.textContent('.form-success').catch(() => '')).slice(0, 50);
 // no-JS: every listing present and visible
 const ctx = await b.newContext({ javaScriptEnabled: false }); const n = await ctx.newPage();

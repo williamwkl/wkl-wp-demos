@@ -4,11 +4,10 @@
 	<meta charset="UTF-8" />
 	<script>document.documentElement.classList.add('js-on')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<meta name='robots' content='noindex, follow' />
 
 	<!-- This site is optimized with the Yoast SEO plugin v28.8 - https://yoast.com/product/yoast-seo-wordpress/ -->
 	<meta name="description" content="Photo credits for the Fernwood Makers sample site." />
-	<link rel="canonical" href="https://williamwkl.github.io/wkl-wp-demos/makers/credits/" />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="Photo credits | Fernwood Makers" />
@@ -16,7 +15,7 @@
 	<meta property="og:url" content="https://williamwkl.github.io/wkl-wp-demos/makers/credits/" />
 	<meta property="og:site_name" content="Fernwood Makers" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/","name":"Photo credits | Fernwood Makers","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website"},"datePublished":"2026-10-30T09:33:20+00:00","description":"Photo credits for the Fernwood Makers sample site.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/"},{"@type":"ListItem","position":2,"name":"Photo credits"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/","name":"Fernwood Makers","description":"Local makers directory for Fernwood County (demo site)","inLanguage":"en-US"}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/","name":"Photo credits | Fernwood Makers","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website"},"datePublished":"2026-10-30T10:22:57+00:00","description":"Photo credits for the Fernwood Makers sample site.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/credits\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/"},{"@type":"ListItem","position":2,"name":"Photo credits"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/","name":"Fernwood Makers","description":"Local makers directory for Fernwood County (demo site)","inLanguage":"en-US"}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -389,6 +388,17 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 .gallery .thumbs{grid-template-columns:1fr 1fr}.gallery .thumb img{aspect-ratio:4/3}
 .sheet-open body{overflow:hidden}
 @media (max-width:600px){.res-head{flex-direction:column;align-items:flex-start;gap:var(--sp-2)}}
+/* Round 3 */
+.filters .locked{color:var(--c-mute)}
+.filters .locked input{opacity:.6;cursor:not-allowed}
+.lock-note{display:flex;align-items:center;gap:6px;font-size:var(--fs-small);color:var(--c-mute);margin:0 0 4px}
+.card-img img,.cat-img img,.gallery img,.feat-photo img{filter:saturate(.88) contrast(.96) brightness(1.03)}
+.credits-table{width:100%;border-collapse:collapse;font-size:1rem}
+.credits-table th,.credits-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.credits-table th{font-family:var(--f-display);font-weight:700}
+@media (max-width:600px){.credits-table td,.credits-table th{padding:8px 6px;overflow-wrap:anywhere}}
+.gallery .main img{height:auto}.credits-table th:last-child,.credits-table td:last-child{white-space:nowrap;width:1%}
+.gallery .thumb img{height:auto}
 
 /*# sourceURL=../wp-content/themes/makers/style.css */
 </style>
@@ -397,7 +407,7 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 </style>
 </head>
 
-<body class="wp-singular page-template-default page page-id-85 wp-embed-responsive wp-theme-twentytwentyfive wp-child-theme-makers">
+<body class="wp-singular page-template-default page page-id-87 wp-embed-responsive wp-theme-twentytwentyfive wp-child-theme-makers">
 
 <a class="skip-link screen-reader-text" id="wp-skip-link" href="#main">Skip to content</a><div class="wp-site-blocks"><header class="header wp-block-template-part">
 <div class="wrap nav">
@@ -413,7 +423,7 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 
 </header>
 
-<main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" id="main"><div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow"><section class="wp-block-group page-hero is-layout-flow wp-block-group-is-layout-flow"><div class="wp-block-group wrap is-layout-flow wp-block-group-is-layout-flow"><p class="eyebrow wp-block-paragraph">Credits</p><h1 class="wp-block-heading">Photo credits</h1><p class="lead wp-block-paragraph">All photos are CC0 or public domain images from Wikimedia Commons, cropped to 4:3. The full list with source file names is in the project repository. Bricolage Grotesque is licensed under the SIL Open Font License.</p></div></section></div></main>
+<main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" id="main"><div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow"><section class="wp-block-group page-hero is-layout-flow wp-block-group-is-layout-flow"><div class="wp-block-group wrap is-layout-flow wp-block-group-is-layout-flow"><p class="eyebrow wp-block-paragraph">Credits</p><h1 class="wp-block-heading">Photo credits</h1><p class="lead wp-block-paragraph">All photos are CC0 or public domain images from Wikimedia Commons, cropped to 4:3. The full list is below. Bricolage Grotesque is licensed under the SIL Open Font License.</p></div></section><section class="section no-top"><div class="wrap"><table class="credits-table"><caption class="screen-reader-text">Photo sources</caption><thead><tr><th scope="col">Photo (Wikimedia Commons file)</th><th scope="col">License</th></tr></thead><tbody><tr><td>Making pottery (Unsplash)</td><td>CC0</td></tr><tr><td>Handmade Terracotta Ceramics (Unsplash)</td><td>CC0</td></tr><tr><td>Large ceramic bottles (Unsplash)</td><td>CC0</td></tr><tr><td>Dinnerware setup (Unsplash)</td><td>CC0</td></tr><tr><td>Nashad Abdu 2014 (Unsplash)</td><td>CC0</td></tr><tr><td>Mud games (Unsplash)</td><td>CC0</td></tr><tr><td>Shaving wood (Unsplash)</td><td>CC0</td></tr><tr><td>Werkstatt Werkzeuge work shop tools 690038</td><td>Public domain</td></tr><tr><td>Decorated wood boxes (Unsplash)</td><td>CC0</td></tr><tr><td>Furnitures in the sunlight (Unsplash)</td><td>CC0</td></tr><tr><td>Table and chairs in Cologne (Unsplash)</td><td>CC0</td></tr><tr><td>Restaurant Patio Furniture (Unsplash)</td><td>CC0</td></tr><tr><td>Knitting needles and yarn (Unsplash)</td><td>CC0</td></tr><tr><td>Vintage sewing machine (Unsplash)</td><td>CC0</td></tr><tr><td>Unfinished Business (Unsplash)</td><td>CC0</td></tr><tr><td>Vintage sewing box (Unsplash)</td><td>CC0</td></tr><tr><td>Threads for sewing in a workshop. (Unsplash)</td><td>CC0</td></tr><tr><td>Antique sewing machine (Unsplash)</td><td>CC0</td></tr><tr><td>Life Planner (Unsplash Y-8VPGLW86A)</td><td>CC0</td></tr><tr><td>Notebooks-cambridge (Unsplash)</td><td>CC0</td></tr><tr><td>Pencil shavings on a notebook (Unsplash)</td><td>CC0</td></tr><tr><td>Leather notebook (Unsplash)</td><td>CC0</td></tr><tr><td>New text notebook (Unsplash)</td><td>CC0</td></tr><tr><td>Pen on a notebook (Unsplash)</td><td>CC0</td></tr><tr><td>Love of calligraphy (Unsplash)</td><td>CC0</td></tr><tr><td>Homemade Jams (Unsplash)</td><td>CC0</td></tr><tr><td>Blue kettle filled with herbs (Unsplash)</td><td>CC0</td></tr><tr><td>73290, La Motte-Servolex, France (Unsplash)</td><td>CC0</td></tr><tr><td>Cut wheels of cheese (Unsplash)</td><td>CC0</td></tr><tr><td>Fresh Herbs (Unsplash)</td><td>CC0</td></tr><tr><td>Twisted wire jewelry (Unsplash)</td><td>CC0</td></tr><tr><td>Necklace with Pendant Crosses MET dp30693</td><td>CC0</td></tr><tr><td>Necklace with Pendant Crosses MET dp30694</td><td>CC0</td></tr><tr><td>Necklace with Pendant Cross MET sf17-190-1650d3</td><td>CC0</td></tr><tr><td>Dura-Europos archival photograph, YUAG negative number dam-43~01 -object-id-4276</td><td>CC0</td></tr><tr><td>Honey and Clementines (Unsplash)</td><td>CC0</td></tr><tr><td>Artisan Loaves of Bread (Unsplash)</td><td>CC0</td></tr><tr><td>Jeff White Custom Jewelry (Unsplash), cropped to the bench</td><td>CC0</td></tr><tr><td>Ball of orange yarn (Unsplash)</td><td>CC0</td></tr><tr><td>Making pottery (Unsplash) (4:5 crop, same photo as the Coldwater Clay listing)</td><td>CC0</td></tr><tr><td>Freshly Picked Apples (Unsplash)</td><td>CC0</td></tr><tr><td>Row of Apples (Unsplash)</td><td>CC0</td></tr></tbody></table></div></section></div></main>
 
 <footer class="footer wp-block-template-part">
 <div class="wrap">

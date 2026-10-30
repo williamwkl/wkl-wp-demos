@@ -155,6 +155,22 @@
     },
     {
       "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-50-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-50-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-52-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-52-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
       "path": "/wordpress/wp-content/themes/makers/assets/img/honey-800.webp",
       "data": {
         "resource": "url",
@@ -547,6 +563,14 @@
       "data": {
         "resource": "url",
         "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/data/makers-sample.csv"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/demo-data/redirects.csv",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/data/redirects.csv"
       }
     },
     {
