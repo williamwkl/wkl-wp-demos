@@ -19,19 +19,24 @@ for (const p of paths) {
     const r = await page.evaluate((w) => {
       const out = { overflow: document.documentElement.scrollWidth - window.innerWidth, smallText: [], smallTargets: [], badImg: [] };
       const vis = el => { const s = getComputedStyle(el); const b = el.getBoundingClientRect(); return s.visibility !== 'hidden' && s.display !== 'none' && b.width > 0 && b.height > 0; };
-      if (w <= 390) for (const el of document.querySelectorAll('main p, main li, main dd, main summary, main label')) {
+      if (w <= 390) for (const el of document.querySelectorAll('main p, main li, main dd, main summary, main label, footer p, footer li, .footer p, .footer li')) {
         if (!vis(el) || el.closest('.screen-reader-text')) continue;
         const fs = parseFloat(getComputedStyle(el).fontSize);
-        const isMeta = el.matches('.small,.meta,.strip-note,.lbl,.eyebrow,.demo-note,.hint,.proof li,.mini-faq p,cite,.tour-facts dd,.badge,.chip,.card-meta, .card-meta *,.result-count,.wpcf7-not-valid-tip,.sub,.role,.tag,.what,.disclaimer,.fine,.facts-list li,.trust-list li') || el.closest('.meta,.proof,.mini-faq,.tour-facts,.card-meta,.footer');
+        const isMeta = el.matches('.small,.meta,.strip-note,.lbl,.eyebrow,.demo-note,.hint,.proof li,.mini-faq p,cite,.tour-facts dd,.badge,.chip,.card-meta, .card-meta *,.result-count,.wpcf7-not-valid-tip,.sub,.role,.tag,.what,.disclaimer,.fine,.facts-list li,.trust-list li') || el.closest('.meta,.proof,.mini-faq,.tour-facts,.card-meta');
         if (fs < 16 && !isMeta) out.smallText.push(el.tagName + ' ' + fs + 'px "' + el.textContent.trim().slice(0, 30) + '"');
       }
+      // Targets: every visible control must be at least 44 x 44 px. Only inline text links inside running prose
+      // (a paragraph, list item or definition inside <main>, not in a nav or footer) are exempt (WCAG 2.5.8 inline exception).
+      // Checkboxes and radios are measured by their label, which is the real hit area.
       for (const el of document.querySelectorAll('a[href], button, input:not([type=hidden]), select, textarea, summary')) {
-        if (!vis(el) || el.closest('.screen-reader-text') || el.classList.contains('skip-link')) continue;
-        if (el.tagName === 'A' && el.closest('p, li, dd, td, .foot-addr') && !el.closest('nav, .wp-block-navigation, .wp-block-button, .footer ul') && !el.className.match(/btn|button/)) continue;
-        if (el.type === 'checkbox' || el.type === 'radio') { const lab = el.closest('label'); if (lab && lab.getBoundingClientRect().height >= 24) continue; }
-        const b = el.getBoundingClientRect();
-        if (b.height < 44 && b.width < 44 || b.height < 24) out.smallTargets.push(`${el.tagName}.${(el.className || '').toString().split(' ')[0]} "${(el.textContent || el.value || el.getAttribute('aria-label') || '').trim().slice(0, 24)}" ${Math.round(b.width)}x${Math.round(b.height)}`);
-        else if (b.height < 44 && !el.closest('.footer')) out.smallTargets.push(`${el.tagName} "${(el.textContent || el.value || el.getAttribute('aria-label') || '').trim().slice(0, 24)}" h=${Math.round(b.height)}`);
+        if (!vis(el) || el.closest('.screen-reader-text,[inert],[aria-hidden="true"]') || el.classList.contains('skip-link')) continue;
+        const inline = el.tagName === 'A' && el.closest('main p, main li, main dd, main td') && !el.closest('nav, footer, .footer, .wp-block-navigation, .wp-block-button, .chips, .towns, .term-index, .cat-tiles, .card, .pager')
+          && !/\b(btn|button|chip|wp-block-button__link|elementor-button)\b/.test(el.className);
+        if (inline) continue;
+        let box = el.getBoundingClientRect();
+        if (el.type === 'checkbox' || el.type === 'radio') { const lab = el.closest('label'); if (lab) box = lab.getBoundingClientRect(); }
+        if (el.closest('.card') && el.matches('.card-title a')) box = el.closest('.card').getBoundingClientRect(); // stretched link
+        if (box.height < 43.5 || box.width < 43.5) out.smallTargets.push(`${el.tagName}.${(el.className || '').toString().split(' ')[0]} "${(el.textContent || el.value || el.getAttribute('aria-label') || '').trim().slice(0, 24)}" ${Math.round(box.width)}x${Math.round(box.height)}`);
       }
       for (const img of document.querySelectorAll('img')) {
         if (!vis(img) || !img.naturalWidth) continue;

@@ -238,3 +238,17 @@ p.lead{margin-bottom:var(--sp-6)}
 .wpcf7-response-output:empty{display:none}
 .wpcf7 .hidden-fields-container{border:0;padding:0;margin:0}
 @media (max-width:860px){.foot-grid>div:first-child{grid-column:1/-1}}
+/* Round 2 fixes */
+figure.wp-block-image.hero-photo{margin:0 0 -48px}
+.strip{padding-top:calc(48px + var(--sp-6))}
+@media (max-width:860px){figure.wp-block-image.hero-photo{margin-bottom:-32px}.strip{padding-top:calc(32px + var(--sp-6))}}
+.section.tours-sec{padding-top:var(--sp-6)}
+.section.split-sec{padding-top:0}
+.proof strong{font-weight:700}
+.wpcf7-form :is(input,select,textarea):focus{outline:3px solid var(--c-coral);outline-offset:2px}
+.site-nav .wp-block-navigation-item__content{padding-inline:6px;min-width:44px;justify-content:center}
+.footer ul a{min-width:44px}
+.foot-bottom a{color:var(--c-white);display:inline-flex;align-items:center;min-height:44px}
+@media (max-width:600px){.footer{font-size:1rem}.footer .foot-bottom{font-size:.9375rem}}
+.foot-addr a{display:inline-flex;align-items:center;min-height:44px}
+.wpcf7-form .wpcf7-acceptance label{min-height:44px;align-items:center}

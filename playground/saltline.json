@@ -226,6 +226,14 @@
       }
     },
     {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-static.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/mu-plugins/demo-static.php"
+      }
+    },
+    {
       "step": "installPlugin",
       "pluginData": {
         "resource": "wordpress.org/plugins",

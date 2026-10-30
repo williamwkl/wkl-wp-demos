@@ -1,17 +1,48 @@
 # Fernwood Makers photo and font credits
 
-All photos from Wikimedia Commons, CC0 (mirrored Unsplash uploads). Cropped to 4:3 and re-encoded to WebP.
+Every listing has its own photo. All photos from Wikimedia Commons (CC0 or public domain), cropped to 4:3 (feature 4:5) and re-encoded to WebP. Machine-readable copy: `data/image-credits.csv`.
 
-| Key | Source file | License |
+| Key | Source file (Wikimedia Commons) | License |
 |---|---|---|
-| wheel, wheel-portrait | Pottery wheel (Unsplash).jpg | CC0 |
-| mug | Bucharest mug (Unsplash).jpg | CC0 |
-| wood | Woodworking workshop (Unsplash).jpg | CC0 |
-| yarn | Ball of orange yarn (Unsplash).jpg | CC0 |
-| paper | Stationery on a bench (Unsplash).jpg | CC0 |
-| paper2 | Stationery and flowers flatlay (Unsplash).jpg | CC0 |
+| ceramics-04 | Making pottery (Unsplash).jpg | CC0 |
+| ceramics-02 | Handmade Terracotta Ceramics (Unsplash).jpg | CC0 |
+| ceramics-15 | Large ceramic bottles (Unsplash).jpg | CC0 |
+| ceramics-12 | Dinnerware setup (Unsplash).jpg | CC0 |
+| ceramics-16 | Nashad Abdu 2014 (Unsplash).jpg | CC0 |
+| ceramics-05 | Mud games (Unsplash).jpg | CC0 |
+| woodwork-00 | Shaving wood (Unsplash).jpg | CC0 |
+| woodwork-04 | Werkstatt Werkzeuge work shop tools 690038.jpg | Public domain |
+| woodwork-01 | Decorated wood boxes (Unsplash).jpg | CC0 |
+| woodwork-10 | Furnitures in the sunlight (Unsplash).jpg | CC0 |
+| woodwork-16 | Table and chairs in Cologne (Unsplash).jpg | CC0 |
+| woodwork-14 | Restaurant Patio Furniture (Unsplash).jpg | CC0 |
+| textiles-04 | Knitting needles and yarn (Unsplash).jpg | CC0 |
+| textiles-10 | Vintage sewing machine (Unsplash).jpg | CC0 |
+| textiles-16 | Unfinished Business (Unsplash).jpg | CC0 |
+| textiles-17 | Vintage sewing box (Unsplash).jpg | CC0 |
+| textiles-14 | Threads for sewing in a workshop. (Unsplash).jpg | CC0 |
+| textiles-11 | Antique sewing machine (Unsplash).jpg | CC0 |
+| print-04 | Life Planner (Unsplash Y-8VPGLW86A).jpg | CC0 |
+| print-06 | Notebooks-cambridge (Unsplash).jpg | CC0 |
+| print-09 | Pencil shavings on a notebook (Unsplash).jpg | CC0 |
+| print-03 | Leather notebook (Unsplash).jpg | CC0 |
+| print-05 | New text notebook (Unsplash).jpg | CC0 |
+| print-08 | Pen on a notebook (Unsplash).jpg | CC0 |
+| print-15 | Love of calligraphy (Unsplash).jpg | CC0 |
+| food-00 | Homemade Jams (Unsplash).jpg | CC0 |
+| food-17 | Blue kettle filled with herbs (Unsplash).jpg | CC0 |
+| food-04 | 73290, La Motte-Servolex, France (Unsplash).jpg | CC0 |
+| food-07 | Cut wheels of cheese (Unsplash).jpg | CC0 |
+| food-21 | Fresh Herbs (Unsplash).jpg | CC0 |
+| jewelry-02 | Twisted wire jewelry (Unsplash).jpg | CC0 |
+| jewelry-04 | Necklace with Pendant Crosses MET dp30693.jpg | CC0 |
+| jewelry-05 | Necklace with Pendant Crosses MET dp30694.jpg | CC0 |
+| jewelry-03 | Necklace with Pendant Cross MET sf17-190-1650d3.jpg | CC0 |
+| jewelry-13 | Dura-Europos archival photograph, YUAG negative number dam-43~01 -object-id-4276.jpg | CC0 |
+| feature-portrait | Black and white pottery (Unsplash).jpg (4:5 crop) | CC0 |
 | honey | Honey and Clementines (Unsplash).jpg | CC0 |
 | bread | Artisan Loaves of Bread (Unsplash).jpg | CC0 |
-| jewel | Jeff White Custom Jewelry (Unsplash).jpg | CC0 (cropped to the bench, excluding a wall photo and a logo mug) |
+| jewel | Jeff White Custom Jewelry (Unsplash).jpg, cropped to the bench | CC0 |
+| yarn | Ball of orange yarn (Unsplash).jpg | CC0 |
 
-Several listings share a photo per category (sample data). Font: Bricolage Grotesque, SIL Open Font License 1.1, self-hosted.
+Font: Bricolage Grotesque, SIL Open Font License 1.1, self-hosted.

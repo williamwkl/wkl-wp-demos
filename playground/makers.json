@@ -59,6 +59,102 @@
     },
     {
       "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/ceramics-02-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/ceramics-02-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/ceramics-04-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/ceramics-04-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/ceramics-05-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/ceramics-05-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/ceramics-12-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/ceramics-12-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/ceramics-15-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/ceramics-15-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/ceramics-16-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/ceramics-16-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/feature-portrait-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/feature-portrait-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-00-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-00-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-04-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-04-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-07-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-07-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-17-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-17-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/food-21-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/food-21-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
       "path": "/wordpress/wp-content/themes/makers/assets/img/honey-800.webp",
       "data": {
         "resource": "url",
@@ -75,50 +171,194 @@
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/makers/assets/img/mug-800.webp",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/jewelry-02-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/mug-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/jewelry-02-800.webp"
       }
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/makers/assets/img/paper-800.webp",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/jewelry-03-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/paper-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/jewelry-03-800.webp"
       }
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/makers/assets/img/paper2-800.webp",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/jewelry-04-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/paper2-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/jewelry-04-800.webp"
       }
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/makers/assets/img/wheel-800.webp",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/jewelry-05-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/wheel-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/jewelry-05-800.webp"
       }
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/makers/assets/img/wheel-portrait-800.webp",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/jewelry-13-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/wheel-portrait-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/jewelry-13-800.webp"
       }
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/makers/assets/img/wood-800.webp",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-03-800.webp",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/wood-800.webp"
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-03-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-04-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-04-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-05-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-05-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-06-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-06-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-08-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-08-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-09-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-09-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/print-15-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/print-15-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/textiles-04-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/textiles-04-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/textiles-10-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/textiles-10-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/textiles-11-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/textiles-11-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/textiles-14-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/textiles-14-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/textiles-16-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/textiles-16-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/textiles-17-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/textiles-17-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/woodwork-00-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/woodwork-00-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/woodwork-01-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/woodwork-01-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/woodwork-04-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/woodwork-04-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/woodwork-10-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/woodwork-10-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/woodwork-14-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/woodwork-14-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/woodwork-16-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/woodwork-16-800.webp"
       }
     },
     {
@@ -275,6 +515,14 @@
     },
     {
       "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-static.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/mu-plugins/demo-static.php"
+      }
+    },
+    {
+      "step": "writeFile",
       "path": "/wordpress/wp-content/mu-plugins/fernwood-directory.php",
       "data": {
         "resource": "url",
@@ -284,6 +532,14 @@
     {
       "step": "mkdir",
       "path": "/wordpress/wp-content/demo-data"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/demo-data/image-credits.csv",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/data/image-credits.csv"
+      }
     },
     {
       "step": "writeFile",

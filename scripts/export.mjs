@@ -5,9 +5,9 @@ import path from 'node:path';
 const [origin, outDir, ...extra] = process.argv.slice(2);
 const O = origin.replace(/\/$/, '');
 const host = new URL(O).host;
-const queue = ['/', ...extra];
+const queue = ['/', '/demo-form/', ...extra]; // /demo-form/ is only reachable through form actions
 const seen = new Set();
-const SKIP = /^\/(wp-admin|wp-login\.php|xmlrpc\.php|wp-json|feed|comments\/feed)|\/feed\/?$|\/embed\/?$|\?/;
+const SKIP = /\/page\/\d+\/?$|^\/(wp-admin|wp-login\.php|xmlrpc\.php|wp-json|feed|comments\/feed)|\/feed\/?$|\/embed\/?$|\?/;
 function toFile(p) {
   if (p.endsWith('/')) return p + 'index.html';
   if (!path.posix.extname(p)) return p + '/index.html';
@@ -22,13 +22,13 @@ function enqueue(u) {
     const url = new URL(u, O + '/');
     if (url.host !== host) return;
     let p = decodeURIComponent(url.pathname);
-    if (url.search && !/\.(css|js)$/.test(p)) return; // drop query pages; keep versioned assets
+    if (url.search && !path.posix.extname(p)) return; // drop query pages; keep versioned assets (query is ignored)
     if (SKIP.test(p)) return;
     if (!seen.has(p)) { seen.add(p); queue.push(p); }
   } catch {}
 }
 await rm(outDir, { recursive: true, force: true });
-seen.add('/');
+seen.add('/'); seen.add('/demo-form/');
 while (queue.length) {
   const p = queue.shift();
   const res = await fetch(O + p, { redirect: 'follow' });
@@ -48,6 +48,8 @@ while (queue.length) {
     }
     // URLs inside inline JSON (escaped slashes), e.g. WordPress emoji settings.
     for (const m of body.matchAll(new RegExp(esc.replace(/[.\\/]/g, c => '\\' + c) + '(\\\\\/[^"\\s]+?\\.(?:js|css|svg|png|webp|woff2))', 'g'))) enqueue(O + m[1].replace(/\\\//g, '/'));
+    // Plain absolute asset URLs inside inline JSON/JS (e.g. "concatemoji":"http://host/...js").
+    for (const m of body.matchAll(new RegExp(O.replace(/[.\/]/g, c => '\\' + c) + '(\\/[^"\'\\s]+?\\.(?:js|css|svg|png|webp|woff2))', 'g'))) enqueue(O + m[1]);
     // Elementor lazy-loads widget handler chunks by name at runtime; fetch them so the static copy has them.
     if (/javascript/.test(type)) for (const m of body.matchAll(/__elementorLoadChunk\(`([\w-]+)`\)/g)) enqueue(O + '/wp-content/plugins/elementor/assets/js/chunks/' + m[1] + '.min.js');
     if (/css/.test(type)) {
@@ -56,14 +58,19 @@ while (queue.length) {
       const pre = relPrefix(p);
       const PUB = (process.env.PUBLIC_BASE || '').replace(/\/$/, '');
       // Canonical, og:url and JSON-LD keep absolute public URLs; everything else becomes relative.
-      if (PUB) body = body.replace(new RegExp('(rel="canonical" href="|property="og:url" content=")' + O.replace(/[.\/]/g, m => '\\' + m), 'g'), '$1' + PUB)
+      if (PUB) body = body.replace(new RegExp('(rel="canonical" href="|property="og:url" content="|property="og:image" content="|name="twitter:image" content=")' + O.replace(/[.\/]/g, m => '\\' + m), 'g'), '$1' + PUB)
         .replace(/(<script[^>]*application\/ld\+json[^>]*>)([\s\S]*?)(<\/script>)/g, (m, a, j, c) => a + j.split(O).join(PUB).split(esc).join(PUB.replace(/\//g, '\\/')) + c);
       body = body.split(encodeURIComponent(O)).join(encodeURIComponent(PUB || O))
         .replace(new RegExp(`<link rel=.dns-prefetch. href=.//${new URL(O).hostname.replace(/\./g, '\\.')}.[^>]*>\\n?`, 'g'), '');
       body = body.split(O + '/').join(pre).split(esc + '\\/').join(pre.replace(/\//g, '\\/')).split(O + '"').join(pre + '"')
         .replace(/(href|src|action)=(["'])\/(?!\/)/g, `$1=$2${pre}`)
         .replace(/(srcset=["'])([^"']+)/g, (m, a, v) => a + v.replace(/(^|,\s*)\/(?!\/)/g, `$1${pre}`))
-        .replace(/\?ver=[^"'&\s]+/g, '');
+        .replace(/\?ver=[^"'&\s]+/g, '')
+        // Server-only discovery links (feeds, REST, oEmbed, RSD, shortlink) point at endpoints a static host does not have.
+        .replace(/<link\b[^>]*rel=["'](?:alternate|EditURI|https:\/\/api\.w\.org\/|shortlink)["'][^>]*(?:rss\+xml|oembed|application\/json|xmlrpc|wp-json|\?p=)[^>]*>\s*/gi, '')
+        // A static host answers POST with 405: send any POST form to the site's /demo-form/ notice page with GET instead.
+        .replace(/<form\b[^>]*>/gi, tag => (tag = tag.replace(/\snovalidate(=["'][^"']*["'])?/i, ''), !/method=["']?post/i.test(tag)) ? tag
+          : tag.replace(/\smethod=["']?post["']?/i, ' method="get"').replace(/\saction=["'][^"']*["']/i, '').replace(/^<form/i, `<form action="${pre}demo-form/"`));
     } else if (/xml/.test(type)) {
       body = body.split(O).join(process.env.PUBLIC_BASE?.replace(/\/$/, '') || O);
     }

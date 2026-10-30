@@ -84,7 +84,7 @@ function sl_tours() {
 		[ 'slug' => 'night-glow-paddle', 'name' => 'Night Glow Paddle', 'dur' => '2 hours', 'iso' => 'PT2H', 'level' => 'Easy', 'price' => 95, 'img' => 'night',
 			'short' => 'Summer nights when the bay lights up with bioluminescence. Blankets and cocoa provided.',
 			'long' => 'We push off at dusk as the last light fades over the cove, then paddle into the sheltered inner bay once it is fully dark. On the right summer nights every paddle stroke sparks blue green light in the water. Kayaks carry small lights for safety and your guide stays close the whole time. Back on the beach there are blankets and hot cocoa waiting.',
-			'season' => 'July to September, moon dependent', 'alt' => 'A lone kayaker paddling toward a low sun on calm water at dusk' ],
+			'season' => 'July to September, moon dependent', 'alt' => 'Blue bioluminescent glow in dark water at night' ],
 	];
 }
 
@@ -96,8 +96,8 @@ function demo_seed() {
 		'hero'    => sl_media( 'hero-560.webp', 'A kayaker in a red and white sea kayak paddling along a rocky shoreline, seen from behind', 'Photo: Kayaking in Brofjorden at Govik, CC0, Wikimedia Commons' ),
 		'sunrise' => sl_media( 'sunrise-900.webp', 'A harbor seal resting on a mossy rock above dark water', 'Photo: Harbor seal on the rocks, public domain (NPS), Wikimedia Commons' ),
 		'cave'    => sl_media( 'cave-900.webp', 'Kayakers paddling below red sandstone cliffs with sea cave openings', 'Photo: Sea caves on Lake Superior, CC0, Wikimedia Commons' ),
-		'night'   => sl_media( 'night-900.webp', 'A lone kayaker paddling toward a low sun on calm water at dusk', 'Photo: Sunset kayak (Unsplash), CC0, Wikimedia Commons' ),
-		'lesson'  => sl_media( 'lesson-900.webp', 'A paddler settling into a sea kayak at the water edge before setting off', 'Photo: Getting into the kayak in Govik, CC0, Wikimedia Commons' ),
+		'night'   => sl_media( 'night-900.webp', 'Blue bioluminescent glow in dark water beside a wooden jetty at night', 'Photo: Mareel, bioluminescence in Norra Grundsund harbor, CC0, Wikimedia Commons' ),
+		'lesson'  => sl_media( 'lesson-900.webp', 'Touring kayaks pulled up on a quiet beach, ready for the first lesson', 'Photo: Kayaks beached on Yellowstone Lake, public domain (NPS), Wikimedia Commons' ),
 		'shore'   => sl_media( 'shore-1200.webp', 'A kayaker on calm open water near a rocky point in early morning light', 'Photo: Kayak sunset bay, Oregon, public domain, Wikimedia Commons' ),
 		'gear'    => sl_media( 'gear-1200.webp', 'Touring kayaks pulled up side by side on a quiet beach', 'Photo: Kayaks beached on Yellowstone Lake, public domain (NPS), Wikimedia Commons' ),
 	];
@@ -158,8 +158,8 @@ function demo_seed() {
 			'wrap split'
 		), 'section split-sec', 'section' ) .
 		sl_group( sl_group(
-			'<!-- wp:quote --><blockquote class="wp-block-quote"><!-- wp:paragraph --><p>"My 9-year-old asked to go again before we even got the boats out of the water."</p><!-- /wp:paragraph --><cite>Priya R., Sunrise Harbor Paddle (sample review)</cite></blockquote><!-- /wp:quote -->' .
-			'<!-- wp:quote --><blockquote class="wp-block-quote"><!-- wp:paragraph --><p>"Jonah read the swell like a weather report and got us into the far cave. Unreal."</p><!-- /wp:paragraph --><cite>Marcus T., Sea Cave Explorer (sample review)</cite></blockquote><!-- /wp:quote -->',
+			'<!-- wp:quote --><blockquote class="wp-block-quote"><!-- wp:paragraph --><p>“My 9-year-old asked to go again before we even got the boats out of the water.”</p><!-- /wp:paragraph --><cite>Priya R., Sunrise Harbor Paddle (sample review)</cite></blockquote><!-- /wp:quote -->' .
+			'<!-- wp:quote --><blockquote class="wp-block-quote"><!-- wp:paragraph --><p>“Jonah read the swell like a weather report and got us into the far cave. Unreal.”</p><!-- /wp:paragraph --><cite>Marcus T., Sea Cave Explorer (sample review)</cite></blockquote><!-- /wp:quote -->',
 			'wrap quotes'
 		), 'section sand2', 'section' ) .
 		sl_cta_band();
@@ -246,7 +246,6 @@ function demo_seed() {
 			sl_group(
 				sl_h( 'Meeting point', 2 ) .
 				sl_p( 'The boathouse at the Marrow Cove public launch, North Shore. Arrive 15 minutes before your tour.' ) .
-				sl_html( '<div class="map-ph" role="img" aria-label="Map placeholder showing the Marrow Cove public launch"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Map placeholder</span></div>' ) .
 				sl_h( 'Hours', 3 ) .
 				sl_p( 'Boathouse open 6 am to 9 pm, May to October.<br>Office replies Monday to Saturday.' ) .
 				sl_h( 'Reach us', 3 ) .
@@ -261,6 +260,8 @@ function demo_seed() {
 		'tours'   => [ 'Tours', $tours_page, 'Compare the three Saltline tours: Sunrise Harbor Paddle, Sea Cave Explorer and Night Glow Paddle. Prices, durations, levels and seasons.' ],
 		'about'   => [ 'About', $about, 'Saltline is a guide-owned sea kayak outfitter at Marrow Cove. Meet the founders, our certifications and how we keep every trip safe.' ],
 		'faq'     => [ 'FAQ', $faq_page, 'Answers about experience, age limits, what to wear, weather cancellations, parking, photos, group bookings and gift cards.' ],
+		'credits' => [ 'Photo credits', sl_group( sl_group( sl_p( 'Credits', 'eyebrow' ) . sl_h( 'Photo credits', 1 ) . sl_p( 'All photos on this sample site are public domain or CC0 images from Wikimedia Commons, cropped and color graded. The Fraunces typeface is licensed under the SIL Open Font License.' ) . sl_list( [ 'Kayaking in Brofjorden at Govik (CC0)', 'Kayaks beached on Yellowstone Lake (public domain, NPS)', 'Harbor seal on the rocks (public domain, NPS)', 'Sea caves on Lake Superior (CC0)', 'Mareel, bioluminescence in Norra Grundsund harbor (CC0)', 'Kayak sunset bay, Oregon (public domain)' ], 'cert-list' ), 'wrap prose' ), 'page-hero', 'section' ), 'Photo credits for the Saltline Kayak Tours sample site.' ],
+		'demo-form' => [ 'Demo form', sl_group( sl_group( sl_h( 'This is a demo form.', 1 ) . sl_p( 'This sample site has no server behind its forms, so nothing was sent. On a live site the booking request would be emailed to the team.' ) . sl_p( '<a href="/contact/">Back to the contact page</a>' ), 'wrap prose' ), 'page-hero', 'section' ), 'Demo form notice.' ],
 		'contact' => [ 'Contact', $contact, 'Request a guided kayak tour at Marrow Cove. Pick a tour and date and we will confirm availability by email.' ],
 	];
 	$ids = [];

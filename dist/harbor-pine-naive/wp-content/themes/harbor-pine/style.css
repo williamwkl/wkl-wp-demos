@@ -351,3 +351,19 @@ h3.elementor-heading-title{font-size:var(--fs-h3);line-height:1.25}
 @media (max-width:860px){.elementor .e-con.hero-grid,.elementor .e-con.expect,.elementor .e-con.results{grid-template-columns:1fr;gap:var(--sp-7)}}
 .elementor .e-con.actions{gap:var(--sp-3)}
 .area-col a,.person .bio a,.elementor-widget-text-editor p a{text-decoration:underline!important;text-decoration-color:var(--c-brass)!important;text-underline-offset:3px}
+/* Round 2 fixes */
+.portrait-tile{background-image:linear-gradient(170deg,#DCE3D9,#B9C6BC)!important}
+.portrait-tile::before{background-image:radial-gradient(60% 40% at 50% 85%,rgba(46,74,62,.25),transparent 70%)!important}
+.person .portrait-tile{width:100%}
+.area-col .elementor-widget-text-editor{margin-top:var(--sp-3)}
+.area-col .elementor-widget-text-editor a{font-weight:600}
+.pull{margin:0}
+.nav-links a{padding-inline:6px}
+.footer ul a{min-width:44px}
+.fluentform textarea.ff-el-form-control{min-height:80px}
+.card .fine{margin-top:var(--sp-2)}
+@media (max-width:600px){.footer{font-size:1rem}.footer .foot-bottom{font-size:.9375rem}}
+.fluentform .ff-el-tc label,.fluentform .ff-el-form-check-label{min-height:44px;align-items:center}
+/* Elementor's background lazy-load rule strips background-image (not color) inside later containers, so the tile uses colors only. */
+.portrait-tile{background-color:#CFD9D1!important;box-shadow:inset 0 -40px 60px -20px rgba(46,74,62,.22)}
+.portrait-tile::before{display:none}

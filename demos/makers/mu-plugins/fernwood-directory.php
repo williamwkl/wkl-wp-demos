@@ -171,8 +171,9 @@ function fw_icon( $name ) {
 function fw_price_html( $n ) {
 	return '<span class="price" aria-label="Price band ' . (int) $n . ' of 4, ' . esc_attr( FW_PRICE_BANDS[ $n ][1] ) . '">' . str_repeat( '$', $n ) . '<span class="off" aria-hidden="true">' . str_repeat( '$', 4 - $n ) . '</span></span>';
 }
-function fw_card( $l, $heading = 'h3' ) {
-	$img = get_the_post_thumbnail( $l['id'], 'medium_large', [ 'alt' => '', 'loading' => 'lazy', 'sizes' => '(max-width: 599px) calc(100vw - 32px), (max-width: 959px) 45vw, 300px' ] );
+function fw_card( $l, $heading = 'h3', $eager = 0 ) {
+	// Cards above the fold on directory pages load eagerly; the first one is the LCP candidate.
+	$img = get_the_post_thumbnail( $l['id'], 'medium_large', [ 'alt' => '', 'loading' => $eager ? 'eager' : 'lazy', 'fetchpriority' => 1 === $eager ? 'high' : 'auto', 'sizes' => '(max-width: 599px) calc(100vw - 32px), (max-width: 959px) 45vw, 300px' ] );
 	$open = $l['open'] ? '<span class="tag">' . str_replace( 'width="20" height="20"', 'width="10" height="10"', fw_icon( 'check' ) ) . 'Open studio</span>' : '<span></span>';
 	return sprintf(
 		'<article class="card" data-id="%1$d" data-craft="%2$s" data-town="%3$s" data-price="%4$d" data-open="%5$d"><div class="card-img">%6$s</div><div class="body"><p class="meta"><span class="dot" aria-hidden="true"></span>%7$s · %8$s</p><%12$s class="card-title"><a href="%9$s">%10$s</a></%12$s><p class="by">%11$s</p><div class="foot">%13$s%14$s</div></div></article>',
@@ -211,7 +212,7 @@ function fw_matches( $l, $f ) {
  * sorts and paginates in the browser using the generated JSON index and keeps the URL in sync.
  */
 add_shortcode( 'fernwood_directory', function ( $atts ) {
-	$a = shortcode_atts( [ 'per_page' => 12, 'heading' => 'Browse the directory.', 'search' => '1', 'more' => '0', 'craft' => '', 'town' => '' ], $atts );
+	$a = shortcode_atts( [ 'per_page' => 12, 'heading' => 'Browse the directory.', 'search' => '1', 'more' => '0', 'craft' => '', 'town' => '', 'eager' => '0' ], $atts );
 	$preset = [];
 	if ( is_tax( 'craft' ) || $a['craft'] ) $preset['category'] = [ $a['craft'] ?: get_queried_object()->slug ];
 	if ( is_tax( 'town' ) || $a['town'] ) $preset['town'] = [ $a['town'] ?: get_queried_object()->slug ];
@@ -228,8 +229,14 @@ add_shortcode( 'fernwood_directory', function ( $atts ) {
 	$locked = array_keys( $preset );
 
 	$group = function ( $name, $legend, $items, $selected, $counts ) use ( $locked ) {
-		if ( in_array( $name, $locked, true ) ) return '';
 		$h = '<fieldset class="grp"><legend>' . esc_html( $legend ) . '</legend>';
+		if ( in_array( $name, $locked, true ) ) {
+			foreach ( $selected as $val ) {
+				$h .= sprintf( '<label class="locked"><input type="checkbox" checked disabled> <span>%1$s</span><span class="n">%2$d</span></label>', esc_html( $items[ $val ] ?? $val ), (int) ( $counts[ $val ] ?? 0 ) );
+			}
+			$base = wp_make_link_relative( get_post_type_archive_link( 'maker' ) );
+			return $h . '<a class="change" href="' . esc_url( $base ) . '">All ' . ( 'town' === $name ? 'towns' : 'categories' ) . '</a></fieldset>';
+		}
 		foreach ( $items as $val => $label ) {
 			$h .= sprintf( '<label><input type="checkbox" name="%1$s" value="%2$s"%3$s> <span>%4$s</span><span class="n">%5$d</span></label>',
 				$name, esc_attr( $val ), in_array( $val, $selected, false ) ? ' checked' : '', esc_html( $label ), (int) ( $counts[ $val ] ?? 0 ) );
@@ -252,7 +259,7 @@ add_shortcode( 'fernwood_directory', function ( $atts ) {
 		<?php endif; ?>
 		<div class="browse">
 			<form class="filters" id="<?php echo esc_attr( $uid ); ?>-filters" action="<?php echo esc_url( $archive ); ?>" method="get" aria-label="Filter makers">
-				<div class="sheet-head"><h2 class="sheet-title">Filters</h2><button type="button" class="iconbtn sheet-close" aria-label="Close filters"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+				<div class="sheet-head"><h2 class="sheet-title" id="<?php echo esc_attr( $uid ); ?>-sheet-title">Filters</h2><button type="button" class="iconbtn sheet-close" aria-label="Close filters"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 				<?php
 				echo $group( 'category', 'Category', $craft_items, $f['category'], $cc ); // phpcs:ignore
 				echo $group( 'town', 'Town', $town_items, $f['town'], $tc ); // phpcs:ignore
@@ -266,13 +273,16 @@ add_shortcode( 'fernwood_directory', function ( $atts ) {
 				</div>
 			</form>
 			<div class="results">
+				<div class="nojs-browse"><p>Search and filters need JavaScript. Every listing is shown below, or browse a smaller list by
+					<?php echo implode( ', ', array_map( fn( $t ) => '<a href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '">' . esc_html( $t->name ) . '</a>', $crafts ) ); ?>,
+					or by town: <?php echo implode( ', ', array_map( fn( $t ) => '<a href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '">' . esc_html( $t->name ) . '</a>', $towns ) ); ?>.</p></div>
 				<div class="mob-filters" aria-label="Quick filters">
 					<button type="button" class="chip filters-open" aria-expanded="false" aria-controls="<?php echo esc_attr( $uid ); ?>-filters"><?php echo fw_icon( 'filter' ); // phpcs:ignore ?> Filters</button>
 				</div>
 				<div class="active-chips" aria-label="Active filters"></div>
 				<h2 class="screen-reader-text">Results</h2>
 				<div class="res-head">
-					<p class="count" role="status" aria-live="polite">Showing <strong class="n-shown"><?php echo min( count( $shown ), (int) $a['per_page'] ); ?></strong> of <strong class="n-match"><?php echo count( $shown ); ?></strong> makers</p>
+					<p class="count" role="status" aria-live="polite"><strong><?php echo count( $shown ); ?></strong> <?php echo 1 === count( $shown ) ? 'maker' : 'makers'; ?></p>
 					<label class="sort"><span>Sort</span> <select name="sort" form="<?php echo esc_attr( $uid ); ?>-filters"><option value="recommended">Recommended</option><option value="newest">Newest</option><option value="az">A to Z</option></select></label>
 				</div>
 				<div class="grid">
@@ -283,7 +293,8 @@ add_shortcode( 'fernwood_directory', function ( $atts ) {
 					foreach ( $all as $l ) {
 						$match = in_array( $l, $shown, true );
 						$attr  = $match ? ( $pos++ >= (int) $a['per_page'] ? ' class="card pg-hide"' : ' class="card"' ) : ' class="card" hidden';
-						echo str_replace( '<article class="card"', '<article' . $attr, fw_card( $l, $a['more'] ? 'h3' : 'h3' ) ); // phpcs:ignore
+						$eager = ( $match && $pos <= (int) $a['eager'] ) ? $pos : 0;
+						echo str_replace( '<article class="card"', '<article' . $attr, fw_card( $l, 'h3', $eager ) ); // phpcs:ignore
 					}
 					?>
 				</div>
@@ -316,6 +327,17 @@ add_shortcode( 'fernwood_towns', function () {
 } );
 add_shortcode( 'fernwood_terms', function ( $atts ) {
 	$tax = in_array( $atts['tax'] ?? '', [ 'craft', 'town' ], true ) ? $atts['tax'] : 'craft';
+	if ( 'craft' === $tax ) {
+		$h = '<ul class="cat-tiles">';
+		$i = 0;
+		foreach ( fw_terms( 'craft' ) as $t ) {
+			$first = get_posts( [ 'post_type' => 'maker', 'numberposts' => 1, 'orderby' => 'menu_order', 'order' => 'ASC', 'tax_query' => [ [ 'taxonomy' => 'craft', 'terms' => $t->term_id ] ] ] );
+			$img = $first ? get_the_post_thumbnail( $first[0], 'medium_large', [ 'alt' => '', 'loading' => $i < 3 ? 'eager' : 'lazy', 'fetchpriority' => 0 === $i ? 'high' : 'auto', 'sizes' => '(max-width: 599px) 50vw, 380px' ] ) : '';
+			$h .= '<li><a class="cat-tile" href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '"><span class="cat-img">' . $img . '</span><span class="cat-name">' . esc_html( $t->name ) . '</span><span class="cat-n">' . (int) $t->count . ' makers</span></a></li>';
+			$i++;
+		}
+		return $h . '</ul>';
+	}
 	$h = '<ul class="towns term-index">';
 	foreach ( fw_terms( $tax ) as $t ) $h .= '<li><a href="' . esc_url( wp_make_link_relative( get_term_link( $t ) ) ) . '">' . esc_html( $t->name ) . '<span class="n">' . (int) $t->count . '</span></a></li>';
 	return $h . '</ul>';
@@ -337,14 +359,21 @@ add_shortcode( 'fernwood_single', function () {
 	$thumb = get_post_thumbnail_id( $p );
 	$alt = esc_attr( $l['craftName'] . ' work by ' . $l['title'] );
 	$main = $thumb ? wp_get_attachment_image( $thumb, 'large', false, [ 'alt' => $alt, 'fetchpriority' => 'high', 'loading' => 'eager', 'sizes' => '(max-width: 767px) calc(100vw - 32px), 680px' ] ) : '';
+	$others = array_values( array_filter( fw_all(), fn( $x ) => $x['craft'] === $l['craft'] && $x['id'] !== $l['id'] ) );
+	$more = array_slice( $others, 0, 3 );
+	// Gallery: the listing photo plus two different photos, never one already shown in the "More in" row.
+	$pool = array_map( fn( $x ) => get_post_thumbnail_id( $x['id'] ), array_slice( $others, 3 ) );
+	$pool = array_merge( $pool, (array) ( get_option( 'fw_gallery_extras' )[ $l['craft'] ] ?? [] ) );
+	$pool = array_values( array_unique( array_filter( $pool, fn( $id ) => $id && $id !== $thumb ) ) );
 	$thumbs = '';
-	foreach ( [ 0, 1, 2 ] as $i ) $thumbs .= $thumb ? '<div class="thumb t' . $i . '">' . wp_get_attachment_image( $thumb, 'medium', false, [ 'alt' => '', 'loading' => 'lazy', 'sizes' => '(max-width: 767px) 30vw, 220px' ] ) . '</div>' : '';
-	$more = array_slice( array_values( array_filter( fw_all(), fn( $x ) => $x['craft'] === $l['craft'] && $x['id'] !== $l['id'] ) ), 0, 3 );
+	foreach ( array_slice( $pool, 0, 2 ) as $i => $tid ) {
+		$thumbs .= $tid ? '<div class="thumb">' . wp_get_attachment_image( $tid, 'medium', false, [ 'alt' => '', 'loading' => 'lazy', 'sizes' => '(max-width: 767px) 30vw, 220px' ] ) . '</div>' : '';
+	}
 	$open = $l['open'] ? '<span class="tag">Open studio</span>' : '';
 	ob_start(); ?>
 	<nav class="crumbs" aria-label="Breadcrumb"><a href="<?php echo esc_url( wp_make_link_relative( get_post_type_archive_link( 'maker' ) ) ); ?>">Directory</a> <span aria-hidden="true">/</span> <a href="<?php echo esc_url( wp_make_link_relative( get_term_link( $l['craft'], 'craft' ) ) ); ?>"><?php echo esc_html( $l['craftName'] ); ?></a></nav>
 	<div class="single-grid">
-		<div class="gallery"><div class="main"><?php echo $main; // phpcs:ignore ?></div><div class="thumbs"><?php echo $thumbs; // phpcs:ignore ?></div><p class="gallery-note small">Sample photos for the demo.</p></div>
+		<div class="gallery"><div class="main"><?php echo $main; // phpcs:ignore ?></div><div class="thumbs"><?php echo $thumbs; // phpcs:ignore ?></div></div>
 		<div class="single-info">
 			<p class="meta"><a class="chip" href="<?php echo esc_url( wp_make_link_relative( get_term_link( $l['craft'], 'craft' ) ) ); ?>"><?php echo esc_html( $l['craftName'] ); ?></a> <a class="chip" href="<?php echo esc_url( wp_make_link_relative( get_term_link( $l['town'], 'town' ) ) ); ?>"><?php echo esc_html( $l['townName'] ); ?></a> <?php echo $open; // phpcs:ignore ?></p>
 			<h1><?php echo esc_html( $l['title'] ); ?></h1>
@@ -354,10 +383,9 @@ add_shortcode( 'fernwood_single', function () {
 				<dt>Materials</dt><dd><?php echo esc_html( get_post_meta( $p->ID, 'materials', true ) ); ?></dd>
 				<dt>Lead time</dt><dd><?php echo esc_html( get_post_meta( $p->ID, 'lead_time', true ) ); ?></dd>
 				<dt>Where to buy</dt><dd><?php echo esc_html( get_post_meta( $p->ID, 'where_to_buy', true ) ); ?></dd>
-				<dt>Website</dt><dd><?php echo esc_html( preg_replace( '#^https?://#', '', get_post_meta( $p->ID, 'website', true ) ) ); ?> <span class="mute">(placeholder)</span></dd>
+				<dt>Website</dt><dd><?php echo esc_html( preg_replace( '#^https?://#', '', get_post_meta( $p->ID, 'website', true ) ) ); ?></dd>
 			</dl>
-			<div class="map-ph" role="img" aria-label="Map placeholder for <?php echo esc_attr( $l['townName'] ); ?>"><?php echo fw_icon( 'pin' ); // phpcs:ignore ?><span><?php echo esc_html( $l['townName'] ); ?>, Fernwood County</span></div>
-			<form class="contact-form demo-form" action="#" method="post" aria-labelledby="contact-h">
+			<form class="contact-form demo-form" action="/demo-form/" method="get" aria-labelledby="contact-h">
 				<h2 id="contact-h">Message <?php echo esc_html( $l['maker'] ? strtok( $l['maker'], ' ' ) : 'the maker' ); ?></h2>
 				<p class="demo-note">Demo form: checks your entries in the browser and sends nothing.</p>
 				<p><label for="c-name">Your name</label><input id="c-name" name="name" required autocomplete="name"></p>
@@ -376,7 +404,8 @@ add_shortcode( 'fernwood_single', function () {
 // The directory is server-filtered from query params on live WordPress (no-JS fallback); keep archive queries cheap.
 add_action( 'pre_get_posts', function ( $q ) {
 	if ( ! is_admin() && $q->is_main_query() && ( $q->is_post_type_archive( 'maker' ) || $q->is_tax( [ 'craft', 'town' ] ) ) ) {
-		$q->set( 'posts_per_page', 1 ); // the directory shortcode renders the listings itself
+		$q->set( 'posts_per_page', -1 ); // one page: the directory shortcode renders and paginates the listings itself (no /page/N/ duplicates)
+		$q->set( 'no_found_rows', true );
 	}
 } );
 

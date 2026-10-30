@@ -27,16 +27,24 @@ await p.goto(base + '/makers/?category=jewelry&open=1&sort=az', { waitUntil: 'ne
 out.sharedUrl = await count();
 await p.goto(base + '/craft/ceramics/', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
 out.taxonomyLocked = await count();
+await p.goto(base + '/town/coldwater/', { waitUntil: 'networkidle' });
+out.townPreChecked = await p.evaluate(() => [...document.querySelectorAll('.filters .locked input')].map(i => i.checked && i.disabled).join(',') + ' ' + document.querySelector('.filters .locked span').textContent);
 // mobile sheet
 const m = await b.newPage({ viewport: { width: 390, height: 844 } });
 await m.goto(base + '/makers/', { waitUntil: 'networkidle' });
 await m.click('.filters-open');
 out.sheetOpen = await m.isVisible('.filters.is-open');
+out.sheetDialog = await m.evaluate(() => { const f = document.querySelector('.filters.is-open'); return [f.getAttribute('role'), f.getAttribute('aria-modal'), document.getElementById(f.getAttribute('aria-labelledby'))?.textContent, document.querySelector('header').hasAttribute('inert')].join('|'); });
+for (let i = 0; i < 40; i++) await m.keyboard.press('Tab');
+out.focusStaysInSheet = await m.evaluate(() => document.querySelector('.filters').contains(document.activeElement));
+for (let i = 0; i < 5; i++) await m.keyboard.press('Shift+Tab');
+out.shiftTabStaysInSheet = await m.evaluate(() => document.querySelector('.filters').contains(document.activeElement));
 await m.check('.filters input[name=price][value="1"]');
 out.sheetButton = (await m.textContent('.sheet-done')).trim();
 await m.screenshot({ path: 'screens/makers/filters-sheet-390.png' });
 await m.keyboard.press('Escape');
 out.sheetClosedByEsc = !(await m.isVisible('.filters.is-open'));
+out.focusReturned = await m.evaluate(() => document.activeElement.classList.contains('filters-open'));
 // demo form
 await m.goto(base + '/for-makers/', { waitUntil: 'networkidle' });
 await m.click('.demo-form button[type=submit]');
@@ -49,7 +57,13 @@ out.formSuccess = (await m.textContent('.form-success').catch(() => '')).slice(0
 const ctx = await b.newContext({ javaScriptEnabled: false }); const n = await ctx.newPage();
 await n.goto(base + '/makers/');
 out.noJsVisibleCards = await n.locator('.card:visible').count();
-out.noJsFiltersVisible = await n.isVisible('.filters');
+out.noJsFiltersHidden = !(await n.isVisible('.filters'));
+out.noJsCount = (await n.textContent('.directory .count')).trim();
+out.noJsBrowseLinks = await n.locator('.nojs-browse a').count();
+await n.goto(base + '/makers/?category=ceramics');
+out.noJsQueryCount = (await n.textContent('.directory .count')).trim() + ' / visible ' + (await n.locator('.card:visible').count());
+await n.goto(base + '/town/coldwater/');
+out.noJsTownCount = (await n.textContent('.directory .count')).trim() + ' / visible ' + (await n.locator('.card:visible').count());
 out.jsErrors = errors;
 console.log(JSON.stringify(out, null, 1));
 await b.close();

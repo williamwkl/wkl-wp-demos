@@ -53,8 +53,8 @@ function hp_ff_select( $name, $label, $options, $required = true ) {
 	return [ 'index' => 0, 'element' => 'select', 'attributes' => [ 'name' => $name, 'value' => '', 'id' => '', 'class' => '' ],
 		'settings' => $s, 'editor_options' => [ 'title' => $label, 'template' => 'select' ], 'uniqElKey' => 'el_' . $name ];
 }
-function hp_ff_textarea( $name, $label ) {
-	return [ 'index' => 0, 'element' => 'textarea', 'attributes' => [ 'name' => $name, 'value' => '', 'id' => '', 'class' => '', 'placeholder' => '', 'rows' => 4, 'cols' => 2 ],
+function hp_ff_textarea( $name, $label, $rows = 4 ) {
+	return [ 'index' => 0, 'element' => 'textarea', 'attributes' => [ 'name' => $name, 'value' => '', 'id' => '', 'class' => '', 'placeholder' => '', 'rows' => $rows, 'cols' => 2 ],
 		'settings' => hp_ff_label( $label, false ), 'editor_options' => [ 'title' => $label, 'template' => 'inputTextarea' ], 'uniqElKey' => 'el_' . $name ];
 }
 function hp_ff_consent() {
@@ -192,7 +192,7 @@ function demo_seed() {
 		hp_ff_two( hp_ff_input( 'full_name', 'Full name', 'text', true, 'name' ), hp_ff_input( 'phone', 'Phone', 'tel', true, 'tel' ) ),
 		hp_ff_input( 'email', 'Email', 'email', true, 'email' ),
 		hp_ff_select( 'matter', 'What do you need help with?', $cases ),
-		hp_ff_textarea( 'details', 'Tell us briefly what happened (optional)' ),
+		hp_ff_textarea( 'details', 'Tell us briefly what happened (optional)', 3 ),
 		hp_ff_consent(),
 	], 'Request my free evaluation' );
 	$full = hp_ff_create( 'Contact intake (full)', [
@@ -212,7 +212,6 @@ function demo_seed() {
 	// Media: optimized = sized WebP, naive = original full-size JPEG.
 	$ext = $opt ? '-1200.webp' : '.jpg';
 	$dir = $opt ? 'img/' : 'img-naive/';
-	$desk  = hp_media( $dir . 'desk' . $ext, 'A tidy desk by a window with a notebook, pens and pencils', 'Photo: minimalist desk, public domain, Wikimedia Commons' );
 	$pines = hp_media( $dir . 'pines' . $ext, 'Pine trees on a hillside with low fog rolling through', 'Photo: Dense mist over pine trees (Unsplash), CC0, Wikimedia Commons' );
 	$ridge = hp_media( $dir . 'ridge' . $ext, 'A forested ridge under soft morning mist', 'Photo: Pine trees and fog (Unsplash), CC0, Wikimedia Commons' );
 
@@ -231,9 +230,9 @@ function demo_seed() {
 			] ),
 			hp_con( 'card', [
 				hp_heading( 'Free case evaluation', 'h2' ),
-				hp_text( '<p class="sub">Takes about two minutes. Confidential.</p><p class="demo-note">Demo form: this portfolio sample checks your entries in the browser and sends nothing.</p>' ),
+				hp_text( '<p class="sub">Takes about two minutes. Confidential.</p>' ),
 				hp_form( $intake ),
-				hp_text( '<p class="fine">We reply within one business day. Nothing is shared outside the firm.</p>' ),
+				hp_text( '<p class="fine">We reply within one business day. Demo form: this sample site sends nothing.</p>' ),
 			], 'div', [ '_element_id' => 'intake' ] ),
 		] ) ], 'section' ),
 		hp_con( 'trust', [ hp_con( 'wrap', [ hp_icons( [
@@ -255,7 +254,7 @@ function demo_seed() {
 				hp_heading( 'What the first 30 days look like.' ),
 				hp_text( '<p><strong>The first call.</strong> You tell us what happened. We tell you, honestly, whether you have a case worth pursuing and what it would involve. If we are not the right firm, we will say so and point you somewhere better.</p><p><strong>The plan in writing.</strong> Within a week you get a one-page summary: what we will do, what we need from you, and a realistic range of outcomes.</p><p><strong>No surprises on fees.</strong> Injury cases are contingency, so you pay nothing unless we recover money for you. Family matters are quoted up front, with a cap where we can offer one.</p>' ),
 			] ),
-			hp_con( 'expect-side', [ hp_image( $desk, 'svc-photo' ), hp_html( '<blockquote class="pull"><p>"Most people call us on the worst week of their year. Our job is to make the next one calmer."</p><footer>Elena Marsh, partner</footer></blockquote>' ) ] ),
+			hp_con( 'expect-side', [ hp_html( '<blockquote class="pull"><p>“Most people call us on the worst week of their year. Our job is to make the next one calmer.”</p><footer>Elena Marsh, partner</footer></blockquote>' ) ] ),
 		] ) ], 'section' ),
 		hp_con( 'section no-top', [ hp_con( 'wrap', [
 			hp_text( '<p class="eyebrow">Our attorneys</p>' ),
@@ -269,7 +268,7 @@ function demo_seed() {
 			hp_text( '<p class="eyebrow">Results and reviews</p>' ),
 			hp_heading( 'Outcomes, in their words.', 'h2', 'sec-h' ),
 			hp_con( 'results', [
-				hp_html( '<div><blockquote class="quote"><p>"Elena explained every letter the insurer sent before I had a chance to panic about it."</p><footer>Former client, rear-end collision (sample review)</footer></blockquote><blockquote class="quote"><p>"Daniel kept the focus on our kids when neither of us could. We settled in four months."</p><footer>Former client, custody matter (sample review)</footer></blockquote></div>' ),
+				hp_html( '<div><blockquote class="quote"><p>“Elena explained every letter the insurer sent before I had a chance to panic about it.”</p><footer>Former client, rear-end collision (sample review)</footer></blockquote><blockquote class="quote"><p>“Daniel kept the focus on our kids when neither of us could. We settled in four months.”</p><footer>Former client, custody matter (sample review)</footer></blockquote></div>' ),
 				hp_html( '<div class="tiles-html"><div class="tile"><p class="amt">$410,000</p><p class="what">Settlement, rear-end collision with disputed liability (sample result)</p></div><div class="tile"><p class="amt">Full custody retained</p><p class="what">Contested relocation case (sample result)</p></div><div class="tile"><p class="amt">$125,000</p><p class="what">Settlement, retail slip and fall (sample result)</p></div></div>' ),
 			] ),
 			hp_text( '<p class="disclaimer">Prior results do not guarantee a similar outcome. Every case depends on its own facts. <a href="/results/">See more sample results</a></p>' ),
@@ -350,7 +349,7 @@ function demo_seed() {
 		hp_page_hero( 'Contact', 'Tell us what happened.', 'Fill in the form and a lawyer will call you within one business day. Prefer the phone? Call (555) 010-0100, evenings and weekends included.', false ),
 		hp_con( 'section', [ hp_con( 'wrap contact-grid', [
 			hp_con( 'card', [ hp_heading( 'Free case evaluation', 'h2' ), hp_text( '<p class="sub">Takes about two minutes. Confidential.</p><p class="demo-note">Demo form: this portfolio sample checks your entries in the browser and sends nothing.</p>' ), hp_form( $full ) ], 'div', [ '_element_id' => 'intake' ] ),
-			hp_html( '<aside class="office"><h2>Our office</h2><p>Harborview, by appointment. We meet in person, by phone or by video.</p><div class="map-ph" role="img" aria-label="Map placeholder for the Harborview office"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Map placeholder</span></div><h3>Hours</h3><p>Monday to Friday, 8 am to 6 pm. Evening and weekend calls by arrangement.</p><h3>Parking</h3><p>Free visitor parking behind the building, with a step-free entrance.</p><h3>Reach us</h3><p><a href="mailto:intake@harborpinelaw.example.com">intake@harborpinelaw.example.com</a><br><a href="tel:+15550100100">(555) 010-0100</a></p></aside>' ),
+			hp_html( '<aside class="office"><h2>Our office</h2><p>Harborview, by appointment. We meet in person, by phone or by video.</p><h3>Hours</h3><p>Monday to Friday, 8 am to 6 pm. Evening and weekend calls by arrangement.</p><h3>Parking</h3><p>Free visitor parking behind the building, with a step-free entrance.</p><h3>Reach us</h3><p><a href="mailto:intake@harborpinelaw.example.com">intake@harborpinelaw.example.com</a><br><a href="tel:+15550100100">(555) 010-0100</a></p></aside>' ),
 		] ) ], 'section' ),
 	];
 
@@ -367,6 +366,7 @@ function demo_seed() {
 	hp_save_page( 'our-attorneys', 'Our attorneys', $att, 'Meet Elena Marsh (personal injury) and Daniel Okafor (family law), the two partners at Harbor & Pine Law.' );
 	hp_save_page( 'results', 'Results', $res, 'Sample case results and outcomes from Harbor & Pine Law. Prior results do not guarantee a similar outcome.' );
 	hp_save_page( 'contact', 'Contact', $contact, 'Request a free, confidential case evaluation from Harbor & Pine Law in Harborview. A lawyer calls back within one business day.' );
+	hp_save_page( 'demo-form', 'Demo form', [ hp_page_hero( 'Demo form', 'This is a demo form.', 'This sample site has no server behind its forms, so nothing was sent. On a live site the firm would call you back within one business day.', false ) ], 'Demo form notice.' );
 	hp_save_page( 'legal', 'Legal', $legal, 'Disclaimer, privacy and accessibility notices for the Harbor & Pine Law demo site.' );
 	update_post_meta( $ids['home'], '_yoast_wpseo_title', 'Harbor & Pine Law | Personal injury and family lawyers in Harborview' );
 

@@ -13,26 +13,29 @@ Every demo also has `HANDOFF-TEMPLATE.md` (sample client deliverable) and `CREDI
 
 ## Lighthouse (mobile preset, static export served locally with gzip)
 
-Lighthouse 12, default mobile throttling. Full HTML/JSON reports in `reports/`.
+Lighthouse 12, default mobile throttling, re-measured after QA round 1. Full HTML/JSON reports in `reports/`.
 
 | Demo | Page | Perf | A11y | Best Pr. | SEO | LCP | CLS |
 |---|---|---|---|---|---|---|---|
 | Saltline | Home | 98 | 100 | 100 | 100 | 2.3 s | 0 |
-| Saltline | Tours | 99 | 100 | 100 | 100 | 2.1 s | 0 |
-| Saltline | About / FAQ / Contact | 99 / 100 / 100 | 100 | 100 | 100 | 1.7 to 1.8 s | 0 to 0.001 |
-| Harbor & Pine (optimized) | Home | 98 | 100 | 100 | 100 | 2.3 s | 0 |
+| Saltline | Tours / About / FAQ / Contact | 99 / 99 / 100 / 99 | 100 | 100 | 100 | 1.7 to 2.0 s | 0 to 0.001 |
+| Harbor & Pine (optimized) | Home | 99 | 100 | 100 | 100 | 2.1 s | 0 |
 | Harbor & Pine (optimized) | 6 inner pages | 99 to 100 | 100 | 100 | 100 | 1.7 to 2.1 s | 0 |
-| Harbor & Pine (naive, before) | Home | 87 | 100 | 96 | 100 | 3.8 s | 0.031 |
-| Harbor & Pine (naive, before) | Family law (worst) | 81 | 100 | 96 | 100 | 4.8 s | 0.001 |
-| Fernwood Makers | Home | 98 | 100 | 100 | 100 | 2.4 s | 0 |
-| Fernwood Makers | Directory /makers/ | 97 | 100 | 100 | 100 | 2.5 s | 0 |
-| Fernwood Makers | Listing, category, town, for-makers, about | 99 to 100 | 100 | 100 | 100 | 1.4 to 2.1 s | 0 |
+| Harbor & Pine (naive, before) | Home / Family law (worst) | 96 / 81 | 100 | 100 | 100 | 2.3 / 4.8 s | 0.031 / 0.001 |
+| Fernwood Makers | Home | 100 | 100 | 100 | 100 | 1.6 s | 0 |
+| Fernwood Makers | Directory /makers/ | 99 | 100 | 100 | 100 | 2.1 s | 0 |
+| Fernwood Makers | Listing, category, town, categories, for-makers, about | 99 to 100 | 100 | 100 | 100 | 1.2 to 1.9 s | 0 |
 
-Targets (Perf >= 90, A11y/BP/SEO >= 95, LCP <= 2.5 s, CLS <= 0.1) are met on every page of the three shipped builds. The naive Harbor & Pine build intentionally misses them (it is the "before").
+Targets (Perf >= 90, A11y/BP/SEO >= 95, LCP <= 2.5 s, CLS <= 0.1) are met on every page of the three shipped builds. The naive Harbor & Pine build is the "before" and misses Performance/LCP on its photo pages.
 
-Responsive QA (`scripts/check.mjs`): every page at 360, 390, 768, 1024, 1280 and 1440 px: no horizontal scroll, body text >= 16px on phones (14px only for meta/disclaimer text the specs define as small), interactive targets >= 44px (inline text links exempt), images keep their aspect ratio. All pass. Screenshots at 390, 768 and 1440 for every page are in `screens/<demo>/`.
+Responsive QA (`scripts/check.mjs`, tightened after QA round 1): every page at 360, 390, 768, 1024, 1280 and 1440 px. It fails on any horizontal scroll; body, footer and form text under 16px on phones (only meta text the specs define as small is exempt: eyebrows, card meta, disclaimers); any control smaller than 44 x 44 px, including nav and footer links, filter labels and checkbox labels (only inline links inside running prose are exempt, per WCAG 2.5.8); and images rendered at a distorted aspect ratio. All shipped pages pass. Screenshots at 390, 768 and 1440 for every page are in `screens/<demo>/`.
 
-Interaction smoke tests on the static exports: `scripts/smoke-saltline.mjs`, `scripts/smoke-harbor-pine.mjs`, `scripts/smoke-makers.mjs` (menus, Escape to close, demo form validation + success state, sticky bar, directory filters/search/URL sync/pagination/taxonomy lock, bottom sheet, no-JS fallback).
+Other checks: `scripts/linkcheck.mjs dist/<demo>` (0 broken internal references in all four exports), `scripts/copy-lint.mjs` (no em dashes, no "AI", no localhost URLs), and smoke tests on the static exports: `scripts/smoke-saltline.mjs`, `scripts/smoke-harbor-pine.mjs`, `scripts/smoke-makers.mjs` (menus, Escape to close, demo form validation + success state, sticky bar made inert while hidden, directory search/filters/URL sync/pagination/taxonomy pre-check, the filter sheet as a modal dialog with focus trap and focus return, and the no-JS behaviour below).
+
+### Without JavaScript
+
+- Forms: on the static copies every form submits with GET to a `/demo-form/` page that says nothing was sent (a static host answers POST with 405). Required fields use native browser validation.
+- Makers directory: every listing is shown and the counter states the true number; the search box and filter rail are hidden, and a note links to the real static category and town pages (which are pre-filtered server-side). Query-string filters such as `?category=ceramics` only work with JavaScript on the static copy; on live WordPress the same query string is also applied server-side.
 
 ## Run locally
 
@@ -56,11 +59,12 @@ node scripts/static-server.mjs dist 5055            # GitHub Pages-like server w
 node scripts/lh.mjs http://127.0.0.1:5055/saltline reports/saltline / /tours/
 node scripts/check.mjs http://127.0.0.1:5055/saltline saltline / /tours/
 node scripts/copy-lint.mjs dist/saltline            # no em dashes, no "AI", no localhost leaks
+node scripts/linkcheck.mjs dist/saltline            # every internal href/src/url() exists
 ```
 
-`export.mjs` crawls the running site, rewrites every internal URL to a relative path (so it works under any sub-folder), keeps canonical/og/JSON-LD absolute to `PUBLIC_BASE`, fetches Elementor's runtime chunks, and writes `sitemap.xml` + `robots.txt`.
+`export.mjs` crawls the running site, rewrites every internal URL to a relative path (so it works under any sub-folder), keeps canonical, og:url, og:image and JSON-LD absolute to `PUBLIC_BASE`, fetches Elementor's runtime chunks and assets referenced from inline JSON, drops server-only head links (feeds, REST, oEmbed), turns POST forms into GET forms aimed at `/demo-form/`, skips paginated `/page/N/` duplicates, and writes `sitemap.xml` + `robots.txt` (robots.txt only takes effect at a domain root, not in a project sub-folder).
 
-Forms on the static copies are demo forms: they validate in the browser and show a visible "Demo form: nothing is sent" note and success state. No third-party form service is used.
+Forms on the static copies are demo forms: with JavaScript they validate in the browser and show a success state; without it they land on a `/demo-form/` notice page. No third-party form service is used.
 
 ## Live WordPress admin links (Playground)
 
@@ -72,9 +76,9 @@ Verified locally by serving the repo as a stand-in for raw GitHub: the makers bl
 
 ## Deviations from the design specs
 
-- Saltline: tours are plain pages, not a `tour` CPT (orchestrator decision 3). The About hero uses a shoreline photo (no free boathouse photo found). Hero photo is 560px wide WebP to keep mobile LCP under 2.5 s; the font preload was dropped for the same reason. Proof icons are inline SVG.
-- Harbor & Pine: Fluent Forms instead of WPForms/Elementor Form (orchestrator decision 1); header and footer are child-theme PHP templates (lighter than the Header Footer & Blocks plugin). Icons come from Font Awesome via Elementor's Icon List (rendered as inline SVG in the optimized build) rather than Lucide. "call centre" changed to "call center" (US firm). The FAQ accordions are an HTML widget with `<details>`.
-- Fernwood Makers: the sample dataset has 36 makers, so counts are live (36 makers, 9 towns) instead of the mockup's "214". Filtering is client-side over server-rendered cards plus a generated JSON index (orchestrator decision 2); the server also filters from the same query string when JavaScript is off. Six photos are reused across listings per category. "Read the interview" links to the maker page (no interview content in the demo). The search button label is visually hidden on phones but keeps its accessible name.
+- Saltline: tours are plain pages, not a `tour` CPT (orchestrator decision 3). The About hero uses a shoreline photo (no free boathouse photo found). Hero photo is 560px wide WebP to keep mobile LCP under 2.5 s; the font preload was dropped for the same reason. The contact map placeholder was removed (address text kept). Photo credits live on a /credits/ page linked from the footer.
+- Harbor & Pine: Fluent Forms instead of WPForms/Elementor Form (orchestrator decision 1); header and footer are child-theme PHP templates (lighter than the Header Footer & Blocks plugin). The stock desk photo and the contact map placeholder were removed after design review. Icons come from Font Awesome via Elementor's Icon List (rendered as inline SVG in the optimized build) rather than Lucide. "call centre" changed to "call center" (US firm). The FAQ accordions are an HTML widget with `<details>`.
+- Fernwood Makers: the sample dataset has 36 makers, so counts are live (36 makers, 9 towns, town counts 2 to 7) instead of the mockup's "214". Every listing has its own photo; listing galleries show three different photos and never repeat one shown in the "More in" row. Filtering is client-side over server-rendered cards plus a generated JSON index (orchestrator decision 2). The listing map tile was removed rather than faked. "Read the interview" links to the maker page (no interview content in the demo). The display font is subset to Latin at a fixed optical size (32 KB) to keep directory LCP under 2.2 s.
 
 ## Repo map
 

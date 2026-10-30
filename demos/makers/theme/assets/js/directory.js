@@ -21,7 +21,7 @@
     var byId = {}; cards.forEach(function (c) { byId[c.dataset.id] = c; });
     var perPage = parseInt(root.dataset.perPage, 10) || 12;
     var syncUrl = root.dataset.syncUrl === '1';
-    var countShown = root.querySelector('.n-shown'), countMatch = root.querySelector('.n-match');
+    var countEl = root.querySelector('.count');
     var sheetCount = root.querySelector('.js-count');
     var empty = root.querySelector('.empty'), pager = root.querySelector('.pager');
     var chipsBox = root.querySelector('.active-chips');
@@ -135,10 +135,15 @@
       var pages = Math.max(1, Math.ceil(list.length / perPage));
       if (page > pages) page = pages;
       var visible = {}; list.slice((page - 1) * perPage, page * perPage).forEach(function (m) { visible[m.id] = true; });
-      list.forEach(function (m) { grid.appendChild(byId[m.id]); }); // reorder
+      // Reorder only when the order actually changed: re-inserting rendered cards repaints them (and would reset LCP).
+      var current = Array.prototype.map.call(grid.children, function (c) { return +c.dataset.id; }).filter(function (id) { return list.some(function (m) { return m.id === id; }); });
+      var wanted = list.map(function (m) { return m.id; });
+      if (current.join() !== wanted.join()) list.forEach(function (m) { grid.appendChild(byId[m.id]); });
       cards.forEach(function (c) { c.hidden = !visible[c.dataset.id]; });
-      countShown.textContent = Object.keys(visible).length;
-      countMatch.textContent = list.length;
+      var from = (page - 1) * perPage + 1, to = Math.min(page * perPage, list.length);
+      if (!list.length) countEl.innerHTML = 'No makers match these filters <span class="mute">(0 of ' + index.filter(function (m) { return (!root.dataset.lockCategory || m.craft === root.dataset.lockCategory) && (!root.dataset.lockTown || m.town === root.dataset.lockTown); }).length + ')</span>';
+      else if (list.length > perPage) countEl.innerHTML = 'Showing <strong>' + from + ' to ' + to + '</strong> of <strong>' + list.length + '</strong> makers';
+      else countEl.innerHTML = '<strong>' + list.length + '</strong> ' + (list.length === 1 ? 'maker' : 'makers');
       if (sheetCount) sheetCount.textContent = list.length;
       empty.hidden = list.length > 0;
       renderPager(pages);
@@ -166,9 +171,40 @@
     }
 
     // Mobile bottom sheet
+    // Mobile bottom sheet: a modal dialog while open (role, aria-modal, label, focus trap, scroll lock, Escape).
     var openBtn = root.querySelector('.filters-open');
-    function openSheet() { form.classList.add('is-open'); document.documentElement.classList.add('sheet-open'); openBtn.setAttribute('aria-expanded', 'true'); var f = form.querySelector('.sheet-close'); f && f.focus(); }
-    function closeSheet() { if (!form.classList.contains('is-open')) return; form.classList.remove('is-open'); document.documentElement.classList.remove('sheet-open'); openBtn.setAttribute('aria-expanded', 'false'); openBtn.focus(); }
+    var title = form.querySelector('.sheet-title');
+    var outside = [];
+    function focusables() { return Array.prototype.filter.call(form.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select,textarea'), function (el) { return el.offsetParent !== null; }); }
+    function openSheet() {
+      form.classList.add('is-open');
+      form.setAttribute('role', 'dialog'); form.setAttribute('aria-modal', 'true'); if (title) form.setAttribute('aria-labelledby', title.id);
+      document.documentElement.classList.add('sheet-open');
+      openBtn.setAttribute('aria-expanded', 'true');
+      outside = [];
+      for (var node = form; node && node !== document.body; node = node.parentElement) {
+        Array.prototype.forEach.call(node.parentElement.children, function (sib) { if (sib !== node && !sib.hasAttribute('inert')) outside.push(sib); });
+      }
+      // Every sibling along the sheet's ancestor chain becomes inert (header, footer, results, search).
+      outside.forEach(function (el) { el.setAttribute('inert', ''); });
+      var f = form.querySelector('.sheet-close'); f && f.focus();
+    }
+    function closeSheet() {
+      if (!form.classList.contains('is-open')) return;
+      form.classList.remove('is-open');
+      form.removeAttribute('role'); form.removeAttribute('aria-modal'); form.removeAttribute('aria-labelledby');
+      document.documentElement.classList.remove('sheet-open');
+      outside.forEach(function (el) { el.removeAttribute('inert'); }); outside = [];
+      openBtn.setAttribute('aria-expanded', 'false'); openBtn.focus();
+    }
+    form.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !form.classList.contains('is-open')) return;
+      var f = focusables(); if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    document.addEventListener('focusin', function (e) { if (form.classList.contains('is-open') && !form.contains(e.target)) { var f = focusables(); f.length && f[0].focus(); } });
     if (openBtn) openBtn.addEventListener('click', openSheet);
     root.querySelectorAll('.sheet-close, .sheet-done').forEach(function (b) { b.addEventListener('click', closeSheet); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });

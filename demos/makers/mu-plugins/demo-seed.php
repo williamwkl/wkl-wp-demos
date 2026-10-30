@@ -4,16 +4,26 @@
  * Description: Imports the sample CSV through the same importer a client would use (fw_import_csv), adds media and pages. Run once from the blueprint.
  */
 
+function fw_seed_credits() {
+	$out = [];
+	$file = WP_CONTENT_DIR . '/demo-data/image-credits.csv';
+	if ( is_readable( $file ) && ( $fh = fopen( $file, 'r' ) ) ) {
+		fgetcsv( $fh, 0, ',', '"', '' );
+		while ( ( $r = fgetcsv( $fh, 0, ',', '"', '' ) ) !== false ) $out[ $r[0] ] = $r[1] . ', ' . $r[2];
+		fclose( $fh );
+	}
+	return $out;
+}
 function fw_seed_media( $key ) {
 	static $cache = [];
 	if ( isset( $cache[ $key ] ) ) return $cache[ $key ];
-	$credits = [
+	$credits = fw_seed_credits() + [
 		'wheel' => 'Pottery wheel (Unsplash), CC0', 'mug' => 'Bucharest mug (Unsplash), CC0', 'wood' => 'Woodworking workshop (Unsplash), CC0',
 		'yarn' => 'Ball of orange yarn (Unsplash), CC0', 'paper' => 'Stationery on a bench (Unsplash), CC0', 'paper2' => 'Stationery and flowers flatlay (Unsplash), CC0',
 		'honey' => 'Honey and Clementines (Unsplash), CC0', 'bread' => 'Artisan Loaves of Bread (Unsplash), CC0', 'jewel' => 'Jeff White Custom Jewelry (Unsplash), CC0, cropped',
 		'wheel-portrait' => 'Pottery wheel (Unsplash), CC0',
 	];
-	$alts = [ 'wheel' => 'Clay-covered hands shaping a pot on a spinning wheel', 'wheel-portrait' => 'Hands shaping a stoneware pot on a pottery wheel', 'mug' => 'A striped ceramic mug on a table' ];
+	$alts = [ 'feature-portrait' => 'Clay-covered hands shaping a pot on a pottery wheel', 'wheel' => 'Clay-covered hands shaping a pot on a spinning wheel', 'wheel-portrait' => 'Hands shaping a stoneware pot on a pottery wheel', 'mug' => 'A striped ceramic mug on a table' ];
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 	$file = $key . '-800.webp';
 	$src  = get_stylesheet_directory() . '/assets/img/' . $file;
@@ -56,7 +66,9 @@ function demo_seed() {
 		$i++;
 	}
 	fw_write_index();
-	$wheel = fw_seed_media( 'wheel-portrait' );
+	$wheel = fw_seed_media( 'feature-portrait' );
+	// Extra gallery photos for small categories, so a listing gallery never repeats a photo shown on the same page.
+	update_option( 'fw_gallery_extras', [ 'print-and-paper' => [ fw_seed_media( 'print-08' ), fw_seed_media( 'print-15' ) ] ] );
 	$wheel_url = wp_get_attachment_url( $wheel );
 
 	$underline = '<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 50 2, 150 2, 198 7" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/></svg>';
@@ -73,7 +85,7 @@ function demo_seed() {
 		. fw_section( '<!-- wp:heading --><h2 class="wp-block-heading">Browse the directory.</h2><!-- /wp:heading --><!-- wp:shortcode -->[fernwood_directory per_page="6" search="0" more="1"]<!-- /wp:shortcode -->', 'section browse-sec' )
 		. fw_section( '<!-- wp:group {"className":"feat","layout":{"type":"default"}} --><div class="wp-block-group feat"><!-- wp:group {"layout":{"type":"default"}} --><div class="wp-block-group">'
 			. '<!-- wp:paragraph {"className":"eyebrow"} --><p class="eyebrow">Maker of the month</p><!-- /wp:paragraph -->'
-			. '<!-- wp:heading --><h2 class="wp-block-heading">"I throw about forty mugs a week. Maybe six make it to the shelf."</h2><!-- /wp:heading -->'
+			. '<!-- wp:heading --><h2 class="wp-block-heading">“I throw about forty mugs a week. Maybe six make it to the shelf.”</h2><!-- /wp:heading -->'
 			. '<!-- wp:paragraph {"className":"who"} --><p class="who">Theo Marchetti, Coldwater Clay</p><!-- /wp:paragraph -->'
 			. '<!-- wp:html --><div class="actions"><a class="btn btn-primary" href="/makers/coldwater-clay/">Visit Coldwater Clay</a><a class="btn btn-secondary" href="/makers/coldwater-clay/#main">Read the interview</a></div><!-- /wp:html -->'
 			. '</div><!-- /wp:group -->'
@@ -103,7 +115,7 @@ function demo_seed() {
 			. '<!-- wp:heading {"anchor":"guidelines"} --><h2 class="wp-block-heading" id="guidelines">Who can be listed</h2><!-- /wp:heading -->'
 			. '<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item --><li>Your work is made in Fernwood County.</li><!-- /wp:list-item --><!-- wp:list-item --><li>It is made by the person or small team listed, not resold.</li><!-- /wp:list-item --><!-- wp:list-item --><li>You sell to the public, online, at markets or from a studio.</li><!-- /wp:list-item --></ul><!-- /wp:list -->'
 			. '<!-- wp:heading --><h2 class="wp-block-heading">Submit a listing</h2><!-- /wp:heading -->'
-			. '<!-- wp:html --><form class="demo-form" action="#" method="post" data-success="Thanks. We review every listing by hand and will email you within a week."><p class="demo-note">Demo form: checks your entries in the browser and sends nothing.</p>'
+			. '<!-- wp:html --><form class="demo-form" action="/demo-form/" method="get" data-success="Thanks. We review every listing by hand and will email you within a week."><p class="demo-note">Demo form: checks your entries in the browser and sends nothing.</p>'
 			. '<p><label for="m-biz">Business name</label><input id="m-biz" name="business" required autocomplete="organization"></p>'
 			. '<p><label for="m-name">Maker name</label><input id="m-name" name="maker" required autocomplete="name"></p>'
 			. '<p><label for="m-email">Email</label><input id="m-email" name="email" type="email" required autocomplete="email"></p>'
@@ -131,6 +143,8 @@ function demo_seed() {
 	fw_page( 'towns', 'Towns', $towns, 'Browse Fernwood makers by town across the nine towns of Fernwood County.' );
 	fw_page( 'events', 'Events', $events, 'Open studios, markets and fairs for Fernwood County makers (sample events).' );
 	fw_page( 'for-makers', 'For makers', $formakers, 'List your handmade work in the Fernwood Makers directory for free. Criteria and submission form.' );
+	fw_page( 'demo-form', 'Demo form', fw_page_hero( 'Demo form', 'This is a demo form.', 'This sample site has no server behind its forms, so nothing was sent. On a live site the directory team would reply by email within a week.' ), 'Demo form notice.' );
+	fw_page( 'credits', 'Photo credits', fw_page_hero( 'Credits', 'Photo credits', 'All photos are CC0 or public domain images from Wikimedia Commons, cropped to 4:3. The full list with source file names is in the project repository. Bricolage Grotesque is licensed under the SIL Open Font License.' ), 'Photo credits for the Fernwood Makers sample site.' );
 	fw_page( 'about', 'About', $about, 'How the Fernwood Makers directory works, including how listings are imported from a shared spreadsheet.' );
 	update_post_meta( $ids['home'], '_yoast_wpseo_title', 'Fernwood Makers | Local makers directory for Fernwood County' );
 

@@ -2,7 +2,6 @@
 
 | File | Source (Wikimedia Commons) | License |
 |---|---|---|
-| desk | File:USVI IMG 5202 - Minimalist desk with colorful pencils ... (soft light).jpg | Public domain |
 | pines | File:Dense mist over pine trees (Unsplash).jpg | CC0 |
 | ridge | File:Pine trees and fog (Unsplash).jpg | CC0 |
 

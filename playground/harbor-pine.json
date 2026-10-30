@@ -60,14 +60,6 @@
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/harbor-pine/assets/img/desk-1200.webp",
-      "data": {
-        "resource": "url",
-        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/harbor-pine/theme/assets/img/desk-1200.webp"
-      }
-    },
-    {
-      "step": "writeFile",
       "path": "/wordpress/wp-content/themes/harbor-pine/assets/img/pines-1200.webp",
       "data": {
         "resource": "url",
@@ -152,6 +144,14 @@
       "data": {
         "resource": "url",
         "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/harbor-pine/mu-plugins/demo-seed.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-static.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/harbor-pine/mu-plugins/demo-static.php"
       }
     },
     {

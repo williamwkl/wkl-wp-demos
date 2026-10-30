@@ -27,7 +27,7 @@ Temporary developer accounts are removed at handoff.
 - Tours, prices, FAQ answers: Pages > edit the page, click the text and type. Prices appear on Home and Tours (update both).
 - Photos: click an image > Replace. Use landscape photos at least 1200px wide; WordPress creates the smaller sizes.
 - Booking form fields and the email recipient: Contact > Contact Forms > Booking request > Mail tab.
-- Note: the demo includes `assets/js/demo-form.js`, which stops real submissions, and turns off Contact Form 7's own script (`wpcf7_load_js`) because the static copy has no server. Before launch, delete both lines in functions.php so CF7 submits and emails normally.
+- Note: the demo includes `assets/js/demo-form.js`, which stops real submissions, and turns off Contact Form 7's own script (`wpcf7_load_js`) because the static copy has no server. Before launch, delete both lines in functions.php and the `wpcf7_form_action_url` filter in `mu-plugins/demo-static.php` so CF7 submits and emails normally.
 
 ## Updates and backups
 - Updates: WordPress core minor updates automatic; plugin and theme updates monthly after a staging check.

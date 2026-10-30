@@ -10,7 +10,7 @@ await p.keyboard.press('Escape');
 const menuClosed = await p.isHidden('#mobile-menu');
 const barVisibleTop = await p.isVisible('.sticky-bar');
 await p.locator('#intake form').scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
-const barHiddenAtForm = await p.evaluate(() => document.querySelector('.sticky-bar').classList.contains('is-hidden'));
+const barHiddenAtForm = await p.evaluate(() => { const b = document.querySelector('.sticky-bar'); return b.classList.contains('is-hidden') && b.hasAttribute('inert') && b.getAttribute('aria-hidden') === 'true'; });
 await p.click('#intake button[type=submit]');
 const blocked = await p.isVisible('#intake form');
 await p.fill('#intake input[name=full_name]', 'Test Person'); await p.fill('#intake input[name=phone]', '5550100100');

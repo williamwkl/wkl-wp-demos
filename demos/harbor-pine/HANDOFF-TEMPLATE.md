@@ -5,7 +5,7 @@ Prepared for: [client name] · Launch date: [date] · Prepared by: [your name]
 ## What was built
 - Elementor (free) pages on a Hello Elementor child theme. Pages: Home, Personal injury, Family law, Our attorneys, Results, Contact, Legal.
 - Global colors and fonts: Elementor > Site Settings (Global Colors, Global Fonts). Section styling: child theme stylesheet.
-- Performance setup documented in OPTIMIZATION.md (Lighthouse mobile 87 to 98 on the home page).
+- Performance setup documented in OPTIMIZATION.md (Lighthouse mobile: Family law page 81 to 99).
 
 ## Plugins and why
 | Plugin | Why | Cost / license |
