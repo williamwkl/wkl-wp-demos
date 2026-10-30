@@ -92,19 +92,19 @@
    "value": 2.5,
    "source": "Google Core Web Vitals 'good' threshold (web.dev/vitals)",
    "unit": "s",
-   "render": "{v} s LCP threshold"
+   "render": "{v} s LCP target"
   },
   "cls_good": {
    "value": 0.1,
    "source": "Google Core Web Vitals 'good' threshold (web.dev/vitals)",
    "unit": "cls",
-   "render": "CLS threshold {v}"
+   "render": "CLS target {v}"
   },
   "tbt_good_ms": {
    "value": 200,
    "source": "Lighthouse Total Blocking Time 'good' threshold",
    "unit": "ms",
-   "render": "TBT threshold {v} ms"
+   "render": "TBT target {v} ms"
   },
   "lighthouse_floor": {
    "value": 90,

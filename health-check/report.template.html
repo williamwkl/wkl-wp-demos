@@ -128,7 +128,7 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
   <div>
     <p class="eyebrow">In one page</p>
     <h2>The site is sound where it counts, and slow where it shows.</h2>
-    <p style="margin-top:8px">Content, accessibility and on-page SEO are in good shape: {{metric now.*.scores.accessibility|min}}, {{metric now.*.scores.best-practices|min}} and {{metric now.*.scores.seo|min}}. The problem is delivery. The {{value now.*.lcp_s|failing|count|word}} pages with photos show their main content on a phone at {{metric now.*.lcp_s|failing|range}}, well past the {{metric audit.facts.lcp_good_s}} Google uses for ranking signals. The cause is a standard first-pass setup: {{metric audit.facts.font_weight_files}} loaded from Google, icon fonts, photos of {{metric audit.facts.photo_upload_kb|range}}, and {{metric now.*.requests|range}} where {{metric after.*.requests|range}} would do. Security basics also need attention: a guessable admin login with a weak password, software versions advertised in the page source, and no backups.</p>
+    <p style="margin-top:8px">Content, accessibility and on-page SEO are in good shape: {{group now scores.accessibility,scores.best-practices,scores.seo}}. The problem is delivery. On a phone, the {{value now.*.lcp_s|failing|count|word}} pages with photos show their main content at {{metric now.*.lcp_s|failing|range}}, well past Google's {{metric audit.facts.lcp_good_s}}, which feeds into ranking. The cause is a standard first-pass setup: {{metric audit.facts.font_weight_files}} loaded from Google, icon fonts, {{metric audit.facts.photo_upload_kb|range}} photos, and {{pair *.requests}}. Security basics also need attention: a guessable admin login with a weak password, software versions advertised in the page source, and no backups.</p>
   </div>
   <div class="grid g6" role="list" aria-label="Score dashboard">
 {{DASHBOARD}}
@@ -138,11 +138,11 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
     <div class="tablewrap"><table class="dense stack">
       <thead><tr><th style="width:24px">#</th><th>Fix</th><th>Business impact</th><th>Effort</th><th class="num">Expected result</th></tr></thead>
       <tbody>
-        <tr><td data-label="#">{{#fix images}}</td><td data-label="Fix">Resize and convert the two full-width photos (WebP, responsive sizes, lazy below the fold)</td><td data-label="Business impact">Brings the {{value now.*.lcp_s|failing|count|word}} slowest pages under the {{metric audit.facts.lcp_good_s}}; these are the practice-area pages that ads and search send people to</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">{{metric now.family-law.lcp_s}} to {{metric after.family-law.lcp_s}}</td></tr>
-        <tr><td data-label="#">{{#fix fonts}}</td><td data-label="Fix">Self-host one font file instead of {{metric audit.facts.font_weight_files}} from Google Fonts; render icons as inline SVG</td><td data-label="Business impact">Removes the third-party request every visitor waits on before text appears</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">{{metric now.*.fcp_s|range}} down to {{metric after.*.fcp_s|range}}</td></tr>
+        <tr><td data-label="#">{{#fix images}}</td><td data-label="Fix">Resize and convert the two full-width photos (WebP, responsive sizes, lazy below the fold)</td><td data-label="Business impact">Brings the {{value now.*.lcp_s|failing|count|word}} slowest pages under the {{metric audit.facts.lcp_good_s}}; these are the practice-area pages that ads and search send people to</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">{{pair family-law.lcp_s}}</td></tr>
+        <tr><td data-label="#">{{#fix fonts}}</td><td data-label="Fix">Self-host one font file instead of {{metric audit.facts.font_weight_files}} from Google Fonts; render icons as inline SVG</td><td data-label="Business impact">Removes the third-party request every visitor waits on before text appears</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">{{pair *.fcp_s}}</td></tr>
         <tr><td data-label="#">{{#fix admin}}</td><td data-label="Fix">Rename the admin account, set a strong password, add login rate limiting and two-factor sign-in</td><td data-label="Business impact">Closes the most common way small-firm sites get taken over</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">Login brute force blocked</td></tr>
         <tr><td data-label="#">{{#fix backups}}</td><td data-label="Fix">Set up automatic off-site backups with a tested restore</td><td data-label="Business impact">A hacked or broken site becomes a {{metric audit.facts.restore_minutes}} instead of a rebuild</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">Daily backups, {{metric audit.facts.backup_retention_days}}</td></tr>
-        <tr><td data-label="#">{{#fix assets}}</td><td data-label="Fix">Remove unused theme, block, form and builder assets; inline the small stylesheets; enable page caching</td><td data-label="Business impact">Cuts {{metric now.*.requests|range}} down to {{metric after.*.requests|range}} and keeps the site fast as content grows</td><td data-label="Effort"><span class="tag warn">M</span></td><td data-label="Expected result" class="num">{{metric now.*.scores.performance|range}} up to {{metric after.*.scores.performance|range}}</td></tr>
+        <tr><td data-label="#">{{#fix assets}}</td><td data-label="Fix">Remove unused theme, block, form and builder assets; inline the small stylesheets; enable page caching</td><td data-label="Business impact">Removes most of the requests on every page and keeps the site fast as content grows</td><td data-label="Effort"><span class="tag warn">M</span></td><td data-label="Expected result" class="num">{{pair *.requests}}</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -154,7 +154,7 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
   <div class="runhead"><span>Findings</span><span>Speed and Core Web Vitals</span></div>
   <div>
     <p class="eyebrow">How we measured</p>
-    <p class="small">Lighthouse {{value reports.lighthouse}}, mobile preset ({{metric audit.facts.lh_network}}, {{metric audit.facts.lh_cpu}}), run on {{value audit.reviewed}} against all {{value now.*.lcp_s|count|word}} public pages. Core Web Vitals thresholds: {{metric audit.facts.lcp_good_s}}, {{metric audit.facts.cls_good}}, {{metric audit.facts.tbt_good_ms}}. Full Lighthouse reports are attached as an appendix.</p>
+    <p class="small">Lighthouse {{value reports.lighthouse}}, mobile preset ({{metric audit.facts.lh_network}}, {{metric audit.facts.lh_cpu}}), run on {{value audit.reviewed}} against all {{value now.*.lcp_s|count|word}} public pages. Pass marks are Google's Core Web Vitals targets: the {{metric audit.facts.lcp_good_s}}, {{metric audit.facts.cls_good}} and {{metric audit.facts.tbt_good_ms}}. Full Lighthouse reports are attached as an appendix.</p>
   </div>
 
   <div class="finding">
@@ -164,10 +164,10 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
       <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">LCP</span><span class="tag pass">Effort S</span></div>
       <dl>
         <dt>Found</dt><dd>Two photos were uploaded as JPEGs {{metric audit.facts.photo_upload_px}} and served at full size: pines.jpg at {{metric audit.facts.pines_kb}}, plus ridge.jpg on the Personal injury page. No responsive sizes, no modern format, no lazy loading.</dd>
-        <dt>Why it matters</dt><dd>These are the Family law and Personal injury pages, the ones a search ad or a referral link lands on. On a phone the page's main image appears late: {{metric now.family-law.lcp_s}} and {{metric now.personal-injury.lcp_s}}. Google's "good" line is the {{metric audit.facts.lcp_good_s}}, and visitors on mobile data start leaving well before that.</dd>
-        <dt>Evidence</dt><dd><div class="ev">{{metric now.family-law.lcp_s}}   {{metric now.family-law.weight_kb}}   {{metric now.family-law.savings_kb.uses-responsive-images}}, {{metric now.family-law.savings_kb.modern-image-formats}}
-{{metric now.personal-injury.lcp_s}}   {{metric now.personal-injury.weight_kb}}   {{metric now.personal-injury.savings_kb.uses-responsive-images}}, {{metric now.personal-injury.savings_kb.modern-image-formats}}</div></dd>
-        <dt>Fix</dt><dd>Re-encode as WebP {{metric audit.facts.webp_px}} with generated sizes (srcset) at {{metric audit.facts.webp_quality}}, set width and height, lazy-load below the fold. The pines photo goes from {{metric audit.facts.pines_kb}} to about {{metric audit.facts.pines_webp_kb}} with no visible loss.</dd>
+        <dt>Why it matters</dt><dd>These are the Family law and Personal injury pages, the ones a search ad or a referral link lands on. On a phone their main image arrives late ({{metric now.family-law.lcp_s}}, {{metric now.personal-injury.lcp_s}}) against Google's {{metric audit.facts.lcp_good_s}}, and visitors on mobile data start leaving well before that.</dd>
+        <dt>Evidence</dt><dd><div class="ev">{{page family-law lcp_s,weight_kb,savings_kb.uses-responsive-images,savings_kb.modern-image-formats}}
+{{page personal-injury lcp_s,weight_kb,savings_kb.uses-responsive-images,savings_kb.modern-image-formats}}</div></dd>
+        <dt>Fix</dt><dd>Re-encode as WebP, {{metric audit.facts.webp_px}} at {{metric audit.facts.webp_quality}}, with generated sizes (srcset); set width and height, lazy-load below the fold. The pines photo goes from {{metric audit.facts.pines_kb}} to about {{metric audit.facts.pines_webp_kb}} with no visible loss.</dd>
       </dl>
     </div>
   </div>
@@ -179,9 +179,9 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
       <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">FCP</span><span class="tag pass">Effort S</span></div>
       <dl>
         <dt>Found</dt><dd>The page builder requests the Newsreader family in every weight and italic ({{metric audit.facts.google_font_weights|range}}) from fonts.googleapis.com, and loads Font Awesome's {{metric audit.facts.icon_stylesheets|word}} for the handful of icons in the trust strip.</dd>
-        <dt>Why it matters</dt><dd>Every visitor's browser connects to a third-party server and waits for its stylesheet before drawing any text. First text appears late on every page: {{metric now.*.fcp_s|range}}. The firm's headline and phone number should be visible in under a second.</dd>
+        <dt>Why it matters</dt><dd>Every visitor's browser connects to a third-party server and waits for its stylesheet before drawing any text. First text appears late ({{metric now.*.fcp_s|range}}). The firm's headline and phone number should be visible in under a second.</dd>
         <dt>Evidence</dt><dd><div class="ev">fonts.googleapis.com/css?{{metric audit.facts.google_font_query}}   ({{metric audit.facts.google_css_requests}} + font files)
-Per page: {{metric now.*.render_blocking|range}}  (Lighthouse "render-blocking-resources")</div></dd>
+{{metric now.*.render_blocking|range}}  (Lighthouse "render-blocking-resources")</div></dd>
         <dt>Fix</dt><dd>Turn off the builder's Google Fonts option, self-host Newsreader as one variable web font ({{metric audit.facts.self_host_axis|range}}) plus one italic file with font-display: swap and a preload. Switch the builder to inline SVG icons so the icon-font CSS never loads.</dd>
       </dl>
     </div>
@@ -200,9 +200,9 @@ Per page: {{metric now.*.render_blocking|range}}  (Lighthouse "render-blocking-r
       <div class="meta"><span class="tag blue">Speed</span><span class="tag blue">Requests</span><span class="tag warn">Effort M</span></div>
       <dl>
         <dt>Found</dt><dd>jQuery, jQuery Migrate, the builder's frontend runtime and widget chunks, the form plugin's submission script, the emoji script and the block-library stylesheet load on all seven pages. None of the pages use sliders, tabs or popups, so most of it does nothing.</dd>
-        <dt>Why it matters</dt><dd>{{metric now.*.requests|range}} on a site that needs {{metric after.*.requests|range}}. Each one is a round trip on a phone connection, and the home page shifts layout ({{metric now.home.cls}}) while late stylesheets arrive. It also means every plugin update is a chance for something unneeded to break the page.</dd>
-        <dt>Evidence</dt><dd><div class="ev">{{metric now.home.requests}}, {{metric now.home.weight_kb}}, {{metric now.home.render_blocking}}, {{metric now.home.cls}}
-{{metric now.contact.requests}}, {{metric now.contact.weight_kb}}, {{metric now.contact.cls}}
+        <dt>Why it matters</dt><dd>The site makes {{pair *.requests}}. Each one is a round trip on a phone connection, and the home page shifts while late stylesheets arrive ({{metric now.home.cls}}). It also means every plugin update is a chance for something unneeded to break the page.</dd>
+        <dt>Evidence</dt><dd><div class="ev">{{page home requests,weight_kb,render_blocking,cls}}
+{{page contact requests,weight_kb,cls}}
 Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min.js, frontend-modules.min.js, frontend.min.js, form-submission.js, wp-emoji-release.min.js</div></dd>
         <dt>Fix</dt><dd>Remove the parent theme CSS, block-library CSS, icon font, default form styles, jQuery, builder frontend JS and the emoji script on pages that do not need them; set the builder's CSS print method to internal and inline the remaining small stylesheets; add page caching with long cache headers on uploads. Scoped so that adding an interactive widget later re-enables the builder script on that page only.</dd>
       </dl>
@@ -243,7 +243,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
   <div class="grid g2">
     <div>
       <p class="eyebrow">SEO</p>
-      <h3 style="margin:4px 0 8px">Technical SEO is in order <span class="tag pass">{{metric now.*.scores.seo|min}}</span></h3>
+      <h3 style="margin:4px 0 8px">Technical SEO is in order <span class="tag pass">{{group now scores.seo}}</span></h3>
       <ul class="plain small">
         <li>Every page has a unique title and meta description, one main heading, a canonical URL and Open Graph tags (Yoast SEO).</li>
         <li>LegalService and Attorney structured data validate; FAQ markup present on both practice-area pages.</li>
@@ -253,7 +253,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
     </div>
     <div>
       <p class="eyebrow">Accessibility</p>
-      <h3 style="margin:4px 0 8px">Automated checks pass <span class="tag pass">{{metric now.*.scores.accessibility|min}}</span></h3>
+      <h3 style="margin:4px 0 8px">Automated checks pass <span class="tag pass">{{group now scores.accessibility}}</span></h3>
       <ul class="plain small">
         <li>Colour contrast, labels, landmarks, heading order and focus states pass on all seven pages.</li>
         <li>Form fields are {{metric audit.facts.field_height_px}} with visible labels and a single focus ring; all controls meet the {{metric audit.facts.target_px}}.</li>
@@ -288,7 +288,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
     <div class="legend" style="margin-top:4px"><span><i style="background:#C9C9D1"></i>Current site</span><span><i style="background:#1F4E8C"></i>After {{fixes images,fonts,assets}}</span></div>
   </div>
   {{BEFORE_AFTER}}
-  <p class="small mute">Across all {{value now.*.lcp_s|count|word}} pages: {{metric now.*.scores.performance|range}} now, {{metric after.*.scores.performance|range}}. Unchanged: {{metric after.*.scores.accessibility|min}}, {{metric after.*.scores.best-practices|min}}, {{metric after.*.scores.seo|min}}. Figures are from the attached Lighthouse reports; numbers on the live host will vary slightly with the server and the visitor's connection.</p>
+  <p class="small mute">Across all {{value now.*.lcp_s|count|word}} pages, {{pair *.scores.performance}}. {{group after scores.accessibility,scores.best-practices,scores.seo}}. Figures are from the attached Lighthouse reports; numbers on the live host will vary slightly with the server and the visitor's connection.</p>
   <div class="runfoot"><span>WKL Labs, WordPress Health Check</span><span>{{#page}}</span></div>
 </section>
 
@@ -311,7 +311,7 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
         <li>One self-hosted font, inline SVG icons</li>
         <li>Unused assets removed per page</li>
         <li>Inlined CSS, page caching, cache headers</li>
-        <li>Re-measured: {{metric after.*.scores.performance|min}} or better, LCP under the {{metric audit.facts.lcp_good_s}}</li>
+        <li>Re-measured: {{metric after.*.scores.performance|min}}, and every page under the {{metric audit.facts.lcp_good_s}}</li>
       </ul>
     </div>
     <div class="tier hi">
@@ -349,8 +349,8 @@ Scripts on every page: jquery.min.js, jquery-migrate.min.js, webpack.runtime.min
       <thead><tr><th>Day</th><th>Work</th><th>You see</th></tr></thead>
       <tbody>
         <tr><td>{{#step}}</td><td>Staging copy, backups configured, server-side checks completed, baseline measured</td><td>Access sheet draft, baseline numbers</td></tr>
-        <tr><td>{{#step}}</td><td>Images, fonts, icons</td><td>Staging link, LCP under the {{metric audit.facts.lcp_good_s}} on every page</td></tr>
-        <tr><td>{{#step}}</td><td>Asset removal, CSS inlining, caching</td><td>Staging link, down to {{metric after.*.requests|range}}</td></tr>
+        <tr><td>{{#step}}</td><td>Images, fonts, icons</td><td>Staging link, every page under the {{metric audit.facts.lcp_good_s}}</td></tr>
+        <tr><td>{{#step}}</td><td>Asset removal, CSS inlining, caching</td><td>Staging link, {{metric after.*.requests|range}}</td></tr>
         <tr><td>{{#step}}</td><td>Admin account, two-factor, login limits, version exposure, headers</td><td>Short walkthrough for both partners ({{metric audit.facts.walkthrough_minutes}})</td></tr>
         <tr><td>{{#step}}</td><td>Go live, re-measure on the real host, tested restore</td><td>This report's {{pageref before-and-after-results}} re-done with live numbers</td></tr>
       </tbody>

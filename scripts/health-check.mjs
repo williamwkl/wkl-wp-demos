@@ -20,12 +20,12 @@ export function buildBlocks(ctx) {
   const ring = (label, pct, size, title, small) => `    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="${ringColor(pct)}" stroke-width="7" stroke-dasharray="${(Math.max(0, Math.min(100, pct)) * 1.696).toFixed(1)} 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="${size}" font-weight="600" font-family="Georgia,serif" fill="#141417">${label}</text></svg><b>${title}</b><small>${small}</small></div>`;
   const minOf = k => Math.min(...pages.map(p => p.scores[k]));
   const DASHBOARD = [
-    ring(M(Math.min(...perf)), Math.min(...perf), 16, 'Speed', `Lighthouse Performance, worst page (range ${M(Math.min(...perf))} to ${M(Math.max(...perf))})`),
-    ring(M(s1(Math.max(...pages.map(p => p.lcp_s)))) + 's', ((pages.length - failing) / pages.length) * 100, 13, 'Core Web Vitals', `worst LCP; LCP fails on ${M(failing)} of ${M(pages.length)} pages`),
-    ring(`${M(sec.pass)}/${M(sec.total)}`, (sec.pass / sec.total) * 100, 14, 'Security', `checks passed; ${M(sec.fail)} fail, ${M(sec.partial)} partial, ${M(sec.not_checked)} not checked`),
-    ring(M(minOf('seo')), minOf('seo'), 16, 'SEO', `Lighthouse SEO, lowest of all ${M(pages.length)} pages`),
-    ring(M(minOf('accessibility')), minOf('accessibility'), 16, 'Accessibility', `Lighthouse Accessibility, lowest of all ${M(pages.length)} pages`),
-    ring(`${M(mai.pass)}/${M(mai.total)}`, (mai.pass / mai.total) * 100, 14, 'Maintenance', 'checks passed'),
+    ring(M(Math.min(...perf)), Math.min(...perf), 16, 'Speed', `Worst page; range ${M(Math.min(...perf))} to ${M(Math.max(...perf))}`),
+    ring(M(s1(Math.max(...pages.map(p => p.lcp_s)))) + 's', ((pages.length - failing) / pages.length) * 100, 13, 'Core Web Vitals', `Worst LCP; fails on ${M(failing)} of ${M(pages.length)} pages`),
+    ring(`${M(sec.pass)}/${M(sec.total)}`, (sec.pass / sec.total) * 100, 14, 'Security', `Checks passed. ${M(sec.fail)} fail, ${M(sec.partial)} partial, ${M(sec.not_checked)} not checked`),
+    ring(M(minOf('seo')), minOf('seo'), 16, 'SEO', `Lowest of all ${M(pages.length)} pages`),
+    ring(M(minOf('accessibility')), minOf('accessibility'), 16, 'Accessibility', `Lowest of all ${M(pages.length)} pages`),
+    ring(`${M(mai.pass)}/${M(mai.total)}`, (mai.pass / mai.total) * 100, 14, 'Maintenance', 'Checks passed'),
   ].join('\n');
 
   const CWV_TABLE = `
