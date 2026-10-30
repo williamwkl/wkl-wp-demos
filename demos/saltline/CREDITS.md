@@ -13,3 +13,7 @@ All photos come from Wikimedia Commons under CC0 or public domain (no attributio
 | gear-1200.webp | File:Kayaks beached at 6A3 in southeast arm of Yellowstone Lake.jpg | Public domain (US NPS) |
 
 Font: Fraunces (SIL Open Font License 1.1), self-hosted latin subset.
+
+## Font license
+
+Fraunces is licensed under the SIL Open Font License 1.1. Full license text with the copyright notice: [theme/assets/fonts/OFL.txt](theme/assets/fonts/OFL.txt) (also shipped in the static export at `wp-content/themes/saltline/assets/fonts/OFL.txt`).

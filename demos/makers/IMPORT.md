@@ -32,7 +32,7 @@ wp fernwood import "https://docs.google.com/spreadsheets/d/e/<id>/pub?gid=0&sing
 wp fernwood import wp-content/demo-data/makers-sample.csv
 ```
 
-Output: `Success: Created 0, updated 36, skipped 0.` plus a warning per bad row. Behaviour verified on the demo:
+Output: `Success: Created 0, updated 36, skipped 0, failed 0.` plus a warning per bad row; any failure ends with `Error:` and a non-zero exit. Sources are restricted: URLs must be https Google Sheets links (docs.google.com, redirects only to *.googleusercontent.com, every hop re-checked, 2 MB cap), and local files must sit inside `wp-content/demo-data/` (filter `fw_import_dir`). `scripts/test-importer.sh` checks these rules. Behaviour verified on the demo:
 
 - First run on the sample: created 36. Second run: created 0, updated 36 (idempotent).
 - Missing required column: nothing imported, error "Missing required column: town".

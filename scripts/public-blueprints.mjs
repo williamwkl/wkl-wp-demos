@@ -1,12 +1,14 @@
 // Builds playground/<demo>.json: a self-contained Playground blueprint that pulls the theme, mu-plugins and data
 // from the public GitHub repo (raw URLs) instead of local mounts, then logs in so the WordPress admin opens.
 // usage: node scripts/public-blueprints.mjs [rawBase]
-//   rawBase default: https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main
+//   rawBase default: https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0
+//   IMPORTANT: replace v1.0.0 with the actual release tag or commit SHA at publish time and re-run, so a public link
+//   always loads exactly the reviewed files (a branch name like main would change under the link).
 // Share link once the repo is public: https://playground.wordpress.net/#<url-encoded raw URL of playground/<demo>.json>
 //   or https://playground.wordpress.net/?blueprint-url=<raw URL of playground/<demo>.json>
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-const RAW = (process.argv[2] || 'https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main').replace(/\/$/, '');
+const RAW = (process.argv[2] || 'https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/v1.0.0').replace(/\/$/, '');
 const walk = d => readdirSync(d).flatMap(f => { const p = path.join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
 mkdirSync('playground', { recursive: true });
 const variants = [['saltline', 'blueprint.json', 'saltline'], ['harbor-pine', 'blueprint.json', 'harbor-pine'], ['harbor-pine', 'blueprint-naive.json', 'harbor-pine-naive'], ['makers', 'blueprint.json', 'makers']];

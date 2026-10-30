@@ -63,24 +63,63 @@ add_action( 'deleted_post', fn( $id, $p ) => $p && 'maker' === $p->post_type && 
  *
  * @return array{created:int,updated:int,skipped:int,errors:string[]}
  */
-function fw_import_csv( $source, $image_resolver = null ) {
-	$report = [ 'created' => 0, 'updated' => 0, 'skipped' => 0, 'errors' => [] ];
-	if ( preg_match( '#^https?://#', $source ) ) {
-		$res = wp_remote_get( $source, [ 'timeout' => 20 ] );
-		if ( is_wp_error( $res ) || 200 !== wp_remote_retrieve_response_code( $res ) ) {
-			$report['errors'][] = 'Could not download the sheet: ' . ( is_wp_error( $res ) ? $res->get_error_message() : 'HTTP ' . wp_remote_retrieve_response_code( $res ) );
-			return $report;
+const FW_IMPORT_MAX_BYTES = 2 * 1024 * 1024; // 2 MB is far more than any directory sheet needs
+
+/** Only Google Sheets CSV exports over https are fetched: docs.google.com, and its *.googleusercontent.com export redirect. */
+function fw_import_host_ok( $url ) {
+	$u = wp_parse_url( $url );
+	if ( ! $u || 'https' !== ( $u['scheme'] ?? '' ) || ! empty( $u['user'] ) || ! empty( $u['pass'] ) || ( isset( $u['port'] ) && 443 !== (int) $u['port'] ) ) return false;
+	$host = strtolower( $u['host'] ?? '' );
+	return 'docs.google.com' === $host || (bool) preg_match( '/^[a-z0-9-]+\.googleusercontent\.com$/', $host );
+}
+
+/** Directory local imports may read from (filterable). Paths are resolved with realpath and must stay inside it. */
+function fw_import_dir() {
+	return apply_filters( 'fw_import_dir', WP_CONTENT_DIR . '/demo-data' );
+}
+
+/** @return string|WP_Error CSV text */
+function fw_import_read( $source ) {
+	if ( preg_match( '#^[a-z][a-z0-9+.-]*://#i', $source ) ) {
+		if ( ! fw_import_host_ok( $source ) ) return new WP_Error( 'fw_host', 'Only https Google Sheets CSV links (docs.google.com) are allowed.' );
+		$url = $source;
+		// Follow redirects ourselves (max 3) so every hop is re-validated against the allow-list.
+		for ( $hop = 0; $hop <= 3; $hop++ ) {
+			$res = wp_safe_remote_get( $url, [ 'timeout' => 20, 'redirection' => 0, 'limit_response_size' => FW_IMPORT_MAX_BYTES + 1 ] );
+			if ( is_wp_error( $res ) ) return new WP_Error( 'fw_http', 'Could not download the sheet: ' . $res->get_error_message() );
+			$code = (int) wp_remote_retrieve_response_code( $res );
+			if ( $code >= 300 && $code < 400 ) {
+				$next = wp_remote_retrieve_header( $res, 'location' );
+				$next = $next ? WP_Http::make_absolute_url( $next, $url ) : '';
+				if ( ! $next || ! fw_import_host_ok( $next ) ) return new WP_Error( 'fw_redirect', 'The sheet link redirected to a host that is not allowed.' );
+				$url = $next;
+				continue;
+			}
+			if ( 200 !== $code ) return new WP_Error( 'fw_http', 'Could not download the sheet: HTTP ' . $code );
+			$body = wp_remote_retrieve_body( $res );
+			if ( strlen( $body ) > FW_IMPORT_MAX_BYTES ) return new WP_Error( 'fw_size', 'The sheet is larger than 2 MB.' );
+			return $body;
 		}
-		$text = wp_remote_retrieve_body( $res );
-	} else {
-		if ( ! is_readable( $source ) ) { $report['errors'][] = "File not readable: $source"; return $report; }
-		$text = file_get_contents( $source );
+		return new WP_Error( 'fw_redirect', 'Too many redirects.' );
 	}
+	$dir  = realpath( fw_import_dir() );
+	$path = realpath( $source );
+	if ( ! $dir || ! $path || ! str_starts_with( $path, trailingslashit( $dir ) ) || ! is_file( $path ) ) {
+		return new WP_Error( 'fw_path', 'Local imports must be a CSV file inside ' . fw_import_dir() . '.' );
+	}
+	if ( filesize( $path ) > FW_IMPORT_MAX_BYTES ) return new WP_Error( 'fw_size', 'The file is larger than 2 MB.' );
+	return file_get_contents( $path );
+}
+
+function fw_import_csv( $source, $image_resolver = null ) {
+	$report = [ 'created' => 0, 'updated' => 0, 'skipped' => 0, 'failed' => 0, 'errors' => [] ];
+	$text = fw_import_read( $source );
+	if ( is_wp_error( $text ) ) { $report['failed']++; $report['errors'][] = $text->get_error_message(); return $report; }
 	$text = preg_replace( '/^\xEF\xBB\xBF/', '', $text ); // Excel / Sheets BOM
 	$fh = fopen( 'php://temp', 'r+' ); fwrite( $fh, $text ); rewind( $fh );
 	$head = array_map( fn( $h ) => strtolower( trim( $h ) ), (array) fgetcsv( $fh, 0, ',', '"', '' ) );
 	foreach ( [ 'business_name', 'craft', 'town' ] as $req ) {
-		if ( ! in_array( $req, $head, true ) ) { $report['errors'][] = "Missing required column: $req"; return $report; }
+		if ( ! in_array( $req, $head, true ) ) { $report["failed"]++; $report["errors"][] = "Missing required column: $req"; return $report; }
 	}
 	$line = 1;
 	while ( ( $cols = fgetcsv( $fh, 0, ',', '"', '' ) ) !== false ) {
@@ -93,9 +132,9 @@ function fw_import_csv( $source, $image_resolver = null ) {
 		$existing = $existing ? $existing[0] : null;
 		$postarr = [ 'post_type' => 'maker', 'post_status' => 'publish', 'post_title' => $name, 'post_name' => sanitize_title( $name ),
 			'post_content' => '<!-- wp:paragraph --><p>' . esc_html( $r['description'] ?? '' ) . '</p><!-- /wp:paragraph -->', 'post_excerpt' => sanitize_text_field( $r['description'] ?? '' ) ];
-		if ( $existing ) { $postarr['ID'] = $existing->ID; $id = wp_update_post( $postarr, true ); $report['updated']++; }
-		else { $id = wp_insert_post( $postarr, true ); $report['created']++; }
-		if ( is_wp_error( $id ) ) { $report['errors'][] = "Row $line: " . $id->get_error_message(); continue; }
+		$id = $existing ? wp_update_post( array_merge( $postarr, [ 'ID' => $existing->ID ] ), true ) : wp_insert_post( $postarr, true );
+		if ( is_wp_error( $id ) || ! $id ) { $report['failed']++; $report['errors'][] = "Row $line: " . ( is_wp_error( $id ) ? $id->get_error_message() : 'could not save' ); continue; }
+		$report[ $existing ? 'updated' : 'created' ]++;
 		wp_set_object_terms( $id, sanitize_text_field( $r['craft'] ), 'craft' );
 		wp_set_object_terms( $id, sanitize_text_field( $r['town'] ), 'town' );
 		update_post_meta( $id, 'maker_name', sanitize_text_field( $r['maker_name'] ?? '' ) );
@@ -120,7 +159,9 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	WP_CLI::add_command( 'fernwood import', function ( $args ) {
 		$r = fw_import_csv( $args[0] );
 		foreach ( $r['errors'] as $e ) WP_CLI::warning( $e );
-		WP_CLI::success( sprintf( 'Created %d, updated %d, skipped %d.', $r['created'], $r['updated'], $r['skipped'] ) );
+		$msg = sprintf( 'Created %d, updated %d, skipped %d, failed %d.', $r['created'], $r['updated'], $r['skipped'], $r['failed'] );
+		if ( $r['failed'] ) WP_CLI::error( $msg );
+		WP_CLI::success( $msg );
 	} );
 }
 

@@ -25,6 +25,12 @@ await p.goto(base + '/makers/?q=zzzz', { waitUntil: 'networkidle' }); await p.wa
 out.emptyStateVisible = await p.isVisible('.empty');
 await p.goto(base + '/makers/?category=jewelry&open=1&sort=az', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
 out.sharedUrl = await count();
+// Hostile / malformed query params must not throw or break filtering.
+for (const [qi, q] of ['?category=%22%5D&town=x%27%5D%5B&price=%3Cscript%3E&open=1&sort=%22', '?category=ceramics%22%5D,%5B&q=%3Cimg%20src=x%20onerror=alert(1)%3E', '?page=-1&price=abc,9'].entries()) {
+  await p.goto(base + '/makers/' + q, { waitUntil: 'networkidle' }); await p.waitForTimeout(200);
+  out['malformed' + qi] = await count();
+}
+out.noInjectedImg = await p.evaluate(() => !document.querySelector('img[src="x"]'));
 await p.goto(base + '/craft/ceramics/', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
 out.taxonomyLocked = await count();
 await p.goto(base + '/town/coldwater/', { waitUntil: 'networkidle' });

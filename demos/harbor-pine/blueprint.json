@@ -3,7 +3,7 @@
   "landingPage": "/",
   "preferredVersions": {
     "php": "8.3",
-    "wp": "latest"
+    "wp": "7.1.4"
   },
   "features": {
     "networking": true
@@ -21,8 +21,8 @@
     {
       "step": "installTheme",
       "themeData": {
-        "resource": "wordpress.org/themes",
-        "slug": "hello-elementor"
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/theme/hello-elementor.3.5.1.zip"
       },
       "options": {
         "activate": false
@@ -31,8 +31,8 @@
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "wordpress.org/plugins",
-        "slug": "elementor"
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/elementor.4.3.5.zip"
       },
       "options": {
         "activate": true
@@ -41,8 +41,8 @@
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "wordpress.org/plugins",
-        "slug": "fluentform"
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/fluentform.6.2.16.zip"
       },
       "options": {
         "activate": true
@@ -51,8 +51,8 @@
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "wordpress.org/plugins",
-        "slug": "wordpress-seo"
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/wordpress-seo.28.8.zip"
       },
       "options": {
         "activate": true

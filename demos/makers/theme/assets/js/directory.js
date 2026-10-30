@@ -14,6 +14,13 @@
     return out;
   }
 
+  // Find a filter checkbox by name/value without building a CSS selector from (possibly hostile) URL params.
+  function findInput(form, name, value) {
+    var list = form.querySelectorAll('input[type=checkbox]');
+    for (var i = 0; i < list.length; i++) if (list[i].name === name && list[i].value === String(value)) return list[i];
+    return null;
+  }
+
   function initDirectory(root) {
     var form = root.querySelector('.filters');
     var grid = root.querySelector('.grid');
@@ -63,7 +70,7 @@
     }
 
     function label(name, value) {
-      var input = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
+      var input = findInput(form, name, value);
       return input ? input.parentNode.querySelector('span').textContent : value;
     }
 
@@ -78,7 +85,7 @@
         b.setAttribute('aria-label', 'Remove filter: ' + text);
         b.addEventListener('click', function () {
           if (name === 'q') { search.value = ''; }
-          else { var i = form.querySelector('input[name="' + name + '"][value="' + value + '"]'); if (i) i.checked = false; }
+          else { var i = findInput(form, name, value); if (i) i.checked = false; }
           page = 1; apply(true);
         });
         chipsBox.appendChild(b);
@@ -155,13 +162,13 @@
     var params = new URLSearchParams(location.search);
     ['category', 'town', 'price'].forEach(function (name) {
       (params.get(name) || '').split(',').filter(Boolean).forEach(function (v) {
-        var i = form.querySelector('input[name="' + name + '"][value="' + v + '"]'); if (i) i.checked = true;
+        var i = findInput(form, name, v); if (i && i.getAttribute('aria-disabled') !== 'true') i.checked = true;
       });
     });
-    if (params.get('open') === '1') { var o = form.querySelector('input[name=open]'); if (o) o.checked = true; }
+    if (params.get('open') === '1') { var o = findInput(form, 'open', '1'); if (o) o.checked = true; }
     if (search && params.get('q')) search.value = params.get('q');
-    if (sortSel && params.get('sort')) sortSel.value = params.get('sort');
-    page = parseInt(params.get('page'), 10) || 1;
+    if (sortSel && params.get('sort')) { sortSel.value = params.get('sort'); if (!sortSel.value) sortSel.value = 'recommended'; }
+    page = Math.max(1, parseInt(params.get('page'), 10) || 1);
 
     // Locked context filter (category/town page): announced as disabled, cannot be unticked.
     form.addEventListener('click', function (e) { if (e.target.matches('input[aria-disabled="true"]')) e.preventDefault(); });

@@ -6,3 +6,7 @@
 | ridge | File:Pine trees and fog (Unsplash).jpg | CC0 |
 
 Attorney portraits are CSS monogram tiles (no photos of people). Font: Newsreader, SIL Open Font License 1.1, self-hosted in the optimized build.
+
+## Font license
+
+Newsreader is licensed under the SIL Open Font License 1.1. Full license text with the copyright notice: [theme/assets/fonts/OFL.txt](theme/assets/fonts/OFL.txt) (also shipped in the static export at `wp-content/themes/harbor-pine/assets/fonts/OFL.txt`).

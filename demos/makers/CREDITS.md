@@ -48,3 +48,7 @@ Every listing has its own photo. All photos from Wikimedia Commons (CC0 or publi
 | food-52 | Row of Apples (Unsplash).jpg | CC0 |
 
 Font: Bricolage Grotesque, SIL Open Font License 1.1, self-hosted and subset to Latin.
+
+## Font license
+
+Bricolage Grotesque is licensed under the SIL Open Font License 1.1. Full license text with the copyright notice: [theme/assets/fonts/OFL.txt](theme/assets/fonts/OFL.txt) (also shipped in the static export at `wp-content/themes/makers/assets/fonts/OFL.txt`).
