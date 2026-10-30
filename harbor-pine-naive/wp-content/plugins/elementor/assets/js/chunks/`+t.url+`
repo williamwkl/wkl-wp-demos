@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-US">
+<html data-static-export lang="en-US">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +16,9 @@
 	<meta property="og:description" content="Harbor &amp; Pine Law: personal injury and family law in Harborview. Free, confidential case evaluation and a straight answer about where you stand." />
 	<meta property="og:url" content="https://williamwkl.github.io/wkl-wp-demos/harbor-pine-naive/" />
 	<meta property="og:site_name" content="Harbor &amp; Pine Law" />
-	<meta property="article:modified_time" content="2026-10-30T10:48:31+00:00" />
+	<meta property="article:modified_time" content="2026-10-30T15:48:03+00:00" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/","name":"Harbor & Pine Law | Personal injury and family lawyers in Harborview","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#website"},"datePublished":"2026-10-30T10:48:29+00:00","dateModified":"2026-10-30T10:48:31+00:00","description":"Harbor & Pine Law: personal injury and family law in Harborview. Free, confidential case evaluation and a straight answer about where you stand.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/","name":"Harbor & Pine Law","description":"Personal injury and family law in Harborview (demo site)","inLanguage":"en-US"}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/","name":"Harbor & Pine Law | Personal injury and family lawyers in Harborview","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#website"},"datePublished":"2026-10-30T15:48:02+00:00","dateModified":"2026-10-30T15:48:03+00:00","description":"Harbor & Pine Law: personal injury and family law in Harborview. Free, confidential case evaluation and a straight answer about where you stand.","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/harbor-pine-naive\/","name":"Harbor & Pine Law","description":"Personal injury and family law in Harborview (demo site)","inLanguage":"en-US"}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -126,28 +126,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </header>
 <main id="content">
 		<div data-elementor-type="wp-page" data-elementor-id="7" class="elementor elementor-7">
-				<section class="elementor-element elementor-element-aaa2093 e-con-full hero e-flex e-con e-parent" data-id="aaa2093" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-23989b9 e-con-full wrap hero-grid e-flex e-con e-parent" data-id="23989b9" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-dd4b97b e-con-full hero-copy e-flex e-con e-parent" data-id="dd4b97b" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-c33b92c elementor-widget elementor-widget-text-editor" data-id="c33b92c" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<section class="elementor-element elementor-element-15ca976 e-con-full hero e-flex e-con e-parent" data-id="15ca976" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-dbc4bc4 e-con-full wrap hero-grid e-flex e-con e-parent" data-id="dbc4bc4" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-7cc09a3 e-con-full hero-copy e-flex e-con e-parent" data-id="7cc09a3" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-6fedbd3 elementor-widget elementor-widget-text-editor" data-id="6fedbd3" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="eyebrow">Personal injury and family law in Harborview</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-747591e hero-h1 elementor-widget elementor-widget-heading" data-id="747591e" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-element elementor-element-5ae15ed hero-h1 elementor-widget elementor-widget-heading" data-id="5ae15ed" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h1 class="elementor-heading-title elementor-size-default">Steady counsel when life changes course.</h1>				</div>
-				<div class="elementor-element elementor-element-38af23b elementor-widget elementor-widget-text-editor" data-id="38af23b" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-06f9577 elementor-widget elementor-widget-text-editor" data-id="06f9577" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="lead">When you are hurt, or your family is coming apart, you need someone who will tell you plainly where you stand. We have done that for Harborview families for 14 years.</p>								</div>
 				</div>
-		<div class="elementor-element elementor-element-4b7e72e e-con-full actions hero-actions e-flex e-con e-parent" data-id="4b7e72e" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-d25346b btn-primary elementor-widget elementor-widget-button" data-id="d25346b" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
+		<div class="elementor-element elementor-element-982a26e e-con-full actions hero-actions e-flex e-con e-parent" data-id="982a26e" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-25b3c6c btn-primary elementor-widget elementor-widget-button" data-id="25b3c6c" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
 										<a class="elementor-button elementor-button-link elementor-size-sm" href="#intake">
 						<span class="elementor-button-content-wrapper">
 									<span class="elementor-button-text">Start your free case evaluation</span>
 					</span>
 					</a>
 								</div>
-				<div class="elementor-element elementor-element-187f28a btn-secondary elementor-widget elementor-widget-button" data-id="187f28a" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
+				<div class="elementor-element elementor-element-6744eca btn-secondary elementor-widget elementor-widget-button" data-id="6744eca" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
 										<a class="elementor-button elementor-button-link elementor-size-sm" href="tel:+15550100100">
 						<span class="elementor-button-content-wrapper">
 									<span class="elementor-button-text">Call (555) 010-0100</span>
@@ -155,7 +155,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</a>
 								</div>
 				</div>
-				<div class="elementor-element elementor-element-23427ad elementor-icon-list--layout-traditional facts-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="23427ad" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-element elementor-element-face4c8 elementor-icon-list--layout-traditional facts-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="face4c8" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
@@ -175,32 +175,32 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</ul>
 						</div>
 				</div>
-		<div class="elementor-element elementor-element-991c7b4 e-con-full card e-flex e-con e-parent" data-id="991c7b4" data-element_type="container" data-e-type="container" id="intake">
-				<div class="elementor-element elementor-element-f4493a5 elementor-widget elementor-widget-heading" data-id="f4493a5" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+		<div class="elementor-element elementor-element-2745abd e-con-full card e-flex e-con e-parent" data-id="2745abd" data-element_type="container" data-e-type="container" id="intake">
+				<div class="elementor-element elementor-element-ac7c009 elementor-widget elementor-widget-heading" data-id="ac7c009" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">Free case evaluation</h2>				</div>
-				<div class="elementor-element elementor-element-6e52b49 elementor-widget elementor-widget-text-editor" data-id="6e52b49" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-f4a1e0d elementor-widget elementor-widget-text-editor" data-id="f4a1e0d" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="sub">Takes about two minutes. Confidential.</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-6b9c7df elementor-widget elementor-widget-shortcode" data-id="6b9c7df" data-element_type="widget" data-e-type="widget" data-widget_type="shortcode.default">
+				<div class="elementor-element elementor-element-73a4218 elementor-widget elementor-widget-shortcode" data-id="73a4218" data-element_type="widget" data-e-type="widget" data-widget_type="shortcode.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-shortcode"><div class='fluentform ff-default fluentform_wrapper_3 ffs_default_wrap'><form action="../../../../../../demo-form/" data-form_id="3" id="fluentform_3" class="frm-fluent-form fluent_form_3 ff-el-form-top ff_form_instance_3_1 ff-form-loading ffs_default" data-form_instance="ff_form_instance_3_1" method="get" ><fieldset  style="border: none!important;margin: 0!important;padding: 0!important;background-color: transparent!important;box-shadow: none!important;outline: none!important; min-inline-size: 100%;">
-                    <legend class="ff_screen_reader_title" style="display: block; margin: 0!important;padding: 0!important;height: 0!important;text-indent: -999999px;width: 0!important;overflow:hidden;">Free case evaluation</legend><div data-name="ff_cn_id_1"  class='ff-t-container ff-column-container ff_columns_total_2 '><div class='ff-t-cell ff-t-column-1' style='flex-basis: 50%;'><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_full_name' id='label_ff_3_full_name'>Full name</label></div><div class='ff-el-input--content'><input type="text" id="ff_3_full_name" class="ff-el-form-control" autocomplete="name" data-name="full_name"  aria-invalid="false" aria-required=true required></div></div></div><div class='ff-t-cell ff-t-column-2' style='flex-basis: 50%;'><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_phone' id='label_ff_3_phone'>Phone</label></div><div class='ff-el-input--content'><input type="tel" id="ff_3_phone" class="ff-el-form-control" autocomplete="tel" data-name="phone"  aria-invalid="false" aria-required=true required></div></div></div></div><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_email' id='label_ff_3_email'>Email</label></div><div class='ff-el-input--content'><input type="email" id="ff_3_email" class="ff-el-form-control" autocomplete="email" data-name="email"  aria-invalid="false" aria-required=true required></div></div><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_matter' id='label_ff_3_matter'>What do you need help with?</label></div><div class='ff-el-input--content'><select id="ff_3_matter" class="ff-el-form-control" data-name="matter" data-calc_value="0"  aria-invalid="false" aria-required="true" required aria-labelledby="label_ff_3_matter"><option value="">Choose one</option><option value="Car or truck accident"  >Car or truck accident</option><option value="Slip and fall"  >Slip and fall</option><option value="Workplace injury"  >Workplace injury</option><option value="Divorce or separation"  >Divorce or separation</option><option value="Child custody and support"  >Child custody and support</option><option value="Something else"  >Something else</option></select></div></div><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label asterisk-right"><label for='ff_3_details' id='label_ff_3_details'>Tell us briefly what happened (optional)</label></div><div class='ff-el-input--content'><textarea aria-required="false" aria-labelledby="label_ff_3_details" id="ff_3_details" class="ff-el-form-control" rows="3" cols="2" data-name="details" ></textarea></div></div><div class='ff-el-group    ff-el-input--content'><div class='ff-el-form-check ff-el-tc'><label aria-label='I understand that submitting this form does not create an attorney-client relationship.' class='ff-el-form-check-label ff_tc_label' for='consent_455a9e37013941da909997ff765beb2d'><span class='ff_tc_checkbox'><input type="checkbox" class="ff-el-form-check-input" data-name="consent" id="consent_455a9e37013941da909997ff765beb2d"  value='on' aria-invalid='false' aria-required=true required></span> <div class='ff_t_c'>I understand that submitting this form does not create an attorney-client relationship.</div></label></div></div><div class='ff-el-group ff-text-left ff_submit_btn_wrapper'><button type="submit" class="ff-btn ff-btn-submit ff-btn-md ff_btn_style wpf_has_custom_css"  aria-label="Request my free evaluation">Request my free evaluation</button></div></fieldset></form><div id='fluentform_3_errors' class='ff-errors-in-stack ff_form_instance_3_1 ff-form-loading_errors ff_form_instance_3_1_errors'></div></div>            <script type="text/javascript">
+                    <legend class="ff_screen_reader_title" style="display: block; margin: 0!important;padding: 0!important;height: 0!important;text-indent: -999999px;width: 0!important;overflow:hidden;">Free case evaluation</legend><div data-name="ff_cn_id_1"  class='ff-t-container ff-column-container ff_columns_total_2 '><div class='ff-t-cell ff-t-column-1' style='flex-basis: 50%;'><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_full_name' id='label_ff_3_full_name'>Full name</label></div><div class='ff-el-input--content'><input type="text" id="ff_3_full_name" class="ff-el-form-control" autocomplete="name" data-name="full_name"  aria-invalid="false" aria-required=true required></div></div></div><div class='ff-t-cell ff-t-column-2' style='flex-basis: 50%;'><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_phone' id='label_ff_3_phone'>Phone</label></div><div class='ff-el-input--content'><input type="tel" id="ff_3_phone" class="ff-el-form-control" autocomplete="tel" data-name="phone"  aria-invalid="false" aria-required=true required></div></div></div></div><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_email' id='label_ff_3_email'>Email</label></div><div class='ff-el-input--content'><input type="email" id="ff_3_email" class="ff-el-form-control" autocomplete="email" data-name="email"  aria-invalid="false" aria-required=true required></div></div><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label ff-el-is-required asterisk-right"><label for='ff_3_matter' id='label_ff_3_matter'>What do you need help with?</label></div><div class='ff-el-input--content'><select id="ff_3_matter" class="ff-el-form-control" data-name="matter" data-calc_value="0"  aria-invalid="false" aria-required="true" required aria-labelledby="label_ff_3_matter"><option value="">Choose one</option><option value="Car or truck accident"  >Car or truck accident</option><option value="Slip and fall"  >Slip and fall</option><option value="Workplace injury"  >Workplace injury</option><option value="Divorce or separation"  >Divorce or separation</option><option value="Child custody and support"  >Child custody and support</option><option value="Something else"  >Something else</option></select></div></div><div class='ff-el-group ff-el-form-top'><div class="ff-el-input--label asterisk-right"><label for='ff_3_details' id='label_ff_3_details'>Tell us briefly what happened (optional)</label></div><div class='ff-el-input--content'><textarea aria-required="false" aria-labelledby="label_ff_3_details" id="ff_3_details" class="ff-el-form-control" rows="3" cols="2" data-name="details" ></textarea></div></div><div class='ff-el-group    ff-el-input--content'><div class='ff-el-form-check ff-el-tc'><label aria-label='I understand that submitting this form does not create an attorney-client relationship.' class='ff-el-form-check-label ff_tc_label' for='consent_dcc86117b78f492f8901edafbcf2378f'><span class='ff_tc_checkbox'><input type="checkbox" class="ff-el-form-check-input" data-name="consent" id="consent_dcc86117b78f492f8901edafbcf2378f"  value='on' aria-invalid='false' aria-required=true required></span> <div class='ff_t_c'>I understand that submitting this form does not create an attorney-client relationship.</div></label></div></div><div class='ff-el-group ff-text-left ff_submit_btn_wrapper'><button type="submit" class="ff-btn ff-btn-submit ff-btn-md ff_btn_style wpf_has_custom_css"  aria-label="Request my free evaluation">Request my free evaluation</button></div></fieldset></form><div id='fluentform_3_errors' class='ff-errors-in-stack ff_form_instance_3_1 ff-form-loading_errors ff_form_instance_3_1_errors'></div></div>            <script type="text/javascript">
                 window.fluent_form_ff_form_instance_3_1 = {"id":"3","ajaxUrl":"..\/..\/..\/..\/..\/..\/wp-admin\/admin-ajax.php","settings":{"layout":{"labelPlacement":"top","helpMessagePlacement":"with_label","errorMessagePlacement":"inline","cssClassName":"","asteriskPlacement":"asterisk-right"},"restrictions":{"denyEmptySubmission":{"enabled":false}}},"form_instance":"ff_form_instance_3_1","form_id_selector":"fluentform_3","rules":{"full_name":{"required":{"value":true,"message":"Please fill in full name."}},"phone":{"required":{"value":true,"message":"Please fill in phone."}},"email":{"required":{"value":true,"message":"Please fill in email."},"email":{"value":true,"message":"Please enter a valid email address."}},"matter":{"required":{"value":true,"message":"Please fill in what do you need help with?."}},"details":{"required":{"value":false,"message":"Please fill in tell us briefly what happened (optional)."}},"consent":{"required":{"value":true,"message":"Please confirm you have read this."}}},"debounce_time":300,"file_upload_settings":[]};
                             </script>
             </div>
 						</div>
 				</div>
-				<div class="elementor-element elementor-element-18b86bc elementor-widget elementor-widget-text-editor" data-id="18b86bc" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-caffe72 elementor-widget elementor-widget-text-editor" data-id="caffe72" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="fine">We reply within one business day. Demo form: this sample site sends nothing.</p>								</div>
 				</div>
 				</div>
 				</div>
 				</section>
-		<section class="elementor-element elementor-element-07db0a7 e-con-full trust e-flex e-con e-parent" data-id="07db0a7" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-d6db275 e-con-full wrap e-flex e-con e-parent" data-id="d6db275" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-8af0a4d elementor-icon-list--layout-traditional trust-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="8af0a4d" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+		<section class="elementor-element elementor-element-33be272 e-con-full trust e-flex e-con e-parent" data-id="33be272" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-caf7a89 e-con-full wrap e-flex e-con e-parent" data-id="caf7a89" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-b9b9870 elementor-icon-list--layout-traditional trust-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="b9b9870" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
@@ -226,19 +226,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 				</div>
 				</section>
-		<section class="elementor-element elementor-element-407d011 e-con-full section e-flex e-con e-parent" data-id="407d011" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-7e6dab0 e-con-full wrap e-flex e-con e-parent" data-id="7e6dab0" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-7c04b9d elementor-widget elementor-widget-text-editor" data-id="7c04b9d" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+		<section class="elementor-element elementor-element-2ea818a e-con-full section e-flex e-con e-parent" data-id="2ea818a" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-e447dd9 e-con-full wrap e-flex e-con e-parent" data-id="e447dd9" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-071074f elementor-widget elementor-widget-text-editor" data-id="071074f" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="eyebrow">Practice areas</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-b099b4c sec-h elementor-widget elementor-widget-heading" data-id="b099b4c" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-element elementor-element-e08efab sec-h elementor-widget elementor-widget-heading" data-id="e08efab" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">Two kinds of hard weeks. We handle both.</h2>				</div>
-		<div class="elementor-element elementor-element-c0f7733 e-con-full areas e-flex e-con e-parent" data-id="c0f7733" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-3e0eaf9 e-con-full area-col e-flex e-con e-parent" data-id="3e0eaf9" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-1fa6e7c elementor-widget elementor-widget-heading" data-id="1fa6e7c" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+		<div class="elementor-element elementor-element-e1dba2f e-con-full areas e-flex e-con e-parent" data-id="e1dba2f" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-4f1389c e-con-full area-col e-flex e-con e-parent" data-id="4f1389c" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-b7b7832 elementor-widget elementor-widget-heading" data-id="b7b7832" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h3 class="elementor-heading-title elementor-size-default">Personal injury</h3>				</div>
-				<div class="elementor-element elementor-element-5288567 elementor-icon-list--layout-traditional area-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="5288567" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-element elementor-element-d2cbd64 elementor-icon-list--layout-traditional area-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="d2cbd64" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
 										<span class="elementor-icon-list-text">Car and truck accidents</span>
@@ -254,15 +254,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 									</li>
 						</ul>
 						</div>
-				<div class="elementor-element elementor-element-53a4aad elementor-widget elementor-widget-text-editor" data-id="53a4aad" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-78e94ca elementor-widget elementor-widget-text-editor" data-id="78e94ca" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p><a href="../../../../../../personal-injury/">How we handle injury cases</a></p>								</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-915d6ee e-con-full area-col e-flex e-con e-parent" data-id="915d6ee" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-b9637ef elementor-widget elementor-widget-heading" data-id="b9637ef" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+		<div class="elementor-element elementor-element-211ad4e e-con-full area-col e-flex e-con e-parent" data-id="211ad4e" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-ba47851 elementor-widget elementor-widget-heading" data-id="ba47851" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h3 class="elementor-heading-title elementor-size-default">Family law</h3>				</div>
-				<div class="elementor-element elementor-element-111e24a elementor-icon-list--layout-traditional area-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="111e24a" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-element elementor-element-ac35e9d elementor-icon-list--layout-traditional area-list elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="ac35e9d" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
 										<span class="elementor-icon-list-text">Divorce and separation</span>
@@ -278,7 +278,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 									</li>
 						</ul>
 						</div>
-				<div class="elementor-element elementor-element-5f44274 elementor-widget elementor-widget-text-editor" data-id="5f44274" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-7caeffa elementor-widget elementor-widget-text-editor" data-id="7caeffa" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p><a href="../../../../../../family-law/">How we handle family cases</a></p>								</div>
 				</div>
@@ -286,77 +286,77 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</div>
 				</div>
 				</section>
-		<section class="elementor-element elementor-element-9703320 e-con-full section no-top e-flex e-con e-parent" data-id="9703320" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-9100457 e-con-full wrap expect e-flex e-con e-parent" data-id="9100457" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-cd473f1 e-con-full expect-copy e-flex e-con e-parent" data-id="cd473f1" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-1b4e7e8 elementor-widget elementor-widget-heading" data-id="1b4e7e8" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+		<section class="elementor-element elementor-element-7293e58 e-con-full section no-top e-flex e-con e-parent" data-id="7293e58" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-6b8eff8 e-con-full wrap expect e-flex e-con e-parent" data-id="6b8eff8" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-78ec270 e-con-full expect-copy e-flex e-con e-parent" data-id="78ec270" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-56c3a3f elementor-widget elementor-widget-heading" data-id="56c3a3f" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">What the first 30 days look like.</h2>				</div>
-				<div class="elementor-element elementor-element-db23d28 elementor-widget elementor-widget-text-editor" data-id="db23d28" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-418139b elementor-widget elementor-widget-text-editor" data-id="418139b" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p><strong>The first call.</strong> You tell us what happened. We tell you, honestly, whether you have a case worth pursuing and what it would involve. If we are not the right firm, we will say so and point you somewhere better.</p><p><strong>The plan in writing.</strong> Within a week you get a one-page summary: what we will do, what we need from you, and a realistic range of outcomes.</p><p><strong>No surprises on fees.</strong> Injury cases are contingency, so you pay nothing unless we recover money for you. Family matters are quoted up front, with a cap where we can offer one.</p>								</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-bbe8792 e-con-full expect-side e-flex e-con e-parent" data-id="bbe8792" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-162ce9f elementor-widget elementor-widget-html" data-id="162ce9f" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+		<div class="elementor-element elementor-element-2829e34 e-con-full expect-side e-flex e-con e-parent" data-id="2829e34" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-c98b520 elementor-widget elementor-widget-html" data-id="c98b520" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
 					<blockquote class="pull"><p>“Most people call us on the worst week of their year. Our job is to make the next one calmer.”</p><footer>Elena Marsh, partner</footer></blockquote>				</div>
 				</div>
 				</div>
 				</section>
-		<section class="elementor-element elementor-element-c24910a e-con-full section no-top e-flex e-con e-parent" data-id="c24910a" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-53fcc1c e-con-full wrap e-flex e-con e-parent" data-id="53fcc1c" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-516be5d elementor-widget elementor-widget-text-editor" data-id="516be5d" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+		<section class="elementor-element elementor-element-add21a7 e-con-full section no-top e-flex e-con e-parent" data-id="add21a7" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-aab03ec e-con-full wrap e-flex e-con e-parent" data-id="aab03ec" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-df58827 elementor-widget elementor-widget-text-editor" data-id="df58827" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="eyebrow">Our attorneys</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-2988043 sec-h elementor-widget elementor-widget-heading" data-id="2988043" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-element elementor-element-938a821 sec-h elementor-widget elementor-widget-heading" data-id="938a821" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">The people you will actually talk to.</h2>				</div>
-		<div class="elementor-element elementor-element-0d4e0b4 e-con-full people e-flex e-con e-parent" data-id="0d4e0b4" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-824c60c elementor-widget elementor-widget-html" data-id="824c60c" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+		<div class="elementor-element elementor-element-4c37514 e-con-full people e-flex e-con e-parent" data-id="4c37514" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-2d6d5cc elementor-widget elementor-widget-html" data-id="2d6d5cc" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
 					<article class="person"><div class="portrait-tile" role="img" aria-label="Monogram tile for Elena Marsh"><span aria-hidden="true">EM</span></div><div><h3 class="elementor-heading-title">Elena Marsh</h3><p class="role">Partner, personal injury. Admitted 2009</p><div class="bio"><p>Fourteen years of injury work, most of it against insurers who hoped the client would give up. Elena takes the calls herself.</p><p><a href="../../../../../../our-attorneys/#elena-marsh">More about Elena</a></p></div></div></article>				</div>
-				<div class="elementor-element elementor-element-29b9fc4 elementor-widget elementor-widget-html" data-id="29b9fc4" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+				<div class="elementor-element elementor-element-5cd0902 elementor-widget elementor-widget-html" data-id="5cd0902" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
 					<article class="person"><div class="portrait-tile" role="img" aria-label="Monogram tile for Daniel Okafor"><span aria-hidden="true">DO</span></div><div><h3 class="elementor-heading-title">Daniel Okafor</h3><p class="role">Partner, family law. Admitted 2011</p><div class="bio"><p>Divorce, custody and support, with a preference for settling well over fighting long. Trained mediator.</p><p><a href="../../../../../../our-attorneys/#daniel-okafor">More about Daniel</a></p></div></div></article>				</div>
 				</div>
 				</div>
 				</section>
-		<section class="elementor-element elementor-element-2cdfb2f e-con-full section paper2 e-flex e-con e-parent" data-id="2cdfb2f" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-b203fe9 e-con-full wrap e-flex e-con e-parent" data-id="b203fe9" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-901ed34 elementor-widget elementor-widget-text-editor" data-id="901ed34" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+		<section class="elementor-element elementor-element-eeca68d e-con-full section paper2 e-flex e-con e-parent" data-id="eeca68d" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-b8156b8 e-con-full wrap e-flex e-con e-parent" data-id="b8156b8" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-52280af elementor-widget elementor-widget-text-editor" data-id="52280af" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="eyebrow">Results and reviews</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-6e47795 sec-h elementor-widget elementor-widget-heading" data-id="6e47795" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-element elementor-element-74dc525 sec-h elementor-widget elementor-widget-heading" data-id="74dc525" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">Outcomes, in their words.</h2>				</div>
-		<div class="elementor-element elementor-element-534bbbf e-con-full results e-flex e-con e-parent" data-id="534bbbf" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-239efd6 elementor-widget elementor-widget-html" data-id="239efd6" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+		<div class="elementor-element elementor-element-85eb9e4 e-con-full results e-flex e-con e-parent" data-id="85eb9e4" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-3fbd96f elementor-widget elementor-widget-html" data-id="3fbd96f" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
 					<div><blockquote class="quote"><p>“Elena explained every letter the insurer sent before I had a chance to panic about it.”</p><footer>Former client, rear-end collision (sample review)</footer></blockquote><blockquote class="quote"><p>“Daniel kept the focus on our kids when neither of us could. We settled in four months.”</p><footer>Former client, custody matter (sample review)</footer></blockquote></div>				</div>
-				<div class="elementor-element elementor-element-dd929df elementor-widget elementor-widget-html" data-id="dd929df" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+				<div class="elementor-element elementor-element-c0e987e elementor-widget elementor-widget-html" data-id="c0e987e" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
 					<div class="tiles-html"><div class="tile"><p class="amt">$410,000</p><p class="what">Settlement, rear-end collision with disputed liability (sample result)</p></div><div class="tile"><p class="amt">Full custody retained</p><p class="what">Contested relocation case (sample result)</p></div><div class="tile"><p class="amt">$125,000</p><p class="what">Settlement, retail slip and fall (sample result)</p></div></div>				</div>
 				</div>
-				<div class="elementor-element elementor-element-f616075 elementor-widget elementor-widget-text-editor" data-id="f616075" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-5fd04f1 elementor-widget elementor-widget-text-editor" data-id="5fd04f1" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="disclaimer">Prior results do not guarantee a similar outcome. Every case depends on its own facts. <a href="../../../../../../results/">See more sample results</a></p>								</div>
 				</div>
 				</div>
 				</section>
-		<section class="elementor-element elementor-element-7ebef6a e-con-full section dark e-flex e-con e-parent" data-id="7ebef6a" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-9d11041 e-con-full wrap cta-inner e-flex e-con e-parent" data-id="9d11041" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-a0de6f3 e-con-full cta-copy e-flex e-con e-parent" data-id="a0de6f3" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-35fe768 elementor-widget elementor-widget-heading" data-id="35fe768" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+		<section class="elementor-element elementor-element-0c21d55 e-con-full section dark e-flex e-con e-parent" data-id="0c21d55" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-1f15c27 e-con-full wrap cta-inner e-flex e-con e-parent" data-id="1f15c27" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-3e4fca8 e-con-full cta-copy e-flex e-con e-parent" data-id="3e4fca8" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-72b1430 elementor-widget elementor-widget-heading" data-id="72b1430" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">Tell us what happened. We will tell you where you stand.</h2>				</div>
-				<div class="elementor-element elementor-element-e09c281 elementor-widget elementor-widget-text-editor" data-id="e09c281" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-27e594d elementor-widget elementor-widget-text-editor" data-id="27e594d" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p>A free, confidential conversation with a lawyer. No obligation, no pressure, and a straight answer about whether you have a case.</p>								</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-b52d958 e-con-full actions e-flex e-con e-parent" data-id="b52d958" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-a2808c6 btn-primary elementor-widget elementor-widget-button" data-id="a2808c6" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
+		<div class="elementor-element elementor-element-8e21960 e-con-full actions e-flex e-con e-parent" data-id="8e21960" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-977f26c btn-primary elementor-widget elementor-widget-button" data-id="977f26c" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
 										<a class="elementor-button elementor-button-link elementor-size-sm" href="#intake">
 						<span class="elementor-button-content-wrapper">
 									<span class="elementor-button-text">Start your free case evaluation</span>
 					</span>
 					</a>
 								</div>
-				<div class="elementor-element elementor-element-daae453 btn-secondary elementor-widget elementor-widget-button" data-id="daae453" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
+				<div class="elementor-element elementor-element-b9625e4 btn-secondary elementor-widget elementor-widget-button" data-id="b9625e4" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
 										<a class="elementor-button elementor-button-link elementor-size-sm" href="tel:+15550100100">
 						<span class="elementor-button-content-wrapper">
 									<span class="elementor-button-text">(555) 010-0100</span>
@@ -434,12 +434,12 @@ jQuery.uiBackCompat = true;
 </script>
 <script id="jquery-ui-core-js" src="../../../../../../wp-includes/js/jquery/ui/core.min.js"></script>
 <script id="elementor-frontend-js-before">
-var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnX":"Share on X","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"4.3.5","is_static":false,"experimentalFeatures":{"additional_custom_breakpoints":true,"container":true,"hello-theme-header-footer":true,"nested-elements":true,"e_atomic_elements":true,"e_opt_in_v4":true,"import-export-customization":true},"urls":{"assets":"..\/..\/..\/..\/..\/..\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"..\/..\/..\/..\/..\/..\/wp-admin\/admin-ajax.php","uploadUrl":"..\/..\/..\/..\/..\/..\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"078c733b2a","atomicFormsSendForm":"3de8abdb43"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"viewport_mobile":767,"viewport_tablet":1024,"body_background_background":"classic","active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":7,"title":"Harbor%20%26%20Pine%20Law%20%7C%20Personal%20injury%20and%20family%20lawyers%20in%20Harborview","excerpt":"","featuredImage":false}};
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnX":"Share on X","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"4.3.5","is_static":false,"experimentalFeatures":{"additional_custom_breakpoints":true,"container":true,"hello-theme-header-footer":true,"nested-elements":true,"e_atomic_elements":true,"e_opt_in_v4":true,"import-export-customization":true},"urls":{"assets":"..\/..\/..\/..\/..\/..\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"..\/..\/..\/..\/..\/..\/wp-admin\/admin-ajax.php","uploadUrl":"..\/..\/..\/..\/..\/..\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"fa2cb7bc92","atomicFormsSendForm":"8d8faf836a"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"viewport_mobile":767,"viewport_tablet":1024,"body_background_background":"classic","active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":7,"title":"Harbor%20%26%20Pine%20Law%20%7C%20Personal%20injury%20and%20family%20lawyers%20in%20Harborview","excerpt":"","featuredImage":false}};
 //# sourceURL=elementor-frontend-js-before
 </script>
 <script id="elementor-frontend-js" src="../../../../../../wp-content/plugins/elementor/assets/js/frontend.min.js"></script>
 <script id="fluent-form-submission-js-extra">
-var fluentFormVars = {"ajaxUrl":"../../../../../../wp-admin/admin-ajax.php","forms":[],"step_text":"Step %activeStep% of %totalStep% - %stepTitle%","step_completed_text":"Completed","is_rtl":"","date_i18n":{"previousMonth":"Previous Month","nextMonth":"Next Month","months":{"shorthand":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"longhand":["January","February","March","April","May","June","July","August","September","October","November","December"]},"weekdays":{"longhand":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"shorthand":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"daysInMonth":[31,28,31,30,31,30,31,31,30,31,30,31],"rangeSeparator":" to ","weekAbbreviation":"Wk","scrollTitle":"Scroll to increment","toggleTitle":"Click to toggle","amPM":["AM","PM"],"yearAriaLabel":"Year","firstDayOfWeek":1},"pro_version":"","fluentform_version":"6.2.16","force_init":"","stepAnimationDuration":"350","upload_completed_txt":"100% Completed","upload_start_txt":"0% Completed","uploading_txt":"Uploading","choice_js_vars":{"noResultsText":"No results found","loadingText":"Loading...","noChoicesText":"No choices to choose from","itemSelectText":"Press to select","maxItemTextSingular":"Only %%maxItemCount%% option can be added","maxItemTextPlural":"Only %%maxItemCount%% options can be added"},"input_mask_vars":{"clearIfNotMatch":false},"nonce":"8fdecd9b2c","file_delete_nonce":"0890f33cba","form_id":"3","step_change_focus":"1","has_cleantalk":"","pro_payment_script_compatible":""};
+var fluentFormVars = {"ajaxUrl":"../../../../../../wp-admin/admin-ajax.php","forms":[],"step_text":"Step %activeStep% of %totalStep% - %stepTitle%","step_completed_text":"Completed","is_rtl":"","date_i18n":{"previousMonth":"Previous Month","nextMonth":"Next Month","months":{"shorthand":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"longhand":["January","February","March","April","May","June","July","August","September","October","November","December"]},"weekdays":{"longhand":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"shorthand":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"daysInMonth":[31,28,31,30,31,30,31,31,30,31,30,31],"rangeSeparator":" to ","weekAbbreviation":"Wk","scrollTitle":"Scroll to increment","toggleTitle":"Click to toggle","amPM":["AM","PM"],"yearAriaLabel":"Year","firstDayOfWeek":1},"pro_version":"","fluentform_version":"6.2.16","force_init":"","stepAnimationDuration":"350","upload_completed_txt":"100% Completed","upload_start_txt":"0% Completed","uploading_txt":"Uploading","choice_js_vars":{"noResultsText":"No results found","loadingText":"Loading...","noChoicesText":"No choices to choose from","itemSelectText":"Press to select","maxItemTextSingular":"Only %%maxItemCount%% option can be added","maxItemTextPlural":"Only %%maxItemCount%% options can be added"},"input_mask_vars":{"clearIfNotMatch":false},"nonce":"2f6437dc35","file_delete_nonce":"9d2dd345bf","form_id":"3","step_change_focus":"1","has_cleantalk":"","pro_payment_script_compatible":""};
 var fluentform_submission_messages_3 = {"file_upload_in_progress":"File upload in progress. Please wait...","javascript_handler_failed":"Javascript handler could not be loaded. Form submission has been failed. Reload the page and try again"};
 var fluentform_payment_messages_3 = {"stock_out_message":"This Item is Stock Out","item_label":"Item","price_label":"Price","qty_label":"Qty","line_total_label":"Line Total","sub_total_label":"Sub Total","discount_label":"Discount","total_label":"Total","signup_fee_label":"Signup Fee","trial_label":"Trial","processing_text":"Processing...","confirming_text":"Confirming..."};
 var fluentform_save_progress_messages_3 = {"copy_button":"Copy","email_button":"Email","email_placeholder":"Your Email Here","copy_success":"Copied"};
