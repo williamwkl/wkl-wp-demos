@@ -1,0 +1,262 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-admin/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Saltline Kayak Tours",
+        "blogdescription": "Guided sea kayak tours (demo site)",
+        "permalink_structure": "/%postname%/"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline"
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline/assets"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/favicon.svg",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/favicon.svg"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline/assets/fonts"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/fonts/fraunces-var.woff2",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/fonts/fraunces-var.woff2"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/cave-900.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/cave-900.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/gear-1200.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/gear-1200.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/hero-560.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/hero-560.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/lesson-900.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/lesson-900.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/night-900.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/night-900.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/shore-1200.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/shore-1200.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/img/sunrise-900.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/img/sunrise-900.webp"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline/assets/js"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/assets/js/demo-form.js",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/assets/js/demo-form.js"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/functions.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/functions.php"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline/parts"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/parts/footer.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/parts/footer.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/parts/header.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/parts/header.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/style.css",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/style.css"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/saltline/templates"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/templates/404.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/templates/404.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/templates/front-page.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/templates/front-page.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/templates/index.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/templates/index.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/templates/page.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/templates/page.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/saltline/theme.json",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/theme/theme.json"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/mu-plugins"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-clean.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/mu-plugins/demo-clean.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-schema.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/mu-plugins/demo-schema.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-seed.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/saltline/mu-plugins/demo-seed.php"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "wordpress-seo"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "contact-form-7"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "activateTheme",
+      "themeFolderName": "saltline"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; demo_seed();"
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    }
+  ]
+}

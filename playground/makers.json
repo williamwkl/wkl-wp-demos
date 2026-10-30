@@ -1,0 +1,320 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-admin/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Fernwood Makers",
+        "blogdescription": "Local makers directory for Fernwood County (demo site)",
+        "permalink_structure": "/%postname%/"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers"
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers/assets"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/favicon.svg",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/favicon.svg"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers/assets/fonts"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/fonts/bricolage-var.woff2",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/fonts/bricolage-var.woff2"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers/assets/img"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/bread-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/bread-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/honey-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/honey-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/jewel-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/jewel-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/mug-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/mug-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/paper-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/paper-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/paper2-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/paper2-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/wheel-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/wheel-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/wheel-portrait-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/wheel-portrait-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/wood-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/wood-800.webp"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/img/yarn-800.webp",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/img/yarn-800.webp"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers/assets/js"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/assets/js/directory.js",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/assets/js/directory.js"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/functions.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/functions.php"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers/parts"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/parts/footer.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/parts/footer.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/parts/header.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/parts/header.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/style.css",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/style.css"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/themes/makers/templates"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/404.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/404.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/archive-maker.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/archive-maker.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/front-page.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/front-page.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/index.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/index.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/page.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/page.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/single-maker.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/single-maker.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/taxonomy-craft.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/taxonomy-craft.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/templates/taxonomy-town.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/templates/taxonomy-town.html"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/makers/theme.json",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/theme/theme.json"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/mu-plugins"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-clean.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/mu-plugins/demo-clean.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-seed.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/mu-plugins/demo-seed.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/fernwood-directory.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/mu-plugins/fernwood-directory.php"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/demo-data"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/demo-data/makers-sample.csv",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/williamwkl/wkl-wp-demos/main/demos/makers/data/makers-sample.csv"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "wordpress-seo"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "activateTheme",
+      "themeFolderName": "makers"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; demo_seed();"
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    }
+  ]
+}

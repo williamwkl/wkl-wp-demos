@@ -1,0 +1,12 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "features": { "networking": true },
+  "steps": [
+    { "step": "setSiteOptions", "options": { "blogname": "Fernwood Makers", "blogdescription": "Local makers directory for Fernwood County (demo site)", "permalink_structure": "/%postname%/" } },
+    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "wordpress-seo" }, "options": { "activate": true } },
+    { "step": "activateTheme", "themeFolderName": "makers" },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; demo_seed();" }
+  ]
+}

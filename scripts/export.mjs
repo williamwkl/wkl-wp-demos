@@ -41,7 +41,7 @@ while (queue.length) {
   if (/text|javascript|json|xml|svg/.test(type)) {
     let body = await res.text();
     const esc = O.replace(/\//g, '\\/');
-    for (const m of body.matchAll(/(?:href|src|content)=["']((?:https?:)?\/[^"'\s]*)["']|url\(\s*["']?([^"')]+)["']?\s*\)|srcset=["']([^"']+)["']|<loc>([^<]+)<\/loc>/g)) {
+    for (const m of body.matchAll(/(?:href|src|content|data-index)=["']((?:https?:)?\/[^"'\s]*)["']|url\(\s*["']?([^"')]+)["']?\s*\)|srcset=["']([^"']+)["']|<loc>([^<]+)<\/loc>/g)) {
       const v = m[1] || m[2] || m[4];
       if (v) enqueue(new URL(v.replace(/&amp;/g, '&'), O + p).href);
       if (m[3]) m[3].split(',').forEach(s => enqueue(new URL(s.trim().split(/\s+/)[0], O + p).href));

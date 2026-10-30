@@ -1,0 +1,246 @@
+{
+  "version": 3,
+  "settings": {
+    "color": {
+      "defaultPalette": false,
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#161512"
+        },
+        {
+          "slug": "ochre",
+          "name": "Ochre",
+          "color": "#B4700F"
+        },
+        {
+          "slug": "ochre-deep",
+          "name": "Ochre deep",
+          "color": "#8F5607"
+        },
+        {
+          "slug": "bone",
+          "name": "Bone",
+          "color": "#F6F4EE"
+        },
+        {
+          "slug": "bone-2",
+          "name": "Bone 2",
+          "color": "#ECE8DE"
+        },
+        {
+          "slug": "clay",
+          "name": "Clay",
+          "color": "#C8B89A"
+        },
+        {
+          "slug": "moss",
+          "name": "Moss",
+          "color": "#3F5A3C"
+        },
+        {
+          "slug": "mute",
+          "name": "Mute",
+          "color": "#5B5850"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "typography": {
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "slug": "display",
+          "name": "Bricolage Grotesque",
+          "fontFamily": "\"Bricolage Grotesque\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Bricolage Grotesque",
+              "fontWeight": "500 700",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/bricolage-var.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "body",
+          "name": "System sans",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "small",
+          "size": "0.8125rem",
+          "fluid": false
+        },
+        {
+          "slug": "body",
+          "size": "1rem",
+          "fluid": false
+        },
+        {
+          "slug": "lead",
+          "size": "1.1875rem",
+          "fluid": {
+            "min": "1.0625rem",
+            "max": "1.1875rem"
+          }
+        },
+        {
+          "slug": "h3",
+          "size": "1.25rem",
+          "fluid": {
+            "min": "1.125rem",
+            "max": "1.25rem"
+          }
+        },
+        {
+          "slug": "h2",
+          "size": "2.5rem",
+          "fluid": {
+            "min": "1.75rem",
+            "max": "2.5rem"
+          }
+        },
+        {
+          "slug": "display",
+          "size": "4.5rem",
+          "fluid": {
+            "min": "2.5rem",
+            "max": "4.5rem"
+          }
+        }
+      ],
+      "defaultFontSizes": false
+    },
+    "spacing": {
+      "spacingSizes": [
+        {
+          "slug": "20",
+          "size": "0.5rem",
+          "name": "2"
+        },
+        {
+          "slug": "30",
+          "size": "1rem",
+          "name": "4"
+        },
+        {
+          "slug": "40",
+          "size": "1.5rem",
+          "name": "6"
+        },
+        {
+          "slug": "50",
+          "size": "2rem",
+          "name": "8"
+        },
+        {
+          "slug": "60",
+          "size": "3rem",
+          "name": "12"
+        },
+        {
+          "slug": "70",
+          "size": "3.5rem",
+          "name": "14"
+        },
+        {
+          "slug": "80",
+          "size": "5rem",
+          "name": "20"
+        }
+      ],
+      "defaultSpacingSizes": false
+    },
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1240px"
+    },
+    "useRootPaddingAwareAlignments": false
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--bone)",
+      "text": "var(--wp--preset--color--ink)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "fontSize": "var(--wp--preset--font-size--body)",
+      "lineHeight": "1.6"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontWeight": "700",
+          "lineHeight": "1.05",
+          "letterSpacing": "-0.025em"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--ink)"
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var(--wp--preset--color--ochre-deep)",
+          "text": "var(--wp--preset--color--white)"
+        },
+        "border": {
+          "radius": "10px"
+        },
+        "spacing": {
+          "padding": {
+            "top": "14px",
+            "bottom": "14px",
+            "left": "22px",
+            "right": "22px"
+          }
+        },
+        "typography": {
+          "fontWeight": "600"
+        }
+      }
+    },
+    "blocks": {
+      "core/search": {
+        "border": {
+          "radius": "999px"
+        }
+      }
+    },
+    "spacing": {
+      "blockGap": "0",
+      "padding": {
+        "top": "0",
+        "right": "0",
+        "bottom": "0",
+        "left": "0"
+      }
+    }
+  },
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "templateParts": [
+    {
+      "name": "header",
+      "area": "header",
+      "title": "Header"
+    },
+    {
+      "name": "footer",
+      "area": "footer",
+      "title": "Footer"
+    }
+  ]
+}

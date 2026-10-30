@@ -1,0 +1,55 @@
+// Directory behaviour on the static export: search, filters, URL sync, taxonomy lock, pagination, sheet, no-JS fallback, demo form.
+import { chromium } from 'playwright';
+const base = process.argv[2];
+const b = await chromium.launch();
+const out = {};
+let p = await b.newPage({ viewport: { width: 1280, height: 900 } });
+const errors = []; p.on('pageerror', e => errors.push(e.message));
+await p.goto(base + '/makers/', { waitUntil: 'networkidle' });
+const count = async () => (await p.textContent('.directory .count')).replace(/\s+/g, ' ').trim();
+out.initial = await count();
+out.pagerButtons = await p.locator('.pager .page-btn').count();
+await p.click('.pager .page-btn:has-text("2")'); await p.waitForTimeout(200);
+out.page2Url = new URL(p.url()).search;
+await p.check('.filters input[name=category][value=ceramics]'); await p.waitForTimeout(200);
+out.ceramics = await count();
+await p.check('.filters input[name=town][value=coldwater]'); await p.waitForTimeout(200);
+out.ceramicsColdwater = await count();
+out.url = new URL(p.url()).search;
+out.visibleTitles = await p.locator('.card:not([hidden]) .card-title').allTextContents();
+await p.click('.active-chips button >> nth=0'); await p.waitForTimeout(200);
+out.afterChipRemove = await count();
+await p.goto(base + '/makers/?q=under%20%2425', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
+out.underQuery = await count();
+await p.goto(base + '/makers/?q=zzzz', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
+out.emptyStateVisible = await p.isVisible('.empty');
+await p.goto(base + '/makers/?category=jewelry&open=1&sort=az', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
+out.sharedUrl = await count();
+await p.goto(base + '/craft/ceramics/', { waitUntil: 'networkidle' }); await p.waitForTimeout(300);
+out.taxonomyLocked = await count();
+// mobile sheet
+const m = await b.newPage({ viewport: { width: 390, height: 844 } });
+await m.goto(base + '/makers/', { waitUntil: 'networkidle' });
+await m.click('.filters-open');
+out.sheetOpen = await m.isVisible('.filters.is-open');
+await m.check('.filters input[name=price][value="1"]');
+out.sheetButton = (await m.textContent('.sheet-done')).trim();
+await m.screenshot({ path: 'screens/makers/filters-sheet-390.png' });
+await m.keyboard.press('Escape');
+out.sheetClosedByEsc = !(await m.isVisible('.filters.is-open'));
+// demo form
+await m.goto(base + '/for-makers/', { waitUntil: 'networkidle' });
+await m.click('.demo-form button[type=submit]');
+out.formBlocked = await m.isVisible('.demo-form');
+await m.fill('#m-biz', 'Test Studio'); await m.fill('#m-name', 'Test Maker'); await m.fill('#m-email', 'test@example.com');
+await m.selectOption('#m-craft', { index: 1 }); await m.selectOption('#m-town', { index: 1 }); await m.selectOption('#m-price', { index: 1 });
+await m.fill('#m-desc', 'Small batch test pieces.'); await m.check('input[name=consent]'); await m.click('.demo-form button[type=submit]');
+out.formSuccess = (await m.textContent('.form-success').catch(() => '')).slice(0, 50);
+// no-JS: every listing present and visible
+const ctx = await b.newContext({ javaScriptEnabled: false }); const n = await ctx.newPage();
+await n.goto(base + '/makers/');
+out.noJsVisibleCards = await n.locator('.card:visible').count();
+out.noJsFiltersVisible = await n.isVisible('.filters');
+out.jsErrors = errors;
+console.log(JSON.stringify(out, null, 1));
+await b.close();
