@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://demos.wkllabs.com/harbor-pine/sitemap.xml</loc></sitemap>
-  <sitemap><loc>https://demos.wkllabs.com/makers/sitemap.xml</loc></sitemap>
-  <sitemap><loc>https://demos.wkllabs.com/saltline/sitemap.xml</loc></sitemap>
-  <sitemap><loc>https://demos.wkllabs.com/store/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://williamwkl.github.io/wkl-wp-demos/harbor-pine/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://williamwkl.github.io/wkl-wp-demos/makers/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://williamwkl.github.io/wkl-wp-demos/saltline/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://williamwkl.github.io/wkl-wp-demos/store/sitemap.xml</loc></sitemap>
 </sitemapindex>

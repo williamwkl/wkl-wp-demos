@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://demos.wkllabs.com/sitemap.xml
+Sitemap: https://williamwkl.github.io/wkl-wp-demos/sitemap.xml

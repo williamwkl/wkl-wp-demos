@@ -393,6 +393,14 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 .sort select{font-size:16px}
 .qty input{height:46px!important;min-height:46px!important;border-radius:0!important}
 .coupon-row input{height:48px}
+.thumbs{grid-template-columns:repeat(2,1fr)}
+.thumbs .thumb{margin:0}
+.thumbs .thumb img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:var(--r-md)}
+.small-qty{transform:none}
+.small-qty button{width:44px;min-height:44px}
+.small-qty output{min-width:36px}
+.line .controls{gap:8px}
+[data-cart-summary][hidden],[data-cart-more][hidden]{display:none}
 
 /*# sourceURL=../../wp-content/themes/store/style.css */
 </style>
@@ -456,57 +464,57 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <p class="small mute shop-count" aria-live="polite">Showing 3 products</p>
 <h2 class="sr">Products</h2>
 <div class="grid products four shop-grid">
-<article class="card" hidden data-cat="coffee" data-price="16" data-order="0"><a class="card-img" href="../../product/ashgrove-house-blend/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/house-blend-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/house-blend-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/house-blend-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/house-blend-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/house-blend-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/house-blend-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/house-blend-800.webp 800w" /></a></p>
+<article class="card" hidden data-cat="coffee" data-price="16" data-order="0"><a class="card-img" href="../../product/ashgrove-house-blend/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/house-blend-bag-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/house-blend-bag-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/house-blend-bag-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/house-blend-bag-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/house-blend-bag-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/house-blend-bag-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/house-blend-bag-800.webp 800w" /></a></p>
 <div class="body"><span class="tag leaf">Bestseller</span></p>
 <h3><a class="title" href="../../product/ashgrove-house-blend/">Ashgrove House Blend</a></h3>
 <p class="meta">Medium. Chocolate, hazelnut, brown sugar.</p>
 <div class="row"><span class="price">$16 <span class="mute small">/ 12 oz</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:11,&quot;name&quot;:&quot;Ashgrove House Blend&quot;,&quot;price&quot;:16,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/house-blend-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Ashgrove House Blend to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:12,&quot;name&quot;:&quot;Ashgrove House Blend&quot;,&quot;price&quot;:16,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/house-blend-bag-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Ashgrove House Blend to cart</span></button></form>
 </div>
 </div>
 </article>
-<article class="card" hidden data-cat="coffee" data-price="19" data-order="1"><a class="card-img" href="../../product/morning-fog/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/morning-fog-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/morning-fog-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/morning-fog-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/morning-fog-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/morning-fog-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/morning-fog-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/morning-fog-800.webp 800w" /></a></p>
+<article class="card" hidden data-cat="coffee" data-price="19" data-order="1"><a class="card-img" href="../../product/morning-fog/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/morning-fog-bag-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/morning-fog-bag-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/morning-fog-bag-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/morning-fog-bag-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/morning-fog-bag-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/morning-fog-bag-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/morning-fog-bag-800.webp 800w" /></a></p>
 <div class="body"><span class="tag">Single origin</span></p>
 <h3><a class="title" href="../../product/morning-fog/">Morning Fog</a></h3>
 <p class="meta">Colombia, Huila. Red apple, caramel.</p>
 <div class="row"><span class="price">$19 <span class="mute small">/ 12 oz</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:16,&quot;name&quot;:&quot;Morning Fog&quot;,&quot;price&quot;:19,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/morning-fog-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Morning Fog to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:18,&quot;name&quot;:&quot;Morning Fog&quot;,&quot;price&quot;:19,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/morning-fog-bag-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Morning Fog to cart</span></button></form>
 </div>
 </div>
 </article>
-<article class="card" hidden data-cat="coffee" data-price="20" data-order="2"><a class="card-img" href="../../product/summit/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/summit-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/summit-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/summit-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/summit-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/summit-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/summit-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/summit-800.webp 800w" /></a></p>
+<article class="card" hidden data-cat="coffee" data-price="20" data-order="2"><a class="card-img" href="../../product/summit/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/summit-bag-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/summit-bag-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/summit-bag-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/summit-bag-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/summit-bag-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/summit-bag-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/summit-bag-800.webp 800w" /></a></p>
 <div class="body"><span class="tag">Light roast</span></p>
 <h3><a class="title" href="../../product/summit/">Summit</a></h3>
 <p class="meta">Ethiopia, Guji. Blueberry, jasmine.</p>
 <div class="row"><span class="price">$20 <span class="mute small">/ 12 oz</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:21,&quot;name&quot;:&quot;Summit&quot;,&quot;price&quot;:20,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/summit-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Summit to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:24,&quot;name&quot;:&quot;Summit&quot;,&quot;price&quot;:20,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/summit-bag-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Summit to cart</span></button></form>
 </div>
 </div>
 </article>
-<article class="card" hidden data-cat="coffee" data-price="18" data-order="3"><a class="card-img" href="../../product/hollow-oak/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/hollow-oak-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/hollow-oak-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/hollow-oak-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/hollow-oak-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/hollow-oak-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/hollow-oak-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/hollow-oak-800.webp 800w" /></a></p>
+<article class="card" hidden data-cat="coffee" data-price="18" data-order="3"><a class="card-img" href="../../product/hollow-oak/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/hollow-oak-bag-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/hollow-oak-bag-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/hollow-oak-bag-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/hollow-oak-bag-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/hollow-oak-bag-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/hollow-oak-bag-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/hollow-oak-bag-800.webp 800w" /></a></p>
 <div class="body"><span class="tag">Espresso</span></p>
 <h3><a class="title" href="../../product/hollow-oak/">Hollow Oak</a></h3>
 <p class="meta">Dark cocoa, toffee, long body.</p>
 <div class="row"><span class="price">$18 <span class="mute small">/ 12 oz</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:26,&quot;name&quot;:&quot;Hollow Oak&quot;,&quot;price&quot;:18,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/hollow-oak-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Hollow Oak to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:30,&quot;name&quot;:&quot;Hollow Oak&quot;,&quot;price&quot;:18,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/hollow-oak-bag-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Hollow Oak to cart</span></button></form>
 </div>
 </div>
 </article>
-<article class="card" hidden data-cat="coffee" data-price="16" data-order="4"><a class="card-img" href="../../product/night-market/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/night-market-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/night-market-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/night-market-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/night-market-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/night-market-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/night-market-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/night-market-800.webp 800w" /></a></p>
+<article class="card" hidden data-cat="coffee" data-price="16" data-order="4"><a class="card-img" href="../../product/night-market/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/night-market-bag-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/night-market-bag-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/night-market-bag-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/night-market-bag-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/night-market-bag-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/night-market-bag-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/night-market-bag-800.webp 800w" /></a></p>
 <div class="body"><span class="tag">Dark roast</span></p>
 <h3><a class="title" href="../../product/night-market/">Night Market</a></h3>
 <p class="meta">Sumatra and Brazil. Smoke, molasses, cedar.</p>
 <div class="row"><span class="price">$16 <span class="mute small">/ 12 oz</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:31,&quot;name&quot;:&quot;Night Market&quot;,&quot;price&quot;:16,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/night-market-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Night Market to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:36,&quot;name&quot;:&quot;Night Market&quot;,&quot;price&quot;:16,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/night-market-bag-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Night Market to cart</span></button></form>
 </div>
 </div>
 </article>
-<article class="card" hidden data-cat="coffee" data-price="17" data-order="5"><a class="card-img" href="../../product/ember-decaf/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/ember-decaf-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/ember-decaf-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/ember-decaf-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/ember-decaf-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/ember-decaf-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/ember-decaf-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/ember-decaf-800.webp 800w" /></a></p>
+<article class="card" hidden data-cat="coffee" data-price="17" data-order="5"><a class="card-img" href="../../product/ember-decaf/" tabindex="-1" aria-hidden="true"><img width="768" height="768" src="../../wp-content/uploads/2026/10/ember-decaf-bag-800-768x768.webp" class="attachment-medium_large size-medium_large" alt="" sizes="auto, (max-width: 767px) 45vw, (max-width: 1023px) 30vw, 280px" loading="lazy" fetchpriority="auto" decoding="async" srcset="../../wp-content/uploads/2026/10/ember-decaf-bag-800-768x768.webp 768w, ../../wp-content/uploads/2026/10/ember-decaf-bag-800-300x300.webp 300w, ../../wp-content/uploads/2026/10/ember-decaf-bag-800-150x150.webp 150w, ../../wp-content/uploads/2026/10/ember-decaf-bag-800-600x600.webp 600w, ../../wp-content/uploads/2026/10/ember-decaf-bag-800-100x100.webp 100w, ../../wp-content/uploads/2026/10/ember-decaf-bag-800.webp 800w" /></a></p>
 <div class="body"><span class="tag">Decaf</span></p>
 <h3><a class="title" href="../../product/ember-decaf/">Ember Decaf</a></h3>
 <p class="meta">Colombia, sugarcane process. Cocoa, dried fig.</p>
 <div class="row"><span class="price">$17 <span class="mute small">/ 12 oz</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:36,&quot;name&quot;:&quot;Ember Decaf&quot;,&quot;price&quot;:17,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/ember-decaf-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Ember Decaf to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:42,&quot;name&quot;:&quot;Ember Decaf&quot;,&quot;price&quot;:17,&quot;variant&quot;:&quot;12 oz, whole bean&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/ember-decaf-bag-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Ember Decaf to cart</span></button></form>
 </div>
 </div>
 </article>
@@ -515,7 +523,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <h3><a class="title" href="../../product/ceramic-pour-over-dripper/">Ceramic pour-over dripper</a></h3>
 <p class="meta">Stoneware, 1 to 2 cups, glazed in cream.</p>
 <div class="row"><span class="price">$28</span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:41,&quot;name&quot;:&quot;Ceramic pour-over dripper&quot;,&quot;price&quot;:28,&quot;variant&quot;:&quot;1 to 2 cup&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/dripper-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Ceramic pour-over dripper to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:47,&quot;name&quot;:&quot;Ceramic pour-over dripper&quot;,&quot;price&quot;:28,&quot;variant&quot;:&quot;1 to 2 cup&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/dripper-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Ceramic pour-over dripper to cart</span></button></form>
 </div>
 </div>
 </article>
@@ -524,7 +532,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <h3><a class="title" href="../../product/paper-filters-100/">Paper filters, 100</a></h3>
 <p class="meta">Unbleached, fits the dripper.</p>
 <div class="row"><span class="price">$9</span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:43,&quot;name&quot;:&quot;Paper filters, 100&quot;,&quot;price&quot;:9,&quot;variant&quot;:&quot;Unbleached&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/filters-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Paper filters, 100 to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:49,&quot;name&quot;:&quot;Paper filters, 100&quot;,&quot;price&quot;:9,&quot;variant&quot;:&quot;Unbleached&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/filters-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Paper filters, 100 to cart</span></button></form>
 </div>
 </div>
 </article>
@@ -533,7 +541,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <h3><a class="title" href="../../product/hand-grinder/">Hand grinder</a></h3>
 <p class="meta">Steel burrs, 40 click settings.</p>
 <div class="row"><span class="price">$64</span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:45,&quot;name&quot;:&quot;Hand grinder&quot;,&quot;price&quot;:64,&quot;variant&quot;:&quot;&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/grinder-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Hand grinder to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:51,&quot;name&quot;:&quot;Hand grinder&quot;,&quot;price&quot;:64,&quot;variant&quot;:&quot;&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/grinder-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Hand grinder to cart</span></button></form>
 </div>
 </div>
 </article>
@@ -542,7 +550,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <h3><a class="title" href="../../product/enamel-camp-mug/">Enamel camp mug</a></h3>
 <p class="meta">12 oz, lantern mark, dishwasher safe.</p>
 <div class="row"><span class="price">$18</span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:47,&quot;name&quot;:&quot;Enamel camp mug&quot;,&quot;price&quot;:18,&quot;variant&quot;:&quot;12 oz&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/camp-mug-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Enamel camp mug to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:53,&quot;name&quot;:&quot;Enamel camp mug&quot;,&quot;price&quot;:18,&quot;variant&quot;:&quot;12 oz&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/camp-mug-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Enamel camp mug to cart</span></button></form>
 </div>
 </div>
 </article>
@@ -551,7 +559,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <h3><a class="title" href="../../product/stoneware-cup-set/">Stoneware cup set, 2</a></h3>
 <p class="meta">Two small cups, glazed by a local potter.</p>
 <div class="row"><span class="price">$22</span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:49,&quot;name&quot;:&quot;Stoneware cup set, 2&quot;,&quot;price&quot;:22,&quot;variant&quot;:&quot;Two cups&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/cup-set-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Stoneware cup set, 2 to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:55,&quot;name&quot;:&quot;Stoneware cup set, 2&quot;,&quot;price&quot;:22,&quot;variant&quot;:&quot;Two cups&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/cup-set-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Stoneware cup set, 2 to cart</span></button></form>
 </div>
 </div>
 </article>
@@ -560,7 +568,7 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 <h3><a class="title" href="../../product/roasters-choice-monthly/">Roaster&#039;s choice, monthly</a></h3>
 <p class="meta">Two bags a month, we pick, skip any time.</p>
 <div class="row"><span class="price">$34 <span class="mute small">/ mo</span></span></p>
-<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:51,&quot;name&quot;:&quot;Roaster&#039;s choice, monthly&quot;,&quot;price&quot;:34,&quot;variant&quot;:&quot;&quot;,&quot;img&quot;:&quot;\/wp-content\/uploads\/2026\/10\/subscription-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Roaster&#039;s choice, monthly to cart</span></button></form>
+<form action="../../demo-form/" class="add-form" method="get" data-item="{&quot;id&quot;:57,&quot;name&quot;:&quot;Roaster&#039;s choice, monthly&quot;,&quot;price&quot;:34,&quot;variant&quot;:&quot;&quot;,&quot;img&quot;:&quot;..\/..\/wp-content\/uploads\/2026\/10\/subscription-800-150x150.webp&quot;}"><button class="add" type="submit">Add<span class="sr"> Roaster&#039;s choice, monthly to cart</span></button></form>
 </div>
 </div>
 </article></div>

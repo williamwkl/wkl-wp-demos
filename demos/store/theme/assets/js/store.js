@@ -28,7 +28,9 @@
     $$('[data-cart-count]').forEach(function (b) { b.textContent = n; b.hidden = !n; });
     $$('[data-cart-label]').forEach(function (b) { b.textContent = 'Cart, ' + n + (n === 1 ? ' item' : ' items'); });
   }
+  var absUrl = function (u) { try { return u ? new URL(u, location.href).href : ''; } catch (e) { return ''; } };
   function add(line) {
+    line.img = absUrl(line.img);
     var c = load();
     var same = !line.bundle && c.lines.filter(function (l) { return l.id === line.id && l.variant === line.variant; })[0];
     if (same) same.qty += line.qty; else c.lines.push(line);
@@ -168,8 +170,10 @@
   // ---------- simulated cart / checkout / confirmation pages ----------
   function lineHtml(l, i, controls) {
     return '<div class="line">' + (l.img ? '<img src="' + esc(l.img) + '" alt="" width="72" height="72">' : '<span class="thumb-ph"></span>') +
-      '<div><div class="t">' + esc(l.name) + (l.qty > 1 ? ' × ' + l.qty : '') + '</div><div class="s">' + esc(l.variant) + (l.bundle ? '<br><span class="save">Bundle discount applied</span>' : '') + '</div></div>' +
-      (controls ? '<div class="controls"><span class="price">' + money(l.price * l.qty) + '</span><button class="rm" type="button" data-rm="' + i + '">Remove<span class="sr"> ' + esc(l.name) + '</span></button></div>' : '<span class="price">' + money(l.price * l.qty) + '</span>') + '</div>';
+      '<div><div class="t">' + esc(l.name) + (!controls && l.qty > 1 ? ' × ' + l.qty : '') + '</div><div class="s">' + esc(l.variant) + (l.bundle ? '<br><span class="save">Bundle discount applied</span>' : '') + '</div></div>' +
+      (controls ? '<div class="controls"><span class="price">' + money(l.price * l.qty) + '</span>' +
+        (l.bundle ? '' : '<div class="qty small-qty" role="group" aria-label="Quantity of ' + esc(l.name) + '"><button type="button" data-q="' + i + '" data-d="-1" aria-label="Decrease quantity of ' + esc(l.name) + '"' + (l.qty <= 1 ? ' disabled' : '') + '>&minus;</button><output aria-live="polite">' + l.qty + '</output><button type="button" data-q="' + i + '" data-d="1" aria-label="Increase quantity of ' + esc(l.name) + '"' + (l.qty >= 9 ? ' disabled' : '') + '>+</button></div>') +
+        '<button class="rm" type="button" data-rm="' + i + '">Remove<span class="sr"> ' + esc(l.name) + '</span></button></div>' : '<span class="price">' + money(l.price * l.qty) + '</span>') + '</div>';
   }
   function totalsHtml(t, c) {
     return '<div><span>Subtotal</span><span>' + money(t.sub) + '</span></div>' +
@@ -181,19 +185,22 @@
     var c = load(), t = totals(c), lines = $('[data-cart-lines]', root), tot = $('[data-cart-totals]', root);
     if (lines) lines.innerHTML = c.lines.length ? c.lines.map(function (l, i) { return lineHtml(l, i, controls); }).join('') : '<p class="empty">Your cart is empty. <a class="inline-44" href="' + esc(relUrl('shop/')) + '">Browse the coffee</a></p>';
     if (tot) tot.innerHTML = totalsHtml(t, c);
-    var go = $('[data-cart-checkout]', root); if (go) go.setAttribute('aria-disabled', String(!c.lines.length));
+    var empty = !c.lines.length;
+    var sum = $('[data-cart-summary]', root); if (sum) sum.hidden = empty;
+    var more = $('[data-cart-more]', root); if (more) more.hidden = empty;
     var place = $('[data-place-order]', root); if (place) place.textContent = 'Place test order, ' + money(t.total);
   }
   var simCart = $('[data-sim-cart]');
   if (simCart) {
     renderCart(simCart, true);
     simCart.addEventListener('click', function (e) {
+      var q = e.target.closest('[data-q]');
+      if (q) { var cc = load(), ln = cc.lines[+q.dataset.q]; ln.qty = Math.min(9, Math.max(1, ln.qty + +q.dataset.d)); save(cc); renderCart(simCart, true); var again = $('[data-q="' + q.dataset.q + '"][data-d="' + q.dataset.d + '"]', simCart); if (again && !again.disabled) again.focus(); return; }
       var b = e.target.closest('[data-rm]'); if (!b) return;
       var c = load(); c.lines.splice(+b.dataset.rm, 1); save(c); renderCart(simCart, true);
       var first = $('[data-rm]', simCart) || $('#coupon'); if (first) first.focus();
     });
-    $('[data-checkout-cta]');
-    $('[data-cart-checkout]', simCart).addEventListener('click', function (e) { if (!load().lines.length) e.preventDefault(); });
+
     $('[data-coupon]', simCart).addEventListener('submit', function (e) {
       e.preventDefault();
       var v = $('#coupon').value.trim().toUpperCase(), msg = $('[data-coupon-msg]'), c = load();
@@ -203,6 +210,7 @@
     });
   }
   var simCo = $('[data-sim-checkout]');
+  if (simCo && !load().lines.length) { location.replace(relUrl('demo-cart/')); simCo = null; }
   if (simCo) {
     renderCart(simCo, false);
     var form = $('[data-checkout-form]', simCo);
@@ -217,7 +225,8 @@
       }
       var c = load(), t = totals(c);
       // Kept in this tab only (sessionStorage) so the confirmation page can greet the shopper; never sent anywhere.
-      sessionStorage.setItem(ORDER, JSON.stringify({ n: 'LH-' + (10000 + Math.floor(Math.random() * 90000)), first: $('#co-first').value.trim(), city: $('#co-city').value.trim(), lines: c.lines, totals: t, coupon: c.coupon }));
+      // Only what the confirmation page shows: order number, items and totals. Nothing typed into the form is kept.
+      sessionStorage.setItem(ORDER, JSON.stringify({ n: 'LH-' + (10000 + Math.floor(Math.random() * 90000)), lines: c.lines, totals: t, coupon: c.coupon }));
       sessionStorage.removeItem(KEY);
       location.href = relUrl('demo-order/');
     });
@@ -226,12 +235,14 @@
   if (simConfirm) {
     var o = null; try { o = JSON.parse(sessionStorage.getItem(ORDER)); } catch (e) {}
     if (o) {
-      $('[data-confirm-title]').textContent = 'Thanks' + (o.first ? ', ' + o.first : '') + '. Your coffee roasts Thursday.';
+      $('[data-confirm-title]').textContent = 'Thanks. Your coffee roasts Thursday.';
       $('[data-confirm-lead]').innerHTML = 'Test order <b>' + esc(o.n) + '</b>. Nothing was charged and no email is sent: this demo order only exists in this browser tab.';
       var box = $('[data-confirm-order]');
       box.innerHTML = o.lines.map(function (l) { return lineHtml(l, 0, false); }).join('') + '<div class="totals" style="margin-top:12px">' + totalsHtml(o.totals, { coupon: o.coupon }) + '<div><span>Paid with</span><span>Test order, no payment taken</span></div></div>';
       box.hidden = false;
+      sessionStorage.removeItem(ORDER); // shown once, then gone
     }
+    sessionStorage.removeItem(KEY);
   }
   badge();
 })();

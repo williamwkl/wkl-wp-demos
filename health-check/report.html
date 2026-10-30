@@ -76,7 +76,17 @@ table.dense{font-size:8.6pt}table.dense td,table.dense th{padding:5px 6px}
 ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
 .legend{display:flex;gap:14px;font-size:8.5pt;color:var(--slate);align-items:center;flex-wrap:wrap}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:5px;vertical-align:-2px}
-@media screen{.ev{font-size:12px}}
+@media screen{.ev{font-size:12px}
+.skip{position:absolute;left:-9999px;top:8px;background:#fff;color:#141417;padding:10px 14px;border-radius:6px;z-index:10}
+.skip:focus{left:8px}
+@media (max-width:600px){
+ table.stack thead{position:absolute;left:-9999px}
+ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+ table.stack tr{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:10px;background:var(--paper)}
+ table.stack td{border:0;padding:3px 0;text-align:left!important}
+ table.stack td[data-label]::before{content:attr(data-label) ": ";font-weight:600;color:var(--slate)}
+}}
+@media print{.skip{display:none}}
 @page{size:letter;margin:0}
 @media print{
   body{background:#fff;font-size:10.5pt}
@@ -88,6 +98,7 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
 </style>
 </head>
 <body>
+<a class="skip" href="#summary">Skip to the summary</a>
 
 <!-- PAGE 1: COVER -->
 <section class="page cover" aria-label="Cover">
@@ -110,7 +121,7 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
 </section>
 
 <!-- PAGE 2: EXECUTIVE SUMMARY -->
-<section class="page" aria-label="Executive summary">
+<section class="page" id="summary" aria-label="Executive summary" tabindex="-1">
   <div class="runhead"><span>Harbor &amp; Pine Law</span><span>Executive summary</span></div>
   <div>
     <p class="eyebrow">In one page</p>
@@ -118,23 +129,23 @@ ul.plain{padding-left:18px}ul.plain li{margin:3px 0}
     <p style="margin-top:8px">Content, accessibility and on-page SEO are in good shape: every page scores 100 on those checks. The problem is delivery. The two pages with photos take 3.6 to 4.8 seconds to show their main content on a phone, well past the 2.5 second line Google uses for ranking signals. The cause is a standard first-pass setup: 18 font weights loaded from Google, icon fonts, 240 to 460 KB photos, and 30 to 38 requests per page where 5 would do. Security basics also need attention: a guessable admin login with a weak password, software versions advertised in the page source, and no backups.</p>
   </div>
   <div class="grid g6" role="list" aria-label="Score dashboard">
-    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#B23A3A" stroke-width="7" stroke-dasharray="137.4 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">81</text></svg><b>Speed</b><small>Lighthouse, worst page (81 to 97)</small></div>
-    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#B23A3A" stroke-width="7" stroke-dasharray="88 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="13" font-weight="600" font-family="Georgia,serif" fill="#141417">4.8s</text></svg><b>Core Web Vitals</b><small>LCP fails on 2 of 7 pages</small></div>
-    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="21 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="14" font-weight="600" font-family="Georgia,serif" fill="#141417">1/8</text></svg><b>Security</b><small>passed; 4 fail, 1 partial, 2 not checked</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="137.4 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">81</text></svg><b>Speed</b><small>Lighthouse, worst page (81 to 97)</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="121.1 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="13" font-weight="600" font-family="Georgia,serif" fill="#141417">4.8s</text></svg><b>Core Web Vitals</b><small>LCP fails on 2 of 7 pages</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#B23A3A" stroke-width="7" stroke-dasharray="21.2 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="14" font-weight="600" font-family="Georgia,serif" fill="#141417">1/8</text></svg><b>Security</b><small>passed; 4 fail, 1 partial, 2 not checked</small></div>
     <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#2E6B46" stroke-width="7" stroke-dasharray="169.6 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">100</text></svg><b>SEO</b><small>Lighthouse, all 7 pages</small></div>
     <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#2E6B46" stroke-width="7" stroke-dasharray="169.6 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="16" font-weight="600" font-family="Georgia,serif" fill="#141417">100</text></svg><b>Accessibility</b><small>Lighthouse, all 7 pages</small></div>
-    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#8A5E0E" stroke-width="7" stroke-dasharray="56 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="14" font-weight="600" font-family="Georgia,serif" fill="#141417">2/6</text></svg><b>Maintenance</b><small>checks passed</small></div>
+    <div class="score" role="listitem"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#F0F0F4" stroke-width="7"/><circle cx="32" cy="32" r="27" fill="none" stroke="#B23A3A" stroke-width="7" stroke-dasharray="56.5 169.6" stroke-linecap="round" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" font-size="14" font-weight="600" font-family="Georgia,serif" fill="#141417">2/6</text></svg><b>Maintenance</b><small>checks passed</small></div>
   </div>
   <div>
     <h3 style="margin-bottom:8px">Top five fixes, ranked by impact against effort</h3>
-    <div class="tablewrap"><table class="dense">
+    <div class="tablewrap"><table class="dense stack">
       <thead><tr><th style="width:24px">#</th><th>Fix</th><th>Business impact</th><th>Effort</th><th class="num">Expected result</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Resize and convert the two full-width photos (WebP, responsive sizes, lazy below the fold)</td><td>Brings the two slowest pages under the 2.5 s line; these are the practice-area pages that ads and search send people to</td><td><span class="tag pass">S</span></td><td class="num">LCP 4.8 s to about 2.1 s</td></tr>
-        <tr><td>2</td><td>Self-host one font file instead of 18 weights from Google Fonts; render icons as inline SVG</td><td>Removes the third-party request every visitor waits on before text appears</td><td><span class="tag pass">S</span></td><td class="num">FCP 2.0 s to under 1 s</td></tr>
-        <tr><td>3</td><td>Rename the admin account, set a strong password, add login rate limiting and two-factor sign-in</td><td>Closes the most common way small-firm sites get taken over</td><td><span class="tag pass">S</span></td><td class="num">Login brute force blocked</td></tr>
-        <tr><td>4</td><td>Set up automatic off-site backups with a tested restore</td><td>A hacked or broken site becomes a 20-minute restore instead of a rebuild</td><td><span class="tag pass">S</span></td><td class="num">Daily backups, 30-day retention</td></tr>
-        <tr><td>5</td><td>Remove unused theme, block, form and builder assets; inline the small stylesheets; enable page caching</td><td>Cuts 30 to 38 requests per page down to 4 to 6 and keeps the site fast as content grows</td><td><span class="tag warn">M</span></td><td class="num">Perf 81 to 97 up to 99 to 100</td></tr>
+        <tr><td data-label="#">1</td><td data-label="Fix">Resize and convert the two full-width photos (WebP, responsive sizes, lazy below the fold)</td><td data-label="Business impact">Brings the two slowest pages under the 2.5 s line; these are the practice-area pages that ads and search send people to</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">LCP 4.8 s to about 2.1 s</td></tr>
+        <tr><td data-label="#">2</td><td data-label="Fix">Self-host one font file instead of 18 weights from Google Fonts; render icons as inline SVG</td><td data-label="Business impact">Removes the third-party request every visitor waits on before text appears</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">FCP 2.0 to 2.3 s down to 0.8 to 1.4 s</td></tr>
+        <tr><td data-label="#">3</td><td data-label="Fix">Rename the admin account, set a strong password, add login rate limiting and two-factor sign-in</td><td data-label="Business impact">Closes the most common way small-firm sites get taken over</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">Login brute force blocked</td></tr>
+        <tr><td data-label="#">4</td><td data-label="Fix">Set up automatic off-site backups with a tested restore</td><td data-label="Business impact">A hacked or broken site becomes a 20-minute restore instead of a rebuild</td><td data-label="Effort"><span class="tag pass">S</span></td><td data-label="Expected result" class="num">Daily backups, 30-day retention</td></tr>
+        <tr><td data-label="#">5</td><td data-label="Fix">Remove unused theme, block, form and builder assets; inline the small stylesheets; enable page caching</td><td data-label="Business impact">Cuts 30 to 38 requests per page down to 4 to 6 and keeps the site fast as content grows</td><td data-label="Effort"><span class="tag warn">M</span></td><td data-label="Expected result" class="num">Perf 81 to 97 up to 99 to 100</td></tr>
       </tbody>
     </table></div>
   </div>

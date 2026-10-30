@@ -58,7 +58,7 @@ scripts/serve.sh makers 9403
 
 ## Public URL (one config value)
 
-`site.config.json` holds `publicBase` (`https://demos.wkllabs.com`) and `rawBase` (raw GitHub files for the Playground links, pinned to a release ref). The exporter uses `publicBase/<demo>/` for canonical, og:url, og:image, JSON-LD and each demo's sitemap; `scripts/root-files.mjs` writes `dist/CNAME`, the root `robots.txt` and a root sitemap index. All internal links and assets are relative, so the same export works at the domain root (`/saltline/`, `/harbor-pine/`, `/makers/`, `/store/`, `/health-check/`) and under any sub-folder. The demo exports still carry the previous github.io canonical URLs until they are re-exported once DNS for demos.wkllabs.com is live.
+`site.config.json` holds `domainLive` (false until DNS for demos.wkllabs.com is confirmed), `publicBase` (`https://demos.wkllabs.com`), `currentBase` (the github.io project site) and `rawBase` (raw GitHub files for the Playground links, pinned to a release ref). `scripts/site-base.mjs` picks the active base: `currentBase` while `domainLive` is false, `publicBase` once it is true. The exporter, redirect stubs, Health Check and `scripts/root-files.mjs` all use it, so canonicals, og URLs, JSON-LD, sitemaps, the root robots.txt and sitemap index switch together in one build; `dist/CNAME` is written only when `domainLive` is true (and removed otherwise), so a publish before DNS resolves cannot redirect github.io to a dead domain. All internal links and assets are relative, so the same export works at the domain root (`/saltline/`, `/harbor-pine/`, `/makers/`, `/store/`, `/health-check/`) and under any sub-folder.
 
 ## Health Check report
 

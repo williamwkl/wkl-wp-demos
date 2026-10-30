@@ -9,6 +9,9 @@ const broken = new Set();
 for (const f of files) {
   const t = readFileSync(f, 'utf8');
   const refs = [...t.matchAll(/(?:href|src|action)=["']([^"'#]+)["']|url\(\s*["']?([^"')]+)["']?\s*\)/g)].map(m => m[1] || m[2]);
+  // asset URLs in data-* attributes and in attribute-embedded JSON (e.g. data-img, data-item)
+  for (const m of t.matchAll(/\sdata-[\w-]+=["']((?:\.\.?\/|\/)[^"']+\.(?:webp|png|jpe?g|svg|json))["']/g)) refs.push(m[1]);
+  for (const m of t.matchAll(/&quot;((?:\.\.?\\\/|\\\/)[^&]+?\.(?:webp|png|jpe?g|svg))&quot;/g)) refs.push(m[1].replace(/\\\//g, '/'));
   for (const m of t.matchAll(/srcset=["']([^"']+)["']/g)) m[1].split(',').forEach(s => refs.push(s.trim().split(/\s+/)[0]));
   for (let r of refs) {
     if (!r || /^(https?:|mailto:|tel:|data:|\/\/|javascript:)/.test(r)) continue;

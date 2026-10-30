@@ -2,7 +2,7 @@
 
 All photos are CC0 or public domain images from Wikimedia Commons (mostly mirrored Unsplash uploads), cropped (products 1:1, hero 4:5, roastery 4:3) and re-encoded to WebP. Machine-readable copy: `data/image-credits.csv`.
 
-| Key | Source file (Wikimedia Commons) | License |
+| Key | Source | License |
 |---|---|---|
 | house-blend | Coffee beans (Unsplash).jpg | CC0 |
 | morning-fog | Anastasia Zhenina 2016 (Unsplash).jpg | CC0 |
@@ -18,6 +18,14 @@ All photos are CC0 or public domain images from Wikimedia Commons (mostly mirror
 | subscription | IRENE COCO 2016 (Unsplash).jpg | CC0 |
 | hero | Coffee beans 1 (Unsplash).jpg | CC0 |
 | roastery | Water skis in a cozy coffee shop (Unsplash).jpg | CC0 |
+| house-blend-bag | Bag packshot illustration, drawn for this demo (demos/store/art/packshots.mjs) | Original artwork |
+| morning-fog-bag | Bag packshot illustration, drawn for this demo (demos/store/art/packshots.mjs) | Original artwork |
+| summit-bag | Bag packshot illustration, drawn for this demo (demos/store/art/packshots.mjs) | Original artwork |
+| hollow-oak-bag | Bag packshot illustration, drawn for this demo (demos/store/art/packshots.mjs) | Original artwork |
+| night-market-bag | Bag packshot illustration, drawn for this demo (demos/store/art/packshots.mjs) | Original artwork |
+| ember-decaf-bag | Bag packshot illustration, drawn for this demo (demos/store/art/packshots.mjs) | Original artwork |
+
+The six coffee bag packshots are original illustrations rendered by `demos/store/art/packshots.mjs`; each coffee's bean photo is its second gallery image.
 
 ## Font license
 

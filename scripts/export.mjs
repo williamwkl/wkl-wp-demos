@@ -4,13 +4,12 @@ import { mkdir, writeFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 const [origin, outDir, ...extra] = process.argv.slice(2);
 // Public base URL comes from site.config.json (single source of truth); PUBLIC_BASE env still overrides.
-import { readFileSync as _rf } from 'node:fs';
-const CONFIG = JSON.parse(_rf(new URL('../site.config.json', import.meta.url), 'utf8'));
+import { CONFIG, BASE } from './site-base.mjs';
 const DEMO_CFG = CONFIG.demos[path.basename(outDir)] || {};
 // Per-demo static adaptations: server-only pages to leave out, and links to point at their static stand-ins.
 const EXCLUDE = new Set(DEMO_CFG.exclude || []);
 const REWRITE = DEMO_CFG.rewrite || {};
-if (!process.env.PUBLIC_BASE) process.env.PUBLIC_BASE = CONFIG.publicBase.replace(/\/$/, '') + '/' + path.basename(outDir) + '/';
+if (!process.env.PUBLIC_BASE) process.env.PUBLIC_BASE = BASE + '/' + path.basename(outDir) + '/';
 const O = origin.replace(/\/$/, '');
 const host = new URL(O).host;
 const queue = ['/', '/demo-form/', ...extra];
@@ -56,6 +55,8 @@ while (queue.length) {
       if (v) enqueue(new URL(v.replace(/&amp;/g, '&'), O + p).href);
       if (m[3]) m[3].split(',').forEach(s => enqueue(new URL(s.trim().split(/\s+/)[0], O + p).href));
     }
+    // Asset paths in data-* attributes and in JSON stored in attributes (e.g. data-img, data-item), escaped or not.
+    for (const m of body.matchAll(/(?:\\\/|\/)wp-content(?:\\\/|\/)[^"'&\s)<>]+?\.(?:webp|jpe?g|png|svg|woff2|js|css|json)/g)) enqueue(O + m[0].replace(/\\\//g, '/'));
     // URLs inside inline JSON (escaped slashes), e.g. WordPress emoji settings.
     for (const m of body.matchAll(new RegExp(esc.replace(/[.\\/]/g, c => '\\' + c) + '(\\\\\/[^"\\s]+?\\.(?:js|css|svg|png|webp|woff2))', 'g'))) enqueue(O + m[1].replace(/\\\//g, '/'));
     // Plain absolute asset URLs inside inline JSON/JS (e.g. "concatemoji":"http://host/...js").
@@ -70,6 +71,9 @@ while (queue.length) {
       // Canonical, og:url and JSON-LD keep absolute public URLs; everything else becomes relative.
       if (PUB) body = body.replace(new RegExp('(rel="canonical" href="|property="og:url" content="|property="og:image" content="|name="twitter:image" content=")' + O.replace(/[.\/]/g, m => '\\' + m), 'g'), '$1' + PUB)
         .replace(/(<script[^>]*application\/ld\+json[^>]*>)([\s\S]*?)(<\/script>)/g, (m, a, j, c) => a + j.split(O).join(PUB).split(esc).join(PUB.replace(/\//g, '\\/')) + c);
+      // Root-relative paths in data-* attributes and in attribute-embedded JSON become page-relative too.
+      body = body.replace(/(\sdata-[\w-]+=)(["'])\/(?!\/)/g, `$1$2${pre}`)
+        .replace(/&quot;\\\/(wp-content|wp-includes)\\\//g, (m, d) => `&quot;${pre.replace(/\//g, '\\/')}${d}\\/`);
       // Mark the static copy so page scripts can switch to their browser-only behaviour.
       body = body.replace(/<html\b/i, '<html data-static-export');
       for (const [from, to] of Object.entries(REWRITE)) body = body.split(`href="${O}${from}"`).join(`href="${O}${to}"`).split(`href="${from}"`).join(`href="${to}"`);

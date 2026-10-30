@@ -339,3 +339,11 @@ body :is(input,select,textarea)::placeholder{color:var(--c-mute);opacity:1}
 .sort select{font-size:16px}
 .qty input{height:46px!important;min-height:46px!important;border-radius:0!important}
 .coupon-row input{height:48px}
+.thumbs{grid-template-columns:repeat(2,1fr)}
+.thumbs .thumb{margin:0}
+.thumbs .thumb img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:var(--r-md)}
+.small-qty{transform:none}
+.small-qty button{width:44px;min-height:44px}
+.small-qty output{min-width:36px}
+.line .controls{gap:8px}
+[data-cart-summary][hidden],[data-cart-more][hidden]{display:none}

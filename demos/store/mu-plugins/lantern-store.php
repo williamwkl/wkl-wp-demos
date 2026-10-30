@@ -136,7 +136,7 @@ add_shortcode( 'lh_home', function () {
 			<p class="mute" style="margin-top:12px">Mix bags, gear and mugs. The price updates as you pick, and the bundle ships as one box with a card that says what is inside and why.</p>
 			<a class="btn btn-primary on-dark" href="/bundle/" style="margin-top:24px">Start a bundle</a>
 		</div>
-		<div class="stack" aria-hidden="true"><?php foreach ( [ 'morning-fog', 'dripper', 'summit' ] as $k ) { foreach ( $all as $it ) if ( ( $it['d']['img'] ?? '' ) === $k ) echo '<div class="stack-img">' . lh_img( $it['img'], 'medium', '160px' ) . '</div>'; } // phpcs:ignore ?></div>
+		<div class="stack" aria-hidden="true"><?php foreach ( [ 'morning-fog-bag', 'dripper', 'summit-bag' ] as $k ) { foreach ( $all as $it ) if ( ( $it['d']['img'] ?? '' ) === $k ) echo '<div class="stack-img">' . lh_img( $it['img'], 'medium', '160px' ) . '</div>'; } // phpcs:ignore ?></div>
 	</div></section>
 	<section class="wrap section split" id="roastery">
 		<div class="split-photo"><?php echo lh_theme_img( 'roastery-900.webp', 900, 675, 'The roastery on Mill Street: brick walls, a long table and stools under hanging lamps' ); // phpcs:ignore ?></div>
@@ -197,7 +197,7 @@ add_shortcode( 'lh_product', function () {
 	$d = $it['d'];
 	$others = array_values( array_filter( lh_items( [ 'category' => [ 'brewing-gear' ] ] ), fn( $x ) => $x['id'] !== $it['id'] ) );
 	$pair = 'coffee' === $it['cat'] ? array_slice( $others, 0, 2 ) : array_slice( array_values( array_filter( lh_items( [ 'category' => [ 'coffee' ] ] ), fn( $x ) => $x['id'] !== $it['id'] ) ), 0, 2 );
-	$gallery = array_slice( array_values( array_filter( lh_items(), fn( $x ) => $x['id'] !== $it['id'] && $x['cat'] === $it['cat'] && ! in_array( $x['id'], wp_list_pluck( $pair, 'id' ), true ) ) ), 0, 3 );
+	$gallery = wc_get_product( $it['id'] )->get_gallery_image_ids(); // only this product's own images
 	$cat_link = wp_make_link_relative( get_term_link( $it['cat'], 'product_cat' ) );
 	ob_start(); ?>
 	<section class="wrap section">
@@ -205,7 +205,7 @@ add_shortcode( 'lh_product', function () {
 		<div class="pdp">
 			<div class="gallery">
 				<div class="main"><?php echo lh_img( $it['img'], 'large', '(max-width: 767px) calc(100vw - 40px), 640px', true, $it['name'] . ', product photo' ); // phpcs:ignore ?></div>
-				<?php if ( $gallery ) : ?><div class="thumbs" aria-label="More from <?php echo esc_attr( $it['catName'] ); ?>"><?php foreach ( $gallery as $g ) echo '<a href="' . esc_url( $g['url'] ) . '">' . lh_img( $g['img'], 'thumbnail', '150px', false, $g['name'] ) . '</a>'; // phpcs:ignore ?></div><?php endif; ?>
+				<?php if ( $gallery ) : ?><div class="thumbs" aria-label="More photos of <?php echo esc_attr( $it['name'] ); ?>"><?php foreach ( $gallery as $g ) echo '<figure class="thumb">' . lh_img( $g, 'medium', '(max-width: 767px) 45vw, 300px', false, $it['name'] . ', the roasted beans' ) . '</figure>'; // phpcs:ignore ?></div><?php endif; ?>
 			</div>
 			<div>
 				<p class="eyebrow"><?php echo esc_html( $d['eyebrow'] ?? $it['catName'] ); ?></p>
@@ -297,11 +297,11 @@ function lh_live_pointer( $what ) {
 	return '<p class="demo-note live-only">' . lh_icon( 'info', 18 ) . '<span>This page is the simulated ' . $what . ' used by the static copy of the site. On this live demo, use the <a href="' . esc_url( wp_make_link_relative( wc_get_cart_url() ) ) . '">real cart</a>.</span></p>';
 }
 add_shortcode( 'lh_sim_cart', function () {
-	return '<section class="wrap section sim" data-sim-cart><h1 class="h2">Your cart</h1>' . lh_live_pointer( 'cart' )
+	return '<section class="wrap section sim" data-sim-cart><ol class="steps"><li class="on" aria-current="step">Cart</li><li>Checkout</li><li>Confirmation</li></ol><h1 class="h2">Your cart</h1>' . lh_live_pointer( 'cart' )
 		. '<noscript><p class="demo-note">The demo cart needs JavaScript. Nothing is stored or sent.</p></noscript>'
-		. '<div class="cart-grid"><div><div data-cart-lines><p class="empty">Your cart is empty. <a href="/shop/">Browse the coffee</a>.</p></div><p class="small"><a class="inline-44" href="/shop/">Continue shopping</a></p></div>'
-		. '<aside class="summary" aria-label="Order summary"><h2 class="h4">Summary</h2><div class="totals" data-cart-totals style="margin-top:12px"></div>'
-		. '<form class="coupon" data-coupon><label for="coupon">Coupon code</label><div class="coupon-row"><input type="text" id="coupon" autocomplete="off" placeholder="FIRSTBAG"><button class="btn btn-secondary" type="submit">Apply</button></div><p class="small" data-coupon-msg aria-live="polite"></p></form>'
+		. '<div class="cart-grid"><div><div data-cart-lines><p class="empty">Your cart is empty. <a href="/shop/">Browse the coffee</a></p></div><p class="small" data-cart-more><a class="inline-44" href="/shop/">Continue shopping</a></p></div>'
+		. '<aside class="summary" aria-label="Order summary" data-cart-summary><h2 class="h4">Summary</h2><div class="totals" data-cart-totals style="margin-top:12px"></div>'
+		. '<form class="coupon" data-coupon><label for="coupon">Coupon code</label><div class="coupon-row"><input type="text" id="coupon" autocomplete="off" placeholder="Code"><button class="btn btn-secondary" type="submit">Apply</button></div><p class="small" data-coupon-msg aria-live="polite"></p></form>'
 		. '<a class="btn btn-primary btn-block" href="/demo-checkout/" data-cart-checkout>Check out</a>'
 		. '<p class="lock" style="margin-top:12px">' . lh_icon( 'lock', 16 ) . 'Demo cart, held in your browser only. Checkout runs in test mode; nothing is charged.</p></aside></div></section>';
 } );

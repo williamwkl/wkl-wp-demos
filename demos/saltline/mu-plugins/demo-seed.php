@@ -301,7 +301,7 @@ function sl_form() {
 	$body = <<<'FORM'
 <p><label for="bk-name">Full name</label>[text* your-name id:bk-name autocomplete:name]</p>
 <p><label for="bk-email">Email</label>[email* your-email id:bk-email autocomplete:email]</p>
-<p><label for="bk-tour">Tour</label>[select* tour id:bk-tour first_as_label "Choose a topic" "Sunrise Harbor Paddle" "Sea Cave Explorer" "Night Glow Paddle" "Private group tour (9 or more)" "Gift cards" "Something else"]</p>
+<p><label for="bk-tour">Topic</label>[select* tour id:bk-tour first_as_label "Choose a topic" "Sunrise Harbor Paddle" "Sea Cave Explorer" "Night Glow Paddle" "Private group tour (9 or more)" "Gift cards" "Something else"]</p>
 <p><label for="bk-msg">Your question</label>[textarea* your-message id:bk-msg x4]</p>
 <p>[acceptance consent] I agree to be contacted by email about this request. [/acceptance]</p>
 <p>[submit "Send question"]</p>

@@ -83,6 +83,7 @@ function lh_seed_catalog() {
 		$prod->set_category_ids( [ $cats[ $p['cat'] ] ] ); $prod->set_menu_order( $order );
 		$prod->set_featured( ! empty( $p['featured'] ) );
 		$prod->set_image_id( lh_media( $p['img'] ) );
+		if ( ! empty( $p['photo'] ) ) $prod->set_gallery_image_ids( [ lh_media( $p['photo'] ) ] );
 		$id = $prod->save();
 		if ( ! empty( $p['bundle'] ) ) wp_set_object_terms( $id, 'bundle', 'product_tag', true );
 		update_post_meta( $id, '_lh', wp_slash( wp_json_encode( $p ) ) );

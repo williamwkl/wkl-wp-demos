@@ -5,6 +5,7 @@
 // Every other number in the report is then checked against data.json: the build fails if a figure cannot be traced.
 import { readFileSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { BASE } from './site-base.mjs';
 
 const D = JSON.parse(readFileSync('health-check/data.json', 'utf8'));
 const OFFER = JSON.parse(readFileSync('health-check/offer.json', 'utf8')); // prices and durations: one place, set by William
@@ -47,7 +48,20 @@ ${[row('Lighthouse Performance', p => p.scores.performance), row('Largest Conten
     </tbody>
   </table></div>`;
 
+// One severity scale for every ring (Lighthouse style): 0-49 red, 50-89 amber, 90-100 green; ratios become percents.
+const ringPct = (label) => {
+  if (/\//.test(label)) { const [a, b] = label.split('/').map(Number); return (a / b) * 100; }
+  if (/s$/.test(label)) { const pages = Object.values(now); return (pages.filter(p => p.lcp_s <= 2.5).length / pages.length) * 100; }
+  return +label;
+};
+const ringColor = pct => pct < 50 ? '#B23A3A' : pct < 90 ? '#8A5E0E' : '#2E6B46';
+const fcpRange = (set) => { const v = Object.values(set).map(p => p.fcp_s); return s1(Math.min(...v)) + (Math.min(...v) === Math.max(...v) ? '' : ' to ' + s1(Math.max(...v))) + ' s'; };
 let html = readFileSync('health-check/report.template.html', 'utf8')
+  .replace('{{FCP_RANGE}}', 'FCP ' + fcpRange(now) + ' down to ' + fcpRange(after))
+  .replace(/<circle cx="32" cy="32" r="27" fill="none" stroke="#[0-9A-F]{6}" stroke-width="7" stroke-dasharray="[\d.]+ 169\.6"([^>]*)\/><text([^>]*)>([^<]+)<\/text>/g, (m, rest, tattr, label) => {
+    const pct = Math.max(0, Math.min(100, ringPct(label)));
+    return `<circle cx="32" cy="32" r="27" fill="none" stroke="${ringColor(pct)}" stroke-width="7" stroke-dasharray="${(pct * 1.696).toFixed(1)} 169.6"${rest}/><text${tattr}>${label}</text>`;
+  })
   .replace(/\{\{(tier\d_(?:price|days)|care_price)\}\}/g, (m, k) => OFFER[k])
   .replace('{{CWV_TABLE}}', cwv).replace('{{LCP_CHART}}', chart).replace('{{BEFORE_AFTER}}', beforeAfter);
 
@@ -72,7 +86,7 @@ if (problems.length) { console.error('Untraceable figures:\n  ' + [...new Set(pr
 
 writeFileSync('health-check/report.html', html);
 mkdirSync('dist/health-check/assets', { recursive: true });
-writeFileSync('dist/health-check/index.html', html.replace('<head>', '<head>\n<link rel="canonical" href="' + JSON.parse(readFileSync('site.config.json', 'utf8')).publicBase.replace(/\/$/, '') + '/health-check/">'));
+writeFileSync('dist/health-check/index.html', html.replace('<head>', '<head>\n<link rel="canonical" href="' + BASE + '/health-check/">'));
 cpSync('health-check/assets', 'dist/health-check/assets', { recursive: true });
 
 mkdirSync('deliverables', { recursive: true });

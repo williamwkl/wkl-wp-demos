@@ -8,7 +8,7 @@
 //   or https://playground.wordpress.net/?blueprint-url=<raw URL of playground/<demo>.json>
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-const CONFIG = JSON.parse(readFileSync('site.config.json', 'utf8'));
+import { CONFIG } from './site-base.mjs';
 const RAW = (process.argv[2] || CONFIG.rawBase).replace(/\/$/, '');
 const walk = d => readdirSync(d).flatMap(f => { const p = path.join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
 mkdirSync('playground', { recursive: true });
