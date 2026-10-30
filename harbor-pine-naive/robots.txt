@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://williamwkl.github.io/wkl-wp-demos/harbor-pine-naive/sitemap.xml
