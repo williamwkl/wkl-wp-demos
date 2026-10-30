@@ -16,7 +16,7 @@
 	<meta property="og:url" content="https://williamwkl.github.io/wkl-wp-demos/makers/events/" />
 	<meta property="og:site_name" content="Fernwood Makers" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/","name":"Events | Fernwood Makers","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website"},"datePublished":"2026-10-30T11:10:05+00:00","description":"Open studios, markets and fairs for Fernwood County makers (sample events).","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/"},{"@type":"ListItem","position":2,"name":"Events"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/","name":"Fernwood Makers","description":"Local makers directory for Fernwood County (demo site)","inLanguage":"en-US"}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/","name":"Events | Fernwood Makers","isPartOf":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website"},"datePublished":"2026-10-30T12:36:12+00:00","description":"Open studios, markets and fairs for Fernwood County makers (sample events).","breadcrumb":{"@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/events\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/"},{"@type":"ListItem","position":2,"name":"Events"}]},{"@type":"WebSite","@id":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/#website","url":"https:\/\/williamwkl.github.io\/wkl-wp-demos\/makers\/","name":"Fernwood Makers","description":"Local makers directory for Fernwood County (demo site)","inLanguage":"en-US"}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -401,6 +401,11 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 .gallery .main img{height:auto}.credits-table th:last-child,.credits-table td:last-child{white-space:nowrap;width:1%}
 .gallery .thumb img{height:auto}
 .details dd.site{overflow-wrap:normal;word-break:normal}
+/* Search pill focus: indicator on the pill, not a square ring inside it (iOS feedback) */
+.search input[type=search]{-webkit-appearance:none;appearance:none;border-radius:0;text-overflow:ellipsis;font-size:1.0625rem;outline:none}
+.search input[type=search]::-webkit-search-decoration,.search input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+html body .search input[type=search]:focus,html body .search input[type=search]:focus-visible{outline:none}
+.search:focus-within{border-color:var(--c-ochre-deep);box-shadow:0 0 0 3px rgba(143,86,7,.35)}
 
 /*# sourceURL=../wp-content/themes/makers/style.css */
 </style>

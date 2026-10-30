@@ -389,6 +389,11 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 .gallery .main img{height:auto}.credits-table th:last-child,.credits-table td:last-child{white-space:nowrap;width:1%}
 .gallery .thumb img{height:auto}
 .details dd.site{overflow-wrap:normal;word-break:normal}
+/* Search pill focus: indicator on the pill, not a square ring inside it (iOS feedback) */
+.search input[type=search]{-webkit-appearance:none;appearance:none;border-radius:0;text-overflow:ellipsis;font-size:1.0625rem;outline:none}
+.search input[type=search]::-webkit-search-decoration,.search input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+html body .search input[type=search]:focus,html body .search input[type=search]:focus-visible{outline:none}
+.search:focus-within{border-color:var(--c-ochre-deep);box-shadow:0 0 0 3px rgba(143,86,7,.35)}
 
 /*# sourceURL=../../wp-content/themes/makers/style.css */
 </style>
@@ -417,11 +422,11 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 <h1>Elk Ridge</h1>
 <p class="lead">2 makers in and around Elk Ridge.</p>
 
-<div class="directory" id="dir-406" data-index="../../wp-content/uploads/fernwood/makers.json" data-per-page="12" data-total="36" data-sync-url="1" data-lock-category="" data-lock-town="elk-ridge">
+<div class="directory" id="dir-358" data-index="../../wp-content/uploads/fernwood/makers.json" data-per-page="12" data-total="36" data-sync-url="1" data-lock-category="" data-lock-town="elk-ridge">
 <div class="browse">
-<form class="filters" id="dir-406-filters" action="../../makers/" method="get" aria-label="Filter makers">
+<form class="filters" id="dir-358-filters" action="../../makers/" method="get" aria-label="Filter makers">
 <div class="sheet-head">
-<h2 class="sheet-title" id="dir-406-sheet-title">Filters</h2>
+<h2 class="sheet-title" id="dir-358-sheet-title">Filters</h2>
 <p><button type="button" class="iconbtn sheet-close" aria-label="Close filters"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <fieldset class="grp">
 <legend>Category</legend>
@@ -450,13 +455,13 @@ html:not(.js-on) .browse{grid-template-columns:1fr}
 					or by town: <a href="../../town/alder-creek/">Alder Creek</a>, <a href="../../town/bramblewood/">Bramblewood</a>, <a href="../../town/coldwater/">Coldwater</a>, <a href="../../town/dunmore/">Dunmore</a>, <a href="../../town/elk-ridge/">Elk Ridge</a>, <a href="../../town/fallowfield/">Fallowfield</a>, <a href="../../town/greystone/">Greystone</a>, <a href="../../town/harlow/">Harlow</a>, <a href="../../town/ivywick/">Ivywick</a>.</p>
 </div>
 <div class="mob-filters" aria-label="Quick filters">
-					<button type="button" class="chip filters-open" aria-expanded="false" aria-controls="dir-406-filters"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filters</button>
+					<button type="button" class="chip filters-open" aria-expanded="false" aria-controls="dir-358-filters"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filters</button>
 				</div>
 <div class="active-chips" aria-label="Active filters"></div>
 <h2 class="screen-reader-text">Results</h2>
 <div class="res-head">
 <p class="count" role="status" aria-live="polite"><strong>2</strong> makers</p>
-<p>					<label class="sort"><span>Sort</span> <select name="sort" form="dir-406-filters"><option value="recommended">Recommended</option><option value="newest">Newest</option><option value="az">A to Z</option></select></label>
+<p>					<label class="sort"><span>Sort</span> <select name="sort" form="dir-358-filters"><option value="recommended">Recommended</option><option value="newest">Newest</option><option value="az">A to Z</option></select></label>
 				</div>
 <div class="grid">
 <article class="card" hidden data-id="4" data-craft="woodwork" data-town="alder-creek" data-price="3" data-open="1">
